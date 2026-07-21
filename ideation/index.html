@@ -12,6 +12,13 @@
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
 </head>
 <body>
+  <!-- Particle Network Background Canvas -->
+  <canvas id="particle-bg"></canvas>
+  
+  <!-- Floating Glow Orbs -->
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+
   <div class="app-container">
     <!-- Header -->
     <header class="app-header">
@@ -104,7 +111,7 @@
         <div class="slides-container" id="slides-container">
           
           <!-- SLIDE 1: TITLE SLIDE -->
-          <section class="slide active-slide" id="slide-1" data-slide-index="0">
+          <section class="slide active-slide" id="slide-1" data-slide-index="0" data-slide="1">
             <div class="slide-bg-effect radar-effect"></div>
             <div class="title-slide-content">
               <div class="title-badge">XNEXUS - CRISISOS FOR INDIA</div>
@@ -807,6 +814,21 @@
             <div class="slide-grid grid-2-col">
               <div class="flex-column gap-20 justify-content-center">
                 <h3 class="gradient-text font-accent" style="font-size: 2rem; font-weight: 800; line-height: 1.2;">Saving Lives Through Accelerated Mobilization</h3>
+                <div class="glow-accent-bar"></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 10px 0;">
+                  <div style="text-align: center;">
+                    <span class="animated-counter" data-target="5" data-suffix="min">0</span>
+                    <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Response Time</div>
+                  </div>
+                  <div style="text-align: center;">
+                    <span class="animated-counter" data-target="840" data-suffix="+">0</span>
+                    <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Households Covered</div>
+                  </div>
+                  <div style="text-align: center;">
+                    <span class="animated-counter" data-target="9" data-suffix="">0</span>
+                    <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">AI Agents Active</div>
+                  </div>
+                </div>
                 <p class="slide-paragraph font-light">
                   Manual operations take hours to verify river data, coordinate relief depots, and broadcast alerts. XNexus-CrisisOS completes these operations in less than 5 minutes.
                 </p>

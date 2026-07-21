@@ -911,3 +911,131 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ============================================================
+//  PARTICLE NETWORK CANVAS RENDERER
+// ============================================================
+(function initParticleNetwork() {
+  const canvas = document.getElementById("particle-bg");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  let width, height, particles;
+  const PARTICLE_COUNT = 80;
+  const CONNECTION_DIST = 140;
+  const PARTICLE_SPEED = 0.3;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * PARTICLE_SPEED,
+        vy: (Math.random() - 0.5) * PARTICLE_SPEED,
+        r: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.4 + 0.1
+      });
+    }
+  }
+
+  function isLightMode() {
+    return document.body.classList.contains("light-mode");
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    const light = isLightMode();
+    const dotColor = light ? "0, 120, 255" : "0, 242, 254";
+    const lineColor = light ? "0, 120, 255" : "0, 242, 254";
+
+    // Update positions
+    for (const p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+    }
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECTION_DIST) {
+          const opacity = (1 - dist / CONNECTION_DIST) * 0.15;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${lineColor}, ${opacity})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw particles
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${dotColor}, ${p.alpha})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("resize", () => {
+    resize();
+  });
+
+  resize();
+  createParticles();
+  requestAnimationFrame(draw);
+})();
+
+// ============================================================
+//  ANIMATED NUMBER COUNTERS
+// ============================================================
+(function initAnimatedCounters() {
+  const counters = document.querySelectorAll(".animated-counter");
+  if (counters.length === 0) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.counted) {
+        entry.target.dataset.counted = "true";
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(el => observer.observe(el));
+
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target) || 0;
+    const suffix = el.dataset.suffix || "";
+    const prefix = el.dataset.prefix || "";
+    const duration = 2000;
+    const start = performance.now();
+    const isFloat = String(target).includes(".");
+
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * target;
+      el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+})();
+
