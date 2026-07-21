@@ -2010,3 +2010,195 @@ body.light-mode .status-cell {
 .sim-action-area {
   margin-top: auto;
 }
+
+/* Slide 5 Capability Cards Visualization Widgets */
+.mini-viz {
+  margin-top: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+body.light-mode .mini-viz {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* 1. Radar Viz */
+.radar-viz {
+  position: relative;
+  background-color: #030407;
+}
+.radar-sweep {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 150px; height: 150px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(from 0deg at 50% 50%, rgba(0, 242, 254, 0.08) 0deg, transparent 90deg, transparent 360deg);
+  animation: sweepRadar 5s linear infinite;
+  pointer-events: none;
+}
+.viz-ping {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.viz-ping.p-red { background-color: var(--danger); box-shadow: 0 0 6px var(--danger); animation: markerAlert 0.6s infinite alternate; }
+.viz-ping.p-blue { background-color: var(--primary); box-shadow: 0 0 6px var(--primary); }
+.viz-lbl {
+  position: absolute;
+  bottom: 8px; left: 10px;
+  font-size: 0.58rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+/* 2. Hydro Wave Viz */
+.hydro-viz {
+  justify-content: flex-end;
+}
+.hydro-wave-container {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  overflow: hidden;
+}
+.hydro-wave {
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 242, 254, 0.15) 0%, rgba(79, 172, 254, 0.05) 100%);
+  border-radius: 40%;
+  position: absolute;
+  top: 20px;
+  animation: waveMotion 4s linear infinite;
+}
+@keyframes waveMotion {
+  0% { transform: rotate(0deg); left: 0%; }
+  100% { transform: rotate(360deg); left: -50%; }
+}
+.hydro-line {
+  position: absolute;
+  bottom: 25px; left: 0; right: 0;
+  height: 1px;
+  border-top: 1px dashed var(--danger);
+  opacity: 0.6;
+}
+.hydro-status {
+  font-size: 0.62rem;
+  color: var(--danger);
+  z-index: 2;
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+
+/* 3. Soil Saturation Viz */
+.soil-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  margin: 6px 0;
+  overflow: hidden;
+}
+body.light-mode .soil-bar-bg {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.soil-bar-fill {
+  height: 100%;
+  width: 88%;
+  background: linear-gradient(90deg, var(--warning), var(--danger));
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(255, 94, 98, 0.4);
+}
+.soil-header {
+  font-size: 0.58rem;
+  color: var(--text-muted);
+}
+.soil-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  font-weight: bold;
+}
+
+/* 4. Route SVG node Graph Viz */
+.route-nodes-viz {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.route-nodes-viz svg {
+  width: 100%;
+  height: 48px;
+}
+.node-flash {
+  animation: nodeAlert 1s infinite alternate;
+}
+@keyframes nodeAlert {
+  0% { opacity: 0.4; r: 4px; }
+  100% { opacity: 1; r: 6px; }
+}
+.node-pulse {
+  animation: markerAlert 0.8s infinite alternate;
+}
+.route-status-lbl {
+  font-size: 0.58rem;
+  color: var(--success);
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
+/* 5. NDMA Sachet SMS Mockup */
+.sachet-sms-viz {
+  justify-content: flex-start;
+  padding: 5px 8px;
+}
+.sms-box {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid var(--danger);
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+body.light-mode .sms-box {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.sms-title {
+  font-size: 0.56rem;
+  color: var(--danger);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.sms-body {
+  font-size: 0.62rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+/* 6. Hospital Beds status dashboard */
+.hospital-status-viz {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+.h-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+.h-status-badge {
+  font-size: 0.55rem;
+  font-weight: bold;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.h-status-badge.success { color: var(--success); background-color: rgba(0, 230, 118, 0.1); }
+.h-status-badge.danger { color: var(--danger); background-color: rgba(255, 94, 98, 0.1); }

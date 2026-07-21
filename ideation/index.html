@@ -462,6 +462,12 @@
                   <h3>IMD Radar & Forecast Scraping</h3>
                 </div>
                 <p>Monitors heavy rainfall parameters directly using live IMD forecasts and doppler radar feeds to establish landslide triggers.</p>
+                <div class="mini-viz radar-viz">
+                  <div class="radar-sweep"></div>
+                  <span class="viz-ping p-red" style="top:40%; left:30%;"></span>
+                  <span class="viz-ping p-blue" style="top:60%; left:75%;"></span>
+                  <span class="viz-lbl">IMD DENSITY INDEX</span>
+                </div>
               </div>
               <div class="feature-item">
                 <div class="feature-header">
@@ -469,6 +475,13 @@
                   <h3>CWC River Gauge Hydrography</h3>
                 </div>
                 <p>Ingests real-time water levels from CWC telemetry stations to calculate flood heights and estimate local village inundation times.</p>
+                <div class="mini-viz hydro-viz">
+                  <div class="hydro-wave-container">
+                    <div class="hydro-wave"></div>
+                  </div>
+                  <div class="hydro-line"></div>
+                  <span class="hydro-status font-monospace">839.2m (CRITICAL HEIGHT REACHED)</span>
+                </div>
               </div>
               <div class="feature-item">
                 <div class="feature-header">
@@ -476,6 +489,16 @@
                   <h3>GSI Soil Saturation Analytics</h3>
                 </div>
                 <p>Evaluates slope soil moisture maps from GSI (Geological Survey of India) databases to pinpoint landslide threat zones in hilly regions.</p>
+                <div class="mini-viz soil-viz">
+                  <div class="soil-header">SOIL SHEAR SATURATION LEVEL</div>
+                  <div class="soil-bar-bg">
+                    <div class="soil-bar-fill"></div>
+                  </div>
+                  <div class="soil-labels font-monospace">
+                    <span>INDEX: 88%</span>
+                    <span class="text-danger" style="color:var(--danger)">WARNING</span>
+                  </div>
+                </div>
               </div>
               <div class="feature-item">
                 <div class="feature-header">
@@ -483,6 +506,23 @@
                   <h3>MapmyIndia Routing Engine</h3>
                 </div>
                 <p>Interfaces with national road telemetry systems to calculate evacuation pathways around flooded highways.</p>
+                <div class="mini-viz route-nodes-viz">
+                  <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+                    <circle cx="20" cy="30" r="5" fill="#ff5e62" class="node-flash"></circle>
+                    <circle cx="80" cy="15" r="5" fill="#00e676"></circle>
+                    <circle cx="80" cy="45" r="5" fill="#ff5e62"></circle>
+                    <circle cx="150" cy="15" r="5" fill="#00e676"></circle>
+                    <circle cx="150" cy="45" r="5" fill="#00e676"></circle>
+                    <circle cx="180" cy="30" r="5" fill="#00f2fe" class="node-pulse"></circle>
+                    <line x1="25" y1="30" x2="75" y2="15" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
+                    <line x1="25" y1="30" x2="75" y2="45" stroke="#ff5e62" stroke-width="1.5"></line>
+                    <line x1="85" y1="15" x2="145" y2="15" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
+                    <line x1="85" y1="45" x2="145" y2="45" stroke="#ff5e62" stroke-width="1.5"></line>
+                    <line x1="155" y1="15" x2="175" y2="30" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
+                    <line x1="155" y1="45" x2="175" y2="30" stroke="#ff5e62" stroke-width="1.5"></line>
+                  </svg>
+                  <div class="route-status-lbl font-monospace">ROUTE COMPLETED // 14.8 KM AVOIDED</div>
+                </div>
               </div>
               <div class="feature-item">
                 <div class="feature-header">
@@ -490,6 +530,12 @@
                   <h3>NDMA Sachet Cell Broadcasts</h3>
                 </div>
                 <p>Triggers localized cell-broadcast SMS warnings in Hindi, English, and regional languages to mobile towers in threat corridors.</p>
+                <div class="mini-viz sachet-sms-viz">
+                  <div class="sms-box">
+                    <div class="sms-title">🚨 EMERGENCY ALERT // GOVT OF INDIA</div>
+                    <div class="sms-body">Flash Flood threat in Sector B. Evacuate via Route 3 immediately. Safe zone: NDRF Shelter.</div>
+                  </div>
+                </div>
               </div>
               <div class="feature-item">
                 <div class="feature-header">
@@ -497,6 +543,20 @@
                   <h3>State 108 Emergency Beds</h3>
                 </div>
                 <p>Queries regional hospital ICU registries to optimize patient delivery routes and prevent trauma facility congestion.</p>
+                <div class="mini-viz hospital-status-viz font-monospace">
+                  <div class="h-row">
+                    <span>KOZHIKODE GOVT HOSP</span>
+                    <span class="h-status-badge success">14 ICU OPEN</span>
+                  </div>
+                  <div class="h-row">
+                    <span>WAYANAD GEN CLINIC</span>
+                    <span class="h-status-badge danger">FULL (REDIRECT)</span>
+                  </div>
+                  <div class="h-row">
+                    <span>MALAPPURAM REG HOSP</span>
+                    <span class="h-status-badge success">8 OPEN</span>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
