@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XNexus-CrisisOS – Autonomous Disaster Command Center | Hackathon Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- PptxGenJS CDN for PowerPoint generation -->
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="28" height="28">
+          <path fill="url(#logo-grad)" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00f2fe" />
+              <stop offset="100%" stop-color="#4facfe" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-brand">XNEXUS<span class="text-glow">.OS</span></span>
+          <span class="logo-sub">Crisis Command Center</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="badge hackathon-badge font-accent">India Deployable</span>
+        <span class="badge build-badge">NitroStack 2026</span>
+        <button id="export-btn" class="btn btn-primary btn-glow">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export PPTX
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="main-workspace">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div class="sidebar-title">SLIDE DECK</div>
+        <nav class="slide-nav">
+          <ul id="slide-menu-list">
+            <li class="nav-item active" data-slide="0">
+              <span class="nav-num">01</span>
+              <span class="nav-label">Title & Concept</span>
+            </li>
+            <li class="nav-item" data-slide="1">
+              <span class="nav-num">02</span>
+              <span class="nav-label">Indian Problem Space</span>
+            </li>
+            <li class="nav-item" data-slide="2">
+              <span class="nav-num">03</span>
+              <span class="nav-label">Proposed Solution</span>
+            </li>
+            <li class="nav-item" data-slide="3">
+              <span class="nav-num">04</span>
+              <span class="nav-label">Core Multi-Agents</span>
+            </li>
+            <li class="nav-item" data-slide="4">
+              <span class="nav-num">05</span>
+              <span class="nav-label">Key Features</span>
+            </li>
+            <li class="nav-item" data-slide="5">
+              <span class="nav-num">06</span>
+              <span class="nav-label">The USP "Wow"</span>
+            </li>
+            <li class="nav-item" data-slide="6">
+              <span class="nav-num">07</span>
+              <span class="nav-label">Technical Stack & MCP</span>
+            </li>
+            <li class="nav-item" data-slide="7">
+              <span class="nav-num">08</span>
+              <span class="nav-label">Emergency Workflow</span>
+            </li>
+            <li class="nav-item" data-slide="8">
+              <span class="nav-num">09</span>
+              <span class="nav-label">Impact & Simulation</span>
+            </li>
+            <li class="nav-item" data-slide="9">
+              <span class="nav-num">10</span>
+              <span class="nav-label">Roadmap & Vision</span>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Slides Presentation Viewer -->
+      <main class="presentation-viewer" id="fullscreen-target">
+        <div class="slides-container" id="slides-container">
+          
+          <!-- SLIDE 1: TITLE SLIDE -->
+          <section class="slide active-slide" id="slide-1" data-slide-index="0">
+            <div class="slide-bg-effect radar-effect"></div>
+            <div class="title-slide-content">
+              <div class="title-badge">XNEXUS - CRISISOS FOR INDIA</div>
+              <h1 class="slide-main-title">XNEXUS<span class="gradient-text">.OS</span></h1>
+              <p class="slide-subtitle font-accent">Autonomous Disaster Command Center</p>
+              <div class="title-divider"></div>
+              <p class="slide-description text-center max-w-700">
+                An intelligent multi-agent operating system that predicts, coordinates, and autonomously manages disaster response in real time across India's vulnerable regions. Interfaces directly with Central Water Commission gauges, IMD telemetry, and NDMA Sachet cell-broadcast grids.
+              </p>
+              <div class="title-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">DATA PIPELINES</span>
+                  <span class="meta-val font-accent">IMD / CWC / GSI Real Feeds</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">DEPLOYMENT CORE</span>
+                  <span class="meta-val font-accent">NDRF / SDRF Action Hub</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">ALERTS MAPPED</span>
+                  <span class="meta-val font-accent">NDMA Sachet Protocol</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 2: THE PROBLEM -->
+          <section class="slide" id="slide-2" data-slide-index="1">
+            <div class="slide-header">
+              <div class="slide-nav-badge">02 / PROBLEM SPACE</div>
+              <h2 class="slide-title">India's Critical Response Bottlenecks</h2>
+            </div>
+            <div class="slide-grid grid-2-col">
+              <div class="flex-column gap-20">
+                <p class="slide-paragraph">
+                  India faces extreme climate threats: Himalayan landslides (Uttarakhand, Wayanad), seasonal monsoon floods (Assam, Bihar, Kerala), and cyclones. Government agencies have advanced telemetry systems, but they operate in absolute isolation.
+                </p>
+                <div class="accent-callout border-left-danger">
+                  <strong>The Operational Friction:</strong> Heavy rain alerts from IMD and river heights from CWC sit on separate dashboards. Triggering evacuations requires manual, phone-based coordination between weather bureaus, district magistrates, hospitals, and NDRF squads.
+                </div>
+                <p class="slide-paragraph font-light">
+                  Delayed early action during extreme monsoons directly escalates casualties and delays relief dispatch.
+                </p>
+              </div>
+              <div class="problem-grid-cards">
+                <div class="problem-card">
+                  <div class="p-card-icon danger-text">🌧️</div>
+                  <div class="p-card-body">
+                    <h4>Monsoon & Cyclone Friction</h4>
+                    <p>Friction in linking IMD forecasts with CWC river height logs delays early evacuation timelines.</p>
+                  </div>
+                </div>
+                <div class="problem-card">
+                  <div class="p-card-icon danger-text">🔌</div>
+                  <div class="p-card-body">
+                    <h4>Agency Data Silos</h4>
+                    <p>CWC gauges, GSI landslide indices, and NHAI highway feeds do not dynamically share telemetry.</p>
+                  </div>
+                </div>
+                <div class="problem-card">
+                  <div class="p-card-icon danger-text">☎️</div>
+                  <div class="p-card-body">
+                    <h4>Manual NDRF Logistics</h4>
+                    <p>Human coordinators must query 108 emergency health databases and assign relief boats via voice call logs.</p>
+                  </div>
+                </div>
+                <div class="problem-card">
+                  <div class="p-card-icon danger-text">📢</div>
+                  <div class="p-card-body">
+                    <h4>Static Warning Systems</h4>
+                    <p>Standard alert sirens fail to route fleeing populations to safe highways in local languages.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 3: PROPOSED SOLUTION -->
+          <section class="slide" id="slide-3" data-slide-index="2">
+            <div class="slide-header">
+              <div class="slide-nav-badge">03 / SOLUTION</div>
+              <h2 class="slide-title">Introducing XNexus-CrisisOS</h2>
+            </div>
+            <div class="slide-grid grid-2-col align-items-center">
+              <div class="solution-visual">
+                <div class="radial-mesh-container">
+                  <div class="core-node">XNEXUS.OS</div>
+                  <div class="satellite-node s1">IMD Doppler</div>
+                  <div class="satellite-node s2">CWC Gauges</div>
+                  <div class="satellite-node s3">GSI Landslides</div>
+                  <div class="satellite-node s4">MapmyIndia</div>
+                  <div class="satellite-node s5">108 Health</div>
+                  <div class="orbit-circle o1"></div>
+                  <div class="orbit-circle o2"></div>
+                </div>
+              </div>
+              <div class="flex-column gap-15">
+                <h3 class="solution-sub font-accent">Real-Telemetry Multi-Agent Command Mesh</h3>
+                <p class="slide-paragraph">
+                  XNexus-CrisisOS deploys a collaborative framework of specialized AI Agents interacting via custom Model Context Protocol (MCP) servers to ingest live Indian government databases.
+                </p>
+                <ul class="solution-bullets">
+                  <li>
+                    <span class="bullet-glow"></span>
+                    <strong>IMD & CWC Hydrology Integration:</strong> Directly streams telemetry feeds to model landslide risks and map flood inundation limits in advance.
+                  </li>
+                  <li>
+                    <span class="bullet-glow"></span>
+                    <strong>MapmyIndia Route Solving:</strong> Evaluates route status and models evacuation flows to coordinate exit paths dynamically.
+                  </li>
+                  <li>
+                    <span class="bullet-glow"></span>
+                    <strong>NDMA Sachet Cell Broadcast:</strong> Automates regional language alerts directly to local mobile towers in threatened sectors.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 4: CORE AI AGENTS -->
+          <section class="slide" id="slide-4" data-slide-index="3">
+            <div class="slide-header">
+              <div class="slide-nav-badge">04 / MULTI-AGENT ARCHITECTURE</div>
+              <h2 class="slide-title">India-Focused Agentic Framework</h2>
+            </div>
+            <p class="slide-intro-text font-light">Nine specialized AI Agents collaborating to manage the full disaster lifecycle using real Indian telemetry. Click cards to view details.</p>
+            <div class="agents-grid">
+              <!-- Agent 1 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">WEATHER</div>
+                <h4>Weather Intelligence</h4>
+                <p class="agent-desc">Monitors IMD Doppler radar arrays, INSAT-3D satellite grids, and cyclone tracks.</p>
+                <div class="agent-detail-list">
+                  <span>Input: IMD Satellite API</span>
+                  <span>Output: Cyclone/Rain warnings</span>
+                </div>
+              </div>
+              <!-- Agent 2 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">PREDICTION</div>
+                <h4>Flood & Landslide</h4>
+                <p class="agent-desc">Ingests CWC river gauge stations and GSI soil moisture logs.</p>
+                <div class="agent-detail-list">
+                  <span>Input: CWC Gauge Telemetry</span>
+                  <span>Output: Inundation zones</span>
+                </div>
+              </div>
+              <!-- Agent 3 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">RISK</div>
+                <h4>Risk Assessment</h4>
+                <p class="agent-desc">Cross-references hazard polygons against India's Census maps and local housing indices.</p>
+                <div class="agent-detail-list">
+                  <span>Input: National Census GIS</span>
+                  <span>Output: Population risks</span>
+                </div>
+              </div>
+              <!-- Agent 4 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">RESOURCE</div>
+                <h4>Resource Management</h4>
+                <p class="agent-desc">Tracks availability of NDRF battalions, state police squads, and rescue boats.</p>
+                <div class="agent-detail-list">
+                  <span>Input: NDRF Station Registries</span>
+                  <span>Output: Squad allocations</span>
+                </div>
+              </div>
+              <!-- Agent 5 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">TRAFFIC</div>
+                <h4>Traffic & Evacuation</h4>
+                <p class="agent-desc">Computes exit corridors dynamically by routing traffic away from CWC-flooded roads.</p>
+                <div class="agent-detail-list">
+                  <span>Input: MapmyIndia Mappls API</span>
+                  <span>Output: Evacuation maps</span>
+                </div>
+              </div>
+              <!-- Agent 6 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">MEDICAL</div>
+                <h4>Medical Coordination</h4>
+                <p class="agent-desc">Coordinates ambulance routes and queries ICU bed vacancies using regional 108 databases.</p>
+                <div class="agent-detail-list">
+                  <span>Input: State 108 health database</span>
+                  <span>Output: Bed triage dispatch</span>
+                </div>
+              </div>
+              <!-- Agent 7 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">COMMS</div>
+                <h4>Communication Agent</h4>
+                <p class="agent-desc">Drafts and broadcasts localized alerts via NDMA Sachet, WhatsApp Business API, and local radio networks.</p>
+                <div class="agent-detail-list">
+                  <span>Input: Sachet SMS Gateway</span>
+                  <span>Output: Multilingual warnings</span>
+                </div>
+              </div>
+              <!-- Agent 8 -->
+              <div class="agent-card" onclick="selectAgent(this)">
+                <div class="agent-badge">LOGISTICS</div>
+                <h4>Relief & Supply</h4>
+                <p class="agent-desc">Coordinates food, water, and medicine dispatch from Food Corporation of India (FCI) depots.</p>
+                <div class="agent-detail-list">
+                  <span>Input: FCI inventory logs</span>
+                  <span>Output: Drone dispatch queues</span>
+                </div>
+              </div>
+              <!-- Agent 9 -->
+              <div class="agent-card highlight-card" onclick="selectAgent(this)">
+                <div class="agent-badge commander-badge">NDRF COMMANDER</div>
+                <h4>Decision Commander</h4>
+                <p class="agent-desc">Fuses intelligence from all agents, models scenarios, and generates tactical NDRF deployment orders.</p>
+                <div class="agent-detail-list">
+                  <span>Input: Multi-Agent responses</span>
+                  <span>Output: Actionable commands</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 5: KEY FEATURES -->
+          <section class="slide" id="slide-5" data-slide-index="4">
+            <div class="slide-header">
+              <div class="slide-nav-badge">05 / CORE CAPABILITIES</div>
+              <h2 class="slide-title">Real-Data Core Capabilities</h2>
+            </div>
+            <div class="features-container">
+              <div class="feature-item">
+                <div class="feature-header">
+                  <span class="feature-number">01</span>
+                  <h3>IMD Radar & Forecast Scraping</h3>
+                </div>
+                <p>Monitors heavy rainfall parameters directly using live IMD forecasts and doppler radar feeds to establish landslide triggers.</p>
+              </div>
+              <div class="feature-item">
+                <div class="feature-header">
+                  <span class="feature-number">02</span>
+                  <h3>CWC River Gauge Hydrography</h3>
+                </div>
+                <p>Ingests real-time water levels from CWC telemetry stations to calculate flood heights and estimate local village inundation times.</p>
+              </div>
+              <div class="feature-item">
+                <div class="feature-header">
+                  <span class="feature-number">03</span>
+                  <h3>GSI Soil Saturation Analytics</h3>
+                </div>
+                <p>Evaluates slope soil moisture maps from GSI (Geological Survey of India) databases to pinpoint landslide threat zones in hilly regions.</p>
+              </div>
+              <div class="feature-item">
+                <div class="feature-header">
+                  <span class="feature-number">04</span>
+                  <h3>MapmyIndia Routing Engine</h3>
+                </div>
+                <p>Interfaces with national road telemetry systems to calculate evacuation pathways around flooded highways.</p>
+              </div>
+              <div class="feature-item">
+                <div class="feature-header">
+                  <span class="feature-number">05</span>
+                  <h3>NDMA Sachet Cell Broadcasts</h3>
+                </div>
+                <p>Triggers localized cell-broadcast SMS warnings in Hindi, English, and regional languages to mobile towers in threat corridors.</p>
+              </div>
+              <div class="feature-item">
+                <div class="feature-header">
+                  <span class="feature-number">06</span>
+                  <h3>State 108 Emergency Beds</h3>
+                </div>
+                <p>Queries regional hospital ICU registries to optimize patient delivery routes and prevent trauma facility congestion.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 6: THE WOW FEATURE (USP) -->
+          <section class="slide" id="slide-6" data-slide-index="5">
+            <div class="slide-header">
+              <div class="slide-nav-badge">06 / THE "WOW" USP</div>
+              <h2 class="slide-title">Beyond Alerting: Real-Data Decisions</h2>
+            </div>
+            <div class="usp-container">
+              <div class="usp-box old-way">
+                <div class="usp-header-tag text-danger">⚠️ TRADITIONAL MONITORING ALERT</div>
+                <div class="usp-msg">
+                  <span class="msg-icon">🚨</span>
+                  <h3>"IMD Alert: Heavy rain predicted in Wayanad, Kerala. Red alert issued."</h3>
+                </div>
+                <p class="usp-footer">Requires operators to manually check hospital databases, cross-reference mountain highway status, check SDRF rosters, and coordinate resources manually over phone lines.</p>
+              </div>
+              
+              <div class="usp-divider">VS</div>
+
+              <div class="usp-box new-way terminal-style">
+                <div class="terminal-header">
+                  <div class="terminal-dot red"></div>
+                  <div class="terminal-dot yellow"></div>
+                  <div class="terminal-dot green"></div>
+                  <span class="terminal-title">XNEXUS.OS // DECISION COMMANDER</span>
+                </div>
+                <div class="usp-msg">
+                  <span class="msg-icon">🤖</span>
+                  <h3>"I simulated 24 response plans..."</h3>
+                </div>
+                <div class="commander-decision-quote font-monospace">
+                  <span class="c-prompt">XNexusOS:~$</span> python3 -m orchestrator --evaluate-incident
+                  <br><br>
+                  "Based on CWC river rise at Kabini river (+18cm/hr), INSAT soil saturation index (88%), and MapmyIndia road network telemetry, I simulated 24 response plans. Evacuating Villages A & B in 35 mins via Route 3 and deploying NDRF 4th Battalion with 8 rescue boats reduces projected casualties by 72%."
+                </div>
+                <div class="usp-metrics-row">
+                  <div class="mini-metric">
+                    <span class="mm-val text-success">24</span>
+                    <span class="mm-lbl">Scenarios Run</span>
+                  </div>
+                  <div class="mini-metric">
+                    <span class="mm-val text-success">-72%</span>
+                    <span class="mm-lbl">Casualties Reduced</span>
+                  </div>
+                  <div class="mini-metric">
+                    <span class="mm-val text-success">35m</span>
+                    <span class="mm-lbl">Evacuation Window</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 7: TECH STACK & MCP -->
+          <section class="slide" id="slide-7" data-slide-index="6">
+            <div class="slide-header">
+              <div class="slide-nav-badge">07 / ARCHITECTURE SYSTEM</div>
+              <h2 class="slide-title">MCP Integration Framework</h2>
+            </div>
+            <div class="slide-grid grid-2-col">
+              <div class="flex-column gap-15">
+                <p class="slide-paragraph">
+                  LLMs cannot access live state registries. XNexus-CrisisOS bypasses this by building custom **Model Context Protocol (MCP)** servers to securely bridge live Indian agency data.
+                </p>
+                <div class="tech-stack-list">
+                  <div class="tech-pill"><strong>Frontend UI:</strong> React, Tailwind CSS, Leaflet.js Interactive Mapping</div>
+                  <div class="tech-pill"><strong>Agent Backend:</strong> LangGraph, FastAPI, Python</div>
+                  <div class="tech-pill"><strong>Spatial DB:</strong> PostgreSQL + PostGIS (Geospatial Indexing)</div>
+                  <div class="tech-pill"><strong>MCP Servers:</strong> Custom Python servers wrapping CWC, IMD, and MapmyIndia APIs</div>
+                </div>
+              </div>
+              <div class="mcp-diagram">
+                <div class="mcp-server-box">
+                  <div class="box-title">MCP Data Servers</div>
+                  <div class="mcp-connection">
+                    <span class="conn-name">CWC Gauge Feeds</span>
+                    <span class="conn-dot"></span>
+                  </div>
+                  <div class="mcp-connection">
+                    <span class="conn-name">IMD Doppler Radar</span>
+                    <span class="conn-dot"></span>
+                  </div>
+                  <div class="mcp-connection">
+                    <span class="conn-name">MapmyIndia API</span>
+                    <span class="conn-dot"></span>
+                  </div>
+                </div>
+                <div class="mcp-arrow">⟷</div>
+                <div class="mcp-client-box">
+                  <div class="box-title">LangGraph Agent Core</div>
+                  <p>Weather Agent</p>
+                  <p>Flood/Landslide</p>
+                  <p>Resource Manager</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 8: SYSTEM WORKFLOW -->
+          <section class="slide" id="slide-8" data-slide-index="7">
+            <div class="slide-header">
+              <div class="slide-nav-badge">08 / SYSTEM FLOW</div>
+              <h2 class="slide-title">Telemetry to Execution Workflow</h2>
+            </div>
+            <div class="timeline-container">
+              <div class="timeline-step">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                  <h4>Telemetry Ingest</h4>
+                  <p>IMD Doppler radar logs heavy precipitation index. CWC monitoring registers gauge spikes exceeding threshold parameters.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                  <h4>Risk Profiling</h4>
+                  <p>Risk Agent runs GIS demographic overlaps to identify vulnerable villages. Medical Agent scans 108 hospital beds availability.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                  <h4>Plan Simulation</h4>
+                  <p>NDRF Commander Agent models road closures. Ingests MapmyIndia road indices to calculate safe evacuation paths.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="step-num">04</div>
+                <div class="step-content">
+                  <h4>Autonomous Action</h4>
+                  <p>XNexus-CrisisOS drafts and broadcasts regional mobile warnings via Sachet, dispatches GPS routes to SDRF units, and assigns ambulance paths.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 9: IMPACT & TARGET KPIs -->
+          <section class="slide" id="slide-9" data-slide-index="8">
+            <div class="slide-header">
+              <div class="slide-nav-badge">09 / PROJECTED IMPACT</div>
+              <h2 class="slide-title">Target Safety and Performance Metrics</h2>
+            </div>
+            <div class="slide-grid grid-2-col">
+              <div class="flex-column gap-20 justify-content-center">
+                <h3 class="gradient-text font-accent" style="font-size: 2.2rem; font-weight: 800; line-height: 1.2;">Saving Lives Through Accelerated Mobilization</h3>
+                <p class="slide-paragraph font-light">
+                  Manual operations take hours to verify river data, coordinate relief depots, and broadcast alerts. XNexus-CrisisOS completes these operations in less than 5 minutes.
+                </p>
+                <div class="accent-callout border-left-success">
+                  Connecting CWC inundation polygons directly with road graphs prevents traffic deadlocks along mountainous escape pathways.
+                </div>
+              </div>
+              <div class="metrics-visual">
+                <div class="metric-progress-container">
+                  <div class="metric-progress-header">
+                    <span>Incident Warning Dispatch Time</span>
+                    <span class="m-val text-success">90% faster (Under 5 mins)</span>
+                  </div>
+                  <div class="m-progress-bg">
+                    <div class="m-progress-fill" style="width: 90%;"></div>
+                  </div>
+                </div>
+                <div class="metric-progress-container">
+                  <div class="metric-progress-header">
+                    <span>NDRF/SDRF Resource Utilization</span>
+                    <span class="m-val text-success">+75% efficiency gain</span>
+                  </div>
+                  <div class="m-progress-bg">
+                    <div class="m-progress-fill" style="width: 75%;"></div>
+                  </div>
+                </div>
+                <div class="metric-progress-container">
+                  <div class="metric-progress-header">
+                    <span>Target Community Warning Delivery</span>
+                    <span class="m-val text-success">85% regional delivery</span>
+                  </div>
+                  <div class="m-progress-bg">
+                    <div class="m-progress-fill" style="width: 85%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SLIDE 10: ROADMAP & FUTURE VISION -->
+          <section class="slide" id="slide-10" data-slide-index="9">
+            <div class="slide-header">
+              <div class="slide-nav-badge">10 / DEVELOPMENT ROADMAP</div>
+              <h2 class="slide-title">Development Blueprint & Phases</h2>
+            </div>
+            <div class="roadmap-grid">
+              <div class="roadmap-card">
+                <div class="rm-phase">PHASE 1 (WEEK 1-2)</div>
+                <h4>MCP Data Pipelines</h4>
+                <p>Build custom Python MCP servers wrapping CWC river gauges API and IMD forecast feeds. Establish PostgreSQL + PostGIS database to index regional map data.</p>
+              </div>
+              <div class="roadmap-card">
+                <div class="rm-phase">PHASE 2 (WEEK 3-4)</div>
+                <h4>Agent Logic & Route Solvers</h4>
+                <p>Deploy multi-agent collaboration core using LangGraph. Connect to MapmyIndia API for route optimization during heavy flash flood scenarios.</p>
+              </div>
+              <div class="roadmap-card">
+                <div class="rm-phase">PHASE 3 (WEEK 5-6)</div>
+                <h4>Public Dispatch Core</h4>
+                <p>Build integration tests for NDMA Sachet alert protocol. Set up ambulance triage APIs and connect live drone inspection logs.</p>
+              </div>
+            </div>
+            <div class="roadmap-footer">
+              <h3 class="font-accent">XNexus-CrisisOS — Intelligent Coordinator for Disaster Logistics in India</h3>
+              <p>Developer blueprint file is available in the workspace: <a href="development_blueprint.md" style="color: var(--primary); text-decoration: underline;">development_blueprint.md</a></p>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Slide Overlay Controls -->
+        <div class="viewer-controls">
+          <button id="prev-btn" class="ctrl-btn" title="Previous Slide (Left Arrow)">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          
+          <div class="slide-indicator">
+            <span id="current-slide-num">1</span> <span class="dim">/</span> <span id="total-slides-num">10</span>
+          </div>
+
+          <button id="next-btn" class="ctrl-btn" title="Next Slide (Right Arrow)">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          
+          <div class="control-divider"></div>
+          
+          <button id="fullscreen-btn" class="ctrl-btn" title="Toggle Fullscreen (F)">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

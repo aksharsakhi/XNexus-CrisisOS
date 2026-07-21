@@ -1,0 +1,17 @@
+# IDE Configurations
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+.system_generated/
+
+# OS files
+Thumbs.db
+
+# Environments
+venv/
+.env
+__pycache__/
+*.pyc
