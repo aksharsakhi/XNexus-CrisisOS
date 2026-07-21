@@ -6,7 +6,7 @@
   <title>XNexus-CrisisOS – Autonomous Disaster Command Center | Hackathon Pitch Deck</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <!-- PptxGenJS CDN for PowerPoint generation -->
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
@@ -31,6 +31,14 @@
         </div>
       </div>
       <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle-btn" class="btn btn-theme-toggle" title="Toggle Light/Dark Mode">
+          <svg id="theme-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Moon Icon by default -->
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span id="theme-text">Dark Mode</span>
+        </button>
         <span class="badge hackathon-badge font-accent">India Deployable</span>
         <span class="badge build-badge">NitroStack 2026</span>
         <button id="export-btn" class="btn btn-primary btn-glow">
@@ -106,6 +114,35 @@
               <p class="slide-description text-center max-w-700">
                 An intelligent multi-agent operating system that predicts, coordinates, and autonomously manages disaster response in real time across India's vulnerable regions. Interfaces directly with Central Water Commission gauges, IMD telemetry, and NDMA Sachet cell-broadcast grids.
               </p>
+              
+              <!-- Cinematic Simulation Trigger Option -->
+              <div style="margin-top: -10px; margin-bottom: 25px;">
+                <button id="play-sim-btn" class="btn btn-primary btn-glow play-demo-btn">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M8 5v14l11-7z"/></svg>
+                  Play Concept Simulation
+                </button>
+              </div>
+
+              <!-- Live Telemetry Board In Slide 1 -->
+              <div class="tactical-board">
+                <div class="board-header">LIVE TELEMETRY MONITOR (INDIA)</div>
+                <div class="board-row">
+                  <span class="board-indicator warning"></span>
+                  <span class="board-loc">UTTARAKHAND (SLOPE STABILITY)</span>
+                  <span class="board-status">STANDBY / SOIL SATURATION 62%</span>
+                </div>
+                <div class="board-row">
+                  <span class="board-indicator danger pulse"></span>
+                  <span class="board-loc">KERALA (KABINI RESERVOIR FLOOD)</span>
+                  <span class="board-status">ACTIVE EVACUATION / RIVER TENSION +18CM/HR</span>
+                </div>
+                <div class="board-row">
+                  <span class="board-indicator normal"></span>
+                  <span class="board-loc">ASSAM (BRAHMAPUTRA VALLEY GAUGE)</span>
+                  <span class="board-status">MONITORING NORMAL</span>
+                </div>
+              </div>
+
               <div class="title-meta-grid">
                 <div class="meta-item">
                   <span class="meta-label">DATA PIPELINES</span>
@@ -191,6 +228,7 @@
                   <div class="satellite-node s5">108 Health</div>
                   <div class="orbit-circle o1"></div>
                   <div class="orbit-circle o2"></div>
+                  <div class="radar-beam"></div>
                 </div>
               </div>
               <div class="flex-column gap-15">
@@ -216,103 +254,197 @@
             </div>
           </section>
 
-          <!-- SLIDE 4: CORE AI AGENTS -->
+          <!-- SLIDE 4: CORE AI AGENTS (Enhanced with live logs console & custom widgets) -->
           <section class="slide" id="slide-4" data-slide-index="3">
             <div class="slide-header">
               <div class="slide-nav-badge">04 / MULTI-AGENT ARCHITECTURE</div>
               <h2 class="slide-title">India-Focused Agentic Framework</h2>
             </div>
-            <p class="slide-intro-text font-light">Nine specialized AI Agents collaborating to manage the full disaster lifecycle using real Indian telemetry. Click cards to view details.</p>
-            <div class="agents-grid">
+            <p class="slide-intro-text font-light" style="margin-bottom:10px;">Nine specialized AI Agents collaborating using real Indian telemetry. Click cards to inspect active telemetry streams below.</p>
+            <div class="agents-grid" style="max-height: 270px; margin-bottom: 12px;">
               <!-- Agent 1 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">WEATHER</div>
-                <h4>Weather Intelligence</h4>
-                <p class="agent-desc">Monitors IMD Doppler radar arrays, INSAT-3D satellite grids, and cyclone tracks.</p>
+              <div class="agent-card" onclick="selectAgent(this, 'weather')">
+                <div class="card-header-row">
+                  <div class="agent-badge">WEATHER</div>
+                  <span class="status-pill online">ONLINE</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">⛅</span>
+                  <h4>Weather Intelligence</h4>
+                </div>
+                <p class="agent-desc">Monitors IMD Doppler radar arrays and INSAT satellite grids.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 Q10,0 20,10 T40,10 T60,5 T80,15 T100,10" fill="none" stroke="#00f2fe" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: IMD Satellite API</span>
                   <span>Output: Cyclone/Rain warnings</span>
                 </div>
               </div>
               <!-- Agent 2 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">PREDICTION</div>
-                <h4>Flood & Landslide</h4>
+              <div class="agent-card" onclick="selectAgent(this, 'flood')">
+                <div class="card-header-row">
+                  <div class="agent-badge">PREDICTION</div>
+                  <span class="status-pill active-warning">WARNING</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">🌊</span>
+                  <h4>Flood & Landslide</h4>
+                </div>
                 <p class="agent-desc">Ingests CWC river gauge stations and GSI soil moisture logs.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 Q15,0 30,18 T60,3 T90,17 L100,10" fill="none" stroke="#ff5e62" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: CWC Gauge Telemetry</span>
                   <span>Output: Inundation zones</span>
                 </div>
               </div>
               <!-- Agent 3 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">RISK</div>
-                <h4>Risk Assessment</h4>
-                <p class="agent-desc">Cross-references hazard polygons against India's Census maps and local housing indices.</p>
+              <div class="agent-card" onclick="selectAgent(this, 'risk')">
+                <div class="card-header-row">
+                  <div class="agent-badge">RISK</div>
+                  <span class="status-pill online">ONLINE</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">🛡️</span>
+                  <h4>Risk Assessment</h4>
+                </div>
+                <p class="agent-desc">Cross-references hazard polygons against India's Census maps.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 Q20,15 40,8 T80,12 L100,10" fill="none" stroke="#00f2fe" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: National Census GIS</span>
                   <span>Output: Population risks</span>
                 </div>
               </div>
               <!-- Agent 4 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">RESOURCE</div>
-                <h4>Resource Management</h4>
-                <p class="agent-desc">Tracks availability of NDRF battalions, state police squads, and rescue boats.</p>
+              <div class="agent-card" onclick="selectAgent(this, 'resource')">
+                <div class="card-header-row">
+                  <div class="agent-badge">RESOURCE</div>
+                  <span class="status-pill dispatching">DEPLOYING</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">🚁</span>
+                  <h4>Resource Management</h4>
+                </div>
+                <p class="agent-desc">Tracks availability of NDRF battalions and rescue boats.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,5 Q10,18 25,12 T50,5 T75,18 L100,10" fill="none" stroke="#00e676" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: NDRF Station Registries</span>
                   <span>Output: Squad allocations</span>
                 </div>
               </div>
               <!-- Agent 5 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">TRAFFIC</div>
-                <h4>Traffic & Evacuation</h4>
-                <p class="agent-desc">Computes exit corridors dynamically by routing traffic away from CWC-flooded roads.</p>
+              <div class="agent-card" onclick="selectAgent(this, 'traffic')">
+                <div class="card-header-row">
+                  <div class="agent-badge">TRAFFIC</div>
+                  <span class="status-pill online">ONLINE</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">🚦</span>
+                  <h4>Traffic & Evacuation</h4>
+                </div>
+                <p class="agent-desc">Computes exit corridors dynamically by routing around closed segments.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 Q25,8 50,12 T100,10" fill="none" stroke="#00f2fe" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: MapmyIndia Mappls API</span>
                   <span>Output: Evacuation maps</span>
                 </div>
               </div>
               <!-- Agent 6 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">MEDICAL</div>
-                <h4>Medical Coordination</h4>
-                <p class="agent-desc">Coordinates ambulance routes and queries ICU bed vacancies using regional 108 databases.</p>
+              <div class="agent-card" onclick="selectAgent(this, 'medical')">
+                <div class="card-header-row">
+                  <div class="agent-badge">MEDICAL</div>
+                  <span class="status-pill online">ONLINE</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">🏥</span>
+                  <h4>Medical Coordination</h4>
+                </div>
+                <p class="agent-desc">Coordinates ambulance routes and ICU bed vacancies.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,18 Q15,3 30,15 T60,5 T90,12 L100,10" fill="none" stroke="#00f2fe" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: State 108 health database</span>
                   <span>Output: Bed triage dispatch</span>
                 </div>
               </div>
               <!-- Agent 7 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">COMMS</div>
-                <h4>Communication Agent</h4>
-                <p class="agent-desc">Drafts and broadcasts localized alerts via NDMA Sachet, WhatsApp Business API, and local radio networks.</p>
+              <div class="agent-card" onclick="selectAgent(this, 'comms')">
+                <div class="card-header-row">
+                  <div class="agent-badge">COMMS</div>
+                  <span class="status-pill dispatching">SENDING</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">📢</span>
+                  <h4>Communication Agent</h4>
+                </div>
+                <p class="agent-desc">Drafts and broadcasts localized alerts via NDMA Sachet.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 Q30,2 60,18 L100,10" fill="none" stroke="#00e676" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: Sachet SMS Gateway</span>
                   <span>Output: Multilingual warnings</span>
                 </div>
               </div>
               <!-- Agent 8 -->
-              <div class="agent-card" onclick="selectAgent(this)">
-                <div class="agent-badge">LOGISTICS</div>
-                <h4>Relief & Supply</h4>
-                <p class="agent-desc">Coordinates food, water, and medicine dispatch from Food Corporation of India (FCI) depots.</p>
+              <div class="agent-card" onclick="selectAgent(this, 'logistics')">
+                <div class="card-header-row">
+                  <div class="agent-badge">LOGISTICS</div>
+                  <span class="status-pill online">ONLINE</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">📦</span>
+                  <h4>Relief & Supply</h4>
+                </div>
+                <p class="agent-desc">Coordinates food/water dispatch from FCI depots.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 Q10,12 20,8 T40,12 T60,10 T80,11 L100,10" fill="none" stroke="#00f2fe" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: FCI inventory logs</span>
                   <span>Output: Drone dispatch queues</span>
                 </div>
               </div>
               <!-- Agent 9 -->
-              <div class="agent-card highlight-card" onclick="selectAgent(this)">
-                <div class="agent-badge commander-badge">NDRF COMMANDER</div>
-                <h4>Decision Commander</h4>
-                <p class="agent-desc">Fuses intelligence from all agents, models scenarios, and generates tactical NDRF deployment orders.</p>
+              <div class="agent-card highlight-card" onclick="selectAgent(this, 'commander')">
+                <div class="card-header-row">
+                  <div class="agent-badge commander-badge">NDRF COMMANDER</div>
+                  <span class="status-pill danger-alert">SIMULATING</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-svg-icon">👑</span>
+                  <h4>Decision Commander</h4>
+                </div>
+                <p class="agent-desc">Fuses intelligence to generate tactical NDRF deployment orders.</p>
+                <div class="card-sparkline">
+                  <svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 L10,5 L20,15 L30,5 L40,15 L50,5 L60,15 L70,5 L80,15 L90,5 L100,15" fill="none" stroke="#ffb300" stroke-width="1.5" class="sparkline-path"></path></svg>
+                </div>
                 <div class="agent-detail-list">
                   <span>Input: Multi-Agent responses</span>
                   <span>Output: Actionable commands</span>
                 </div>
+              </div>
+            </div>
+
+            <!-- Terminal log feed below -->
+            <div class="agent-terminal-box">
+              <div class="terminal-header">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+                <span class="terminal-title">OS TELEMETRY LOGS</span>
+              </div>
+              <div class="terminal-body" id="agent-terminal-body">
+                <p class="t-line"><span class="c-prompt">XNexusOS:~$</span> select an agent card above to stream localized logs...</p>
               </div>
             </div>
           </section>
@@ -421,7 +553,7 @@
             </div>
           </section>
 
-          <!-- SLIDE 7: TECH STACK & MCP -->
+          <!-- SLIDE 7: TECH STACK & MCP (Flowing Data Particles) -->
           <section class="slide" id="slide-7" data-slide-index="6">
             <div class="slide-header">
               <div class="slide-nav-badge">07 / ARCHITECTURE SYSTEM</div>
@@ -455,7 +587,17 @@
                     <span class="conn-dot"></span>
                   </div>
                 </div>
-                <div class="mcp-arrow">⟷</div>
+                
+                <!-- Updated with data particles -->
+                <div class="mcp-bus-container">
+                  <div class="mcp-arrow">⟷</div>
+                  <div class="data-particles">
+                    <span class="particle p1"></span>
+                    <span class="particle p2"></span>
+                    <span class="particle p3"></span>
+                  </div>
+                </div>
+
                 <div class="mcp-client-box">
                   <div class="box-title">LangGraph Agent Core</div>
                   <p>Weather Agent</p>
@@ -504,7 +646,7 @@
             </div>
           </section>
 
-          <!-- SLIDE 9: IMPACT & TARGET KPIs -->
+          <!-- SLIDE 9: IMPACT & TARGET KPIs (Enhanced with circular gauges) -->
           <section class="slide" id="slide-9" data-slide-index="8">
             <div class="slide-header">
               <div class="slide-nav-badge">09 / PROJECTED IMPACT</div>
@@ -512,7 +654,7 @@
             </div>
             <div class="slide-grid grid-2-col">
               <div class="flex-column gap-20 justify-content-center">
-                <h3 class="gradient-text font-accent" style="font-size: 2.2rem; font-weight: 800; line-height: 1.2;">Saving Lives Through Accelerated Mobilization</h3>
+                <h3 class="gradient-text font-accent" style="font-size: 2rem; font-weight: 800; line-height: 1.2;">Saving Lives Through Accelerated Mobilization</h3>
                 <p class="slide-paragraph font-light">
                   Manual operations take hours to verify river data, coordinate relief depots, and broadcast alerts. XNexus-CrisisOS completes these operations in less than 5 minutes.
                 </p>
@@ -520,33 +662,40 @@
                   Connecting CWC inundation polygons directly with road graphs prevents traffic deadlocks along mountainous escape pathways.
                 </div>
               </div>
-              <div class="metrics-visual">
-                <div class="metric-progress-container">
-                  <div class="metric-progress-header">
-                    <span>Incident Warning Dispatch Time</span>
-                    <span class="m-val text-success">90% faster (Under 5 mins)</span>
+              
+              <!-- Circular Progress Gauges -->
+              <div class="circular-metrics-grid">
+                <div class="circular-metric-card">
+                  <div class="circular-gauge" data-percent="90">
+                    <svg viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" class="gauge-bg"></circle>
+                      <circle cx="50" cy="50" r="40" class="gauge-fill" style="stroke-dasharray: 251.2; stroke-dashoffset: 251.2;"></circle>
+                    </svg>
+                    <div class="gauge-text">0%</div>
                   </div>
-                  <div class="m-progress-bg">
-                    <div class="m-progress-fill" style="width: 90%;"></div>
-                  </div>
+                  <div class="gauge-label">Incident warning dispatch speedup</div>
                 </div>
-                <div class="metric-progress-container">
-                  <div class="metric-progress-header">
-                    <span>NDRF/SDRF Resource Utilization</span>
-                    <span class="m-val text-success">+75% efficiency gain</span>
+
+                <div class="circular-metric-card">
+                  <div class="circular-gauge" data-percent="75">
+                    <svg viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" class="gauge-bg"></circle>
+                      <circle cx="50" cy="50" r="40" class="gauge-fill" style="stroke-dasharray: 251.2; stroke-dashoffset: 251.2;"></circle>
+                    </svg>
+                    <div class="gauge-text">0%</div>
                   </div>
-                  <div class="m-progress-bg">
-                    <div class="m-progress-fill" style="width: 75%;"></div>
-                  </div>
+                  <div class="gauge-label">Resource mobilization efficiency</div>
                 </div>
-                <div class="metric-progress-container">
-                  <div class="metric-progress-header">
-                    <span>Target Community Warning Delivery</span>
-                    <span class="m-val text-success">85% regional delivery</span>
+
+                <div class="circular-metric-card">
+                  <div class="circular-gauge" data-percent="85">
+                    <svg viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" class="gauge-bg"></circle>
+                      <circle cx="50" cy="50" r="40" class="gauge-fill" style="stroke-dasharray: 251.2; stroke-dashoffset: 251.2;"></circle>
+                    </svg>
+                    <div class="gauge-text">0%</div>
                   </div>
-                  <div class="m-progress-bg">
-                    <div class="m-progress-fill" style="width: 85%;"></div>
-                  </div>
+                  <div class="gauge-label">Public evacuation engagement</div>
                 </div>
               </div>
             </div>
@@ -604,6 +753,96 @@
           </button>
         </div>
       </main>
+    </div>
+  </div>
+
+  <!-- Cinematic Simulation Modal / Intro Showcase -->
+  <div id="sim-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="logo-area">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="22" height="22">
+            <path fill="#00f2fe" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <span class="logo-brand" style="font-size: 1.1rem; color: #fff;">XNEXUS<span class="text-glow">.OS</span> CRISIS SIMULATION</span>
+        </div>
+        <button id="close-sim-btn" class="close-btn" title="Close Simulation">✕</button>
+      </div>
+      <div class="sim-grid">
+        <!-- Left Side: Interactive Map Graphic -->
+        <div class="sim-map-card">
+          <div class="sim-map-header">TACTICAL RADAR OVERLAY // REGION: KERALA GHAUTS</div>
+          <div class="sim-map-view">
+            <div class="sim-radar"></div>
+            <div class="sim-map-gridline"></div>
+            <!-- Dynamic markers -->
+            <div class="map-marker v1 normal" id="marker-v1">
+              <span class="marker-dot"></span>
+              <span class="marker-lbl">VILLAGE A</span>
+            </div>
+            <div class="map-marker v2 normal" id="marker-v2">
+              <span class="marker-dot"></span>
+              <span class="marker-lbl">VILLAGE B</span>
+            </div>
+            <div class="map-marker v3 safe" id="marker-v3">
+              <span class="marker-dot"></span>
+              <span class="marker-lbl">NDRF CAMP</span>
+            </div>
+            <div class="map-marker v4 normal" id="marker-v4">
+              <span class="marker-dot"></span>
+              <span class="marker-lbl">DISTRICT HOSP</span>
+            </div>
+            
+            <!-- Animated SVG Route line -->
+            <svg class="map-route-svg">
+              <!-- Route Path Line -->
+              <path id="route-path-line" d="M 120,220 L 220,130 L 320,180" fill="none" stroke="#00f2fe" stroke-width="3" stroke-dasharray="300" stroke-dashoffset="300"></path>
+            </svg>
+            
+            <div class="map-scanning-bar"></div>
+          </div>
+        </div>
+
+        <!-- Right Side: Step logs and gauges -->
+        <div class="sim-controls-card">
+          <div class="sim-step-progress-row">
+            <div class="sim-progress-line"></div>
+            <div class="step-dot active" id="sim-dot-1">1</div>
+            <div class="step-dot" id="sim-dot-2">2</div>
+            <div class="step-dot" id="sim-dot-3">3</div>
+            <div class="step-dot" id="sim-dot-4">4</div>
+          </div>
+
+          <div class="sim-status-board">
+            <div class="status-cell">
+              <span class="sc-label">TELEMETRY ANOMALIES</span>
+              <span class="sc-val font-accent" id="sim-telemetry-val">STABLE</span>
+            </div>
+            <div class="status-cell">
+              <span class="sc-label">THREAT CALCULATED</span>
+              <span class="sc-val danger-text" id="sim-threat-val">0%</span>
+            </div>
+          </div>
+
+          <div class="sim-terminal-screen">
+            <div class="terminal-header">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+              <span class="terminal-title">COGNITIVE PROCESSOR DEMO</span>
+            </div>
+            <div class="terminal-body" id="sim-logs-body">
+              <p class="t-line"><span class="c-prompt">XNexusOS:~$</span> ready. click Play above to start concept demo...</p>
+            </div>
+          </div>
+
+          <div class="sim-action-area">
+            <button id="start-sim-run-btn" class="btn btn-primary btn-glow" style="width: 100%; justify-content: center; padding: 12px;">
+              START AUTONOMOUS COGNITION DEMO
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
