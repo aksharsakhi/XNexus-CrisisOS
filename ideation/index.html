@@ -115,7 +115,7 @@
                 An intelligent multi-agent operating system that predicts, coordinates, and autonomously manages disaster response in real time across India's vulnerable regions. Interfaces directly with Central Water Commission gauges, IMD telemetry, and NDMA Sachet cell-broadcast grids.
               </p>
               
-              <!-- Cinematic Simulation Trigger Option -->
+              <!-- Cinematic Simulation Trigger -->
               <div style="margin-top: -10px; margin-bottom: 25px;">
                 <button id="play-sim-btn" class="btn btn-primary btn-glow play-demo-btn">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M8 5v14l11-7z"/></svg>
@@ -174,16 +174,25 @@
                 <div class="accent-callout border-left-danger">
                   <strong>The Operational Friction:</strong> Heavy rain alerts from IMD and river heights from CWC sit on separate dashboards. Triggering evacuations requires manual, phone-based coordination between weather bureaus, district magistrates, hospitals, and NDRF squads.
                 </div>
-                <p class="slide-paragraph font-light">
-                  Delayed early action during extreme monsoons directly escalates casualties and delays relief dispatch.
-                </p>
+                
+                <!-- Added traditional timeline delay diagram to fill space -->
+                <div class="delay-timeline-widget">
+                  <div class="dt-header font-accent">TRADITIONAL WARNING DELAY TIMELINE</div>
+                  <div class="dt-bar-container">
+                    <div class="dt-segment danger" style="width: 45%;">IMD Alert Ingest (45m)</div>
+                    <div class="dt-segment warning" style="width: 35%;">DM Office Check (35m)</div>
+                    <div class="dt-segment normal" style="width: 20%;">NDRF Logs (20m)</div>
+                  </div>
+                  <div class="dt-footer font-monospace">TOTAL WARNING ELAPSED INTERVAL: 100+ MINUTES</div>
+                </div>
               </div>
               <div class="problem-grid-cards">
                 <div class="problem-card">
                   <div class="p-card-icon danger-text">🌧️</div>
                   <div class="p-card-body">
                     <h4>Monsoon & Cyclone Friction</h4>
-                    <p>Friction in linking IMD forecasts with CWC river height logs delays early evacuation timelines.</p>
+                    <p>Friction in linking IMD forecasts with CWC river heights delays early warning dispatches.</p>
+                    <div class="silo-graphic"><span class="node red">IMD</span> <span class="disconnect">↮</span> <span class="node red">CWC</span></div>
                   </div>
                 </div>
                 <div class="problem-card">
@@ -191,13 +200,15 @@
                   <div class="p-card-body">
                     <h4>Agency Data Silos</h4>
                     <p>CWC gauges, GSI landslide indices, and NHAI highway feeds do not dynamically share telemetry.</p>
+                    <div class="silo-graphic"><span class="node red">CWC</span> <span class="disconnect">↮</span> <span class="node red">GSI</span></div>
                   </div>
                 </div>
                 <div class="problem-card">
                   <div class="p-card-icon danger-text">☎️</div>
                   <div class="p-card-body">
                     <h4>Manual NDRF Logistics</h4>
-                    <p>Human coordinators must query 108 emergency health databases and assign relief boats via voice call logs.</p>
+                    <p>Human coordinators must query 108 emergency health databases and assign relief boats via voice calls.</p>
+                    <div class="silo-graphic"><span class="node red">NDRF</span> <span class="disconnect">↮</span> <span class="node red">HEALTH</span></div>
                   </div>
                 </div>
                 <div class="problem-card">
@@ -205,6 +216,7 @@
                   <div class="p-card-body">
                     <h4>Static Warning Systems</h4>
                     <p>Standard alert sirens fail to route fleeing populations to safe highways in local languages.</p>
+                    <div class="silo-graphic"><span class="node red">SIREN</span> <span class="disconnect">↮</span> <span class="node red">MOBILE</span></div>
                   </div>
                 </div>
               </div>
@@ -219,7 +231,7 @@
             </div>
             <div class="slide-grid grid-2-col align-items-center">
               <div class="solution-visual">
-                <div class="radial-mesh-container">
+                <div class="radial-mesh-container" style="transform: scale(1.15);">
                   <div class="core-node">XNEXUS.OS</div>
                   <div class="satellite-node s1">IMD Doppler</div>
                   <div class="satellite-node s2">CWC Gauges</div>
@@ -236,25 +248,36 @@
                 <p class="slide-paragraph">
                   XNexus-CrisisOS deploys a collaborative framework of specialized AI Agents interacting via custom Model Context Protocol (MCP) servers to ingest live Indian government databases.
                 </p>
-                <ul class="solution-bullets">
-                  <li>
-                    <span class="bullet-glow"></span>
-                    <strong>IMD & CWC Hydrology Integration:</strong> Directly streams telemetry feeds to model landslide risks and map flood inundation limits in advance.
-                  </li>
-                  <li>
-                    <span class="bullet-glow"></span>
-                    <strong>MapmyIndia Route Solving:</strong> Evaluates route status and models evacuation flows to coordinate exit paths dynamically.
-                  </li>
-                  <li>
-                    <span class="bullet-glow"></span>
-                    <strong>NDMA Sachet Cell Broadcast:</strong> Automates regional language alerts directly to local mobile towers in threatened sectors.
-                  </li>
-                </ul>
+                
+                <!-- Restructured checklist to fill empty space -->
+                <div class="checkboard-container">
+                  <div class="checkboard-item">
+                    <div class="cb-icon">✓</div>
+                    <div class="cb-body">
+                      <h4>IMD & CWC Hydrology</h4>
+                      <p>Active telemetry streams forecast landslide/flood risk zones in advance.</p>
+                    </div>
+                  </div>
+                  <div class="checkboard-item">
+                    <div class="cb-icon">✓</div>
+                    <div class="cb-body">
+                      <h4>MapmyIndia Route Solving</h4>
+                      <p>Computes detour coordinates dynamically around closed paths.</p>
+                    </div>
+                  </div>
+                  <div class="checkboard-item">
+                    <div class="cb-icon">✓</div>
+                    <div class="cb-body">
+                      <h4>NDMA Sachet Broadcaster</h4>
+                      <p>Automates regional alerts to towers enclosing warning sectors.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
 
-          <!-- SLIDE 4: CORE AI AGENTS (Enhanced with live logs console & custom widgets) -->
+          <!-- SLIDE 4: CORE AI AGENTS -->
           <section class="slide" id="slide-4" data-slide-index="3">
             <div class="slide-header">
               <div class="slide-nav-badge">04 / MULTI-AGENT ARCHITECTURE</div>
@@ -435,16 +458,19 @@
               </div>
             </div>
 
-            <!-- Terminal log feed below -->
+            <!-- Terminal log feed below (Taller to fill empty space) -->
             <div class="agent-terminal-box">
               <div class="terminal-header">
                 <div class="terminal-dot red"></div>
                 <div class="terminal-dot yellow"></div>
                 <div class="terminal-dot green"></div>
-                <span class="terminal-title">OS TELEMETRY LOGS</span>
+                <span class="terminal-title">OS TELEMETRY LOGS // COGNITIVE ORCHESTRATION</span>
               </div>
-              <div class="terminal-body" id="agent-terminal-body">
-                <p class="t-line"><span class="c-prompt">XNexusOS:~$</span> select an agent card above to stream localized logs...</p>
+              <div class="terminal-body" id="agent-terminal-body" style="height: 180px;">
+                <p class="t-line"><span class="c-prompt">XNexusOS:~$</span> system_init --check-orchestration</p>
+                <p class="t-line"><span class="t-success">[OK]</span> LangGraph cognitive client initialized successfully.</p>
+                <p class="t-line"><span class="t-success">[OK]</span> 9 agent threads registered in orchestrator thread pool.</p>
+                <p class="t-line"><span class="t-success">[OK]</span> CWC hydrologies and IMD dopplers active. Ready for telemetry stream.</p>
               </div>
             </div>
           </section>
@@ -574,6 +600,15 @@
                   <span class="msg-icon">🚨</span>
                   <h3>"IMD Alert: Heavy rain predicted in Wayanad, Kerala. Red alert issued."</h3>
                 </div>
+                
+                <!-- Added manual queues dashboard to resolve empty space -->
+                <div class="manual-log-widget">
+                  <div class="ml-item font-monospace"><span class="time">14:02</span> DM phoned IMD for rainfall report...</div>
+                  <div class="ml-item font-monospace"><span class="time">14:25</span> DM phoned CWC for water height...</div>
+                  <div class="ml-item font-monospace"><span class="time">14:48</span> DM phoned SDRF to query rosters...</div>
+                  <div class="ml-item font-monospace"><span class="time">15:10</span> SDRF dispatched. Total delay: 68 mins.</div>
+                </div>
+
                 <p class="usp-footer">Requires operators to manually check hospital databases, cross-reference mountain highway status, check SDRF rosters, and coordinate resources manually over phone lines.</p>
               </div>
               
@@ -590,10 +625,18 @@
                   <span class="msg-icon">🤖</span>
                   <h3>"I simulated 24 response plans..."</h3>
                 </div>
+                
+                <!-- Extended log outputs to fill space -->
                 <div class="commander-decision-quote font-monospace">
                   <span class="c-prompt">XNexusOS:~$</span> python3 -m orchestrator --evaluate-incident
-                  <br><br>
-                  "Based on CWC river rise at Kabini river (+18cm/hr), INSAT soil saturation index (88%), and MapmyIndia road network telemetry, I simulated 24 response plans. Evacuating Villages A & B in 35 mins via Route 3 and deploying NDRF 4th Battalion with 8 rescue boats reduces projected casualties by 72%."
+                  <br>
+                  [INGEST] IMD precipitation: 52mm/hr. Saturation: 88%.
+                  <br>
+                  [ROUTING] MapmyIndia registers NH-76 blockage.
+                  <br>
+                  [SIM] Run 24 response plans. Select Plan 12.
+                  <br>
+                  [ACTION] Evacuating Villages A & B in 35 mins via Route 3 and deploying NDRF 4th Battalion reduces casualties by 72%.
                 </div>
                 <div class="usp-metrics-row">
                   <div class="mini-metric">
@@ -613,7 +656,7 @@
             </div>
           </section>
 
-          <!-- SLIDE 7: TECH STACK & MCP (Flowing Data Particles) -->
+          <!-- SLIDE 7: TECH STACK & MCP (Restructured Server Cabinet Rack) -->
           <section class="slide" id="slide-7" data-slide-index="6">
             <div class="slide-header">
               <div class="slide-nav-badge">07 / ARCHITECTURE SYSTEM</div>
@@ -631,38 +674,25 @@
                   <div class="tech-pill"><strong>MCP Servers:</strong> Custom Python servers wrapping CWC, IMD, and MapmyIndia APIs</div>
                 </div>
               </div>
-              <div class="mcp-diagram">
-                <div class="mcp-server-box">
-                  <div class="box-title">MCP Data Servers</div>
-                  <div class="mcp-connection">
-                    <span class="conn-name">CWC Gauge Feeds</span>
-                    <span class="conn-dot"></span>
-                  </div>
-                  <div class="mcp-connection">
-                    <span class="conn-name">IMD Doppler Radar</span>
-                    <span class="conn-dot"></span>
-                  </div>
-                  <div class="mcp-connection">
-                    <span class="conn-name">MapmyIndia API</span>
-                    <span class="conn-dot"></span>
-                  </div>
+              
+              <!-- Server rack layout -->
+              <div class="mcp-diagram server-rack">
+                <div class="rack-title font-accent">XNEXUS COMMAND CENTER STACK</div>
+                <div class="rack-shelf">
+                  <span class="shelf-label">CWC GAUGE API CONNECTOR</span>
+                  <div class="shelf-status"><span class="led active"></span><span class="led"></span></div>
                 </div>
-                
-                <!-- Updated with data particles -->
-                <div class="mcp-bus-container">
-                  <div class="mcp-arrow">⟷</div>
-                  <div class="data-particles">
-                    <span class="particle p1"></span>
-                    <span class="particle p2"></span>
-                    <span class="particle p3"></span>
-                  </div>
+                <div class="rack-shelf">
+                  <span class="shelf-label">IMD RADAR telemetry HUB</span>
+                  <div class="shelf-status"><span class="led active"></span><span class="led active"></span></div>
                 </div>
-
-                <div class="mcp-client-box">
-                  <div class="box-title">LangGraph Agent Core</div>
-                  <p>Weather Agent</p>
-                  <p>Flood/Landslide</p>
-                  <p>Resource Manager</p>
+                <div class="rack-shelf">
+                  <span class="shelf-label">MAPMYINDIA ROUTE SERVER</span>
+                  <div class="shelf-status"><span class="led active"></span><span class="led"></span></div>
+                </div>
+                <div class="rack-shelf highlight-shelf">
+                  <span class="shelf-label">LANGGRAPH COMMAND CORE</span>
+                  <div class="shelf-status"><span class="led active pulse-led"></span></div>
                 </div>
               </div>
             </div>
@@ -680,6 +710,7 @@
                 <div class="step-content">
                   <h4>Telemetry Ingest</h4>
                   <p>IMD Doppler radar logs heavy precipitation index. CWC monitoring registers gauge spikes exceeding threshold parameters.</p>
+                  <div class="flow-connect-arrow">➔</div>
                 </div>
               </div>
               <div class="timeline-step">
@@ -687,6 +718,7 @@
                 <div class="step-content">
                   <h4>Risk Profiling</h4>
                   <p>Risk Agent runs GIS demographic overlaps to identify vulnerable villages. Medical Agent scans 108 hospital beds availability.</p>
+                  <div class="flow-connect-arrow">➔</div>
                 </div>
               </div>
               <div class="timeline-step">
@@ -694,6 +726,7 @@
                 <div class="step-content">
                   <h4>Plan Simulation</h4>
                   <p>NDRF Commander Agent models road closures. Ingests MapmyIndia road indices to calculate safe evacuation paths.</p>
+                  <div class="flow-connect-arrow">➔</div>
                 </div>
               </div>
               <div class="timeline-step">
@@ -706,7 +739,7 @@
             </div>
           </section>
 
-          <!-- SLIDE 9: IMPACT & TARGET KPIs (Enhanced with circular gauges) -->
+          <!-- SLIDE 9: IMPACT & TARGET KPIs -->
           <section class="slide" id="slide-9" data-slide-index="8">
             <div class="slide-header">
               <div class="slide-nav-badge">09 / PROJECTED IMPACT</div>
@@ -769,24 +802,47 @@
             </div>
             <div class="roadmap-grid">
               <div class="roadmap-card">
-                <div class="rm-phase">PHASE 1 (WEEK 1-2)</div>
+                <div class="rm-phase font-accent">PHASE 1 (WEEK 1-2)</div>
                 <h4>MCP Data Pipelines</h4>
                 <p>Build custom Python MCP servers wrapping CWC river gauges API and IMD forecast feeds. Establish PostgreSQL + PostGIS database to index regional map data.</p>
               </div>
               <div class="roadmap-card">
-                <div class="rm-phase">PHASE 2 (WEEK 3-4)</div>
+                <div class="rm-phase font-accent">PHASE 2 (WEEK 3-4)</div>
                 <h4>Agent Logic & Route Solvers</h4>
                 <p>Deploy multi-agent collaboration core using LangGraph. Connect to MapmyIndia API for route optimization during heavy flash flood scenarios.</p>
               </div>
               <div class="roadmap-card">
-                <div class="rm-phase">PHASE 3 (WEEK 5-6)</div>
+                <div class="rm-phase font-accent">PHASE 3 (WEEK 5-6)</div>
                 <h4>Public Dispatch Core</h4>
                 <p>Build integration tests for NDMA Sachet alert protocol. Set up ambulance triage APIs and connect live drone inspection logs.</p>
               </div>
             </div>
+
+            <!-- CSS Gantt milestone chart to resolve bottom slide empty space -->
+            <div class="gantt-chart-widget font-monospace">
+              <div class="gantt-header">
+                <span>DEVELOPMENT MILESTONES</span>
+                <span>W1-2 (MCP)</span>
+                <span>W3-4 (LOGIC)</span>
+                <span>W5-6 (LAUNCH)</span>
+              </div>
+              <div class="gantt-row">
+                <span class="gantt-label">DATA PIPELINES (IMD/CWC)</span>
+                <div class="gantt-bar-fill w12"></div>
+              </div>
+              <div class="gantt-row">
+                <span class="gantt-label">LANGGRAPH MULTI-AGENTS</span>
+                <div class="gantt-bar-fill w34"></div>
+              </div>
+              <div class="gantt-row">
+                <span class="gantt-label">SACHET & MAPMYINDIA INTEGRATION</span>
+                <div class="gantt-bar-fill w56"></div>
+              </div>
+            </div>
+
             <div class="roadmap-footer">
-              <h3 class="font-accent">XNexus-CrisisOS — Intelligent Coordinator for Disaster Logistics in India</h3>
-              <p>Developer blueprint file is available in the workspace: <a href="development_blueprint.md" style="color: var(--primary); text-decoration: underline;">development_blueprint.md</a></p>
+              <h3 class="font-accent" style="font-size: 1.1rem; margin-bottom: 2px;">XNexus-CrisisOS — Intelligent Coordinator for Disaster Logistics in India</h3>
+              <p style="font-size: 0.8rem;">Developer blueprint file is available in the workspace: <a href="development_blueprint.md" style="color: var(--primary); text-decoration: underline;">development_blueprint.md</a></p>
             </div>
           </section>
 

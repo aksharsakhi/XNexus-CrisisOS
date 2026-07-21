@@ -826,4 +826,14 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     showTacticalToast("SYSTEM INITIALIZED", "XNexus-CrisisOS multi-agent dashboard operational in Wayanad, Kerala.", "info");
   }, 2000);
+
+  // 4. Server Rack Blinking LED status loop (Slide 7)
+  setInterval(() => {
+    const leds = document.querySelectorAll(".shelf-status .led:not(.pulse-led)");
+    leds.forEach(led => {
+      if (Math.random() > 0.6) {
+        led.classList.toggle("active");
+      }
+    });
+  }, 1000);
 });
