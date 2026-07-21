@@ -743,8 +743,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   requestAnimationFrame(animateTelemetrySparklines);
 
-  // 2. Fluctuating Telemetry Values (Slide 1 and Slide 5)
+  // 2. Fluctuating Telemetry Values (Slide 1 and Slide 5 detailed widgets)
   setInterval(() => {
+    // Slide 1 Board Tickers
     const SaturationLabel = document.querySelector(".board-row:nth-child(2) .board-status");
     if (SaturationLabel) {
       const baseSat = 62;
@@ -759,28 +760,41 @@ document.addEventListener("DOMContentLoaded", () => {
       FloodLabel.textContent = `ACTIVE EVACUATION / RIVER TENSION +${(baseRise + parseFloat(variation)).toFixed(1)}CM/HR`;
     }
 
-    const hydroStatus = document.querySelector(".hydro-status");
-    if (hydroStatus) {
-      const baseHeight = 839.2;
-      const variation = (Math.random() * 0.2 - 0.1).toFixed(2);
-      hydroStatus.textContent = `${(baseHeight + parseFloat(variation)).toFixed(2)}m (CRITICAL HEIGHT REACHED)`;
+    // Card 1: IMD Radar
+    const radarAzimuth = document.getElementById("radar-azimuth");
+    const radarPrecip = document.getElementById("radar-precip");
+    if (radarAzimuth && radarPrecip) {
+      radarAzimuth.textContent = `${(180 + Math.random() * 15).toFixed(1)}°`;
+      radarPrecip.textContent = `${(50 + Math.random() * 15).toFixed(1)}mm/h`;
     }
 
+    // Card 2: CWC River Gauge Hydrography
+    const hydroHeightEl = document.getElementById("hydro-height");
+    if (hydroHeightEl) {
+      const baseHeight = 839.2;
+      const variation = (Math.random() * 0.16 - 0.08).toFixed(2);
+      hydroHeightEl.textContent = `${(baseHeight + parseFloat(variation)).toFixed(2)}m`;
+    }
+
+    // Card 3: GSI Soil Saturation dial progress & scale label
     const soilBarFill = document.querySelector(".soil-bar-fill");
-    const soilPercentText = document.querySelector(".soil-labels span");
+    const soilPercentText = document.getElementById("soil-percent");
     if (soilBarFill && soilPercentText) {
       const basePct = 88;
-      const variation = Math.round(Math.random() * 2 - 1);
+      const variation = Math.round(Math.random() * 4 - 2);
       const newPct = basePct + variation;
       soilBarFill.style.width = `${newPct}%`;
-      soilPercentText.textContent = `INDEX: ${newPct}%`;
+      soilPercentText.textContent = `${newPct}%`;
     }
 
-    const icuBadge = document.querySelector(".h-row:nth-child(1) .h-status-badge");
-    if (icuBadge) {
-      const baseIcu = 14;
-      const variation = Math.round(Math.random() * 2 - 1);
-      icuBadge.textContent = `${baseIcu + variation} ICU OPEN`;
+    // Card 6: Hospital Beds Triage matrix values
+    const bedsH1 = document.getElementById("beds-h1");
+    const bedsH3 = document.getElementById("beds-h3");
+    if (bedsH1 && bedsH3) {
+      const baseH1 = 14;
+      const baseH3 = 8;
+      bedsH1.textContent = baseH1 + Math.round(Math.random() * 2 - 1);
+      bedsH3.textContent = baseH3 + Math.round(Math.random() * 2 - 1);
     }
   }, 2500);
 
@@ -836,4 +850,64 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, 1000);
+
+  // 5. Slide 8: Dynamic Pipeline Step Autocycler
+  let currentPipelineStep = 1;
+  const pipelineLogs = {
+    1: [
+      "<div class='status-stream-row'><span class='lbl'>[STREAM]</span><span class='val'>Ingesting station KBL-03 gauges... 839.24m</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[STREAM]</span><span class='val'>Scraping IMD precipitation array... 52.4mm/hr</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[ALERT]</span><span class='val text-danger'>River heights exceed danger parameters!</span></div>"
+    ],
+    2: [
+      "<div class='status-stream-row'><span class='lbl'>[ANALYSIS]</span><span class='val'>Geospatial indexing Census Sector B demographic polygons...</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[ANALYSIS]</span><span class='val'>Identified 840 households in hazard path.</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[INFO]</span><span class='val'>Wayanad hospital resources active. 14 bed availability reported.</span></div>"
+    ],
+    3: [
+      "<div class='status-stream-row'><span class='lbl'>[ROUTE]</span><span class='val'>Checking NH-76 segment status... BLOCKED (Landslide at KM 12)</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[ROUTE]</span><span class='val'>Invoking MapmyIndia routing engine for alternate detour...</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[ROUTE]</span><span class='val text-success'>Bypass calculated: Route 3 via East corridor. Detours verified.</span></div>"
+    ],
+    4: [
+      "<div class='status-stream-row'><span class='lbl'>[SACHET]</span><span class='val'>Drafting multilingual cell warnings (Hindi, English, Malayalam)...</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[SACHET]</span><span class='val'>Transmitting cell warnings to Sector B towers. Broadcast complete.</span></div>",
+      "<div class='status-stream-row'><span class='lbl'>[DISPATCH]</span><span class='val text-success'>SDRF fleets detoured via Route 3 coordinates. Operation online.</span></div>"
+    ]
+  };
+
+  function cyclePipelineStep() {
+    const nodes = document.querySelectorAll(".pipeline-node");
+    if (nodes.length === 0) return;
+    
+    nodes.forEach(node => node.classList.remove("active"));
+    const activeNode = document.querySelector(`.pipeline-node[data-step='${currentPipelineStep}']`);
+    if (activeNode) activeNode.classList.add("active");
+    
+    const panelTitle = document.getElementById("workflow-panel-title");
+    const panelBody = document.getElementById("workflow-panel-body");
+    if (panelTitle && panelBody) {
+      panelTitle.textContent = `PIPELINE MONITOR: STEP ${currentPipelineStep} // ` + 
+        (currentPipelineStep === 1 ? "TELEMETRY" : 
+         currentPipelineStep === 2 ? "RISK PROFILING" : 
+         currentPipelineStep === 3 ? "PLAN SIMULATION" : "ACTION DISPATCH");
+          
+      panelBody.innerHTML = pipelineLogs[currentPipelineStep].join("");
+    }
+    
+    currentPipelineStep = currentPipelineStep < 4 ? currentPipelineStep + 1 : 1;
+  }
+  
+  // Cycle steps every 3.5 seconds
+  setInterval(cyclePipelineStep, 3500);
+  cyclePipelineStep();
+
+  // Allow clicking workflow nodes manually to inspect them
+  document.querySelectorAll(".pipeline-node").forEach(node => {
+    node.addEventListener("click", () => {
+      const stepNum = parseInt(node.getAttribute("data-step"));
+      currentPipelineStep = stepNum;
+      cyclePipelineStep();
+    });
+  });
 });

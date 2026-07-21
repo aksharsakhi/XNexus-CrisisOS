@@ -175,7 +175,7 @@
                   <strong>The Operational Friction:</strong> Heavy rain alerts from IMD and river heights from CWC sit on separate dashboards. Triggering evacuations requires manual, phone-based coordination between weather bureaus, district magistrates, hospitals, and NDRF squads.
                 </div>
                 
-                <!-- Added traditional timeline delay diagram to fill space -->
+                <!-- Traditional timeline delay diagram -->
                 <div class="delay-timeline-widget">
                   <div class="dt-header font-accent">TRADITIONAL WARNING DELAY TIMELINE</div>
                   <div class="dt-bar-container">
@@ -249,7 +249,7 @@
                   XNexus-CrisisOS deploys a collaborative framework of specialized AI Agents interacting via custom Model Context Protocol (MCP) servers to ingest live Indian government databases.
                 </p>
                 
-                <!-- Restructured checklist to fill empty space -->
+                <!-- Solution Checklist -->
                 <div class="checkboard-container">
                   <div class="checkboard-item">
                     <div class="cb-icon">✓</div>
@@ -458,7 +458,7 @@
               </div>
             </div>
 
-            <!-- Terminal log feed below (Taller to fill empty space) -->
+            <!-- Terminal log feed below -->
             <div class="agent-terminal-box">
               <div class="terminal-header">
                 <div class="terminal-dot red"></div>
@@ -489,9 +489,15 @@
                 </div>
                 <p>Monitors heavy rainfall parameters directly using live IMD forecasts and doppler radar feeds to establish landslide triggers.</p>
                 <div class="mini-viz radar-viz">
+                  <div class="radar-grid-lines"></div>
                   <div class="radar-sweep"></div>
-                  <span class="viz-ping p-red" style="top:40%; left:30%;"></span>
-                  <span class="viz-ping p-blue" style="top:60%; left:75%;"></span>
+                  <div class="viz-ping p-red" style="top:35%; left:40%;"></div>
+                  <div class="viz-ping p-blue" style="top:55%; left:65%;"></div>
+                  <div class="viz-ping p-green" style="top:25%; left:70%;"></div>
+                  <div class="radar-telemetry font-monospace">
+                    <div>AZIMUTH: <span id="radar-azimuth">184.2°</span></div>
+                    <div>PRECIP: <span id="radar-precip">55.4mm/h</span></div>
+                  </div>
                   <span class="viz-lbl">IMD DENSITY INDEX</span>
                 </div>
               </div>
@@ -502,11 +508,17 @@
                 </div>
                 <p>Ingests real-time water levels from CWC telemetry stations to calculate flood heights and estimate local village inundation times.</p>
                 <div class="mini-viz hydro-viz">
+                  <div class="hydro-grid-lines"></div>
                   <div class="hydro-wave-container">
-                    <div class="hydro-wave"></div>
+                    <div class="hydro-wave w-layer1"></div>
+                    <div class="hydro-wave w-layer2"></div>
                   </div>
                   <div class="hydro-line"></div>
-                  <span class="hydro-status font-monospace">839.2m (CRITICAL HEIGHT REACHED)</span>
+                  <div class="hydro-telemetry font-monospace">
+                    <div>STATION: KBL-03</div>
+                    <div>HEIGHT: <span id="hydro-height">839.24m</span></div>
+                  </div>
+                  <span class="viz-lbl text-danger" style="bottom: 8px; right: 10px; font-size:0.55rem; font-weight:700;">CWC FLOOD LIMIT</span>
                 </div>
               </div>
               <div class="feature-item">
@@ -516,13 +528,19 @@
                 </div>
                 <p>Evaluates slope soil moisture maps from GSI (Geological Survey of India) databases to pinpoint landslide threat zones in hilly regions.</p>
                 <div class="mini-viz soil-viz">
-                  <div class="soil-header">SOIL SHEAR SATURATION LEVEL</div>
-                  <div class="soil-bar-bg">
-                    <div class="soil-bar-fill"></div>
-                  </div>
-                  <div class="soil-labels font-monospace">
-                    <span>INDEX: 88%</span>
-                    <span class="text-danger" style="color:var(--danger)">WARNING</span>
+                  <div class="soil-dial-container">
+                    <div class="soil-scale font-monospace">
+                      <span>0%</span>
+                      <span>50%</span>
+                      <span>100%</span>
+                    </div>
+                    <div class="soil-bar-bg">
+                      <div class="soil-bar-fill"></div>
+                    </div>
+                    <div class="soil-labels font-monospace">
+                      <span>TENSION: 4.8 kPa</span>
+                      <span>INDEX: <span id="soil-percent">88%</span></span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -533,21 +551,26 @@
                 </div>
                 <p>Interfaces with national road telemetry systems to calculate evacuation pathways around flooded highways.</p>
                 <div class="mini-viz route-nodes-viz">
-                  <svg viewBox="0 0 200 60" preserveAspectRatio="none">
-                    <circle cx="20" cy="30" r="5" fill="#ff5e62" class="node-flash"></circle>
-                    <circle cx="80" cy="15" r="5" fill="#00e676"></circle>
-                    <circle cx="80" cy="45" r="5" fill="#ff5e62"></circle>
-                    <circle cx="150" cy="15" r="5" fill="#00e676"></circle>
-                    <circle cx="150" cy="45" r="5" fill="#00e676"></circle>
-                    <circle cx="180" cy="30" r="5" fill="#00f2fe" class="node-pulse"></circle>
-                    <line x1="25" y1="30" x2="75" y2="15" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
-                    <line x1="25" y1="30" x2="75" y2="45" stroke="#ff5e62" stroke-width="1.5"></line>
-                    <line x1="85" y1="15" x2="145" y2="15" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
-                    <line x1="85" y1="45" x2="145" y2="45" stroke="#ff5e62" stroke-width="1.5"></line>
-                    <line x1="155" y1="15" x2="175" y2="30" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
-                    <line x1="155" y1="45" x2="175" y2="30" stroke="#ff5e62" stroke-width="1.5"></line>
+                  <div class="map-grid-bg"></div>
+                  <svg viewBox="0 0 200 80" preserveAspectRatio="none">
+                    <circle cx="20" cy="40" r="5" fill="#ff5e62" class="node-flash"></circle>
+                    <circle cx="80" cy="20" r="5" fill="#00e676"></circle>
+                    <circle cx="80" cy="60" r="5" fill="#ff5e62"></circle>
+                    <circle cx="150" cy="20" r="5" fill="#00e676"></circle>
+                    <circle cx="150" cy="60" r="5" fill="#00e676"></circle>
+                    <circle cx="180" cy="40" r="5" fill="#00f2fe" class="node-pulse"></circle>
+                    
+                    <line x1="25" y1="40" x2="75" y2="20" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
+                    <line x1="25" y1="40" x2="75" y2="60" stroke="#ff5e62" stroke-width="1.5"></line>
+                    <line x1="85" y1="20" x2="145" y2="20" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
+                    <line x1="85" y1="60" x2="145" y2="60" stroke="#ff5e62" stroke-width="1.5"></line>
+                    <line x1="155" y1="20" x2="175" y2="40" stroke="#00e676" stroke-width="1.5" stroke-dasharray="3"></line>
+                    <line x1="155" y1="60" x2="175" y2="40" stroke="#ff5e62" stroke-width="1.5"></line>
                   </svg>
-                  <div class="route-status-lbl font-monospace">ROUTE COMPLETED // 14.8 KM AVOIDED</div>
+                  <div class="route-overlay-telemetry font-monospace">
+                    <div>[DETOUR MAPPED] NH-76 FLOOD BYPASS</div>
+                    <div class="text-success">SPEED LIMIT: 45 KM/H // STATUS: COMPLETED</div>
+                  </div>
                 </div>
               </div>
               <div class="feature-item">
@@ -557,9 +580,15 @@
                 </div>
                 <p>Triggers localized cell-broadcast SMS warnings in Hindi, English, and regional languages to mobile towers in threat corridors.</p>
                 <div class="mini-viz sachet-sms-viz">
+                  <div class="phone-status-bar font-monospace">
+                    <span>4G LTE</span>
+                    <span>10:42 AM</span>
+                    <span>98%</span>
+                  </div>
                   <div class="sms-box">
-                    <div class="sms-title">🚨 EMERGENCY ALERT // GOVT OF INDIA</div>
-                    <div class="sms-body">Flash Flood threat in Sector B. Evacuate via Route 3 immediately. Safe zone: NDRF Shelter.</div>
+                    <div class="sms-title">🚨 EMERGENCY BROADCAST // GOVT OF INDIA</div>
+                    <div class="sms-body">Flash Flood threat in Sector B. Evacuate via Route 3 detours immediately. Acknowledge alert now.</div>
+                    <div class="sms-btn font-monospace">OK / ACKNOWLEDGE</div>
                   </div>
                 </div>
               </div>
@@ -570,17 +599,20 @@
                 </div>
                 <p>Queries regional hospital ICU registries to optimize patient delivery routes and prevent trauma facility congestion.</p>
                 <div class="mini-viz hospital-status-viz font-monospace">
-                  <div class="h-row">
-                    <span>KOZHIKODE GOVT HOSP</span>
-                    <span class="h-status-badge success">14 ICU OPEN</span>
+                  <div class="h-viz-row">
+                    <span class="h-name">KOZHIKODE GOVT</span>
+                    <div class="h-progress-bar"><div class="h-progress-fill success" style="width: 72%;"></div></div>
+                    <span class="h-beds success-text"><span id="beds-h1">14</span> ICU</span>
                   </div>
-                  <div class="h-row">
-                    <span>WAYANAD GEN CLINIC</span>
-                    <span class="h-status-badge danger">FULL (REDIRECT)</span>
+                  <div class="h-viz-row">
+                    <span class="h-name">WAYANAD GEN</span>
+                    <div class="h-progress-bar"><div class="h-progress-fill danger" style="width: 100%;"></div></div>
+                    <span class="h-beds danger-text">FULL</span>
                   </div>
-                  <div class="h-row">
-                    <span>MALAPPURAM REG HOSP</span>
-                    <span class="h-status-badge success">8 OPEN</span>
+                  <div class="h-viz-row">
+                    <span class="h-name">MALAPPURAM REG</span>
+                    <div class="h-progress-bar"><div class="h-progress-fill success" style="width: 82%;"></div></div>
+                    <span class="h-beds success-text"><span id="beds-h3">8</span> ICU</span>
                   </div>
                 </div>
               </div>
@@ -601,7 +633,7 @@
                   <h3>"IMD Alert: Heavy rain predicted in Wayanad, Kerala. Red alert issued."</h3>
                 </div>
                 
-                <!-- Added manual queues dashboard to resolve empty space -->
+                <!-- Manual logs widget -->
                 <div class="manual-log-widget">
                   <div class="ml-item font-monospace"><span class="time">14:02</span> DM phoned IMD for rainfall report...</div>
                   <div class="ml-item font-monospace"><span class="time">14:25</span> DM phoned CWC for water height...</div>
@@ -626,7 +658,7 @@
                   <h3>"I simulated 24 response plans..."</h3>
                 </div>
                 
-                <!-- Extended log outputs to fill space -->
+                <!-- Extended log outputs -->
                 <div class="commander-decision-quote font-monospace">
                   <span class="c-prompt">XNexusOS:~$</span> python3 -m orchestrator --evaluate-incident
                   <br>
@@ -656,7 +688,7 @@
             </div>
           </section>
 
-          <!-- SLIDE 7: TECH STACK & MCP (Restructured Server Cabinet Rack) -->
+          <!-- SLIDE 7: TECH STACK & MCP -->
           <section class="slide" id="slide-7" data-slide-index="6">
             <div class="slide-header">
               <div class="slide-nav-badge">07 / ARCHITECTURE SYSTEM</div>
@@ -698,42 +730,69 @@
             </div>
           </section>
 
-          <!-- SLIDE 8: SYSTEM WORKFLOW -->
+          <!-- SLIDE 8: SYSTEM WORKFLOW (Dual-Column Pipeline) -->
           <section class="slide" id="slide-8" data-slide-index="7">
             <div class="slide-header">
               <div class="slide-nav-badge">08 / SYSTEM FLOW</div>
               <h2 class="slide-title">Telemetry to Execution Workflow</h2>
             </div>
-            <div class="timeline-container">
-              <div class="timeline-step">
-                <div class="step-num">01</div>
-                <div class="step-content">
-                  <h4>Telemetry Ingest</h4>
-                  <p>IMD Doppler radar logs heavy precipitation index. CWC monitoring registers gauge spikes exceeding threshold parameters.</p>
-                  <div class="flow-connect-arrow">➔</div>
+            <div class="slide-grid grid-2-col align-items-center">
+              <!-- Left Side: Vertical Pipeline Gauge -->
+              <div class="workflow-pipeline">
+                <div class="pipeline-node active" data-step="1">
+                  <div class="node-bullet">1</div>
+                  <div class="node-text">
+                    <h4>01 // Telemetry Ingest</h4>
+                    <p>IMD Doppler radar & CWC gauges feed live metrics.</p>
+                  </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-node" data-step="2">
+                  <div class="node-bullet">2</div>
+                  <div class="node-text">
+                    <h4>02 // Risk Profiling</h4>
+                    <p>Demographic overlays identify vulnerable residents.</p>
+                  </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-node" data-step="3">
+                  <div class="node-bullet">3</div>
+                  <div class="node-text">
+                    <h4>03 // Plan Simulation</h4>
+                    <p>MapmyIndia API calculates detours around road closures.</p>
+                  </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-node" data-step="4">
+                  <div class="node-bullet">4</div>
+                  <div class="node-text">
+                    <h4>04 // Autonomous Action</h4>
+                    <p>Dispatches cell alerts and coordinates evacuation fleets.</p>
+                  </div>
                 </div>
               </div>
-              <div class="timeline-step">
-                <div class="step-num">02</div>
-                <div class="step-content">
-                  <h4>Risk Profiling</h4>
-                  <p>Risk Agent runs GIS demographic overlaps to identify vulnerable villages. Medical Agent scans 108 hospital beds availability.</p>
-                  <div class="flow-connect-arrow">➔</div>
+
+              <!-- Right Side: Workflow Display Panel -->
+              <div class="workflow-display-panel terminal-style">
+                <div class="terminal-header">
+                  <div class="terminal-dot red"></div>
+                  <div class="terminal-dot yellow"></div>
+                  <div class="terminal-dot green"></div>
+                  <span class="terminal-title" id="workflow-panel-title">PIPELINE MONITOR: STEP 1</span>
                 </div>
-              </div>
-              <div class="timeline-step">
-                <div class="step-num">03</div>
-                <div class="step-content">
-                  <h4>Plan Simulation</h4>
-                  <p>NDRF Commander Agent models road closures. Ingests MapmyIndia road indices to calculate safe evacuation paths.</p>
-                  <div class="flow-connect-arrow">➔</div>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="step-num">04</div>
-                <div class="step-content">
-                  <h4>Autonomous Action</h4>
-                  <p>XNexus-CrisisOS drafts and broadcasts regional mobile warnings via Sachet, dispatches GPS routes to SDRF units, and assigns ambulance paths.</p>
+                <div class="workflow-panel-body font-monospace" id="workflow-panel-body">
+                  <div class="status-stream-row">
+                    <span class="lbl">[STREAM]</span>
+                    <span class="val">Ingesting station KBL-03 gauges... 839.24m</span>
+                  </div>
+                  <div class="status-stream-row">
+                    <span class="lbl">[STREAM]</span>
+                    <span class="val">Scraping IMD precipitation array... 52.4mm/hr</span>
+                  </div>
+                  <div class="status-stream-row">
+                    <span class="lbl">[ALERT]</span>
+                    <span class="val text-danger">River heights exceed danger parameters!</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -766,7 +825,7 @@
                     </svg>
                     <div class="gauge-text">0%</div>
                   </div>
-                  <div class="gauge-label">Incident warning dispatch speedup</div>
+                  <div class="gauge-label">Incident warning speedup</div>
                 </div>
 
                 <div class="circular-metric-card">
@@ -788,7 +847,7 @@
                     </svg>
                     <div class="gauge-text">0%</div>
                   </div>
-                  <div class="gauge-label">Public evacuation engagement</div>
+                  <div class="gauge-label">Public evacuation compliance</div>
                 </div>
               </div>
             </div>
@@ -818,7 +877,7 @@
               </div>
             </div>
 
-            <!-- CSS Gantt milestone chart to resolve bottom slide empty space -->
+            <!-- Gantt timeline chart -->
             <div class="gantt-chart-widget font-monospace">
               <div class="gantt-header">
                 <span>DEVELOPMENT MILESTONES</span>
@@ -872,7 +931,7 @@
     </div>
   </div>
 
-  <!-- Cinematic Simulation Modal / Intro Showcase -->
+  <!-- Cinematic Simulation Modal -->
   <div id="sim-modal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
