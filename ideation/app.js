@@ -720,4 +720,110 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }
   }
+
+  // ----------------------------------------------------
+  // Dynamic Real-Time Oscillators & Telemetry Loops
+  // ----------------------------------------------------
+  
+  // 1. Oscillating SVG Sparklines (Slide 4)
+  function animateTelemetrySparklines() {
+    const paths = document.querySelectorAll(".card-sparkline path");
+    const now = Date.now();
+    paths.forEach((path, idx) => {
+      let d = "M0,10 ";
+      const frequency = 0.08;
+      const speed = 0.006;
+      for (let x = 10; x <= 100; x += 10) {
+        const y = 10 + Math.sin(x * frequency + now * speed + idx) * 6 + (Math.random() - 0.5) * 1.5;
+        d += `L${x},${Math.max(2, Math.min(18, y))} `;
+      }
+      path.setAttribute("d", d);
+    });
+    requestAnimationFrame(animateTelemetrySparklines);
+  }
+  requestAnimationFrame(animateTelemetrySparklines);
+
+  // 2. Fluctuating Telemetry Values (Slide 1 and Slide 5)
+  setInterval(() => {
+    const SaturationLabel = document.querySelector(".board-row:nth-child(2) .board-status");
+    if (SaturationLabel) {
+      const baseSat = 62;
+      const variation = (Math.random() * 1.2 - 0.6).toFixed(1);
+      SaturationLabel.textContent = `STANDBY / SOIL SATURATION ${(baseSat + parseFloat(variation)).toFixed(1)}%`;
+    }
+
+    const FloodLabel = document.querySelector(".board-row:nth-child(3) .board-status");
+    if (FloodLabel) {
+      const baseRise = 18;
+      const variation = (Math.random() * 0.8 - 0.4).toFixed(1);
+      FloodLabel.textContent = `ACTIVE EVACUATION / RIVER TENSION +${(baseRise + parseFloat(variation)).toFixed(1)}CM/HR`;
+    }
+
+    const hydroStatus = document.querySelector(".hydro-status");
+    if (hydroStatus) {
+      const baseHeight = 839.2;
+      const variation = (Math.random() * 0.2 - 0.1).toFixed(2);
+      hydroStatus.textContent = `${(baseHeight + parseFloat(variation)).toFixed(2)}m (CRITICAL HEIGHT REACHED)`;
+    }
+
+    const soilBarFill = document.querySelector(".soil-bar-fill");
+    const soilPercentText = document.querySelector(".soil-labels span");
+    if (soilBarFill && soilPercentText) {
+      const basePct = 88;
+      const variation = Math.round(Math.random() * 2 - 1);
+      const newPct = basePct + variation;
+      soilBarFill.style.width = `${newPct}%`;
+      soilPercentText.textContent = `INDEX: ${newPct}%`;
+    }
+
+    const icuBadge = document.querySelector(".h-row:nth-child(1) .h-status-badge");
+    if (icuBadge) {
+      const baseIcu = 14;
+      const variation = Math.round(Math.random() * 2 - 1);
+      icuBadge.textContent = `${baseIcu + variation} ICU OPEN`;
+    }
+  }, 2500);
+
+  // 3. Tactical Warning Toasts System
+  const toastAlerts = [
+    { header: "IMD FEEDS", body: "Doppler radar arrays register high rainfall density (55.4mm/hr)", type: "warning" },
+    { header: "CWC HYDROLOGY", body: "Kabini station gauge registers critical rise limit breach (+19.2cm/hr)", type: "danger" },
+    { header: "NDRF DISPATCH", body: "4th emergency rescue battalion deployed to high-risk zones", type: "success" },
+    { header: "TRAFFIC ROUTING", body: "MapmyIndia bypass evacuation Route 3 synchronized successfully", type: "info" },
+    { header: "NDMA SACHET", body: "Multilingual cell-broadcast warnings sent to 840 local cell towers", type: "success" },
+    { header: "108 STATE HEALTH", body: "Kozhikode hospital registry reports 14 active trauma beds ready", type: "info" }
+  ];
+
+  function showTacticalToast(header, body, type) {
+    const container = document.getElementById("toast-container");
+    if (!container) return;
+
+    const toast = document.createElement("div");
+    toast.className = "toast-notification";
+    toast.innerHTML = `
+      <div class="toast-header ${type}">[${header}]</div>
+      <div class="toast-body">${body}</div>
+    `;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+      toast.classList.add("show");
+    }, 50);
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => {
+        toast.remove();
+      }, 500);
+    }, 4500);
+  }
+
+  setInterval(() => {
+    const randomAlert = toastAlerts[Math.floor(Math.random() * toastAlerts.length)];
+    showTacticalToast(randomAlert.header, randomAlert.body, randomAlert.type);
+  }, 9000);
+
+  setTimeout(() => {
+    showTacticalToast("SYSTEM INITIALIZED", "XNexus-CrisisOS multi-agent dashboard operational in Wayanad, Kerala.", "info");
+  }, 2000);
 });

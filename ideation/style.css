@@ -2202,3 +2202,56 @@ body.light-mode .sms-box {
 }
 .h-status-badge.success { color: var(--success); background-color: rgba(0, 230, 118, 0.1); }
 .h-status-badge.danger { color: var(--danger); background-color: rgba(255, 94, 98, 0.1); }
+
+/* Tactical Toast Notification styling */
+.toast-container {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10000;
+  pointer-events: none;
+}
+.toast-notification {
+  pointer-events: auto;
+  background-color: #0b0c10;
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  padding: 12px 18px;
+  min-width: 290px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+body.light-mode .toast-notification {
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 120, 255, 0.1);
+  border-color: rgba(0, 120, 255, 0.2);
+}
+.toast-notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+.toast-header {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.toast-header.info { color: var(--primary); }
+.toast-header.warning { color: var(--warning); }
+.toast-header.danger { color: var(--danger); }
+.toast-header.success { color: var(--success); }
+.toast-body {
+  font-size: 0.75rem;
+  color: var(--text);
+  line-height: 1.4;
+  font-family: var(--font-body);
+}
