@@ -94,9 +94,24 @@ body.command-center-body {
 
 .panel-title { font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; color: var(--cyan); letter-spacing: 0.5px; }
 
-/* GIS Map */
-.map-panel { flex: 1; min-height: 380px; }
+/* Map Panel */
+.map-panel { flex: 1.4; min-height: 320px; }
 .gis-map-container { width: 100%; height: 100%; background: #080c14; }
+
+/* Chart Panel */
+.chart-panel { height: 160px; padding: 10px 14px; }
+.chart-box { width: 100%; height: 100%; padding-top: 6px; }
+
+/* Terminal Controls */
+.term-controls { display: flex; gap: 6px; }
+.select-sm, .input-sm {
+  background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px; color: var(--text); font-family: var(--font-body);
+  font-size: 0.65rem; padding: 3px 6px; outline: none;
+}
+.select-sm option { background: #0e121e; color: #fff; }
+.input-sm:focus, .select-sm:focus { border-color: var(--cyan); }
+
 
 .map-controls { display: flex; gap: 6px; }
 .btn-sm { padding: 4px 10px; border-radius: 4px; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-dim); cursor: pointer; transition: var(--transition); }

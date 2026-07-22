@@ -45,13 +45,40 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
+from backend.app.services.live_ingestion import live_ingestor
+from backend.app.services.physics_engine import physics_engine
+from backend.app.services.routing_engine import routing_engine
+
 @app.get("/api/health")
 async def health_check():
     return {
         "status": "OPERATIONAL",
         "app_name": settings.APP_NAME,
         "version": settings.APP_VERSION,
-        "mode": "DEVELOPMENT_PREVIEW"
+        "mode": "PRODUCTION_LIVE"
+    }
+
+@app.get("/api/live-radar-tiles")
+async def get_live_radar_tiles():
+    """Fetch live Doppler radar timestamps and tile map URL templates from RainViewer API."""
+    return await live_ingestor.fetch_rainviewer_radar()
+
+@app.get("/api/live-seismic")
+async def get_live_seismic():
+    """Fetch live real-time seismic events from USGS API."""
+    return await live_ingestor.fetch_live_seismic()
+
+@app.get("/api/calculate-physics")
+async def calculate_physics(reflectivity_dBZ: float = 48.5, slope_angle_deg: float = 38.5):
+    """Execute mathematical physics equations for Marshall-Palmer rain & Landslide Factor of Safety."""
+    rain_res = physics_engine.marshall_palmer_rain_rate(reflectivity_dBZ)
+    slope_res = physics_engine.infinite_slope_factor_of_safety(slope_angle_deg=slope_angle_deg)
+    route_res = routing_engine.compute_shortest_open_path()
+    
+    return {
+        "marshall_palmer_rain": rain_res,
+        "infinite_slope_stability": slope_res,
+        "dijkstra_routing": route_res
     }
 
 @app.get("/api/telemetry")

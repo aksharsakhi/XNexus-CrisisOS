@@ -9,8 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <!-- Leaflet GIS CSS -->
+  <!-- Leaflet GIS CSS & Chart.js CDN -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="command-center-body">
@@ -20,12 +21,14 @@
     <div class="cmd-brand">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       <span class="brand-title">XNEXUS<span class="accent-cyan">.OS</span></span>
-      <span class="cmd-tag">AUTONOMOUS COMMAND CENTER</span>
+      <span class="cmd-tag">ENTERPRISE COMMAND CENTER</span>
     </div>
     <div class="cmd-status-strip">
       <span class="status-pill status-online"><span class="dot-pulse"></span> 9 AGENTS ACTIVE</span>
-      <span class="status-pill status-live">WS: STREAMING</span>
-      <span class="status-pill status-geo">GEOLOCATION: WAYANAD, KERALA</span>
+      <span class="status-pill status-live" id="radar-status">RADAR: LIVE STREAM</span>
+      <span class="status-pill status-geo">SECTOR: WAYANAD, KERALA</span>
+      <button class="btn-sm btn-cyan" id="btn-export-csv">📥 Export CSV Log</button>
+      <button class="btn-sm btn-red" id="siren-toggle">🚨 Emergency Siren: OFF</button>
     </div>
   </header>
 
@@ -38,13 +41,26 @@
         <div class="panel-header">
           <span class="panel-title">📡 REAL-TIME GIS DISASTER MAP (INDIA)</span>
           <div class="map-controls">
-            <button class="btn-sm btn-cyan active-layer" id="btn-layer-flood">Inundation Layer</button>
-            <button class="btn-sm" id="btn-layer-routes">Evacuation Routes</button>
+            <button class="btn-sm btn-cyan active-layer" id="btn-layer-radar">⚡ RainViewer Radar</button>
+            <button class="btn-sm" id="btn-layer-flood">Inundation Zone</button>
+            <button class="btn-sm" id="btn-layer-routes">Route Detours</button>
             <button class="btn-sm" id="btn-layer-hospitals">Hospitals</button>
+            <button class="btn-sm" id="btn-toggle-basemap">🗺️ Esri Satellite</button>
           </div>
         </div>
         <!-- Leaflet Map Container -->
         <div id="gis-map" class="gis-map-container"></div>
+      </div>
+
+      <!-- Live Chart.js Hydrograph & Rainfall Time-Series -->
+      <div class="glass-panel chart-panel">
+        <div class="panel-header">
+          <span class="panel-title">📈 LIVE CWC HYDROGRAPH & IMD RAIN TIME-SERIES</span>
+          <span class="term-status text-cyan">MARSHALL-PALMER MODEL</span>
+        </div>
+        <div class="chart-box">
+          <canvas id="hydro-chart" height="120"></canvas>
+        </div>
       </div>
 
       <!-- Quick Scenario Triggers -->
@@ -103,14 +119,24 @@
       <div class="glass-panel term-panel">
         <div class="panel-header">
           <span class="panel-title">🤖 MULTI-AGENT LOG TERMINAL (WEBSOCKET)</span>
-          <span class="term-status text-green">SYNCED</span>
+          <div class="term-controls">
+            <select id="term-agent-filter" class="select-sm">
+              <option value="ALL">All Agents</option>
+              <option value="WeatherIntel">WeatherIntel</option>
+              <option value="HydroMonitor">HydroMonitor</option>
+              <option value="GeoRisk">GeoRisk</option>
+              <option value="RouteOptimizer">RouteOptimizer</option>
+              <option value="Commander Core">Commander Core</option>
+            </select>
+            <input type="text" id="term-search" placeholder="Filter logs..." class="input-sm" />
+          </div>
         </div>
         <div class="term-body-box" id="term-logs">
-          <div class="term-line"><span class="t-ts">00:00:01</span><span class="t-tag tag-cyan">[WeatherIntel]</span><span class="t-msg">IMD Doppler Radar: Precipitation density recorded at 55.4 mm/hr in Wayanad.</span></div>
-          <div class="term-line"><span class="t-ts">00:00:02</span><span class="t-tag tag-red">[HydroMonitor]</span><span class="t-msg">CWC Station KBL-03 (Kabini): Level 839.24m (Danger: 840.00m). Status: WARNING_EXCEEDED.</span></div>
-          <div class="term-line"><span class="t-ts">00:00:03</span><span class="t-tag tag-yellow">[GeoRisk]</span><span class="t-msg">GSI Slope Stability: Combined Landslide Hazard Index calculated at 0.88 (CRITICAL).</span></div>
-          <div class="term-line"><span class="t-ts">00:00:04</span><span class="t-tag tag-purple">[RouteOptimizer]</span><span class="t-msg">MapmyIndia Routing: NH-76 blocked. Emergency Detour calculated: Route 3 East Bypass.</span></div>
-          <div class="term-line"><span class="t-ts">00:00:05</span><span class="t-tag tag-green">[Commander Core]</span><span class="t-msg">CONSENSUS REACHED: EVACUATION ORDERED. Dispatched NDMA Sachet Cell Broadcasts to 840 towers.</span></div>
+          <div class="term-line" data-agent="WeatherIntel"><span class="t-ts">00:00:01</span><span class="t-tag tag-cyan">[WeatherIntel]</span><span class="t-msg">IMD Doppler Radar: Precipitation density recorded at 55.4 mm/hr in Wayanad.</span></div>
+          <div class="term-line" data-agent="HydroMonitor"><span class="t-ts">00:00:02</span><span class="t-tag tag-red">[HydroMonitor]</span><span class="t-msg">CWC Station KBL-03 (Kabini): Level 839.24m (Danger: 840.00m). Status: WARNING_EXCEEDED.</span></div>
+          <div class="term-line" data-agent="GeoRisk"><span class="t-ts">00:00:03</span><span class="t-tag tag-yellow">[GeoRisk]</span><span class="t-msg">GSI Slope Stability: Combined Landslide Hazard Index calculated at 0.88 (CRITICAL).</span></div>
+          <div class="term-line" data-agent="RouteOptimizer"><span class="t-ts">00:00:04</span><span class="t-tag tag-purple">[RouteOptimizer]</span><span class="t-msg">MapmyIndia Routing: NH-76 blocked. Emergency Detour calculated: Route 3 East Bypass.</span></div>
+          <div class="term-line" data-agent="Commander Core"><span class="t-ts">00:00:05</span><span class="t-tag tag-green">[Commander Core]</span><span class="t-msg">CONSENSUS REACHED: EVACUATION ORDERED. Dispatched NDMA Sachet Cell Broadcasts to 840 towers.</span></div>
         </div>
       </div>
 

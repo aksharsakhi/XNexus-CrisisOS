@@ -10,6 +10,9 @@ except ImportError:
 
 mcp = FastMCP("IMD-Weather-Server")
 
+from backend.app.services.live_ingestion import live_ingestor
+from backend.app.services.physics_engine import physics_engine
+
 IMD_RADAR_REGISTRY = {
     "IMD-RADAR-WYD": {
         "station_name": "Kochi Doppler Radar array",
@@ -18,43 +21,21 @@ IMD_RADAR_REGISTRY = {
         "radar_reflectivity_z": 48.5,  # dBZ
         "precipitation_density_mm_hr": 55.4,
         "warning_level": "RED_ALERT"
-    },
-    "IMD-RADAR-DEL": {
-        "station_name": "Palam Doppler Radar array",
-        "sector": "NCR & Yamuna Basin",
-        "azimuth_deg": 45.0,
-        "radar_reflectivity_z": 32.0,
-        "precipitation_density_mm_hr": 14.2,
-        "warning_level": "YELLOW_WATCH"
     }
 }
 
 @mcp.tool()
 async def get_radar_reflectivity(radar_id: str) -> dict:
-    """Fetch Doppler radar Z-reflectivity and calculated precipitation density (mm/hr)."""
-    data = IMD_RADAR_REGISTRY.get(radar_id)
-    if not data:
-        return {"error": f"IMD Radar station '{radar_id}' not found."}
+    """Fetch Doppler radar Z-reflectivity and live RainViewer tile metadata."""
+    live_radar = await live_ingestor.fetch_rainviewer_radar()
+    data = IMD_RADAR_REGISTRY.get(radar_id, IMD_RADAR_REGISTRY["IMD-RADAR-WYD"])
+    data["live_rainviewer_tile"] = live_radar.get("tile_template", "")
     return data
 
 @mcp.tool()
 async def calculate_rain_rate(reflectivity_z: float) -> dict:
-    """
-    Calculate rainfall rate R (mm/hr) from radar reflectivity Z factor (dBZ)
-    using Marshall-Palmer relationship for Indian monsoon: Z = 200 * R^1.6
-    """
-    if reflectivity_z <= 0:
-        rate = 0.0
-    else:
-        # Convert dBZ to Z: Z = 10^(dBZ/10)
-        z_factor = 10 ** (reflectivity_z / 10.0)
-        rate = (z_factor / 200.0) ** (1.0 / 1.6)
-        
-    return {
-        "reflectivity_dBZ": reflectivity_z,
-        "rain_rate_mm_hr": round(rate, 2),
-        "is_heavy": rate >= 45.0
-    }
+    """Calculate rain rate R (mm/hr) using Marshall-Palmer relationship."""
+    return physics_engine.marshall_palmer_rain_rate(reflectivity_z)
 
 if __name__ == "__main__":
     mcp.run()

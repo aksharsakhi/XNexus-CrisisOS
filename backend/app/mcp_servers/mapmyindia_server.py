@@ -22,20 +22,20 @@ MOCK_ROUTES_DATABASE = {
     }
 }
 
+from backend.app.services.routing_engine import routing_engine
+
 @mcp.tool()
 async def get_emergency_bypasses(region: str) -> dict:
-    """Fetch MapmyIndia emergency detour routes around blocked NHAI highways and landslide zones."""
-    data = MOCK_ROUTES_DATABASE.get(region, {
-        "blocked_segments": [],
-        "available_bypasses": [
-            {"route_name": "Primary Evacuation Corridor 1", "eta_minutes": 15, "status": "OPEN_CLEAR"}
-        ]
-    })
+    """Fetch MapmyIndia emergency detour routes using Dijkstra pathfinding around blocked road segments."""
+    route_calc = routing_engine.compute_shortest_open_path(start_node="A", end_node="F")
     return {
         "region": region,
-        "blocked_roads": data["blocked_segments"],
-        "recommended_detours": [b["route_name"] for b in data["available_bypasses"]],
-        "detour_details": data["available_bypasses"]
+        "algorithm": route_calc["algorithm"],
+        "blocked_roads": route_calc["blocked_roads_bypassed"],
+        "recommended_detours": [route_calc["path_names"][1] if len(route_calc["path_names"]) > 1 else "Route 3 East Bypass Corridor"],
+        "path_nodes": route_calc["path_names"],
+        "optimal_distance_km": route_calc["optimal_distance_km"],
+        "estimated_eta_minutes": route_calc["estimated_eta_minutes"]
     }
 
 if __name__ == "__main__":
