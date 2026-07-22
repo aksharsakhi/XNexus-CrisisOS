@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XNexus-CrisisOS — Real-Time GIS Command Center</title>
-  <meta name="description" content="India's First Multi-Agent AI Operating System for Autonomous Disaster Response & Mitigation.">
+  <title>XNexus-CrisisOS — Enterprise Disaster Command Center</title>
+  <meta name="description" content="India's Multi-Agent AI Operating System for Autonomous Disaster Response & Mitigation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Leaflet GIS CSS & Chart.js CDN -->
+  <!-- Leaflet GIS CSS & Chart.js -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -19,98 +19,151 @@
   <!-- Top Navigation Header -->
   <header class="cmd-header">
     <div class="cmd-brand">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      <span class="brand-title">XNEXUS<span class="accent-cyan">.OS</span></span>
-      <span class="cmd-tag">ENTERPRISE COMMAND CENTER</span>
+      <div class="brand-logo-hex">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--cyan)" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">XNEXUS<span class="accent-cyan">.OS</span></span>
+        <span class="brand-subtitle">AUTONOMOUS DISASTER COMMAND CENTER</span>
+      </div>
     </div>
+
     <div class="cmd-status-strip">
-      <span class="status-pill status-online"><span class="dot-pulse"></span> 9 AGENTS ACTIVE</span>
-      <span class="status-pill status-live" id="radar-status">RADAR: LIVE STREAM</span>
-      <span class="status-pill status-geo">SECTOR: WAYANAD, KERALA</span>
-      <button class="btn-sm btn-cyan" id="btn-export-csv">📥 Export CSV Log</button>
-      <button class="btn-sm btn-red" id="siren-toggle">🚨 Emergency Siren: OFF</button>
+      <div class="status-pill status-online">
+        <span class="dot-pulse"></span>
+        <span class="pill-label">9 AGENTS ONLINE</span>
+      </div>
+      <div class="status-pill status-live" id="radar-status">
+        <span class="pulse-ring"></span>
+        <span class="pill-label">RADAR: LIVE STREAM</span>
+      </div>
+      <div class="status-pill status-geo">
+        <span class="pill-label">SECTOR: WAYANAD, KERALA</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-hdr btn-csv" id="btn-export-csv">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export CSV
+        </button>
+        <button class="btn-hdr btn-siren" id="siren-toggle">
+          <span class="siren-icon">🚨</span> Emergency Siren: OFF
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Main Grid Layout -->
   <main class="cmd-layout">
     
-    <!-- Left Column: Interactive GIS Map & Scenario Triggers -->
+    <!-- Left Column: Interactive GIS Map & Hydrograph -->
     <section class="cmd-col-left">
+      
+      <!-- Main GIS Map Card -->
       <div class="glass-panel map-panel">
         <div class="panel-header">
-          <span class="panel-title">📡 REAL-TIME GIS DISASTER MAP (INDIA)</span>
+          <div class="panel-title-group">
+            <span class="hud-indicator"></span>
+            <span class="panel-title">REAL-TIME GIS DISASTER MAP (INDIA)</span>
+          </div>
           <div class="map-controls">
-            <button class="btn-sm btn-cyan active-layer" id="btn-layer-radar">⚡ RainViewer Radar</button>
-            <button class="btn-sm" id="btn-layer-flood">Inundation Zone</button>
-            <button class="btn-sm" id="btn-layer-routes">Route Detours</button>
-            <button class="btn-sm" id="btn-layer-hospitals">Hospitals</button>
-            <button class="btn-sm" id="btn-toggle-basemap">🗺️ Esri Satellite</button>
+            <button class="btn-map-layer active-layer" id="btn-layer-radar">⚡ RainViewer Radar</button>
+            <button class="btn-map-layer" id="btn-layer-flood">Inundation Zone</button>
+            <button class="btn-map-layer" id="btn-layer-routes">Route Detours</button>
+            <button class="btn-map-layer" id="btn-layer-hospitals">Hospitals</button>
+            <button class="btn-map-layer btn-basemap" id="btn-toggle-basemap">🗺️ Esri Satellite</button>
           </div>
         </div>
+
         <!-- Leaflet Map Container -->
         <div id="gis-map" class="gis-map-container"></div>
+        <div class="hud-corners">
+          <span class="hud-c c-tl"></span><span class="hud-c c-tr"></span>
+          <span class="hud-c c-bl"></span><span class="hud-c c-br"></span>
+        </div>
       </div>
 
-      <!-- Live Chart.js Hydrograph & Rainfall Time-Series -->
+      <!-- Live Chart.js Hydrograph -->
       <div class="glass-panel chart-panel">
         <div class="panel-header">
-          <span class="panel-title">📈 LIVE CWC HYDROGRAPH & IMD RAIN TIME-SERIES</span>
-          <span class="term-status text-cyan">MARSHALL-PALMER MODEL</span>
+          <div class="panel-title-group">
+            <span class="hud-indicator text-purple-bg"></span>
+            <span class="panel-title">LIVE CWC HYDROGRAPH & IMD RAIN TIME-SERIES</span>
+          </div>
+          <span class="tech-badge">MARSHALL-PALMER MODEL</span>
         </div>
         <div class="chart-box">
-          <canvas id="hydro-chart" height="120"></canvas>
+          <canvas id="hydro-chart"></canvas>
         </div>
       </div>
 
       <!-- Quick Scenario Triggers -->
       <div class="glass-panel triggers-panel">
         <div class="panel-header">
-          <span class="panel-title">⚡ AUTONOMOUS DISASTER SIMULATION TRIGGERS</span>
+          <div class="panel-title-group">
+            <span class="hud-indicator text-yellow-bg"></span>
+            <span class="panel-title">AUTONOMOUS DISASTER SIMULATION TRIGGERS</span>
+          </div>
         </div>
         <div class="triggers-grid">
           <button class="btn-trigger btn-red" id="trig-wayanad">
-            <span class="trig-name">Wayanad Landslides 2024</span>
-            <span class="trig-desc">IMD Rain Surge + Kabini Discharge Breach</span>
+            <div class="trig-header">
+              <span class="trig-name">Wayanad Landslides 2024</span>
+              <span class="badge-red">CRITICAL</span>
+            </div>
+            <span class="trig-desc">IMD Rain Surge + Kabini Water Breach</span>
           </button>
           <button class="btn-trigger btn-purple" id="trig-kerala">
-            <span class="trig-name">Kerala Dam Outburst 2018</span>
-            <span class="trig-desc">35 Dam Sluice Openings + Inundation Graph</span>
+            <div class="trig-header">
+              <span class="trig-name">Kerala Dam Outburst 2018</span>
+              <span class="badge-purple">HIGH SURGE</span>
+            </div>
+            <span class="trig-desc">35 Dam Sluice Openings + Inundation</span>
           </button>
           <button class="btn-trigger btn-yellow" id="trig-uttarakhand">
-            <span class="trig-name">Uttarakhand Glacial Outburst</span>
-            <span class="trig-desc">Chamoli Slope Failure + Highway Blockages</span>
+            <div class="trig-header">
+              <span class="trig-name">Uttarakhand Glacial Outburst</span>
+              <span class="badge-yellow">SLOPE FAILURE</span>
+            </div>
+            <span class="trig-desc">Chamoli Debris Flow + Highway Blockages</span>
           </button>
         </div>
       </div>
+
     </section>
 
-    <!-- Right Column: Telemetry Monitors, Agent Terminal & Impact Gauges -->
+    <!-- Right Column: Telemetry, Terminal, Action Orders -->
     <section class="cmd-col-right">
       
       <!-- Telemetry Strip -->
       <div class="glass-panel tele-panel">
-        <div class="panel-header"><span class="panel-title">📊 REAL-TIME TELEMETRY SENSORS</span></div>
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="hud-indicator text-cyan-bg"></span>
+            <span class="panel-title">REAL-TIME TELEMETRY SENSORS</span>
+          </div>
+          <span class="tech-badge">SENSORS ONLINE</span>
+        </div>
         <div class="tele-grid">
-          <div class="tele-card">
+          <div class="tele-card card-cyan">
             <span class="tele-label">IMD PRECIPITATION</span>
-            <span class="tele-val text-cyan" id="val-rain">55.4 mm/hr</span>
-            <span class="tele-sub">RED ALERT (>45.0)</span>
+            <span class="tele-val text-cyan" id="val-rain">55.4 <small>mm/hr</small></span>
+            <span class="tele-sub sub-red">RED ALERT (>45.0)</span>
           </div>
-          <div class="tele-card">
+          <div class="tele-card card-red">
             <span class="tele-label">CWC GAUGE LEVEL</span>
-            <span class="tele-val text-red" id="val-gauge">839.24 m</span>
-            <span class="tele-sub">DANGER: 840.00 m</span>
+            <span class="tele-val text-red" id="val-gauge">839.24 <small>m</small></span>
+            <span class="tele-sub sub-red">DANGER: 840.00 m</span>
           </div>
-          <div class="tele-card">
+          <div class="tele-card card-yellow">
             <span class="tele-label">GSI LANDSLIDE RISK</span>
-            <span class="tele-val text-yellow" id="val-risk">0.88</span>
-            <span class="tele-sub">CRITICAL (>0.75)</span>
+            <span class="tele-val text-yellow" id="val-risk">0.88 <small>INDEX</small></span>
+            <span class="tele-sub sub-yellow">CRITICAL (>0.75)</span>
           </div>
-          <div class="tele-card">
-            <span class="tele-label">EXPOSED HOUSEHOLDS</span>
-            <span class="tele-val text-green" id="val-pop">840 HH</span>
-            <span class="tele-sub">3,520 POPULATION</span>
+          <div class="tele-card card-green">
+            <span class="tele-label">EXPOSED POPULATION</span>
+            <span class="tele-val text-green" id="val-pop">840 <small>HH</small></span>
+            <span class="tele-sub sub-green">3,520 CITIZENS</span>
           </div>
         </div>
       </div>
@@ -118,17 +171,20 @@
       <!-- Agent Terminal Stream -->
       <div class="glass-panel term-panel">
         <div class="panel-header">
-          <span class="panel-title">🤖 MULTI-AGENT LOG TERMINAL (WEBSOCKET)</span>
+          <div class="panel-title-group">
+            <span class="hud-indicator text-green-bg"></span>
+            <span class="panel-title">MULTI-AGENT LOG TERMINAL (WEBSOCKET)</span>
+          </div>
           <div class="term-controls">
             <select id="term-agent-filter" class="select-sm">
-              <option value="ALL">All Agents</option>
+              <option value="ALL">All 9 Agents</option>
               <option value="WeatherIntel">WeatherIntel</option>
               <option value="HydroMonitor">HydroMonitor</option>
               <option value="GeoRisk">GeoRisk</option>
               <option value="RouteOptimizer">RouteOptimizer</option>
               <option value="Commander Core">Commander Core</option>
             </select>
-            <input type="text" id="term-search" placeholder="Filter logs..." class="input-sm" />
+            <input type="text" id="term-search" placeholder="Search logs..." class="input-sm" />
           </div>
         </div>
         <div class="term-body-box" id="term-logs">
@@ -140,17 +196,25 @@
         </div>
       </div>
 
-      <!-- Action Orders & Hospital Bed Triage -->
+      <!-- Action Orders -->
       <div class="glass-panel action-panel">
-        <div class="panel-header"><span class="panel-title">🎖️ EXECUTED COMMAND ORDERS</span></div>
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="hud-indicator text-red-bg"></span>
+            <span class="panel-title">EXECUTED COMMAND ORDERS</span>
+          </div>
+          <span class="tech-badge badge-pulse-red">DISPATCH ACTIVE</span>
+        </div>
         <div class="action-body">
           <div class="action-card action-active" id="action-box">
-            <span class="action-status-tag text-red">ACTIVE DISPATCH ORDER</span>
+            <div class="action-top">
+              <span class="action-status-tag">ACTIVE DISPATCH ORDER</span>
+              <span class="action-time-tag">⏱ <strong class="text-cyan" id="action-time">2.14 sec</strong></span>
+            </div>
             <h4 id="action-title">EVACUATION ORDERED: Sector B-4 (Wayanad)</h4>
             <p id="action-desc">Mobilize NDRF 4th Battalion. Reroute fleeing populations via Route 3 East Bypass. 25 ICU beds reserved at Kozhikode District Hospital.</p>
             <div class="action-meta">
-              <span>⏱ Execution Time: <strong class="text-cyan" id="action-time">2.14 sec</strong></span>
-              <span>📱 NDMA Sachet: <strong class="text-green" id="action-sachet">BROADCAST_COMPLETE</strong></span>
+              <span>📱 NDMA Sachet: <strong class="text-green" id="action-sachet">BROADCAST_COMPLETE (840 TOWERS)</strong></span>
             </div>
           </div>
         </div>
