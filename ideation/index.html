@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XNexus-CrisisOS — Autonomous Disaster Command Center</title>
+  <meta name="description" content="India's first multi-agent AI operating system for autonomous disaster response. Real-time telemetry, agentic coordination, and autonomous action.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- Scanline overlay -->
+  <div class="scanline-overlay"></div>
+
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav" id="top-nav">
+    <div class="nav-left">
+      <div class="nav-logo">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="url(#ng)" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/><defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00f0ff"/><stop offset="100%" stop-color="#7b61ff"/></linearGradient></defs></svg>
+        <span class="nav-brand">XNEXUS<span class="brand-accent">.OS</span></span>
+      </div>
+      <div class="nav-pills">
+        <span class="pill pill-cyan">INDIA DEPLOYABLE</span>
+        <span class="pill pill-purple">NITROSTACK 2026</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn" id="theme-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span id="theme-label">Dark Mode</span></button>
+      <button class="nav-btn btn-export" id="export-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export PPTX</button>
+    </div>
+  </nav>
+
+  <!-- Slides Viewport -->
+  <main class="viewport" id="viewport">
+
+    <!-- ==================== SLIDE 1: HERO ==================== -->
+    <section class="slide active" data-index="0">
+      <div class="slide-inner hero-slide">
+        <div class="hero-badge">XNEXUS — CRISISOS FOR INDIA</div>
+        <h1 class="hero-title">
+          <span class="hero-line-1">XNEXUS</span>
+          <span class="hero-dot">.</span>
+          <span class="hero-line-2">OS</span>
+        </h1>
+        <div class="hero-tagline">AUTONOMOUS DISASTER COMMAND CENTER</div>
+        <div class="hero-accent-line"></div>
+        <p class="hero-desc">An intelligent multi-agent operating system that predicts, coordinates, and autonomously manages disaster response in real time across India's most vulnerable regions.</p>
+        
+        <!-- Live Telemetry Strip -->
+        <div class="telemetry-strip">
+          <div class="tele-header">LIVE TELEMETRY MONITOR (INDIA)</div>
+          <div class="tele-row">
+            <span class="tele-dot dot-yellow"></span>
+            <span class="tele-region">UTTARAKHAND (SLOPE STABILITY)</span>
+            <span class="tele-val" id="tele-1">STANDBY / SOIL SATURATION 62.0%</span>
+          </div>
+          <div class="tele-row active-row">
+            <span class="tele-dot dot-red pulse"></span>
+            <span class="tele-region">KERALA (KABINI RESERVOIR FLOOD)</span>
+            <span class="tele-val" id="tele-2">ACTIVE EVACUATION / +18.2CM/HR</span>
+          </div>
+          <div class="tele-row">
+            <span class="tele-dot dot-green"></span>
+            <span class="tele-region">ASSAM (BRAHMAPUTRA VALLEY)</span>
+            <span class="tele-val">MONITORING NORMAL</span>
+          </div>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="hm"><span class="hm-label">DATA PIPELINES</span><span class="hm-val">IMD / CWC / GSI</span></div>
+          <div class="hm-sep"></div>
+          <div class="hm"><span class="hm-label">DEPLOYMENT CORE</span><span class="hm-val">NDRF / SDRF</span></div>
+          <div class="hm-sep"></div>
+          <div class="hm"><span class="hm-label">ALERTS MAPPED</span><span class="hm-val">NDMA Sachet</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 2: PROBLEM STATEMENT ==================== -->
+    <section class="slide" data-index="1">
+      <div class="slide-inner">
+        <div class="slide-badge">02 / THE PROBLEM</div>
+        <h2 class="slide-heading">People Are Dying Because<br><span class="heading-accent">Agencies Can't Coordinate</span></h2>
+        
+        <!-- Big shocking stats row -->
+        <div class="stats-row">
+          <div class="stat-block">
+            <span class="stat-num" data-target="2000" data-suffix="+">0</span>
+            <span class="stat-label">Deaths per year from floods alone</span>
+            <span class="stat-source">— NDMA Annual Report, 2023</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-block">
+            <span class="stat-num" data-target="86" data-suffix="B">$0</span>
+            <span class="stat-label">Economic loss from disasters (2000–2023)</span>
+            <span class="stat-source">— World Bank, 2024</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-block">
+            <span class="stat-num" data-target="75" data-suffix="%">0</span>
+            <span class="stat-label">Of India's districts are disaster-prone</span>
+            <span class="stat-source">— National Disaster Management Authority</span>
+          </div>
+        </div>
+
+        <div class="bento-grid cols-2" style="margin-top: 32px;">
+          <!-- Left: The real problem explained simply -->
+          <div class="glass-card narrative-card">
+            <h3>Why People Die: The Coordination Gap</h3>
+            <p>India has world-class weather radars (IMD), river monitoring (CWC), and rescue forces (NDRF). But these agencies <strong>operate in complete isolation</strong>. When a flood hits, the warning chain depends on <strong>manual phone calls</strong> between 5+ agencies — each with their own dashboard, their own protocol, and their own delays.</p>
+            <div class="delay-bar" style="margin-top: 20px;">
+              <div class="delay-segment seg-red" style="width:40%">IMD Alert (45m)</div>
+              <div class="delay-segment seg-orange" style="width:30%">DM Office (35m)</div>
+              <div class="delay-segment seg-yellow" style="width:30%">NDRF Deploy (22m)</div>
+            </div>
+            <div class="delay-total">TOTAL WARNING DELAY: <strong>100+ MINUTES</strong> — families get less than 10 min notice</div>
+          </div>
+          <!-- Right: Real disaster case studies -->
+          <div class="flex-col gap-16">
+            <div class="glass-card case-card">
+              <div class="case-header"><span class="case-tag tag-red">WAYANAD 2024</span><span class="case-deaths">400+ dead</span></div>
+              <p>Landslides struck at 2 AM. CWC had upstream data, GSI had soil alerts, IMD had rain warnings — <strong>none was shared in time</strong>. Entire villages were buried.</p>
+            </div>
+            <div class="glass-card case-card">
+              <div class="case-header"><span class="case-tag tag-red">KERALA 2018</span><span class="case-deaths">483 dead · 1.4M displaced</span></div>
+              <p>Worst floods in a century. Dam releases were uncoordinated with downstream evacuations. <strong>Rescue teams arrived 6+ hours late</strong> to worst-hit areas.</p>
+            </div>
+            <div class="glass-card case-card">
+              <div class="case-header"><span class="case-tag tag-red">UTTARAKHAND 2023</span><span class="case-deaths">100+ dead</span></div>
+              <p>Glacial lake outburst flood. NHAI roads blocked, hospitals full, no alternative routes communicated. <strong>Tourists stranded for 48 hours.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 3: PROPOSED SOLUTION ==================== -->
+    <section class="slide" data-index="2">
+      <div class="slide-inner">
+        <div class="slide-badge">03 / PROPOSED SOLUTION</div>
+        <h2 class="slide-heading">What We're Building:<br><span class="heading-accent">XNexus-CrisisOS</span></h2>
+        <p class="slide-subtext">An AI operating system that <strong>replaces the manual phone-call chain</strong> with autonomous, real-time multi-agency coordination — cutting disaster response from 100+ minutes to under 5.</p>
+        
+        <!-- Before / After Comparison -->
+        <div class="bento-grid cols-2" style="margin-bottom: 28px;">
+          <div class="glass-card compare-card compare-before">
+            <div class="compare-label label-red">TODAY (MANUAL)</div>
+            <div class="compare-steps">
+              <div class="compare-step">IMD detects heavy rain → calls DM office</div>
+              <div class="compare-arrow">↓ 45 min</div>
+              <div class="compare-step">DM office calls CWC for river data</div>
+              <div class="compare-arrow">↓ 35 min</div>
+              <div class="compare-step">NDRF dispatched via voice call</div>
+              <div class="compare-arrow">↓ 22 min</div>
+              <div class="compare-step">Sirens activated (no route guidance)</div>
+            </div>
+            <div class="compare-total total-red">⏱ 100+ minutes total</div>
+          </div>
+          <div class="glass-card compare-card compare-after">
+            <div class="compare-label label-green">WITH XNEXUS (AUTONOMOUS)</div>
+            <div class="compare-steps">
+              <div class="compare-step">All data streams ingested simultaneously</div>
+              <div class="compare-arrow arrow-fast">↓ instant</div>
+              <div class="compare-step">AI agents reason across all agencies at once</div>
+              <div class="compare-arrow arrow-fast">↓ 30 sec</div>
+              <div class="compare-step">NDRF auto-dispatched + routes calculated</div>
+              <div class="compare-arrow arrow-fast">↓ 30 sec</div>
+              <div class="compare-step">Multilingual cell broadcast with safe routes</div>
+            </div>
+            <div class="compare-total total-green">⚡ Under 5 minutes total</div>
+          </div>
+        </div>
+
+        <!-- What it actually does -->
+        <div class="feature-list">
+          <div class="feat"><span class="feat-icon">🧠</span><span><strong>9 AI Agents</strong> — each one connected to a real Indian government API (IMD, CWC, GSI, NHAI, NDMA, 108-Health)</span></div>
+          <div class="feat"><span class="feat-icon">🔗</span><span><strong>MCP Integration Protocol</strong> — plug-and-play connection to any government data source, no custom APIs needed</span></div>
+          <div class="feat"><span class="feat-icon">🗺️</span><span><strong>MapmyIndia Routing</strong> — automatically computes evacuation routes around blocked roads and landslide zones</span></div>
+          <div class="feat"><span class="feat-icon">📱</span><span><strong>NDMA Sachet Cell Broadcast</strong> — pushes multilingual warnings directly to cell towers, no app install required</span></div>
+          <div class="feat"><span class="feat-icon">🏥</span><span><strong>108 Hospital Triage</strong> — queries live ICU/trauma bed availability and auto-dispatches ambulances to nearest open hospital</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 4: AGENTS ==================== -->
+    <section class="slide" data-index="3">
+      <div class="slide-inner">
+        <div class="slide-badge">04 / MULTI-AGENT ARCHITECTURE</div>
+        <h2 class="slide-heading">India-Focused<br><span class="heading-accent">Agentic Framework</span></h2>
+        <p class="slide-subtext">Nine specialized AI agents collaborating using real Indian telemetry. Click cards to inspect active streams.</p>
+        
+        <div class="agents-grid">
+          <div class="agent-card active-agent" data-agent="weather">
+            <div class="agent-top"><span class="agent-icon">🛰️</span><span class="agent-status online">ONLINE</span></div>
+            <h4>WeatherIntel Agent</h4>
+            <p class="agent-src">IMD Doppler Radar</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,8 L20,12 L30,6 L40,14 L50,9 L60,11 L70,7 L80,13 L90,10 L100,8" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="hydro">
+            <div class="agent-top"><span class="agent-icon">🌊</span><span class="agent-status online">ONLINE</span></div>
+            <h4>HydroMonitor Agent</h4>
+            <p class="agent-src">CWC River Gauges</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,12 L20,8 L30,14 L40,6 L50,11 L60,9 L70,13 L80,7 L90,10 L100,12" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="geo">
+            <div class="agent-top"><span class="agent-icon">⛰️</span><span class="agent-status online">ONLINE</span></div>
+            <h4>GeoRisk Agent</h4>
+            <p class="agent-src">GSI Soil Indices</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,6 L20,14 L30,8 L40,12 L50,7 L60,13 L70,9 L80,11 L90,10 L100,6" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="route">
+            <div class="agent-top"><span class="agent-icon">🗺️</span><span class="agent-status online">ONLINE</span></div>
+            <h4>RouteOptimizer Agent</h4>
+            <p class="agent-src">MapmyIndia API</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,14 L20,6 L30,12 L40,8 L50,10 L60,14 L70,6 L80,12 L90,8 L100,10" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="alert">
+            <div class="agent-top"><span class="agent-icon">📱</span><span class="agent-status online">ONLINE</span></div>
+            <h4>AlertBroadcast Agent</h4>
+            <p class="agent-src">NDMA Sachet</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,8 L20,12 L30,6 L40,14 L50,9 L60,11 L70,7 L80,13 L90,10 L100,8" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="medical">
+            <div class="agent-top"><span class="agent-icon">🏥</span><span class="agent-status online">ONLINE</span></div>
+            <h4>MedResponse Agent</h4>
+            <p class="agent-src">108 Health API</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,12 L20,8 L30,14 L40,6 L50,11 L60,9 L70,13 L80,7 L90,10 L100,12" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="population">
+            <div class="agent-top"><span class="agent-icon">👥</span><span class="agent-status online">ONLINE</span></div>
+            <h4>PopDensity Agent</h4>
+            <p class="agent-src">Census 2011+</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,6 L20,14 L30,8 L40,12 L50,7 L60,13 L70,9 L80,11 L90,10 L100,6" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="infra">
+            <div class="agent-top"><span class="agent-icon">🏗️</span><span class="agent-status standby">STANDBY</span></div>
+            <h4>InfraWatch Agent</h4>
+            <p class="agent-src">NHAI / Railways</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,10 L20,10 L30,10 L40,10 L50,10 L60,10 L70,10 L80,10 L90,10 L100,10" fill="none" stroke="var(--text-dim)" stroke-width="1"/></svg></div>
+          </div>
+          <div class="agent-card" data-agent="commander">
+            <div class="agent-top"><span class="agent-icon">🎖️</span><span class="agent-status critical">ACTIVE</span></div>
+            <h4>Commander Agent</h4>
+            <p class="agent-src">Orchestrator Core</p>
+            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,4 L20,16 L30,4 L40,16 L50,10 L60,4 L70,16 L80,4 L90,16 L100,10" fill="none" stroke="var(--red)" stroke-width="1.5"/></svg></div>
+          </div>
+        </div>
+        
+        <!-- Agent Terminal -->
+        <div class="terminal-panel">
+          <div class="terminal-bar"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span><span class="term-title" id="terminal-title">AGENT TELEMETRY // WeatherIntel</span></div>
+          <div class="terminal-body" id="terminal-body">
+            <div class="term-line"><span class="t-ts">00:00:01</span><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Connecting to IMD Doppler Radar array...</span></div>
+            <div class="term-line"><span class="t-ts">00:00:02</span><span class="t-tag tag-ok">[OK]</span><span class="t-msg">Feed established. Tracking azimuth 182.4° — precip density 52.4mm/hr</span></div>
+            <div class="term-line"><span class="t-ts">00:00:03</span><span class="t-tag tag-warn">[WARN]</span><span class="t-msg">Rainfall intensity exceeds warning threshold in Sector B-4 (Wayanad)</span></div>
+            <div class="term-line"><span class="t-ts">00:00:04</span><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Forwarding weather vector to HydroMonitor Agent for correlated analysis...</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 5: CAPABILITIES ==================== -->
+    <section class="slide" data-index="4">
+      <div class="slide-inner">
+        <div class="slide-badge">05 / CORE CAPABILITIES</div>
+        <h2 class="slide-heading">Real-Data<br><span class="heading-accent">Core Capabilities</span></h2>
+        
+        <div class="bento-grid cols-3 gap-md">
+          <div class="glass-card cap-card">
+            <div class="cap-visual radar-visual">
+              <div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div>
+              <div class="radar-sweep"></div>
+              <div class="radar-blip blip-1"></div><div class="radar-blip blip-2"></div>
+            </div>
+            <div class="cap-badge">01</div>
+            <h4>IMD Doppler Radar</h4>
+            <p>Real-time precipitation tracking with azimuth sweep and density mapping.</p>
+            <div class="cap-stats"><span class="cap-stat"><strong id="r-azimuth">182.4°</strong> Azimuth</span><span class="cap-stat"><strong id="r-precip">52.4mm/h</strong> Density</span></div>
+          </div>
+          <div class="glass-card cap-card">
+            <div class="cap-visual hydro-visual">
+              <svg class="hydro-wave" viewBox="0 0 200 60"><path d="M0,30 Q25,10 50,30 T100,30 T150,30 T200,30" fill="none" stroke="var(--cyan)" stroke-width="2" opacity="0.6"/><path d="M0,35 Q25,15 50,35 T100,35 T150,35 T200,35" fill="none" stroke="var(--purple)" stroke-width="1.5" opacity="0.4"/></svg>
+            </div>
+            <div class="cap-badge">02</div>
+            <h4>CWC River Gauges</h4>
+            <p>Live hydrography from Central Water Commission gauging stations.</p>
+            <div class="cap-stats"><span class="cap-stat"><strong id="h-height">839.22m</strong> Height</span><span class="cap-stat"><strong class="text-red">CRITICAL</strong> Status</span></div>
+          </div>
+          <div class="glass-card cap-card">
+            <div class="cap-visual soil-visual">
+              <div class="soil-gauge">
+                <svg viewBox="0 0 100 50"><path d="M10,45 A40,40 0 0,1 90,45" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" stroke-linecap="round"/><path class="soil-fill" d="M10,45 A40,40 0 0,1 90,45" fill="none" stroke="url(#soil-grad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="126" stroke-dashoffset="15"/><defs><linearGradient id="soil-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--green)"/><stop offset="50%" stop-color="var(--yellow)"/><stop offset="100%" stop-color="var(--red)"/></linearGradient></defs></svg>
+                <span class="soil-val" id="soil-pct">88%</span>
+              </div>
+            </div>
+            <div class="cap-badge">03</div>
+            <h4>GSI Soil Saturation</h4>
+            <p>Geological Survey of India landslide susceptibility and soil shear indices.</p>
+            <div class="cap-stats"><span class="cap-stat"><strong>88%</strong> Shear Index</span><span class="cap-stat"><strong class="text-yellow">HIGH</strong> Risk</span></div>
+          </div>
+          <div class="glass-card cap-card">
+            <div class="cap-visual map-visual">
+              <div class="map-grid"><div class="map-route route-blocked"></div><div class="map-route route-active"></div><div class="map-node node-1"></div><div class="map-node node-2"></div><div class="map-node node-3"></div></div>
+            </div>
+            <div class="cap-badge">04</div>
+            <h4>MapmyIndia Routing</h4>
+            <p>Autonomous detour planning around blocked roads and landslide zones.</p>
+            <div class="cap-stats"><span class="cap-stat"><strong>NH-76</strong> Blocked</span><span class="cap-stat"><strong class="text-green">Route 3</strong> Active</span></div>
+          </div>
+          <div class="glass-card cap-card">
+            <div class="cap-visual phone-visual">
+              <div class="phone-frame"><div class="phone-header">⚠️ EMERGENCY ALERT</div><div class="phone-msg">NDMA: Flash flood warning for Wayanad district. Evacuate to high ground via Route 3. Helpline: 1078</div><div class="phone-meta">NDMA Sachet • Hindi/Malayalam</div></div>
+            </div>
+            <div class="cap-badge">05</div>
+            <h4>NDMA Sachet SMS</h4>
+            <p>Multilingual cell-broadcast emergency warnings to local towers.</p>
+            <div class="cap-stats"><span class="cap-stat"><strong>840</strong> Towers</span><span class="cap-stat"><strong>3</strong> Languages</span></div>
+          </div>
+          <div class="glass-card cap-card">
+            <div class="cap-visual hospital-visual">
+              <div class="hosp-row"><span class="hosp-name">Kozhikode District</span><div class="hosp-bar"><div class="hosp-fill fill-green" style="width:70%"></div></div><span class="hosp-beds" id="beds-1">14 ICU</span></div>
+              <div class="hosp-row"><span class="hosp-name">Wayanad General</span><div class="hosp-bar"><div class="hosp-fill fill-red" style="width:90%"></div></div><span class="hosp-beds">3 ICU</span></div>
+              <div class="hosp-row"><span class="hosp-name">Calicut Medical</span><div class="hosp-bar"><div class="hosp-fill fill-yellow" style="width:55%"></div></div><span class="hosp-beds" id="beds-3">8 ICU</span></div>
+            </div>
+            <div class="cap-badge">06</div>
+            <h4>108 Hospital Triage</h4>
+            <p>Live trauma bed availability and ambulance dispatch coordination.</p>
+            <div class="cap-stats"><span class="cap-stat"><strong>25</strong> Beds Ready</span><span class="cap-stat"><strong class="text-green">ONLINE</strong></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 6: WOW / USP ==================== -->
+    <section class="slide" data-index="5">
+      <div class="slide-inner">
+        <div class="slide-badge">06 / THE "WOW" USP</div>
+        <h2 class="slide-heading">Beyond Alerting:<br><span class="heading-accent">Real-Data Decisions</span></h2>
+        <p class="slide-subtext">Other platforms alert. XNexus-CrisisOS <strong>reasons, decides, and acts autonomously</strong> across every agency simultaneously.</p>
+        
+        <div class="bento-grid cols-3 gap-md">
+          <div class="glass-card wow-card">
+            <div class="wow-num">01</div>
+            <h4>Autonomous Multi-Agency Fusion</h4>
+            <p>Agents from IMD, CWC, NDRF, MapmyIndia and 108-Health share a common semantic memory and reason jointly. No human orchestration needed.</p>
+          </div>
+          <div class="glass-card wow-card highlight-card">
+            <div class="wow-num">02</div>
+            <h4>CWC-to-Road Graph Intelligence</h4>
+            <p>Inundation polygons from CWC are directly overlaid on NHAI road graphs. Blocked segments auto-trigger detour computation via MapmyIndia.</p>
+          </div>
+          <div class="glass-card wow-card">
+            <div class="wow-num">03</div>
+            <h4>Multilingual Cell Broadcast</h4>
+            <p>NDMA Sachet protocol pushes Hindi, English, and Malayalam warnings directly to cell towers — no app install required. Reaches every phone in the zone.</p>
+          </div>
+          <div class="glass-card wow-card">
+            <div class="wow-num">04</div>
+            <h4>Real Wayanad Scenario</h4>
+            <p>Built and tested against 2024 Wayanad flood data. Uses actual Kabini reservoir levels, IMD rainfall records, and district hospital databases.</p>
+          </div>
+          <div class="glass-card wow-card">
+            <div class="wow-num">05</div>
+            <h4>India-Native APIs Only</h4>
+            <p>Every data source is from an Indian government or Indian mapping service. No dependency on Google Maps, AWS, or foreign infrastructure.</p>
+          </div>
+          <div class="glass-card wow-card">
+            <div class="wow-num">06</div>
+            <h4>Zero-Latency Hospital Dispatch</h4>
+            <p>108 state health API is queried in real time to identify the nearest hospital with available trauma/ICU beds and dispatches ambulances.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 7: TECH STACK ==================== -->
+    <section class="slide" data-index="6">
+      <div class="slide-inner">
+        <div class="slide-badge">07 / ARCHITECTURE</div>
+        <h2 class="slide-heading">MCP Integration<br><span class="heading-accent">Framework</span></h2>
+        
+        <div class="bento-grid cols-2 align-center">
+          <div class="flex-col gap-20">
+            <p class="slide-subtext" style="margin-bottom:0">XNexus-CrisisOS uses the <strong>Model Context Protocol (MCP)</strong> as its integration backbone — enabling plug-and-play connections to every Indian government API.</p>
+            <div class="tech-stack-list">
+              <div class="tech-item"><span class="tech-dot dot-cyan"></span><strong>Orchestration:</strong> AutoGen Multi-Agent Framework</div>
+              <div class="tech-item"><span class="tech-dot dot-purple"></span><strong>LLM Core:</strong> Gemini 2.5 Pro + Flash</div>
+              <div class="tech-item"><span class="tech-dot dot-cyan"></span><strong>Integration:</strong> MCP Server Architecture</div>
+              <div class="tech-item"><span class="tech-dot dot-green"></span><strong>Memory:</strong> Shared Semantic Memory Layer</div>
+              <div class="tech-item"><span class="tech-dot dot-yellow"></span><strong>Data Layer:</strong> IMD, CWC, GSI, NHAI, 108 APIs</div>
+              <div class="tech-item"><span class="tech-dot dot-red"></span><strong>Alerts:</strong> NDMA Sachet Cell Broadcast</div>
+            </div>
+          </div>
+          <div class="server-rack">
+            <div class="rack-shelf"><div class="shelf-label">MCP-IMD-WEATHER</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led blink"></span><span class="led on"></span></div></div>
+            <div class="rack-shelf"><div class="shelf-label">MCP-CWC-HYDRO</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led on"></span><span class="led blink"></span></div></div>
+            <div class="rack-shelf"><div class="shelf-label">MCP-GSI-GEO</div><div class="shelf-leds"><span class="led on"></span><span class="led blink"></span><span class="led on"></span><span class="led on"></span></div></div>
+            <div class="rack-shelf"><div class="shelf-label">MCP-MAPMYINDIA</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led on"></span><span class="led on"></span></div></div>
+            <div class="rack-shelf"><div class="shelf-label">MCP-NDMA-SACHET</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led blink"></span><span class="led on"></span></div></div>
+            <div class="rack-shelf"><div class="shelf-label">MCP-108-HEALTH</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led on"></span><span class="led blink"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 8: WORKFLOW ==================== -->
+    <section class="slide" data-index="7">
+      <div class="slide-inner">
+        <div class="slide-badge">08 / SYSTEM FLOW</div>
+        <h2 class="slide-heading">Telemetry to Execution<br><span class="heading-accent">Pipeline</span></h2>
+        
+        <div class="bento-grid cols-2 align-center">
+          <div class="pipeline-visual">
+            <div class="pipe-node active" data-step="1"><span class="pipe-num">01</span><span class="pipe-label">INGEST</span><span class="pipe-sub">Telemetry Streams</span></div>
+            <div class="pipe-connector"><div class="pipe-flow"></div></div>
+            <div class="pipe-node" data-step="2"><span class="pipe-num">02</span><span class="pipe-label">PROFILE</span><span class="pipe-sub">Risk Assessment</span></div>
+            <div class="pipe-connector"><div class="pipe-flow"></div></div>
+            <div class="pipe-node" data-step="3"><span class="pipe-num">03</span><span class="pipe-label">SIMULATE</span><span class="pipe-sub">Plan Generation</span></div>
+            <div class="pipe-connector"><div class="pipe-flow"></div></div>
+            <div class="pipe-node" data-step="4"><span class="pipe-num">04</span><span class="pipe-label">EXECUTE</span><span class="pipe-sub">Action Dispatch</span></div>
+          </div>
+          <div class="terminal-panel pipeline-terminal">
+            <div class="terminal-bar"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span><span class="term-title" id="pipe-term-title">PIPELINE // STEP 01 — TELEMETRY INGEST</span></div>
+            <div class="terminal-body" id="pipe-term-body">
+              <div class="term-line"><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Ingesting station KBL-03 gauges... 839.24m</span></div>
+              <div class="term-line"><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Scraping IMD precipitation array... 52.4mm/hr</span></div>
+              <div class="term-line"><span class="t-tag tag-warn">[ALERT]</span><span class="t-msg text-red">River heights exceed danger parameters!</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 9: IMPACT ==================== -->
+    <section class="slide" data-index="8">
+      <div class="slide-inner">
+        <div class="slide-badge">09 / PROJECTED IMPACT</div>
+        <h2 class="slide-heading">Target Safety &<br><span class="heading-accent">Performance Metrics</span></h2>
+        
+        <div class="bento-grid cols-2 align-center">
+          <div class="flex-col gap-24">
+            <div class="impact-counters">
+              <div class="counter-block">
+                <span class="counter-num" data-target="5" data-suffix="min">0</span>
+                <span class="counter-label">RESPONSE TIME</span>
+              </div>
+              <div class="counter-block">
+                <span class="counter-num" data-target="840" data-suffix="+">0</span>
+                <span class="counter-label">HOUSEHOLDS COVERED</span>
+              </div>
+              <div class="counter-block">
+                <span class="counter-num" data-target="9" data-suffix="">0</span>
+                <span class="counter-label">AI AGENTS ACTIVE</span>
+              </div>
+            </div>
+            <div class="accent-bar"></div>
+            <p class="slide-subtext" style="margin-bottom:0">Manual operations take hours. XNexus-CrisisOS completes the full cycle — from river gauge reading to evacuated family — in under 5 minutes.</p>
+          </div>
+          <div class="gauges-grid">
+            <div class="gauge-card">
+              <div class="circular-gauge" data-pct="90"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="gauge-bg-ring"/><circle cx="60" cy="60" r="50" class="gauge-fill-ring" data-pct="90"/></svg><span class="gauge-pct">90%</span></div>
+              <span class="gauge-label">Warning Speedup</span>
+            </div>
+            <div class="gauge-card">
+              <div class="circular-gauge" data-pct="75"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="gauge-bg-ring"/><circle cx="60" cy="60" r="50" class="gauge-fill-ring" data-pct="75"/></svg><span class="gauge-pct">75%</span></div>
+              <span class="gauge-label">Resource Efficiency</span>
+            </div>
+            <div class="gauge-card">
+              <div class="circular-gauge" data-pct="85"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="gauge-bg-ring"/><circle cx="60" cy="60" r="50" class="gauge-fill-ring" data-pct="85"/></svg><span class="gauge-pct">85%</span></div>
+              <span class="gauge-label">Evacuation Compliance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: ROADMAP ==================== -->
+    <section class="slide" data-index="9">
+      <div class="slide-inner">
+        <div class="slide-badge">10 / DEVELOPMENT ROADMAP</div>
+        <h2 class="slide-heading">Development<br><span class="heading-accent">Blueprint & Phases</span></h2>
+        
+        <div class="timeline">
+          <div class="timeline-line"></div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="glass-card tl-card">
+              <span class="tl-phase">PHASE 1 — NOW</span>
+              <h4>Hackathon MVP</h4>
+              <p>Core 9-agent architecture with IMD, CWC, and GSI real-data integration. Wayanad flood scenario proof-of-concept.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="glass-card tl-card">
+              <span class="tl-phase">PHASE 2 — Q3 2026</span>
+              <h4>State-Level Pilot</h4>
+              <p>Deploy across Kerala and Uttarakhand with SDMA integration. Multi-language Sachet broadcasts. Hospital 108 API live connection.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="glass-card tl-card">
+              <span class="tl-phase">PHASE 3 — 2027</span>
+              <h4>National Scale</h4>
+              <p>Full NDMA integration covering all disaster-prone states. Cyclone, earthquake, and industrial disaster modules. Predictive pre-positioning.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-footer">
+          <h3 class="gradient-text">Built for India. By India.</h3>
+          <p>Every API, every data source, every deployment target is Indian infrastructure.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav" id="bottom-nav">
+    <button class="nav-arrow" id="prev-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="slide-dots" id="slide-dots"></div>
+    <button class="nav-arrow" id="next-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    <span class="slide-counter"><span id="current-num">1</span> / <span id="total-num">10</span></span>
+    <button class="nav-arrow" id="fullscreen-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg></button>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
