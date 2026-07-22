@@ -2,6 +2,16 @@
 import os
 from pydantic import BaseModel
 
+# Automatically load .env file if present
+env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".env")
+if os.path.exists(env_path):
+    with open(env_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                key, val = line.split("=", 1)
+                os.environ[key.strip()] = val.strip().strip('"').strip("'")
+
 class Settings(BaseModel):
     APP_NAME: str = "XNexus-CrisisOS"
     APP_VERSION: str = "1.0.0"
