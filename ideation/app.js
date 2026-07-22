@@ -327,6 +327,94 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     showToast("SYSTEM INITIALIZED", "XNexus-CrisisOS multi-agent dashboard operational.", "info");
   }, 2000);
+
+  // ---- Scroll-Reveal IntersectionObserver ----
+  // Reveals elements with .reveal, .reveal-left, .reveal-right, .reveal-scale
+  // when they scroll into view within the active slide
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+  // Observe all elements with reveal classes
+  document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // ---- Apply 3D tilt to glass cards ----
+  document.querySelectorAll(".glass-card").forEach(card => {
+    card.classList.add("tilt-card");
+  });
+
+  // ---- Terminal typing animation ----
+  function typeTerminalLines(container, lines, callback) {
+    container.innerHTML = "";
+    let lineIndex = 0;
+    function typeLine() {
+      if (lineIndex >= lines.length) { if (callback) callback(); return; }
+      const line = lines[lineIndex];
+      const div = document.createElement("div");
+      div.className = "term-line";
+      div.innerHTML = `<span class="t-tag ${line.tag}">${line.label}</span><span class="t-msg typing-cursor"></span>`;
+      container.appendChild(div);
+      const msgEl = div.querySelector(".t-msg");
+      let charIdx = 0;
+      function typeChar() {
+        if (charIdx < line.msg.length) {
+          msgEl.textContent = line.msg.slice(0, charIdx + 1);
+          charIdx++;
+          setTimeout(typeChar, 12 + Math.random() * 8);
+        } else {
+          msgEl.classList.remove("typing-cursor");
+          lineIndex++;
+          setTimeout(typeLine, 200);
+        }
+      }
+      typeChar();
+    }
+    typeLine();
+  }
+
+  // Override agent card click to use typing animation
+  agentCards.forEach(card => {
+    card.addEventListener("click", () => {
+      agentCards.forEach(c => c.classList.remove("active-agent"));
+      card.classList.add("active-agent");
+      const agent = card.dataset.agent;
+      const data = agentLogs[agent];
+      if (!data) return;
+      terminalTitle.textContent = `AGENT TELEMETRY // ${data.title}`;
+      typeTerminalLines(terminalBody, data.lines);
+    });
+  });
+
+  // ---- Re-trigger reveals when slide changes ----
+  const originalGoToSlide = goToSlide;
+  // Patch goToSlide is already defined, we just need to re-observe on each slide
+  // The observer handles this automatically since all elements are observed at init
+
+  // ---- Animate delay bar segments on slide 2 entrance ----
+  document.querySelectorAll(".delay-segment").forEach(seg => {
+    const w = seg.style.width;
+    seg.style.width = "0";
+    seg.classList.add("animate-fill");
+    // Reset and re-trigger on slide activation
+    const observer = new MutationObserver(() => {
+      const parentSlide = seg.closest(".slide");
+      if (parentSlide && parentSlide.classList.contains("active")) {
+        seg.style.width = "0";
+        requestAnimationFrame(() => {
+          seg.style.width = w;
+        });
+      }
+    });
+    const parentSlide = seg.closest(".slide");
+    if (parentSlide) observer.observe(parentSlide, { attributes: true, attributeFilter: ["class"] });
+  });
+
 });
 
 // ============================================================
