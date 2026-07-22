@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XNexus-CrisisOS — Real-Time GIS Command Center</title>
+  <meta name="description" content="India's First Multi-Agent AI Operating System for Autonomous Disaster Response & Mitigation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet GIS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="command-center-body">
+
+  <!-- Top Navigation Header -->
+  <header class="cmd-header">
+    <div class="cmd-brand">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span class="brand-title">XNEXUS<span class="accent-cyan">.OS</span></span>
+      <span class="cmd-tag">AUTONOMOUS COMMAND CENTER</span>
+    </div>
+    <div class="cmd-status-strip">
+      <span class="status-pill status-online"><span class="dot-pulse"></span> 9 AGENTS ACTIVE</span>
+      <span class="status-pill status-live">WS: STREAMING</span>
+      <span class="status-pill status-geo">GEOLOCATION: WAYANAD, KERALA</span>
+    </div>
+  </header>
+
+  <!-- Main Grid Layout -->
+  <main class="cmd-layout">
+    
+    <!-- Left Column: Interactive GIS Map & Scenario Triggers -->
+    <section class="cmd-col-left">
+      <div class="glass-panel map-panel">
+        <div class="panel-header">
+          <span class="panel-title">📡 REAL-TIME GIS DISASTER MAP (INDIA)</span>
+          <div class="map-controls">
+            <button class="btn-sm btn-cyan active-layer" id="btn-layer-flood">Inundation Layer</button>
+            <button class="btn-sm" id="btn-layer-routes">Evacuation Routes</button>
+            <button class="btn-sm" id="btn-layer-hospitals">Hospitals</button>
+          </div>
+        </div>
+        <!-- Leaflet Map Container -->
+        <div id="gis-map" class="gis-map-container"></div>
+      </div>
+
+      <!-- Quick Scenario Triggers -->
+      <div class="glass-panel triggers-panel">
+        <div class="panel-header">
+          <span class="panel-title">⚡ AUTONOMOUS DISASTER SIMULATION TRIGGERS</span>
+        </div>
+        <div class="triggers-grid">
+          <button class="btn-trigger btn-red" id="trig-wayanad">
+            <span class="trig-name">Wayanad Landslides 2024</span>
+            <span class="trig-desc">IMD Rain Surge + Kabini Discharge Breach</span>
+          </button>
+          <button class="btn-trigger btn-purple" id="trig-kerala">
+            <span class="trig-name">Kerala Dam Outburst 2018</span>
+            <span class="trig-desc">35 Dam Sluice Openings + Inundation Graph</span>
+          </button>
+          <button class="btn-trigger btn-yellow" id="trig-uttarakhand">
+            <span class="trig-name">Uttarakhand Glacial Outburst</span>
+            <span class="trig-desc">Chamoli Slope Failure + Highway Blockages</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Telemetry Monitors, Agent Terminal & Impact Gauges -->
+    <section class="cmd-col-right">
+      
+      <!-- Telemetry Strip -->
+      <div class="glass-panel tele-panel">
+        <div class="panel-header"><span class="panel-title">📊 REAL-TIME TELEMETRY SENSORS</span></div>
+        <div class="tele-grid">
+          <div class="tele-card">
+            <span class="tele-label">IMD PRECIPITATION</span>
+            <span class="tele-val text-cyan" id="val-rain">55.4 mm/hr</span>
+            <span class="tele-sub">RED ALERT (>45.0)</span>
+          </div>
+          <div class="tele-card">
+            <span class="tele-label">CWC GAUGE LEVEL</span>
+            <span class="tele-val text-red" id="val-gauge">839.24 m</span>
+            <span class="tele-sub">DANGER: 840.00 m</span>
+          </div>
+          <div class="tele-card">
+            <span class="tele-label">GSI LANDSLIDE RISK</span>
+            <span class="tele-val text-yellow" id="val-risk">0.88</span>
+            <span class="tele-sub">CRITICAL (>0.75)</span>
+          </div>
+          <div class="tele-card">
+            <span class="tele-label">EXPOSED HOUSEHOLDS</span>
+            <span class="tele-val text-green" id="val-pop">840 HH</span>
+            <span class="tele-sub">3,520 POPULATION</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent Terminal Stream -->
+      <div class="glass-panel term-panel">
+        <div class="panel-header">
+          <span class="panel-title">🤖 MULTI-AGENT LOG TERMINAL (WEBSOCKET)</span>
+          <span class="term-status text-green">SYNCED</span>
+        </div>
+        <div class="term-body-box" id="term-logs">
+          <div class="term-line"><span class="t-ts">00:00:01</span><span class="t-tag tag-cyan">[WeatherIntel]</span><span class="t-msg">IMD Doppler Radar: Precipitation density recorded at 55.4 mm/hr in Wayanad.</span></div>
+          <div class="term-line"><span class="t-ts">00:00:02</span><span class="t-tag tag-red">[HydroMonitor]</span><span class="t-msg">CWC Station KBL-03 (Kabini): Level 839.24m (Danger: 840.00m). Status: WARNING_EXCEEDED.</span></div>
+          <div class="term-line"><span class="t-ts">00:00:03</span><span class="t-tag tag-yellow">[GeoRisk]</span><span class="t-msg">GSI Slope Stability: Combined Landslide Hazard Index calculated at 0.88 (CRITICAL).</span></div>
+          <div class="term-line"><span class="t-ts">00:00:04</span><span class="t-tag tag-purple">[RouteOptimizer]</span><span class="t-msg">MapmyIndia Routing: NH-76 blocked. Emergency Detour calculated: Route 3 East Bypass.</span></div>
+          <div class="term-line"><span class="t-ts">00:00:05</span><span class="t-tag tag-green">[Commander Core]</span><span class="t-msg">CONSENSUS REACHED: EVACUATION ORDERED. Dispatched NDMA Sachet Cell Broadcasts to 840 towers.</span></div>
+        </div>
+      </div>
+
+      <!-- Action Orders & Hospital Bed Triage -->
+      <div class="glass-panel action-panel">
+        <div class="panel-header"><span class="panel-title">🎖️ EXECUTED COMMAND ORDERS</span></div>
+        <div class="action-body">
+          <div class="action-card action-active" id="action-box">
+            <span class="action-status-tag text-red">ACTIVE DISPATCH ORDER</span>
+            <h4 id="action-title">EVACUATION ORDERED: Sector B-4 (Wayanad)</h4>
+            <p id="action-desc">Mobilize NDRF 4th Battalion. Reroute fleeing populations via Route 3 East Bypass. 25 ICU beds reserved at Kozhikode District Hospital.</p>
+            <div class="action-meta">
+              <span>⏱ Execution Time: <strong class="text-cyan" id="action-time">2.14 sec</strong></span>
+              <span>📱 NDMA Sachet: <strong class="text-green" id="action-sachet">BROADCAST_COMPLETE</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Leaflet GIS JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
