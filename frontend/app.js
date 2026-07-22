@@ -8,27 +8,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const map = L.map('gis-map', { zoomControl: false }).setView([wayanadLat, wayanadLng], 12);
   L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-  // Basemaps
-  const cartoDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
+  // Basemaps — Real High-Resolution OpenStreetMap & Esri Satellite Layers
+  const osmDark = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19,
+    className: 'dark-map-tiles'
   });
   
   const esriSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP',
+    maxZoom: 19
   });
 
-  cartoDark.addTo(map);
+  osmDark.addTo(map);
   let isSatellite = false;
 
   document.getElementById("btn-toggle-basemap").addEventListener("click", (e) => {
     isSatellite = !isSatellite;
     if (isSatellite) {
-      map.removeLayer(cartoDark);
+      map.removeLayer(osmDark);
       esriSatellite.addTo(map);
-      e.target.textContent = "🗺️ CartoDB Dark";
+      e.target.textContent = "🗺️ Tactical Dark";
     } else {
       map.removeLayer(esriSatellite);
-      cartoDark.addTo(map);
+      osmDark.addTo(map);
       e.target.textContent = "🗺️ Esri Satellite";
     }
   });
@@ -41,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await fetch("/api/live-radar-tiles");
       const data = await res.json();
       if (data.tile_template) {
-        radarTileLayer = L.tileLayer(data.tile_template, { opacity: 0.6, zIndex: 500 }).addTo(map);
+        radarTileLayer = L.tileLayer(data.tile_template, { opacity: 0.55, zIndex: 500, maxNativeZoom: 6, maxZoom: 19 }).addTo(map);
         document.getElementById("radar-status").textContent = `RADAR: LIVE (${data.latest_timestamp})`;
       }
     } catch (e) {
