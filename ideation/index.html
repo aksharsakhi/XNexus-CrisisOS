@@ -496,10 +496,53 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 9: WORKFLOW PIPELINE ==================== -->
+    <!-- ==================== SLIDE 9: CODE & API SPECS ==================== -->
     <section class="slide" data-index="8">
       <div class="slide-inner">
-        <div class="slide-badge">09 / SYSTEM FLOW</div>
+        <div class="slide-badge">09 / CODE & API SPECIFICATIONS</div>
+        <h2 class="slide-heading">Production Engineering<br><span class="heading-accent">Code & API Schemas</span></h2>
+        <p class="slide-subtext">Click tabs to inspect the actual Python FastMCP servers, LangGraph orchestrator graph, PostGIS spatial queries, and NDMA Sachet CAP XML alert payloads.</p>
+        
+        <div class="code-tabs-container">
+          <div class="code-tabs-header">
+            <button class="code-tab active" data-tab="mcp">Python FastMCP Server</button>
+            <button class="code-tab" data-tab="orchestrator">LangGraph Orchestrator</button>
+            <button class="code-tab" data-tab="postgis">PostGIS Spatial Query</button>
+            <button class="code-tab" data-tab="cap">NDMA Sachet CAP XML</button>
+          </div>
+
+          <div class="terminal-panel code-terminal">
+            <div class="terminal-bar">
+              <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
+              <span class="term-title" id="code-tab-title">ideation/mcp_cwc_server.py (Python FastMCP SDK)</span>
+            </div>
+            <div class="terminal-body code-body" id="code-tab-body">
+<pre><code><span class="t-tag tag-stream"># mcp_cwc_server.py — CWC River Telemetry MCP Server</span>
+<span class="t-tag tag-ok">from</span> fastmcp <span class="t-tag tag-ok">import</span> FastMCP
+
+mcp = FastMCP(<span class="t-msg">"CWC-Hydrology-Server"</span>)
+
+<span class="t-tag tag-warn">@mcp.tool()</span>
+<span class="t-tag tag-ok">async def</span> get_river_level(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
+    <span class="t-ts">"""Fetch current water level, warning limit & discharge rate for CWC river gauge."""</span>
+    <span class="t-tag tag-ok">return</span> CWC_DATABASE.get(station_id, {<span class="t-msg">"error"</span>: <span class="t-msg">"Station not found"</span>})
+
+<span class="t-tag tag-warn">@mcp.tool()</span>
+<span class="t-tag tag-ok">async def</span> check_danger_breach(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
+    <span class="t-ts">"""Calculate breach margin against statutory danger mark."""</span>
+    data = <span class="t-tag tag-ok">await</span> get_river_level(station_id)
+    current, danger = data[<span class="t-msg">"current_level"</span>], data[<span class="t-msg">"danger_mark"</span>]
+    <span class="t-tag tag-ok">return</span> {<span class="t-msg">"status"</span>: <span class="t-msg">"CRITICAL"</span> <span class="t-tag tag-ok">if</span> current >= danger <span class="t-tag tag-ok">else</span> <span class="t-msg">"NORMAL"</span>, <span class="t-msg">"breach_m"</span>: current - danger}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: WORKFLOW PIPELINE ==================== -->
+    <section class="slide" data-index="9">
+      <div class="slide-inner">
+        <div class="slide-badge">10 / SYSTEM FLOW</div>
         <h2 class="slide-heading">Telemetry to Execution<br><span class="heading-accent">Pipeline</span></h2>
         
         <div class="bento-grid cols-2 align-center">
@@ -524,10 +567,10 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 10: IMPACT ==================== -->
-    <section class="slide" data-index="9">
+    <!-- ==================== SLIDE 11: IMPACT ==================== -->
+    <section class="slide" data-index="10">
       <div class="slide-inner">
-        <div class="slide-badge">10 / PROJECTED IMPACT</div>
+        <div class="slide-badge">11 / PROJECTED IMPACT</div>
         <h2 class="slide-heading">Target Safety &<br><span class="heading-accent">Performance Metrics</span></h2>
         
         <div class="bento-grid cols-2 align-center">
@@ -567,10 +610,10 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 11: ROADMAP ==================== -->
-    <section class="slide" data-index="10">
+    <!-- ==================== SLIDE 12: ROADMAP ==================== -->
+    <section class="slide" data-index="11">
       <div class="slide-inner">
-        <div class="slide-badge">11 / DEVELOPMENT ROADMAP</div>
+        <div class="slide-badge">12 / DEVELOPMENT ROADMAP</div>
         <h2 class="slide-heading">Development<br><span class="heading-accent">Blueprint & Phases</span></h2>
         
         <div class="timeline">
