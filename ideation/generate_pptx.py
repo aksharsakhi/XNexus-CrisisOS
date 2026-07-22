@@ -541,12 +541,11 @@ GROUP BY census.block_id, census.district_name;"""
     p = tf_f.paragraphs[0]; p.text = "BUILT FOR INDIA. BY INDIA."; p.font.size = Pt(16); p.font.bold = True; p.font.color.rgb = COLOR_CYAN; p.alignment = PP_ALIGN.CENTER
     p2 = tf_f.add_paragraph(); p2.text = "Every API, telemetry stream, and mapping service is 100% Indian emergency infrastructure."; p2.font.size = Pt(11); p2.font.color.rgb = COLOR_DIM; p2.alignment = PP_ALIGN.CENTER
 
-    # Save outputs
-    out1 = "/Users/aksharsakhi/Documents/Files/VScode/APPS/XNexus-CrisisOS/ideation/XNexus_CrisisOS_Presentation.pptx"
-    out2 = "/Users/aksharsakhi/Documents/Files/VScode/APPS/XNexus-CrisisOS/XNexus_CrisisOS_Presentation.pptx"
-    prs.save(out1)
-    prs.save(out2)
-    print(f"Saved Master 15-Slide PPTX to {out1} and {out2}")
+    # Save output to ideation folder only
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    out_path = os.path.join(script_dir, "XNexus_CrisisOS_Presentation.pptx")
+    prs.save(out_path)
+    print(f"Saved Master 15-Slide PPTX to {out_path}")
 
 if __name__ == "__main__":
     build_presentation()
