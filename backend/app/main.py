@@ -23,6 +23,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static frontend & ideation directories
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+frontend_dir = os.path.join(base_dir, "frontend")
+ideation_dir = os.path.join(base_dir, "ideation")
+
+if os.path.exists(frontend_dir):
+    app.mount("/frontend", StaticFiles(directory=frontend_dir, html=True), name="frontend")
+if os.path.exists(ideation_dir):
+    app.mount("/ideation", StaticFiles(directory=ideation_dir, html=True), name="ideation")
+
 # WebSocket Connection Manager
 class ConnectionManager:
     def __init__(self):

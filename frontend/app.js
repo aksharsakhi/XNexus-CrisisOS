@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let radarTileLayer = null;
   async function initLiveRadar() {
     try {
-      const res = await fetch("http://localhost:8000/api/live-radar-tiles");
+      const res = await fetch("/api/live-radar-tiles");
       const data = await res.json();
       if (data.tile_template) {
         radarTileLayer = L.tileLayer(data.tile_template, { opacity: 0.6, zIndex: 500 }).addTo(map);
@@ -139,10 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ---- WebSocket Live Stream & Log System ----
+  // ---- WebSocket Live Telemetry Stream ----
   const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-  const wsHost = window.location.hostname || "localhost";
-  const wsUrl = `${wsProtocol}//${wsHost}:8000/ws/live-stream`;
+  const wsHost = window.location.host || "localhost:8000";
+  const wsUrl = `${wsProtocol}//${wsHost}/ws/live-stream`;
 
   const termLogs = document.getElementById("term-logs");
   const logEntries = [];
@@ -187,17 +187,26 @@ document.addEventListener("DOMContentLoaded", () => {
   agentFilter.addEventListener("change", filterLogs);
   searchInput.addEventListener("input", filterLogs);
 
-  try {
-    const ws = new WebSocket(wsUrl);
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.event === "INCIDENT_TRIGGERED") {
-        updateUI(data.state);
-      }
-    };
-  } catch (err) {
-    console.log("WebSocket running in standalone mode.");
+  function connectWebSocket() {
+    try {
+      const ws = new WebSocket(wsUrl);
+      ws.onopen = () => {
+        appendLog("System", "tag-cyan", "Connected to XNexus-CrisisOS Real-Time Telemetry Stream.");
+      };
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.event === "INCIDENT_TRIGGERED") {
+          updateUIFromAPI(data.state);
+        }
+      };
+      ws.onclose = () => {
+        setTimeout(connectWebSocket, 3000);
+      };
+    } catch (err) {
+      console.log("WebSocket connection pending...");
+    }
   }
+  connectWebSocket();
 
   // ---- CSV Exporter ----
   document.getElementById("btn-export-csv").addEventListener("click", () => {
@@ -261,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function triggerScenario(name) {
     appendLog("System", "tag-cyan", `Triggering autonomous multi-agent simulation scenario: ${name}...`);
     try {
-      const res = await fetch(`http://${wsHost}:8000/api/trigger-incident?scenario=${encodeURIComponent(name)}`, {
+      const res = await fetch(`/api/trigger-incident?scenario=${encodeURIComponent(name)}`, {
         method: "POST"
       });
       const data = await res.json();
@@ -269,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateUIFromAPI(data);
       }
     } catch (e) {
-      simulateOfflineExecution(name);
+      appendLog("System Error", "tag-red", `API Error: ${e.message}`);
     }
   }
 
