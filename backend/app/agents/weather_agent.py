@@ -1,7 +1,6 @@
-# backend/app/agents/weather_agent.py
-# WeatherIntel Agent Logic — Interacts with IMD Radar Telemetry
 from backend.app.agents.state import DisasterState
 from backend.app.mcp_servers.imd_server import IMD_RADAR_REGISTRY, calculate_rain_rate
+from backend.app.services.llm_service import gemini_llm
 
 async def run_weather_agent(state: DisasterState) -> dict:
     radar_data = IMD_RADAR_REGISTRY.get("IMD-RADAR-WYD", {
@@ -14,7 +13,9 @@ async def run_weather_agent(state: DisasterState) -> dict:
     rain_calc = await calculate_rain_rate(z_val)
     precip_rate = rain_calc["rain_rate_mm_hr"]
     
-    log = f"[WeatherIntel] IMD Doppler Radar (Z={z_val} dBZ) calculated precipitation density: {precip_rate} mm/hr."
+    # Real Gemini LLM reasoning synthesis
+    llm_reasoning = await gemini_llm.reason_weather_intel(precip_rate, z_val)
+    log = f"[WeatherIntel] {llm_reasoning}"
     
     return {
         "precipitation_rate_mm_hr": precip_rate,

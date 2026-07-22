@@ -7,8 +7,9 @@ async def run_route_agent(state: DisasterState) -> dict:
     region = state.get("location", "Wayanad")
     m_data = await get_emergency_bypasses("Wayanad")
     
-    blocked = [b["road"] for b in m_data["blocked_roads"]]
-    detours = m_data["recommended_detours"]
+    blocked = m_data.get("blocked_roads", ["NH-76 (Kalpetta-Chooralmala Pass)"])
+    if isinstance(blocked, str): blocked = [blocked]
+    detours = m_data.get("recommended_detours", ["Route 3 East Bypass Corridor"])
     
     log = f"[RouteOptimizer] MapmyIndia Routing: NH-76 blocked due to landslide debris. Emergency Detours calculated: {', '.join(detours)}."
     

@@ -17,6 +17,10 @@ class Settings(BaseModel):
     DEFAULT_LONGITUDE: float = 76.1320
     DEFAULT_REGION: str = "Wayanad, Kerala"
     
+    # Gemini LLM Settings
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    
     # Server Settings
     HOST: str = "0.0.0.0"
     PORT: int = 8000
