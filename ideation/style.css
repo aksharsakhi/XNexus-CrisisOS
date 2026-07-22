@@ -690,3 +690,71 @@ body.light-mode .tilt-card:hover {
 /* ---- Progress bar fill animation ---- */
 @keyframes fillWidth { from { width: 0; } }
 .animate-fill { animation: fillWidth 1.2s var(--ease) both; }
+
+/* ---- Stats Row (Slide 2 - big death/cost numbers) ---- */
+.stats-row {
+  display: flex; align-items: flex-start; justify-content: center; gap: 40px;
+  padding: 28px 0; margin-top: 8px;
+}
+.stat-block { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.stat-num {
+  font-family: var(--font-display); font-size: 3.5rem; font-weight: 800;
+  color: var(--red); line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 77, 106, 0.25);
+}
+body.light-mode .stat-num { text-shadow: none; }
+.stat-label {
+  font-family: var(--font-body); font-size: 0.88rem; font-weight: 500;
+  color: var(--text); margin-top: 8px; max-width: 220px; line-height: 1.4;
+}
+.stat-source {
+  font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim);
+  margin-top: 6px; opacity: 0.7;
+}
+.stat-divider { width: 1px; height: 60px; background: rgba(255, 255, 255, 0.06); margin-top: 10px; }
+body.light-mode .stat-divider { background: rgba(0, 0, 0, 0.06); }
+
+/* ---- Case Cards (Slide 2 - disaster case studies) ---- */
+.case-card { padding: 16px 20px; }
+.case-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.case-tag { padding: 4px 10px; border-radius: 4px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; }
+.case-deaths { font-family: var(--font-display); font-size: 0.85rem; font-weight: 800; color: var(--red); }
+.case-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.55; }
+.case-card p strong { color: var(--text-bright); }
+
+.gap-16 { gap: 16px; }
+
+/* ---- Compare Cards (Slide 3 - before/after) ---- */
+.compare-card { padding: 24px; }
+.compare-label {
+  font-family: var(--font-body); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+}
+.label-red { color: var(--red); }
+.label-green { color: var(--green); }
+
+.compare-steps { display: flex; flex-direction: column; gap: 4px; }
+.compare-step {
+  font-size: 0.88rem; color: var(--text); padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02); border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.compare-arrow {
+  font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim);
+  text-align: center; padding: 2px 0; opacity: 0.6;
+}
+.arrow-fast { color: var(--green); opacity: 1; font-weight: 600; }
+
+.compare-total {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+.total-red { color: var(--red); }
+.total-green { color: var(--green); }
+
+.compare-before { border-left: 3px solid var(--red); }
+.compare-after { border-left: 3px solid var(--green); }
+
+body.light-mode .compare-step { background: rgba(0, 0, 0, 0.02); border-color: rgba(0, 0, 0, 0.04); }
+body.light-mode .compare-total { border-top-color: rgba(0, 0, 0, 0.06); }

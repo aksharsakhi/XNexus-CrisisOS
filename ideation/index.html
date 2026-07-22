@@ -87,85 +87,108 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 2: PROBLEM ==================== -->
+    <!-- ==================== SLIDE 2: PROBLEM STATEMENT ==================== -->
     <section class="slide" data-index="1">
       <div class="slide-inner">
-        <div class="slide-badge">02 / PROBLEM SPACE</div>
-        <h2 class="slide-heading">India's Critical Response<br><span class="heading-accent">Bottlenecks</span></h2>
-        <p class="slide-subtext">Government agencies have advanced telemetry, but operate in absolute isolation. Coordination failures cost lives.</p>
+        <div class="slide-badge">02 / THE PROBLEM</div>
+        <h2 class="slide-heading">People Are Dying Because<br><span class="heading-accent">Agencies Can't Coordinate</span></h2>
         
-        <div class="bento-grid cols-2">
-          <!-- Left: Narrative -->
-          <div class="glass-card narrative-card">
-            <div class="card-icon-lg">⚠️</div>
-            <h3>The Operational Friction</h3>
-            <p>Heavy rain alerts from IMD and river heights from CWC sit on separate dashboards. Triggering evacuations requires manual, phone-based coordination between weather bureaus, district magistrates, hospitals, and NDRF squads.</p>
-            <div class="delay-bar">
-              <div class="delay-segment seg-red" style="width:40%">IMD Alert (45m)</div>
-              <div class="delay-segment seg-orange" style="width:35%">DM Office (35m)</div>
-              <div class="delay-segment seg-yellow" style="width:25%">NDRF Logs (22m)</div>
-            </div>
-            <div class="delay-total">TOTAL WARNING DELAY: <strong>100+ MINUTES</strong></div>
+        <!-- Big shocking stats row -->
+        <div class="stats-row">
+          <div class="stat-block">
+            <span class="stat-num" data-target="2000" data-suffix="+">0</span>
+            <span class="stat-label">Deaths per year from floods alone</span>
+            <span class="stat-source">— NDMA Annual Report, 2023</span>
           </div>
-          <!-- Right: Problem Cards -->
-          <div class="bento-grid cols-2 gap-sm">
-            <div class="glass-card mini-card">
-              <svg class="card-svg" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14l-4-4h3V8h2v4h3l-4 4z"/></svg>
-              <h4>Monsoon & Cyclone Friction</h4>
-              <p>IMD forecasts and CWC river heights delay early warning dispatches.</p>
-              <div class="mini-tags"><span class="tag tag-cyan">IMD</span><span class="tag tag-cyan">CWC</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat-block">
+            <span class="stat-num" data-target="86" data-suffix="B">$0</span>
+            <span class="stat-label">Economic loss from disasters (2000–2023)</span>
+            <span class="stat-source">— World Bank, 2024</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-block">
+            <span class="stat-num" data-target="75" data-suffix="%">0</span>
+            <span class="stat-label">Of India's districts are disaster-prone</span>
+            <span class="stat-source">— National Disaster Management Authority</span>
+          </div>
+        </div>
+
+        <div class="bento-grid cols-2" style="margin-top: 32px;">
+          <!-- Left: The real problem explained simply -->
+          <div class="glass-card narrative-card">
+            <h3>Why People Die: The Coordination Gap</h3>
+            <p>India has world-class weather radars (IMD), river monitoring (CWC), and rescue forces (NDRF). But these agencies <strong>operate in complete isolation</strong>. When a flood hits, the warning chain depends on <strong>manual phone calls</strong> between 5+ agencies — each with their own dashboard, their own protocol, and their own delays.</p>
+            <div class="delay-bar" style="margin-top: 20px;">
+              <div class="delay-segment seg-red" style="width:40%">IMD Alert (45m)</div>
+              <div class="delay-segment seg-orange" style="width:30%">DM Office (35m)</div>
+              <div class="delay-segment seg-yellow" style="width:30%">NDRF Deploy (22m)</div>
             </div>
-            <div class="glass-card mini-card">
-              <svg class="card-svg" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-              <h4>Agency Data Silos</h4>
-              <p>CWC gauges, GSI landslide indices, and NHAI highway feeds don't share telemetry.</p>
-              <div class="mini-tags"><span class="tag tag-purple">CWC</span><span class="tag tag-purple">GSI</span></div>
+            <div class="delay-total">TOTAL WARNING DELAY: <strong>100+ MINUTES</strong> — families get less than 10 min notice</div>
+          </div>
+          <!-- Right: Real disaster case studies -->
+          <div class="flex-col gap-16">
+            <div class="glass-card case-card">
+              <div class="case-header"><span class="case-tag tag-red">WAYANAD 2024</span><span class="case-deaths">400+ dead</span></div>
+              <p>Landslides struck at 2 AM. CWC had upstream data, GSI had soil alerts, IMD had rain warnings — <strong>none was shared in time</strong>. Entire villages were buried.</p>
             </div>
-            <div class="glass-card mini-card">
-              <svg class="card-svg" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2zM9 9h6v6H9z"/></svg>
-              <h4>Manual NDRF Logistics</h4>
-              <p>Human coordinators must query 108 emergency health databases and assign relief via voice calls.</p>
-              <div class="mini-tags"><span class="tag tag-red">NDRF</span><span class="tag tag-red">HEALTH</span></div>
+            <div class="glass-card case-card">
+              <div class="case-header"><span class="case-tag tag-red">KERALA 2018</span><span class="case-deaths">483 dead · 1.4M displaced</span></div>
+              <p>Worst floods in a century. Dam releases were uncoordinated with downstream evacuations. <strong>Rescue teams arrived 6+ hours late</strong> to worst-hit areas.</p>
             </div>
-            <div class="glass-card mini-card">
-              <svg class="card-svg" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="1.5"><path d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z"/></svg>
-              <h4>Static Warning Systems</h4>
-              <p>Standard sirens fail to route fleeing populations to safe highways in local languages.</p>
-              <div class="mini-tags"><span class="tag tag-yellow">SIREN</span><span class="tag tag-yellow">MOBILE</span></div>
+            <div class="glass-card case-card">
+              <div class="case-header"><span class="case-tag tag-red">UTTARAKHAND 2023</span><span class="case-deaths">100+ dead</span></div>
+              <p>Glacial lake outburst flood. NHAI roads blocked, hospitals full, no alternative routes communicated. <strong>Tourists stranded for 48 hours.</strong></p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 3: SOLUTION ==================== -->
+    <!-- ==================== SLIDE 3: PROPOSED SOLUTION ==================== -->
     <section class="slide" data-index="2">
       <div class="slide-inner">
-        <div class="slide-badge">03 / THE SOLUTION</div>
-        <h2 class="slide-heading">Introducing<br><span class="heading-accent">XNexus-CrisisOS</span></h2>
+        <div class="slide-badge">03 / PROPOSED SOLUTION</div>
+        <h2 class="slide-heading">What We're Building:<br><span class="heading-accent">XNexus-CrisisOS</span></h2>
+        <p class="slide-subtext">An AI operating system that <strong>replaces the manual phone-call chain</strong> with autonomous, real-time multi-agency coordination — cutting disaster response from 100+ minutes to under 5.</p>
         
-        <div class="bento-grid cols-2 align-center">
-          <div class="solution-visual">
-            <div class="sol-ring ring-outer"><div class="sol-ring ring-mid"><div class="sol-ring ring-inner">
-              <div class="sol-core">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              </div>
-            </div></div></div>
-            <div class="sol-orbit-label lbl-1">IMD FEEDS</div>
-            <div class="sol-orbit-label lbl-2">CWC GAUGES</div>
-            <div class="sol-orbit-label lbl-3">NDRF DISPATCH</div>
-            <div class="sol-orbit-label lbl-4">SACHET SMS</div>
-          </div>
-          <div class="flex-col gap-24">
-            <p class="slide-subtext" style="margin-bottom:0">A unified, autonomous command layer that <strong>ingests real Indian government telemetry</strong>, reasons across agencies, and executes coordinated disaster responses — without human bottlenecks.</p>
-            <div class="feature-list">
-              <div class="feat"><span class="feat-icon">⚡</span><span><strong>9 Specialized AI Agents</strong> — each mapped to a real Indian agency API</span></div>
-              <div class="feat"><span class="feat-icon">🛰️</span><span><strong>Real-Time Data Fusion</strong> — IMD Doppler, CWC river gauges, GSI soil indices</span></div>
-              <div class="feat"><span class="feat-icon">🗺️</span><span><strong>Autonomous Routing</strong> — MapmyIndia pathfinding around blocked roads</span></div>
-              <div class="feat"><span class="feat-icon">📱</span><span><strong>NDMA Sachet Protocol</strong> — multilingual cell broadcasts to local towers</span></div>
-              <div class="feat"><span class="feat-icon">🏥</span><span><strong>Hospital Triage Matrix</strong> — live ICU/trauma bed availability via 108 API</span></div>
+        <!-- Before / After Comparison -->
+        <div class="bento-grid cols-2" style="margin-bottom: 28px;">
+          <div class="glass-card compare-card compare-before">
+            <div class="compare-label label-red">TODAY (MANUAL)</div>
+            <div class="compare-steps">
+              <div class="compare-step">IMD detects heavy rain → calls DM office</div>
+              <div class="compare-arrow">↓ 45 min</div>
+              <div class="compare-step">DM office calls CWC for river data</div>
+              <div class="compare-arrow">↓ 35 min</div>
+              <div class="compare-step">NDRF dispatched via voice call</div>
+              <div class="compare-arrow">↓ 22 min</div>
+              <div class="compare-step">Sirens activated (no route guidance)</div>
             </div>
+            <div class="compare-total total-red">⏱ 100+ minutes total</div>
           </div>
+          <div class="glass-card compare-card compare-after">
+            <div class="compare-label label-green">WITH XNEXUS (AUTONOMOUS)</div>
+            <div class="compare-steps">
+              <div class="compare-step">All data streams ingested simultaneously</div>
+              <div class="compare-arrow arrow-fast">↓ instant</div>
+              <div class="compare-step">AI agents reason across all agencies at once</div>
+              <div class="compare-arrow arrow-fast">↓ 30 sec</div>
+              <div class="compare-step">NDRF auto-dispatched + routes calculated</div>
+              <div class="compare-arrow arrow-fast">↓ 30 sec</div>
+              <div class="compare-step">Multilingual cell broadcast with safe routes</div>
+            </div>
+            <div class="compare-total total-green">⚡ Under 5 minutes total</div>
+          </div>
+        </div>
+
+        <!-- What it actually does -->
+        <div class="feature-list">
+          <div class="feat"><span class="feat-icon">🧠</span><span><strong>9 AI Agents</strong> — each one connected to a real Indian government API (IMD, CWC, GSI, NHAI, NDMA, 108-Health)</span></div>
+          <div class="feat"><span class="feat-icon">🔗</span><span><strong>MCP Integration Protocol</strong> — plug-and-play connection to any government data source, no custom APIs needed</span></div>
+          <div class="feat"><span class="feat-icon">🗺️</span><span><strong>MapmyIndia Routing</strong> — automatically computes evacuation routes around blocked roads and landslide zones</span></div>
+          <div class="feat"><span class="feat-icon">📱</span><span><strong>NDMA Sachet Cell Broadcast</strong> — pushes multilingual warnings directly to cell towers, no app install required</span></div>
+          <div class="feat"><span class="feat-icon">🏥</span><span><strong>108 Hospital Triage</strong> — queries live ICU/trauma bed availability and auto-dispatches ambulances to nearest open hospital</span></div>
         </div>
       </div>
     </section>

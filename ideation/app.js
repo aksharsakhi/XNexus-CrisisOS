@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     dotsContainer.children[currentIndex].classList.add("active");
     currentNum.textContent = currentIndex + 1;
 
+    // Trigger stat counters when entering slide 2 (problem)
+    if (currentIndex === 1) animateStatCounters();
     // Trigger gauge animations when entering slide 9
     if (currentIndex === 8) animateGauges();
     // Trigger counters when entering slide 9
@@ -282,6 +284,28 @@ document.addEventListener("DOMContentLoaded", () => {
         const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.round(eased * target);
         el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  // ---- Animate Stat Counters (Slide 2 - problem stats) ----
+  let statsAnimated = false;
+  function animateStatCounters() {
+    if (statsAnimated) return;
+    statsAnimated = true;
+    document.querySelectorAll(".stat-num").forEach(el => {
+      const target = parseFloat(el.dataset.target) || 0;
+      const suffix = el.dataset.suffix || "";
+      const prefix = el.textContent.startsWith("$") ? "$" : "";
+      const duration = 2200;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        el.textContent = prefix + current.toLocaleString() + suffix;
         if (progress < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
