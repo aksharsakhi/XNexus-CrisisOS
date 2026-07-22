@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Trigger stat counters when entering slide 2 (problem)
     if (currentIndex === 1) animateStatCounters();
-    // Trigger gauge animations when entering slide 9
-    if (currentIndex === 8) animateGauges();
-    // Trigger counters when entering slide 9
-    if (currentIndex === 8) animateCounters();
+    // Trigger gauge animations when entering slide 10 (impact)
+    if (currentIndex === 9) animateGauges();
+    // Trigger counters when entering slide 10 (impact)
+    if (currentIndex === 9) animateCounters();
   }
 
   prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
