@@ -58,6 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Export PPTX Download Handler
+  const exportBtn = document.getElementById("export-btn");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", () => {
+      const a = document.createElement("a");
+      a.href = "XNexus_CrisisOS_Presentation.pptx";
+      a.download = "XNexus_CrisisOS_Presentation.pptx";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("POWERPOINT EXPORTED", "XNexus_CrisisOS_Presentation.pptx downloaded successfully.", "success");
+    });
+  }
+
   // Fullscreen
   fullscreenBtn.addEventListener("click", toggleFullscreen);
   function toggleFullscreen() {
