@@ -27,7 +27,8 @@ def main():
     if os.path.exists(ideation_path):
         app.mount("/ideation", StaticFiles(directory=ideation_path, html=True), name="ideation")
 
-    uvicorn.run("backend.app.main:app", host="0.0.0.0", port=8000, ws="websockets", reload=False)
+    import uvicorn
+    uvicorn.run("backend.app.main:app", host="0.0.0.0", port=8000, reload=False)
 
 if __name__ == "__main__":
     main()
