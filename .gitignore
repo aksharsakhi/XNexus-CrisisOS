@@ -15,3 +15,5 @@ venv/
 .env
 __pycache__/
 *.pyc
+# Media & Large Files
+*.mp4
