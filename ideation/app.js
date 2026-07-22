@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Trigger stat counters when entering slide 2 (problem)
     if (currentIndex === 1) animateStatCounters();
-    // Trigger gauge animations when entering slide 9
-    if (currentIndex === 8) animateGauges();
-    // Trigger counters when entering slide 9
-    if (currentIndex === 8) animateCounters();
+    // Trigger gauge animations when entering slide 11 (impact)
+    if (currentIndex === 10) animateGauges();
+    // Trigger counters when entering slide 11 (impact)
+    if (currentIndex === 10) animateCounters();
   }
 
   prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
@@ -57,6 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleFullscreen();
     }
   });
+
+  // Export PPTX Download Handler
+  const exportBtn = document.getElementById("export-btn");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", () => {
+      const a = document.createElement("a");
+      a.href = "XNexus_CrisisOS_Presentation.pptx";
+      a.download = "XNexus_CrisisOS_Presentation.pptx";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("POWERPOINT EXPORTED", "XNexus_CrisisOS_Presentation.pptx downloaded successfully.", "success");
+    });
+  }
 
   // Fullscreen
   fullscreenBtn.addEventListener("click", toggleFullscreen);
@@ -412,6 +426,98 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!data) return;
       terminalTitle.textContent = `AGENT TELEMETRY // ${data.title}`;
       typeTerminalLines(terminalBody, data.lines);
+    });
+  });
+
+  // ---- Interactive Code Tabs (Slide 9) ----
+  const codeTabButtons = document.querySelectorAll(".code-tab");
+  const codeTabTitle = document.getElementById("code-tab-title");
+  const codeTabBody = document.getElementById("code-tab-body");
+
+  const codeSnippets = {
+    mcp: {
+      title: "ideation/mcp_cwc_server.py (Python FastMCP SDK)",
+      code: `<pre><code><span class="t-tag tag-stream"># mcp_cwc_server.py — CWC River Telemetry MCP Server</span>
+<span class="t-tag tag-ok">from</span> fastmcp <span class="t-tag tag-ok">import</span> FastMCP
+
+mcp = FastMCP(<span class="t-msg">"CWC-Hydrology-Server"</span>)
+
+<span class="t-tag tag-warn">@mcp.tool()</span>
+<span class="t-tag tag-ok">async def</span> get_river_level(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
+    <span class="t-ts">"""Fetch current water level, warning limit & discharge rate for CWC river gauge."""</span>
+    <span class="t-tag tag-ok">return</span> CWC_DATABASE.get(station_id, {<span class="t-msg">"error"</span>: <span class="t-msg">"Station not found"</span>})
+
+<span class="t-tag tag-warn">@mcp.tool()</span>
+<span class="t-tag tag-ok">async def</span> check_danger_breach(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
+    <span class="t-ts">"""Calculate breach margin against statutory danger mark."""</span>
+    data = <span class="t-tag tag-ok">await</span> get_river_level(station_id)
+    current, danger = data[<span class="t-msg">"current_level"</span>], data[<span class="t-msg">"danger_mark"</span>]
+    <span class="t-tag tag-ok">return</span> {<span class="t-msg">"status"</span>: <span class="t-msg">"CRITICAL"</span> <span class="t-tag tag-ok">if</span> current >= danger <span class="t-tag tag-ok">else</span> <span class="t-msg">"NORMAL"</span>, <span class="t-msg">"breach_m"</span>: current - danger}</code></pre>`
+    },
+    orchestrator: {
+      title: "ideation/agent_orchestrator.py (LangGraph State Machine)",
+      code: `<pre><code><span class="t-tag tag-stream"># agent_orchestrator.py — LangGraph State Graph Core</span>
+<span class="t-tag tag-ok">class</span> <span class="t-msg">DisasterState</span>(TypedDict):
+    incident_active: <span class="t-msg">bool</span>
+    rainfall_rate_mm_hr: <span class="t-msg">float</span>
+    landslide_risk_score: <span class="t-msg">float</span>
+    recommended_action: <span class="t-msg">str</span>
+    evacuation_routes: <span class="t-msg">List[str]</span>
+
+<span class="t-tag tag-ok">def</span> commander_agent(state: DisasterState):
+    <span class="t-tag tag-ok">if</span> state[<span class="t-msg">"landslide_risk_score"</span>] > <span class="t-msg">0.75</span>:
+        <span class="t-tag tag-ok">return</span> {
+            <span class="t-msg">"recommended_action"</span>: <span class="t-msg">"EVACUATE Sector B-4 (Wayanad)"</span>,
+            <span class="t-msg">"evacuation_routes"</span>: [<span class="t-msg">"Route 3 East Bypass"</span>],
+            <span class="t-msg">"incident_active"</span>: <span class="t-msg">True</span>
+        }
+
+workflow = StateGraph(DisasterState)
+workflow.add_node(<span class="t-msg">"Weather"</span>, weather_agent)
+workflow.add_node(<span class="t-msg">"Flood"</span>, flood_agent)
+workflow.add_node(<span class="t-msg">"Commander"</span>, commander_agent)
+workflow.add_edge(<span class="t-msg">"Weather"</span>, <span class="t-msg">"Flood"</span>)
+workflow.add_edge(<span class="t-msg">"Flood"</span>, <span class="t-msg">"Commander"</span>)
+app = workflow.compile()</code></pre>`
+    },
+    postgis: {
+      title: "spatial_population_intersect.sql (PostgreSQL / PostGIS)",
+      code: `<pre><code><span class="t-tag tag-stream">-- Intersect CWC flood inundation shapefile with Census block demographics</span>
+<span class="t-tag tag-ok">SELECT</span> 
+    census_block.block_id,
+    census_block.district_name,
+    COUNT(census_block.household_id) <span class="t-tag tag-ok">AS</span> total_exposed_households,
+    SUM(census_block.population) <span class="t-tag tag-ok">AS</span> exposed_population
+<span class="t-tag tag-ok">FROM</span> census_demographics_spatial <span class="t-tag tag-ok">AS</span> census_block
+<span class="t-tag tag-ok">JOIN</span> cwc_flood_inundation_layer <span class="t-tag tag-ok">AS</span> flood_zone
+  <span class="t-tag tag-ok">ON</span> ST_Intersects(census_block.geom, flood_zone.geom)
+<span class="t-tag tag-ok">WHERE</span> flood_zone.station_code = <span class="t-msg">'CWC-KBL-03'</span>
+<span class="t-tag tag-ok">GROUP BY</span> census_block.block_id, census_block.district_name;</code></pre>`
+    },
+    cap: {
+      title: "sachet_cell_broadcast.xml (NDMA Sachet CAP v1.2 Protocol)",
+      code: `<pre><code><span class="t-tag tag-stream">&lt;!-- NDMA Sachet OASIS CAP v1.2 Cell Broadcast --&gt;</span>
+&lt;<span class="t-tag tag-ok">alert</span> xmlns="urn:oasis:names:tc:emergency:cap:1.2"&gt;
+  &lt;<span class="t-tag tag-warn">identifier</span>&gt;NDMA-KRL-WAYANAD-20260722-001&lt;/<span class="t-tag tag-warn">identifier</span>&gt;
+  &lt;<span class="t-tag tag-warn">info</span>&gt;
+    &lt;<span class="t-tag tag-ok">language</span>&gt;ml-IN&lt;/<span class="t-tag tag-ok">language</span>&gt; <span class="t-ts">&lt;!-- Malayalam --&gt;</span>
+    &lt;<span class="t-tag tag-ok">headline</span>&gt;വയനാട് മിന്നൽ പ്രളയ മുന്നറിയിപ്പ്&lt;/<span class="t-tag tag-ok">headline</span>&gt;
+    &lt;<span class="t-tag tag-ok">description</span>&gt;ഉടൻ തന്നെ ഉയർന്ന പ്രദേശങ്ങളിലേക്ക് മാറുക. റൂട്ട് 3 സ്വീകരിക്കുക.&lt;/<span class="t-tag tag-ok">description</span>&gt;
+    &lt;<span class="t-tag tag-ok">area</span>&gt;&lt;<span class="t-tag tag-warn">circle</span>&gt;11.6854,76.1320 5000&lt;/<span class="t-tag tag-warn">circle</span>&gt;&lt;/<span class="t-tag tag-ok">area</span>&gt;
+  &lt;/<span class="t-tag tag-warn">info</span>&gt;
+&lt;/<span class="t-tag tag-ok">alert</span>&gt;</code></pre>`
+    }
+  };
+
+  codeTabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      codeTabButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const tab = btn.dataset.tab;
+      const data = codeSnippets[tab];
+      if (!data) return;
+      codeTabTitle.textContent = data.title;
+      codeTabBody.innerHTML = data.code;
     });
   });
 

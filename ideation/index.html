@@ -414,10 +414,135 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 8: WORKFLOW ==================== -->
+    <!-- ==================== SLIDE 8: FULL DEVELOPMENT PROCESS ==================== -->
     <section class="slide" data-index="7">
       <div class="slide-inner">
-        <div class="slide-badge">08 / SYSTEM FLOW</div>
+        <div class="slide-badge">08 / DEVELOPMENT LIFECYCLE</div>
+        <h2 class="slide-heading">End-to-End Technical<br><span class="heading-accent">Development Process</span></h2>
+        <p class="slide-subtext">The complete engineering pipeline: from scraping raw Indian government telemetry to agentic state graph execution and automated cellular dispatch.</p>
+        
+        <div class="dev-process-grid">
+          <!-- Step 1 -->
+          <div class="glass-card dev-step-card">
+            <div class="dev-step-header">
+              <span class="dev-step-num">STEP 01</span>
+              <span class="dev-step-tag tag-cyan">INGESTION</span>
+            </div>
+            <h4>Raw Telemetry Scrapers</h4>
+            <p>Scrapes IMD Doppler radar $Z$-reflectivity, CWC station water gauges, and GSI soil moisture layers every 15 mins into JSON streams.</p>
+            <div class="dev-tech-stack">
+              <span class="tag tag-cyan">Python httpx</span>
+              <span class="tag tag-cyan">MOSDAC Satellite API</span>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="glass-card dev-step-card">
+            <div class="dev-step-header">
+              <span class="dev-step-num">STEP 02</span>
+              <span class="dev-step-tag tag-purple">MCP MESH</span>
+            </div>
+            <h4>FastMCP Tool Servers</h4>
+            <p>Wraps legacy government endpoints into standardized Model Context Protocol (MCP) tool servers exposing JSON-RPC schemas to LLMs.</p>
+            <div class="dev-tech-stack">
+              <span class="tag tag-purple">FastMCP SDK</span>
+              <span class="tag tag-purple">JSON-RPC 2.0</span>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="glass-card dev-step-card">
+            <div class="dev-step-header">
+              <span class="dev-step-num">STEP 03</span>
+              <span class="dev-step-tag tag-cyan">ORCHESTRATION</span>
+            </div>
+            <h4>LangGraph State Engine</h4>
+            <p>Constructs an event-driven `DisasterState` graph. Routes telemetry between Weather, Hydro, GeoRisk, and Commander agents.</p>
+            <div class="dev-tech-stack">
+              <span class="tag tag-cyan">LangGraph Core</span>
+              <span class="tag tag-cyan">Gemini 2.5 Pro</span>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="glass-card dev-step-card">
+            <div class="dev-step-header">
+              <span class="dev-step-num">STEP 04</span>
+              <span class="dev-step-tag tag-yellow">SPATIAL GIS</span>
+            </div>
+            <h4>PostGIS & Route Detours</h4>
+            <p>Intersects inundation polygons with Census block demographics and computes bypass paths via MapmyIndia around NHAI blockages.</p>
+            <div class="dev-tech-stack">
+              <span class="tag tag-yellow">PostgreSQL / PostGIS</span>
+              <span class="tag tag-yellow">Mappls Routing</span>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="glass-card dev-step-card dev-step-wide">
+            <div class="dev-step-header">
+              <span class="dev-step-num">STEP 05</span>
+              <span class="dev-step-tag tag-red">DISPATCH & DASHBOARD</span>
+            </div>
+            <h4>Action Dispatch & UI State Sync</h4>
+            <p>Dispatches CAP XML alerts to NDMA Sachet cell towers, queries 108 hospital ICU bed availability, and streams live telemetry to the command UI via WebSockets.</p>
+            <div class="dev-tech-stack">
+              <span class="tag tag-red">OASIS CAP v1.2</span>
+              <span class="tag tag-red">108 Health API</span>
+              <span class="tag tag-red">WebSockets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 9: CODE & API SPECS ==================== -->
+    <section class="slide" data-index="8">
+      <div class="slide-inner">
+        <div class="slide-badge">09 / CODE & API SPECIFICATIONS</div>
+        <h2 class="slide-heading">Production Engineering<br><span class="heading-accent">Code & API Schemas</span></h2>
+        <p class="slide-subtext">Click tabs to inspect the actual Python FastMCP servers, LangGraph orchestrator graph, PostGIS spatial queries, and NDMA Sachet CAP XML alert payloads.</p>
+        
+        <div class="code-tabs-container">
+          <div class="code-tabs-header">
+            <button class="code-tab active" data-tab="mcp">Python FastMCP Server</button>
+            <button class="code-tab" data-tab="orchestrator">LangGraph Orchestrator</button>
+            <button class="code-tab" data-tab="postgis">PostGIS Spatial Query</button>
+            <button class="code-tab" data-tab="cap">NDMA Sachet CAP XML</button>
+          </div>
+
+          <div class="terminal-panel code-terminal">
+            <div class="terminal-bar">
+              <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
+              <span class="term-title" id="code-tab-title">ideation/mcp_cwc_server.py (Python FastMCP SDK)</span>
+            </div>
+            <div class="terminal-body code-body" id="code-tab-body">
+<pre><code><span class="t-tag tag-stream"># mcp_cwc_server.py — CWC River Telemetry MCP Server</span>
+<span class="t-tag tag-ok">from</span> fastmcp <span class="t-tag tag-ok">import</span> FastMCP
+
+mcp = FastMCP(<span class="t-msg">"CWC-Hydrology-Server"</span>)
+
+<span class="t-tag tag-warn">@mcp.tool()</span>
+<span class="t-tag tag-ok">async def</span> get_river_level(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
+    <span class="t-ts">"""Fetch current water level, warning limit & discharge rate for CWC river gauge."""</span>
+    <span class="t-tag tag-ok">return</span> CWC_DATABASE.get(station_id, {<span class="t-msg">"error"</span>: <span class="t-msg">"Station not found"</span>})
+
+<span class="t-tag tag-warn">@mcp.tool()</span>
+<span class="t-tag tag-ok">async def</span> check_danger_breach(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
+    <span class="t-ts">"""Calculate breach margin against statutory danger mark."""</span>
+    data = <span class="t-tag tag-ok">await</span> get_river_level(station_id)
+    current, danger = data[<span class="t-msg">"current_level"</span>], data[<span class="t-msg">"danger_mark"</span>]
+    <span class="t-tag tag-ok">return</span> {<span class="t-msg">"status"</span>: <span class="t-msg">"CRITICAL"</span> <span class="t-tag tag-ok">if</span> current >= danger <span class="t-tag tag-ok">else</span> <span class="t-msg">"NORMAL"</span>, <span class="t-msg">"breach_m"</span>: current - danger}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: WORKFLOW PIPELINE ==================== -->
+    <section class="slide" data-index="9">
+      <div class="slide-inner">
+        <div class="slide-badge">10 / SYSTEM FLOW</div>
         <h2 class="slide-heading">Telemetry to Execution<br><span class="heading-accent">Pipeline</span></h2>
         
         <div class="bento-grid cols-2 align-center">
@@ -442,10 +567,10 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 9: IMPACT ==================== -->
-    <section class="slide" data-index="8">
+    <!-- ==================== SLIDE 11: IMPACT ==================== -->
+    <section class="slide" data-index="10">
       <div class="slide-inner">
-        <div class="slide-badge">09 / PROJECTED IMPACT</div>
+        <div class="slide-badge">11 / PROJECTED IMPACT</div>
         <h2 class="slide-heading">Target Safety &<br><span class="heading-accent">Performance Metrics</span></h2>
         
         <div class="bento-grid cols-2 align-center">
@@ -485,10 +610,10 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 10: ROADMAP ==================== -->
-    <section class="slide" data-index="9">
+    <!-- ==================== SLIDE 12: ROADMAP ==================== -->
+    <section class="slide" data-index="11">
       <div class="slide-inner">
-        <div class="slide-badge">10 / DEVELOPMENT ROADMAP</div>
+        <div class="slide-badge">12 / DEVELOPMENT ROADMAP</div>
         <h2 class="slide-heading">Development<br><span class="heading-accent">Blueprint & Phases</span></h2>
         
         <div class="timeline">
