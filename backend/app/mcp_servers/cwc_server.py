@@ -52,6 +52,7 @@ CWC_STATION_DATABASE = {
         "trend": "rising (+8.5 cm/hr)"
     }
 }
+from backend.app.services.live_ingestion import live_ingestor
 
 @mcp.tool()
 async def get_river_level(station_id: str) -> dict:
@@ -59,6 +60,14 @@ async def get_river_level(station_id: str) -> dict:
     data = CWC_STATION_DATABASE.get(station_id)
     if not data:
         return {"error": f"CWC Station '{station_id}' not found in active telemetry registry."}
+        
+    data = data.copy()
+    live_flood = await live_ingestor.fetch_open_meteo_flood(lat=data["latitude"], lon=data["longitude"])
+    
+    # Update discharge from live API
+    data["discharge_cusecs"] = live_flood.get("river_discharge_m3s", data["discharge_cusecs"])
+    data["live_api_status"] = live_flood.get("status")
+    
     return data
 
 @mcp.tool()

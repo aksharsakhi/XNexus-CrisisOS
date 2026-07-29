@@ -98,4 +98,44 @@ class LiveTelemetryIngestor:
             }
         ]
 
+    async def fetch_open_meteo_weather(self, lat: float, lon: float) -> Dict[str, Any]:
+        """Fetch live precipitation and soil moisture from Open-Meteo."""
+        url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=precipitation,rain,soil_moisture_0_to_1cm,soil_moisture_7_to_28cm"
+        try:
+            async with httpx.AsyncClient(timeout=5.0) as client:
+                res = await client.get(url)
+                if res.status_code == 200:
+                    data = res.json()
+                    current = data.get("current", {})
+                    return {
+                        "status": "LIVE",
+                        "precipitation_mm": current.get("precipitation", 0.0),
+                        "rain_mm": current.get("rain", 0.0),
+                        "soil_moisture_surface_pct": current.get("soil_moisture_0_to_1cm", 0.0) * 100,
+                        "soil_moisture_deep_pct": current.get("soil_moisture_7_to_28cm", 0.0) * 100,
+                    }
+        except Exception:
+            pass
+        return {"status": "FALLBACK", "precipitation_mm": 55.4, "rain_mm": 55.4, "soil_moisture_surface_pct": 88.0, "soil_moisture_deep_pct": 74.0}
+
+    async def fetch_open_meteo_flood(self, lat: float, lon: float) -> Dict[str, Any]:
+        """Fetch live river discharge from Open-Meteo Flood API."""
+        url = f"https://flood-api.open-meteo.com/v1/flood?latitude={lat}&longitude={lon}&daily=river_discharge"
+        try:
+            async with httpx.AsyncClient(timeout=5.0) as client:
+                res = await client.get(url)
+                if res.status_code == 200:
+                    data = res.json()
+                    daily = data.get("daily", {})
+                    discharge_list = daily.get("river_discharge", [])
+                    latest_discharge = discharge_list[-1] if discharge_list else 839.24
+                    if latest_discharge is None: latest_discharge = 839.24
+                    return {
+                        "status": "LIVE",
+                        "river_discharge_m3s": latest_discharge
+                    }
+        except Exception:
+            pass
+        return {"status": "FALLBACK", "river_discharge_m3s": 839.24}
+
 live_ingestor = LiveTelemetryIngestor()

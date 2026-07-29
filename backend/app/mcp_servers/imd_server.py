@@ -28,8 +28,17 @@ IMD_RADAR_REGISTRY = {
 async def get_radar_reflectivity(radar_id: str) -> dict:
     """Fetch Doppler radar Z-reflectivity and live RainViewer tile metadata."""
     live_radar = await live_ingestor.fetch_rainviewer_radar()
-    data = IMD_RADAR_REGISTRY.get(radar_id, IMD_RADAR_REGISTRY["IMD-RADAR-WYD"])
+    live_weather = await live_ingestor.fetch_open_meteo_weather(lat=11.6854, lon=76.1320)
+    
+    data = IMD_RADAR_REGISTRY.get(radar_id, IMD_RADAR_REGISTRY["IMD-RADAR-WYD"]).copy()
+    data["precipitation_density_mm_hr"] = live_weather.get("precipitation_mm", data["precipitation_density_mm_hr"])
+    if data["precipitation_density_mm_hr"] > 20:
+        data["warning_level"] = "RED_ALERT"
+    else:
+        data["warning_level"] = "NORMAL"
+        
     data["live_rainviewer_tile"] = live_radar.get("tile_template", "")
+    data["live_api_status"] = live_weather.get("status")
     return data
 
 @mcp.tool()

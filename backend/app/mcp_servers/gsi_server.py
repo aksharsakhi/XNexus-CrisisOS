@@ -34,11 +34,22 @@ GSI_SECTOR_DATABASE = {
 }
 
 from backend.app.services.physics_engine import physics_engine
+from backend.app.services.live_ingestion import live_ingestor
 
 @mcp.tool()
 async def get_landslide_susceptibility(sector_id: str) -> dict:
     """Fetch GSI soil shear saturation index, slope angle, and hazard classification."""
-    data = GSI_SECTOR_DATABASE.get(sector_id, GSI_SECTOR_DATABASE["GSI-SEC-WYD"])
+    data = GSI_SECTOR_DATABASE.get(sector_id, GSI_SECTOR_DATABASE["GSI-SEC-WYD"]).copy()
+    
+    # Override with live API data
+    live_weather = await live_ingestor.fetch_open_meteo_weather(lat=11.6854, lon=76.1320)
+    # Average the 0-1cm and 7-28cm soil moisture for deep shear index
+    live_soil_pct = (live_weather.get("soil_moisture_surface_pct", 0) + live_weather.get("soil_moisture_deep_pct", 0)) / 2.0
+    
+    if live_soil_pct > 0:
+        data["soil_moisture_shear_pct"] = live_soil_pct
+        
+    data["live_api_status"] = live_weather.get("status")
     return data
 
 @mcp.tool()
