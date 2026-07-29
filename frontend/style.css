@@ -1,32 +1,32 @@
-/* frontend/style.css — High-End Enterprise Aerospace HUD Command Center */
+/* frontend/style.css — High-End Sony Research Aesthetic */
 :root {
-  --bg: #030509;
-  --bg-gradient: radial-gradient(circle at 50% 0%, #0d1527 0%, #030509 70%);
-  --surface: rgba(12, 17, 31, 0.75);
-  --surface-hover: rgba(18, 26, 46, 0.85);
+  --bg: #000000;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #0a0a0a 0%, #000000 80%);
+  --surface: rgba(15, 15, 15, 0.4);
+  --surface-hover: rgba(25, 25, 25, 0.6);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-border-cyan: rgba(0, 240, 255, 0.25);
-  --glass-border-red: rgba(255, 77, 106, 0.3);
+  --glass-border-cyan: rgba(46, 104, 255, 0.3);
+  --glass-border-red: rgba(230, 0, 0, 0.3);
   
-  --cyan: #00f0ff;
-  --cyan-glow: rgba(0, 240, 255, 0.2);
-  --purple: #7b61ff;
-  --purple-glow: rgba(123, 97, 255, 0.2);
-  --red: #ff4d6a;
-  --red-glow: rgba(255, 77, 106, 0.2);
-  --green: #00e676;
-  --green-glow: rgba(0, 230, 118, 0.2);
-  --yellow: #ffc107;
-  --yellow-glow: rgba(255, 193, 7, 0.2);
+  --cyan: #2E68FF; /* Sony Corporate Blue */
+  --cyan-glow: rgba(46, 104, 255, 0.1);
+  --purple: #8C9EFF; /* Soft Tech Blue/Purple */
+  --purple-glow: rgba(140, 158, 255, 0.1);
+  --red: #E60000; /* Sharp Warning Red */
+  --red-glow: rgba(230, 0, 0, 0.1);
+  --green: #00D369; /* Crisp Success Green */
+  --green-glow: rgba(0, 211, 105, 0.1);
+  --yellow: #FFB800; /* Alert Orange/Yellow */
+  --yellow-glow: rgba(255, 184, 0, 0.1);
   
-  --text: #e8edf5;
-  --text-dim: #6b7a99;
-  --text-bright: #ffffff;
+  --text: #F5F5F5;
+  --text-dim: #888888;
+  --text-bright: #FFFFFF;
   
   --font-display: 'Sora', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,27 +45,25 @@ body.command-center-body {
 /* Header */
 .cmd-header {
   height: 60px;
-  background: rgba(8, 12, 22, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(40px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 0 24px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
-  z-index: 1000;
 }
-
-.cmd-brand { display: flex; align-items: center; gap: 12px; }
+.cmd-brand { display: flex; align-items: center; gap: 14px; }
 .brand-logo-hex {
   width: 36px; height: 36px; border-radius: 8px;
   background: rgba(0, 240, 255, 0.08); border: 1px solid var(--glass-border-cyan);
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 0 15px var(--cyan-glow);
 }
-.brand-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--text-bright); letter-spacing: 0.5px; }
-.accent-cyan { color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
-.brand-subtitle { font-family: var(--font-mono); font-size: 0.58rem; font-weight: 600; color: var(--text-dim); letter-spacing: 1px; display: block; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-bright); letter-spacing: 2px; }
+.accent-cyan { color: var(--cyan); font-weight: 300; text-shadow: 0 0 10px var(--cyan-glow); }
+.brand-subtitle { font-family: var(--font-mono); font-size: 0.6rem; font-weight: 400; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; display: block; }
 
 .cmd-status-strip { display: flex; align-items: center; gap: 12px; }
 .status-pill {
@@ -105,9 +103,9 @@ body.command-center-body {
 /* Glass Panel */
 .glass-panel {
   background: var(--surface);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
   display: flex; flex-direction: column;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
