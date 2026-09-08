@@ -22,25 +22,29 @@ from docx.oxml.ns import nsdecls, qn
 
 DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 
-# Color Palette (Corporate Sony Navy & Slate Theme)
-COLOR_SONY_NAVY = RGBColor(0x00, 0x2B, 0x49)       # #002B49 Primary brand
-COLOR_SLATE_BLUE = RGBColor(0x0F, 0x4C, 0x81)      # #0F4C81 Secondary header
-COLOR_TECH_CYAN = RGBColor(0x02, 0x84, 0xC7)       # #0284C7 Accent
-COLOR_BODY_TEXT = RGBColor(0x1E, 0x29, 0x3B)       # #1E293B Dark Charcoal Body
-COLOR_MUTED_TEXT = RGBColor(0x64, 0x74, 0x8B)      # #64748B Secondary Text
-COLOR_CRITICAL_RED = RGBColor(0xDC, 0x26, 0x26)    # #DC2626 Warning
-COLOR_SUCCESS_GREEN = RGBColor(0x05, 0x96, 0x69)   # #059669 Success
+# Color Palette (Formal Academic Monochrome Theme - Black Headings)
+COLOR_BLACK = RGBColor(0x00, 0x00, 0x00)           # Pure Black for all Headings, Titles & Captions
+COLOR_HEADING_BLACK = RGBColor(0x00, 0x00, 0x00)   # Pure Black
+COLOR_SONY_NAVY = RGBColor(0x00, 0x00, 0x00)       # Black (was Navy)
+COLOR_SLATE_BLUE = RGBColor(0x00, 0x00, 0x00)      # Black (was Slate Blue)
+COLOR_TECH_CYAN = RGBColor(0x00, 0x00, 0x00)       # Black (was Cyan)
+COLOR_BODY_TEXT = RGBColor(0x1F, 0x24, 0x2E)       # Formal Dark Neutral Body Text (#1F242E)
+COLOR_MUTED_TEXT = RGBColor(0x55, 0x5D, 0x6E)      # Academic Slate Grey (#555D6E)
+COLOR_CRITICAL_RED = RGBColor(0xB9, 0x1C, 0x1C)    # Subdued Academic Crimson (#B91C1C) for Case Studies
+COLOR_SUCCESS_GREEN = RGBColor(0x04, 0x78, 0x57)   # Formal Forest Green (#047857)
 
-HEX_SONY_NAVY = "002B49"
-HEX_SLATE_BLUE = "0F4C81"
-HEX_TECH_CYAN = "0284C7"
-HEX_LIGHT_BG = "F8FAFC"
-HEX_CALLOUT_BG = "F0F7FA"
-HEX_BORDER_MUTED = "CBD5E1"
+HEX_BLACK = "000000"
+HEX_DARK_CHARCOAL = "18181B"                         # Deep Charcoal / Black for Table Headers
+HEX_SONY_NAVY = "18181B"                             # Formal Dark Header Fill
+HEX_SLATE_BLUE = "27272A"                            # Formal Dark Border
+HEX_TECH_CYAN = "18181B"                             # Formal Dark Accent
+HEX_LIGHT_BG = "F9FAFB"                              # Clean Academic Off-White
+HEX_CALLOUT_BG = "F8FAFC"                            # Formal Light Grey Callout
+HEX_BORDER_MUTED = "D1D5DB"                          # Clean Light Grey Border
 HEX_CRITICAL_BG = "FEF2F2"
-HEX_CRITICAL_BORDER = "DC2626"
+HEX_CRITICAL_BORDER = "B91C1C"
 HEX_SUCCESS_BG = "F0FDF4"
-HEX_SUCCESS_BORDER = "059669"
+HEX_SUCCESS_BORDER = "047857"
 
 def set_cell_background(cell, fill_hex):
     tcPr = cell._element.get_or_add_tcPr()
@@ -95,7 +99,7 @@ def add_header_footer(doc):
         frun.font.size = Pt(7.5)
         frun.font.color.rgb = COLOR_MUTED_TEXT
 
-def create_callout_box(doc, title, content_paragraphs, border_color=HEX_SONY_NAVY, bg_color=HEX_CALLOUT_BG, icon="💡"):
+def create_callout_box(doc, title, content_paragraphs, border_color=HEX_DARK_CHARCOAL, bg_color=HEX_CALLOUT_BG, icon="💡"):
     table = doc.add_table(rows=1, cols=1)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     table.autofit = False
@@ -118,7 +122,7 @@ def create_callout_box(doc, title, content_paragraphs, border_color=HEX_SONY_NAV
     trun.font.name = 'Arial'
     trun.font.size = Pt(9.2)
     trun.font.bold = True
-    trun.font.color.rgb = RGBColor(int(border_color[:2], 16), int(border_color[2:4], 16), int(border_color[4:], 16))
+    trun.font.color.rgb = COLOR_BLACK
     
     for text in content_paragraphs:
         cp = cell.add_paragraph()
@@ -157,7 +161,7 @@ def add_heading_1(doc, text):
     run.font.name = 'Arial'
     run.font.size = Pt(13)
     run.font.bold = True
-    run.font.color.rgb = COLOR_SONY_NAVY
+    run.font.color.rgb = COLOR_BLACK
     return h
 
 def add_heading_2(doc, text):
@@ -169,7 +173,7 @@ def add_heading_2(doc, text):
     run.font.name = 'Arial'
     run.font.size = Pt(11)
     run.font.bold = True
-    run.font.color.rgb = COLOR_SLATE_BLUE
+    run.font.color.rgb = COLOR_BLACK
     return h
 
 def add_body_p(doc, text, bold_prefix="", italic_suffix="", space_after=3):
@@ -229,13 +233,13 @@ def add_figure(doc, img_path, caption_num, caption_title, caption_desc, width_in
     c_label.font.name = 'Arial'
     c_label.font.size = Pt(8.2)
     c_label.font.bold = True
-    c_label.font.color.rgb = COLOR_SONY_NAVY
+    c_label.font.color.rgb = COLOR_BLACK
     
     c_title = p_cap.add_run(f"{caption_title}. ")
     c_title.font.name = 'Arial'
     c_title.font.size = Pt(8.2)
     c_title.font.bold = True
-    c_title.font.color.rgb = COLOR_BODY_TEXT
+    c_title.font.color.rgb = COLOR_BLACK
     
     c_desc = p_cap.add_run(caption_desc)
     c_desc.font.name = 'Arial'
@@ -278,7 +282,7 @@ def build_proposal():
     r_tag.font.name = 'Arial'
     r_tag.font.size = Pt(8.5)
     r_tag.font.bold = True
-    r_tag.font.color.rgb = COLOR_SONY_NAVY
+    r_tag.font.color.rgb = COLOR_BLACK
     
     # Proposal Title
     p_title = doc.add_paragraph()
@@ -290,7 +294,7 @@ def build_proposal():
     r_title.font.name = 'Arial'
     r_title.font.size = Pt(16.5)
     r_title.font.bold = True
-    r_title.font.color.rgb = COLOR_SONY_NAVY
+    r_title.font.color.rgb = COLOR_BLACK
     
     # Subtitle
     p_sub = doc.add_paragraph()
@@ -302,7 +306,7 @@ def build_proposal():
     r_sub.font.name = 'Arial'
     r_sub.font.size = Pt(9.5)
     r_sub.font.italic = True
-    r_sub.font.color.rgb = COLOR_SLATE_BLUE
+    r_sub.font.color.rgb = COLOR_BODY_TEXT
     
     # Academic Author & Administrative Metadata Block (Sleek Masthead with Top & Bottom Rules)
     meta_table = doc.add_table(rows=3, cols=2)
@@ -336,8 +340,8 @@ def build_proposal():
             set_cell_background(cell, HEX_LIGHT_BG)
             set_cell_margins(cell, top=35, bottom=35, left=70, right=70)
             
-            top_bdr = ('single', '8', '0', HEX_SLATE_BLUE) if r_idx == 0 else None
-            bot_bdr = ('single', '8', '0', HEX_SLATE_BLUE) if r_idx == 2 else None
+            top_bdr = ('single', '8', '0', HEX_DARK_CHARCOAL) if r_idx == 0 else None
+            bot_bdr = ('single', '8', '0', HEX_DARK_CHARCOAL) if r_idx == 2 else None
             set_cell_borders(cell, top=top_bdr, bottom=bot_bdr, left=None, right=None)
             
             p = cell.paragraphs[0]
@@ -348,7 +352,7 @@ def build_proposal():
             rk.font.name = 'Arial'
             rk.font.size = Pt(8.2)
             rk.font.bold = True
-            rk.font.color.rgb = COLOR_SONY_NAVY
+            rk.font.color.rgb = COLOR_BLACK
             rv = p.add_run(v)
             rv.font.name = 'Arial'
             rv.font.size = Pt(8.2)
@@ -370,7 +374,7 @@ def build_proposal():
     r_abs_lbl.font.name = 'Arial'
     r_abs_lbl.font.size = Pt(9.0)
     r_abs_lbl.font.bold = True
-    r_abs_lbl.font.color.rgb = COLOR_SONY_NAVY
+    r_abs_lbl.font.color.rgb = COLOR_BLACK
     
     r_abs_txt = p_abs.add_run(
         "Catastrophic rapid-onset natural disasters—such as the July 2024 Wayanad landslides (400+ casualties) and flash floods—expose a fatal bottleneck in civil defense: passive dashboards and sequential manual phone trees introduce over 110 minutes of latency, entirely exhausting the life-critical \"Golden Hour.\" This research proposal presents XNexus, a decentralized neuro-symbolic multi-agent framework engineered to transform disaster intelligence into verified, sub-4.0-second actionable decision packages for human incident commanders. XNexus couples ultra-low-power Sony Spresense™ edge nodes equipped with 192 kHz acoustic sensing and on-chip cryptographic attestation (ECDSA) to detect pre-rupture debris rumblings directly at the edge. Live edge telemetry is serialized via FastMCP into an in-memory spatial state matrix, where a specialized multi-agent ensemble (Geotechnical, Hydrological, Meteorological) executes semantic reasoning. Crucially, candidate recommendations are passed through a deterministic symbolic safety logic gate enforcing mathematical physical constraints before pre-packaging verified OASIS CAP v1.2 cellular alerts and NDMA ICS-201 incident plans for One-Click Commander Authorization. This proposal details the empirical infrasound validation on Spresense hardware and an itemized 12-month deployment plan strictly bounded within US$100,000."
@@ -390,7 +394,7 @@ def build_proposal():
     r_kw_lbl.font.name = 'Arial'
     r_kw_lbl.font.size = Pt(8.5)
     r_kw_lbl.font.bold = True
-    r_kw_lbl.font.color.rgb = COLOR_SONY_NAVY
+    r_kw_lbl.font.color.rgb = COLOR_BLACK
     
     r_kw_txt = p_kw.add_run("Edge AI, Sony Spresense CXD5602, Neuro-Symbolic AI, High-Speed Decision Support, FastMCP, TinyML, Symbolic Safety Gate, Hardware Attestation, Climate Resilience.")
     r_kw_txt.font.name = 'Arial'
@@ -610,7 +614,7 @@ def build_proposal():
             set_cell_margins(cell, top=50, bottom=50, left=80, right=80)
             set_cell_borders(cell, bottom=('single', '4', '0', HEX_BORDER_MUTED))
             is_bold = (col_idx == 0 or col_idx == 3)
-            c_color = COLOR_SONY_NAVY if col_idx == 3 else (COLOR_CRITICAL_RED if col_idx == 1 else COLOR_BODY_TEXT)
+            c_color = COLOR_BLACK if col_idx == 3 else (COLOR_CRITICAL_RED if col_idx == 1 else COLOR_BODY_TEXT)
             format_cell_text(cell, val, bold=is_bold, color=c_color, size=7.8)
 
     # Latency Waterfall Diagram Figure 3
@@ -857,7 +861,7 @@ def build_proposal():
     set_cell_margins(tot_cell_1, top=60, bottom=60, left=70, right=70)
     
     format_cell_text(tot_cell_0, "TOTAL REQUESTED GRANT FUNDING (ALL-INCLUSIVE CEILING):", bold=True, color=RGBColor(0xFF, 0xFF, 0xFF), size=8.5, align=WD_ALIGN_PARAGRAPH.RIGHT)
-    format_cell_text(tot_cell_1, "$100,000 USD", bold=True, color=RGBColor(0x00, 0xF0, 0xFF), size=9.0, align=WD_ALIGN_PARAGRAPH.RIGHT)
+    format_cell_text(tot_cell_1, "$100,000 USD", bold=True, color=RGBColor(0xFF, 0xFF, 0xFF), size=9.0, align=WD_ALIGN_PARAGRAPH.RIGHT)
 
     # Budget Justification Paragraphs
     add_heading_2(doc, "12.1 Budget Justification & Cost Rationalization")
