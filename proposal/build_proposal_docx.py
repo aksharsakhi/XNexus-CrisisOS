@@ -315,16 +315,16 @@ def build_proposal():
     
     meta_grid = [
         [
-            ("Principal Investigator", "Prof. Lead Researcher, Ph.D. Supervisor & Director"),
+            ("Principal Investigator", "Faculty Principal Investigator, Ph.D. Supervisor"),
             ("Award Program", "Sony Faculty Innovation Award (US$100,000 Ceiling)")
         ],
         [
-            ("Academic Institution", "Dept. of Computer Science & Center for Geospatial Analytics"),
-            ("Selected Keyword", "Edge AI (Multi-Agent Systems, Intelligent Sensing)")
+            ("Academic Institution", "Amrita Vishwa Vidyapeetham, Coimbatore, Tamil Nadu, India"),
+            ("Department / Center", "Amrita School of Computing & Center for Wireless Networks (AmritaWNA)")
         ],
         [
-            ("Contact Information", "pi.research@institution.edu  |  +91-11-2659-XXXX (Country: +91)"),
-            ("Target Evaluation Region", "Western Ghats & Himalayan Flash-Flood Corridors")
+            ("Contact Information", "research@cb.amrita.edu  |  +91-422-268-5000 (Country: +91)"),
+            ("Target Evaluation Region", "Western Ghats Corridors (Wayanad, Idukki & Nilgiris)")
         ]
     ]
     
@@ -682,13 +682,13 @@ def build_proposal():
     
     phases = [
         ("Phase 1 (Months 1–3) — Hardware Benchmarking & Infrasound TinyML Modeling:",
-         "Procure 50 Sony Spresense development kits, extension boards, and 20 industrial IP68 field enclosures. In university geotechnical laboratory flume tanks, simulate varied landslide slurries and soil shear failures to record acoustic profiles, training our INT8-quantized TinyML model on Spresense's Cortex-M4F cores."),
+         "Procure 50 Sony Spresense development kits, extension boards, and 20 industrial IP68 field enclosures. In Amrita geotechnical laboratory flume tanks, simulate varied landslide slurries and soil shear failures to record acoustic profiles, training our INT8-quantized TinyML model on Spresense's Cortex-M4F cores."),
         ("Phase 2 (Months 4–6) — FastMCP Semantic Protocol Mesh & Hardware Root-of-Trust:",
          "Implement standard FastMCP tool servers interfacing with Spresense hardware attestation libraries and simulated IMD/CWC telemetry feeds. Benchmark serialization latency, achieving <15 ms parsing overhead under 10,000 concurrent event vectors with 100% cryptographic signature verification (ECDSA signing at 3.2 ms, verification at 1.6 ms)."),
         ("Phase 3 (Months 7–9) — Neuro-Symbolic Agent Orchestration & Formal Safety Gate Red-Teaming:",
          "Conduct extensive adversarial testing. Invert sensor feeds, inject corrupted inputs, and provoke LLM hallucinations to stress-test the symbolic gate. Verify that Phi_safe deterministically rejects 100% of invalid proposals. Contingency Protocol: If adversarial tests uncover an unhandled edge case, the system deterministically defaults to an immutable Geotechnical Finite State Machine (FSM) enforcing maximal conservative buffer corridors while domain invariants are refined within 2 weeks."),
         ("Phase 4 (Months 10–12) — Full-Scale Digital Twin Simulation & Monitored Slope Pilot:",
-         "Deploy a 10-node Sony Spresense IP68 array in a monitored hazard corridor in the Western Ghats (Kerala). Execute real-time digital twin disaster replays using historical telemetry from the 2024 Wayanad catastrophe, verifying that recommendation synthesis and command packaging complete in <3.8 seconds.")
+         "Deploy a 10-node Sony Spresense IP68 array in a monitored hazard corridor in the Western Ghats (accessible from Amrita Coimbatore campus). Execute real-time digital twin disaster replays using historical telemetry from the 2024 Wayanad catastrophe, verifying that recommendation synthesis and command packaging complete in <3.8 seconds.")
     ]
     for p_title, p_desc in phases:
         add_bullet_p(doc, p_title, p_desc)
@@ -832,7 +832,7 @@ def build_proposal():
         ("2. Hardware & Sensing Equipment", "Local Edge GPU Workstation for Agent Compilation & Stress Testing", "Dedicated dual-GPU testing rig", "$3,000"),
         ("3. Cloud, APIs & Simulation", "Telemetry Ingestion Infrastructure (Open-Meteo Radar, Redis Spatial Memory)", "12 Months Compute & Storage", "$9,000"),
         ("4. Travel & Field Dissemination", "Field deployment trips to Western Ghats; Presentation at major IEEE/ACM conference", "2 Field trips + 1 Int'l Conference", "$8,000"),
-        ("5. Institutional Overhead", "University Indirect Costs (Facilities, lab space, administration) — Negotiated Rate", "Institutional Agreement (11.11% of direct)", "$10,000"),
+        ("5. Institutional Overhead", "Amrita Vishwa Vidyapeetham Indirect Costs (Facilities, lab space, administration)", "Institutional Agreement (11.11% of direct)", "$10,000"),
     ]
     
     for row_idx, row_vals in enumerate(b_items, start=1):
@@ -883,7 +883,7 @@ def build_proposal():
     )
     add_bullet_p(doc, 
         "Institutional Overhead ($10,000):",
-        "University indirect costs negotiated at 11.11% of direct costs to ensure total requested funding equals exactly the $100,000 USD Sony Faculty Innovation Award ceiling."
+        "Amrita Vishwa Vidyapeetham indirect costs negotiated at 11.11% of direct costs to ensure total requested funding equals exactly the $100,000 USD Sony Faculty Innovation Award ceiling."
     )
 
     out_file = os.path.join(DIR_PATH, "XNexus_Sony_Proposal.docx")

@@ -8,12 +8,13 @@
 ### Academic & Administrative Metadata
 | Field | Specification |
 | :--- | :--- |
-| **Principal Investigator** | Prof. Lead Researcher, Ph.D. Supervisor & Director |
-| **Academic Institution** | Dept. of Computer Science & Center for Geospatial Analytics |
-| **Contact Information** | pi.research@institution.edu \| +91-11-2659-XXXX (Country Code: +91) |
+| **Principal Investigator** | Faculty Principal Investigator, Ph.D. Supervisor |
+| **Academic Institution** | Amrita Vishwa Vidyapeetham, Coimbatore, Tamil Nadu, India |
+| **Department / Center** | Amrita School of Computing & Center for Wireless Networks (AmritaWNA) |
+| **Contact Information** | research@cb.amrita.edu \| +91-422-268-5000 (Country Code: +91) |
 | **Award Program Track** | Sony Faculty Innovation Award (Funding Limit: US$100,000) |
 | **Primary Sony Keyword** | **Edge AI** (Multi-Agent Systems, Intelligent Sensing, Climate Resilience) |
-| **Target Evaluation Region** | South Asia Severe Hazard Corridors (Western Ghats & Himalayan Flash-Flood Corridors) |
+| **Target Evaluation Region** | Western Ghats Hazard Corridors (Wayanad, Idukki, Nilgiris & Anamalai Ranges) |
 
 ---
 
@@ -143,10 +144,10 @@ When $S_{\text{rumble}}(t) > \theta_{\text{hazard}}$ for 3 consecutive windows, 
 
 ## 7. Research Methodology & Focused Experimental Validation Protocol
 The 12-month research project is sharply focused on validating the Spresense edge sensing and neuro-symbolic reasoning pipeline across four empirical phases:
-- **Phase 1 (Months 1–3) — Hardware Benchmarking & Infrasound TinyML Modeling:** Procure 50 Sony Spresense development kits, extension boards, and 20 industrial IP68 field enclosures. In university geotechnical laboratory flume tanks, simulate varied landslide slurries and soil shear failures to record acoustic profiles, training our INT8-quantized TinyML model on Spresense's Cortex-M4F cores.
+- **Phase 1 (Months 1–3) — Hardware Benchmarking & Infrasound TinyML Modeling:** Procure 50 Sony Spresense development kits, extension boards, and 20 industrial IP68 field enclosures. In Amrita geotechnical laboratory flume tanks, simulate varied landslide slurries and soil shear failures to record acoustic profiles, training our INT8-quantized TinyML model on Spresense's Cortex-M4F cores.
 - **Phase 2 (Months 4–6) — FastMCP Semantic Protocol Mesh & Hardware Root-of-Trust:** Implement standard FastMCP tool servers interfacing with Spresense hardware attestation libraries and simulated IMD/CWC telemetry feeds. Benchmark serialization latency, achieving <15 ms parsing overhead under 10,000 concurrent event vectors with 100% cryptographic signature verification (ECDSA signing at 3.2 ms, verification at 1.6 ms).
 - **Phase 3 (Months 7–9) — Neuro-Symbolic Agent Orchestration & Formal Safety Gate Red-Teaming:** Conduct extensive adversarial testing. Invert sensor feeds, inject corrupted inputs, and provoke LLM hallucinations to stress-test the symbolic gate. Verify that $\Phi_{\text{safe}}$ deterministically rejects 100% of invalid proposals. *Contingency Protocol:* If adversarial tests uncover an unhandled edge case, the system deterministically defaults to an immutable Geotechnical Finite State Machine (FSM) enforcing maximal conservative buffer corridors while domain invariants are refined within a 2-week sprint.
-- **Phase 4 (Months 10–12) — Full-Scale Digital Twin Simulation & Monitored Slope Pilot:** Deploy a 10-node Sony Spresense IP68 array in a monitored hazard corridor in the Western Ghats (Kerala). Execute real-time digital twin disaster replays using historical telemetry from the 2024 Wayanad catastrophe, verifying that recommendation synthesis and command packaging complete in <3.8 seconds.
+- **Phase 4 (Months 10–12) — Full-Scale Digital Twin Simulation & Monitored Slope Pilot:** Deploy a 10-node Sony Spresense IP68 array in a monitored hazard corridor in the Western Ghats (accessible from Amrita Coimbatore campus). Execute real-time digital twin disaster replays using historical telemetry from the 2024 Wayanad catastrophe, verifying that recommendation synthesis and command packaging complete in <3.8 seconds.
 
 ---
 
@@ -208,7 +209,7 @@ The following itemized budget is fully compliant with the guidelines of the Sony
 | **2. Hardware & Sensing Equipment** | Local Edge GPU Workstation for Agent Compilation & Stress Testing | Dedicated dual-GPU testing rig | $3,000 |
 | **3. Cloud, APIs & Simulation** | Telemetry Ingestion Infrastructure (Open-Meteo Radar, Redis Spatial Memory) | 12 Months Compute & Storage | $9,000 |
 | **4. Travel & Field Dissemination** | Field deployment trips to Western Ghats; Presentation at major IEEE/ACM conference | 2 Field trips + 1 Int'l Conference | $8,000 |
-| **5. Institutional Overhead** | University Indirect Costs (Facilities, lab space, administration) — Negotiated Rate | Institutional Agreement (11.11% of direct) | $10,000 |
+| **5. Institutional Overhead** | Amrita Vishwa Vidyapeetham Indirect Costs (Facilities, lab space, administration) | Institutional Agreement (11.11% of direct) | $10,000 |
 | **TOTAL REQUESTED GRANT FUNDING** | **All-inclusive funding envelope for 1-year research** | **Faculty Innovation Award Limit** | **$100,000 USD** |
 
 ### 12.1 Budget Justification & Cost Rationalization
@@ -216,4 +217,4 @@ The following itemized budget is fully compliant with the guidelines of the Sony
 - **Hardware & Industrial Field Sensing Equipment ($25,000):** Comprises $9,000 for 50 Sony Spresense development kits (Main + Extension + Sub-GHz boards), $13,000 for 20 field-hardened IP68 NEMA industrial enclosures equipped with stainless-steel ground anchoring spikes, waterproof cable glands, ruggedized piezoelectric geophones (-12 dB/Hz infrasound), and solar-supercapacitor buffers rated for >=120 hours (5 days) of zero-sunlight autonomy to endure heavy rainforest canopy shading and continuous monsoon cloud cover, plus $3,000 for a local dual-GPU edge workstation for model compilation.
 - **Cloud, APIs & Simulation ($9,000):** Supports real-time radar ingestion pipelines, high-throughput in-memory Redis spatial vector memory, and digital twin simulation compute resources.
 - **Travel & Presentation ($8,000):** Funds two field calibration and deployment trips to high-hazard landslide corridors in the Western Ghats (Kerala) and travel for the PI and Ph.D. student to present peer-reviewed results at a premier IEEE/ACM conference.
-- **Institutional Overhead ($10,000):** University indirect costs negotiated at 11.11% of direct costs to ensure total requested funding equals exactly the $100,000 USD Sony Faculty Innovation Award ceiling.
+- **Institutional Overhead ($10,000):** Amrita Vishwa Vidyapeetham indirect costs negotiated at 11.11% of direct costs to ensure total requested funding equals exactly the $100,000 USD Sony Faculty Innovation Award ceiling.
