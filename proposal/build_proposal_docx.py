@@ -286,9 +286,9 @@ def build_proposal():
     p_title.paragraph_format.space_after = Pt(3)
     p_title.paragraph_format.line_spacing = 1.12
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_title = p_title.add_run("XNexus: Deterministic Semantic Multi-Agent Intelligence for Autonomous Disaster Response")
+    r_title = p_title.add_run("XNexus: A Neuro-Symbolic Multi-Agent Framework for Rapid Disaster Decision Support")
     r_title.font.name = 'Arial'
-    r_title.font.size = Pt(17)
+    r_title.font.size = Pt(16.5)
     r_title.font.bold = True
     r_title.font.color.rgb = COLOR_SONY_NAVY
     
@@ -298,7 +298,7 @@ def build_proposal():
     p_sub.paragraph_format.space_after = Pt(8)
     p_sub.paragraph_format.line_spacing = 1.12
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_sub = p_sub.add_run("A Resilient Edge-AI Architecture Integrating Sony Spresense™ Sensing Microcontrollers to Accelerate Emergency Disaster Action from 110+ Minutes to Under 4.0 Seconds")
+    r_sub = p_sub.add_run("Integrating Sony Spresense™ Infrasound Sensing Microcontrollers with Formal Safety Logic to Accelerate Emergency Action from 110+ Minutes to Under 4.0 Seconds")
     r_sub.font.name = 'Arial'
     r_sub.font.size = Pt(9.5)
     r_sub.font.italic = True
@@ -373,7 +373,7 @@ def build_proposal():
     r_abs_lbl.font.color.rgb = COLOR_SONY_NAVY
     
     r_abs_txt = p_abs.add_run(
-        "Catastrophic rapid-onset natural disasters—such as the July 2024 Wayanad landslides (400+ casualties) and flash floods—expose a fatal vulnerability in civil defense: passive dashboards and manual phone trees introduce over 110 minutes of latency, entirely exhausting the life-critical \"Golden Hour.\" This research proposal presents XNexus, a decentralized multi-agent operating architecture engineered to transition disaster intelligence from passive observation into verified, sub-4.0-second autonomous actuation. XNexus integrates ultra-low-power Sony Spresense™ edge microcontrollers equipped with high-resolution 192 kHz acoustic sensing to detect incoming debris flows and pre-rupture subterranean rumblings directly at the edge. Live edge telemetry is serialized via FastMCP into a shared vector state matrix, where a LangGraph multi-agent ensemble (Geotechnical, Hydrological, Meteorological) executes deterministic conflict resolution via a Safety-Max Commander Arbitrator. This proposal outlines the theoretical formulation, empirical edge validation on Spresense hardware, multi-agency data bus architecture, and a 12-month deployment plan strictly bounded within the US$100,000 budget."
+        "Catastrophic rapid-onset natural disasters—such as the July 2024 Wayanad landslides (400+ casualties) and flash floods—expose a fatal bottleneck in civil defense: passive dashboards and sequential manual phone trees introduce over 110 minutes of latency, entirely exhausting the life-critical \"Golden Hour.\" This research proposal presents XNexus, a decentralized neuro-symbolic multi-agent framework engineered to transform disaster intelligence into verified, sub-4.0-second actionable decision packages for human incident commanders. XNexus couples ultra-low-power Sony Spresense™ edge nodes equipped with 192 kHz acoustic sensing and on-chip cryptographic attestation (ECDSA) to detect pre-rupture debris rumblings directly at the edge. Live edge telemetry is serialized via FastMCP into an in-memory spatial state matrix, where a specialized multi-agent ensemble (Geotechnical, Hydrological, Meteorological) executes semantic reasoning. Crucially, candidate recommendations are passed through a deterministic symbolic safety logic gate enforcing mathematical physical constraints before pre-packaging verified OASIS CAP v1.2 cellular alerts and NDMA ICS-201 incident plans for One-Click Commander Authorization. This proposal details the empirical infrasound validation on Spresense hardware and an itemized 12-month deployment plan strictly bounded within US$100,000."
     )
     r_abs_txt.font.name = 'Arial'
     r_abs_txt.font.size = Pt(9.0)
@@ -392,7 +392,7 @@ def build_proposal():
     r_kw_lbl.font.bold = True
     r_kw_lbl.font.color.rgb = COLOR_SONY_NAVY
     
-    r_kw_txt = p_kw.add_run("Edge AI, Sony Spresense CXD5602, Multi-Agent Systems, Autonomous Disaster Response, FastMCP, TinyML, LangGraph, Deterministic Arbitration, Climate Adaptation.")
+    r_kw_txt = p_kw.add_run("Edge AI, Sony Spresense CXD5602, Neuro-Symbolic AI, High-Speed Decision Support, FastMCP, TinyML, Symbolic Safety Gate, Hardware Attestation, Climate Resilience.")
     r_kw_txt.font.name = 'Arial'
     r_kw_txt.font.size = Pt(8.5)
     r_kw_txt.font.italic = True
@@ -421,7 +421,7 @@ def build_proposal():
         content_paragraphs=[
             "Event Timeline: On July 30, 2024, catastrophic debris flows struck the Meppadi panchayat in Wayanad, Kerala, India, between 1:00 AM and 4:00 AM, demolishing entire villages (Chooralmala, Mundakkai) and killing over 400 civilians.",
             "The Fatal Bottleneck: Over 570 mm of rainfall fell within 48 hours. Official warnings were gated behind sequential administrative hierarchy. Because the debris flows ruptured during the night (3:00 AM), human phone trees were completely dormant. It took more than 110 minutes between the physical slope failure and the mobilization of downstream civil evacuation.",
-            "By the time rescue forces were dispatched, the main bridge at Chooralmala was washed out, cutting off the evacuation route. An autonomous edge system triggering immediate acoustic warnings and dynamic route detours would have saved hundreds of lives during the critical golden hour."
+            "By the time rescue forces were dispatched, the main bridge at Chooralmala was washed out, cutting off the evacuation route. An edge system detecting pre-rupture acoustic rumblings and instantly delivering a verified, one-click incident command package would have saved hundreds of lives during the critical golden hour."
         ],
         border_color=HEX_CRITICAL_BORDER,
         bg_color=HEX_CRITICAL_BG,
@@ -444,74 +444,74 @@ def build_proposal():
     # SECTION 2: RESEARCH QUESTIONS, OBJECTIVES & CONTRIBUTIONS
     # ==========================================
     add_heading_1(doc, "2. Formal Research Questions, Core Objectives & Scientific Contributions")
-    add_body_p(doc, "To resolve these vulnerabilities, this proposal formalizes three core research questions (RQs) spanning edge computing, semantic protocols, and multi-agent artificial intelligence:")
+    add_body_p(doc, "To resolve these vulnerabilities while respecting the stochastic limits of artificial intelligence and civil defense regulations, this proposal formalizes three core research questions (RQs):")
     
     add_bullet_p(doc, 
-        "Research Question 1 (RQ1 - Semantic Ingest & Edge Fusion):",
-        "How can heterogeneous, asynchronous telemetry from low-power edge microcontrollers (Sony Spresense™), radar reflectivity matrices (IMD Doppler), and river stage gauges (CWC) be unified in real time into a standardized, sub-millisecond semantic vector space without data loss?"
+        "Research Question 1 (RQ1 - Edge Infrasound & Hardware Attestation):",
+        "How can ultra-low-power microcontrollers (Sony Spresense™) capture 10–120 Hz pre-rupture acoustic rumblings with on-device INT8 TinyML, while cryptographically signing telemetry at the hardware level (ECDSA) to guarantee endpoint data genuineness against tampering or destruction?"
     )
     add_bullet_p(doc, 
-        "Research Question 2 (RQ2 - Multi-Agent Conflict Arbitration under Uncertainty):",
-        "How can specialized, autonomous AI agents representing competing physical domains (e.g., Geotechnical road closure vs. Hydrological floodway evacuation) achieve mathematically deterministic consensus in under 1.0 second when sensory inputs are partially corrupted or contradictory?"
+        "Research Question 2 (RQ2 - Neuro-Symbolic Safety Gate & Deterministic Invariant Enforcement):",
+        "How can inherently stochastic multi-agent LLM ensembles (Geo, Hydro, Weather) be paired with a traditional, hard-coded symbolic logic gate to guarantee 100% adherence to physical life-safety invariants under noisy or corrupted inputs?"
     )
     add_bullet_p(doc, 
-        "Research Question 3 (RQ3 - Mathematical Trust, Explainable AI & Autonomous Execution):",
-        "How can an autonomous operating system generate immutable, human-verifiable Explainable AI (XAI) audit logs and maintain guaranteed safety boundaries while dispatching life-critical actuators (OASIS CAP v1.2 cellular alerts, dynamic GPS rerouting, ambulance reservations) without human-in-the-loop delay?"
+        "Research Question 3 (RQ3 - Rapid Human-in-the-Loop Decision Support):",
+        "How can heterogeneous environmental telemetry be synthesized in <4.0 seconds into a pre-packaged, legally compliant incident action report (NDMA ICS-201 and OASIS CAP v1.2) that an Incident Commander can execute with a single click?"
     )
 
     add_heading_2(doc, "2.1 Three Core Research Objectives & 12-Month Deliverables")
     add_bullet_p(doc, 
-        "1. Sub-Watt Acoustic Edge AI on Sony Spresense™:",
-        "Deploy Sony Spresense CXD5602/CXD5247 nodes with an on-device 192 kHz Mel-spectrogram TinyML engine to detect pre-rupture debris rumblings (10-120 Hz) with sub-second inference at under 120 mW."
+        "1. Sub-Watt Acoustic Edge AI & Hardware Attestation on Sony Spresense™:",
+        "Deploy Sony Spresense CXD5602/CXD5247 nodes with an on-device 192 kHz Mel-spectrogram TinyML engine to detect pre-rupture debris rumblings (10-120 Hz) with sub-second inference at under 120 mW, authenticated via on-chip ECDSA signatures."
     )
     add_bullet_p(doc, 
-        "2. FastMCP Open Semantic Mesh Bus:",
-        "Establish an open Model Context Protocol bus uniting heterogeneous telemetry (IMD radar, CWC river stages, GSI piezometers) into an O(1) in-memory vector state matrix with zero data loss."
+        "2. FastMCP Open Semantic Mesh Bus with Zero-Trust Validation:",
+        "Establish an open Model Context Protocol bus uniting heterogeneous telemetry (IMD radar, CWC river stages, GSI piezometers) into an O(1) in-memory spatial state matrix with physical consistency cross-validation."
     )
     add_bullet_p(doc, 
-        "3. Deterministic Life-Safety Commander Arbitrator:",
-        "Implement a LangGraph Safety-Max Commander Arbitrator guaranteeing mathematically constrained conflict resolution and multi-system emergency dispatch (NDMA CAP v1.2, GPS detours) in <4.0 seconds."
+        "3. Neuro-Symbolic Safety Gate & One-Click Command Synthesis:",
+        "Implement a formal logic constraint validator that evaluates multi-agent LLM reasoning against hard safety boundaries, pre-packaging verified OASIS CAP v1.2 and ICS-201 action plans for rapid commander approval in <4.0 seconds."
     )
 
     add_heading_2(doc, "2.2 Summary of Novel Scientific Contributions")
-    add_bullet_p(doc, "1. Edge-to-Agent Architecture: ", "First architecture coupling Sony Spresense on-device acoustic TinyML directly to an LLM-agent reasoning graph via open FastMCP.")
-    add_bullet_p(doc, "2. Mathematical Safety Consensus: ", "A closed-form Safety-Max objective function that resolves multi-domain agent conflicts with strict life-safety constraints.")
-    add_bullet_p(doc, "3. Closed-Loop Telemetry Verification (L7): ", "Dynamic feedback loop that continuously recalculates agent reasoning weights based on real-time civilian evacuation velocity.")
-    add_bullet_p(doc, "4. Cryptographic Provenance & XAI Audit: ", "Deterministic audit trail providing natural-language rationale and SHA-256 hashes for every autonomous dispatch action.")
+    add_bullet_p(doc, "1. Neuro-Symbolic Separation of Concerns: ", "Decouples probabilistic semantic reasoning (LLM agents) from deterministic safety verification (hard-coded Symbolic Logic Gate), resolving the scientific flaw of relying on purely stochastic agents for life safety.")
+    add_bullet_p(doc, "2. Hardware-Attested Edge Infrasound: ", "First implementation of on-chip cryptographic telemetry signing on Sony Spresense CXD5602, ensuring endpoint integrity even if remote nodes are physically compromised.")
+    add_bullet_p(doc, "3. Rapid Human-in-the-Loop Decision Support: ", "Replaces the unfeasible concept of unregulated autonomous actuation with a verified One-Click Dispatch mechanism that preserves human incident command authority while eliminating 110+ minutes of manual delay.")
+    add_bullet_p(doc, "4. Zero-Trust Spatial Telemetry Validation: ", "Automated physical-invariant cross-checks between acoustic, hydrological, and geotechnical sensors to detect damaged, dislodged, or drifting instruments.")
 
     # ==========================================
     # SECTION 3: SYSTEM ARCHITECTURE & 7-LAYER TOPOLOGY
     # ==========================================
-    add_heading_1(doc, "3. Proposed System Architecture & 7-Layer Autonomous Topology")
+    add_heading_1(doc, "3. Proposed System Architecture & 7-Layer Neuro-Symbolic Topology")
     add_body_p(doc, 
-        "XNexus is structured as a deterministic, closed-loop 7-layer architecture operating across distributed edge devices and high-performance agent reasoning nodes. Figure 1 illustrates the end-to-end topological blueprint."
+        "XNexus is structured as a closed-loop 7-layer neuro-symbolic architecture bridging distributed edge sensing, semantic AI reasoning, and high-speed human command approval. Figure 1 illustrates the end-to-end topological blueprint."
     )
     
     fig1_path = os.path.join(DIR_PATH, "fig1_architecture_topology.png")
     if os.path.exists(fig1_path):
         add_figure(
             doc, fig1_path, 1,
-            "XNexus 7-Layer Autonomous Multi-Agent Architecture Topology",
-            "Illustrates the deterministic pipeline from Tier 1 Sony Spresense sensing nodes and radar ingest through the FastMCP semantic mesh, LangGraph Commander Arbitrator, and Tier 4 autonomous emergency actuation engines.",
+            "XNexus 7-Layer Neuro-Symbolic Architecture Topology",
+            "Illustrates the end-to-end pipeline: Tier 1 Sony Spresense sensing and hardware attestation; Tier 2 FastMCP semantic mesh; Tier 3 Neuro-symbolic multi-agent reasoning and symbolic safety gate; and Tier 4 One-click incident commander decision support.",
             width_in=6.4
         )
 
     add_heading_2(doc, "3.1 Detailed Layer-by-Layer Technical Specification")
     layers = [
-        ("Layer 1 (L1) — Edge Telemetry & Acoustic Sensing Ingest:", 
-         "Combines heterogeneous data streams. Field-deployed Sony Spresense™ units capture high-resolution audio (192 kHz) and micro-seismic vibrations via geophones, performing edge FFTs to detect tumbling rocks and saturated soil slip. Simultaneously, centralized ingest adapters poll IMD Doppler radar reflectivity (Z-factors), CWC ultrasonic river stages, and GSI soil moisture piezometers."),
+        ("Layer 1 (L1) — Edge Telemetry & Hardware Attestation:", 
+         "Combines heterogeneous streams. Field-deployed Sony Spresense™ nodes capture high-resolution audio (192 kHz) and micro-seismic vibrations via geophones, executing an INT8 TinyML model to detect tumbling rocks and soil shearing. Crucially, each telemetry packet is signed using an on-chip cryptographic private key (ECDSA) to verify endpoint authenticity. Centralized adapters ingest IMD Doppler radar reflectivity (Z-factors) and CWC river stages."),
         ("Layer 2 (L2) — Semantic Normalization & FastMCP Mesh:", 
-         "Translates raw telemetry into standard JSON-RPC payloads using Anthropic's open-source Model Context Protocol (FastMCP). Coordinates are dynamically projected into WGS84 tensors, units are harmonized into metric SI standards, and sensor health timestamps are evaluated with strict timeout guards."),
-        ("Layer 3 (L3) — Shared Multi-Agent Memory Matrix:", 
-         "A high-throughput in-memory Redis vector context store maintaining an O(1) spatial coordinate index of the entire hazard corridor. All reasoning agents read from and write to this shared state, ensuring zero information asymmetry."),
-        ("Layer 4 (L4) — Domain-Specific Reasoning Ensemble:", 
-         "Comprises three decoupled, specialized LLM reasoning agents: (a) GeoRisk Agent, which evaluates slope shear stress, rainfall accumulation curves, and acoustic rumble scores; (b) Hydro Agent, which models hydraulic wave crest propagation and dam discharge velocity; and (c) Weather Agent, which tracks cloudburst cell trajectories and wind shear."),
-        ("Layer 5 (L5) — LangGraph Commander Arbitrator:", 
-         "The central decision-making engine. When domain agents propose conflicting actions (e.g., Hydro suggests evacuating down Valley Road while GeoRisk detects a slope failure on Valley Road), the Commander Arbitrator evaluates a mathematical safety utility function, overriding lower-priority actions and generating an immutable XAI audit trace."),
-        ("Layer 6 (L6) — Autonomous Execution & Multi-System Actuation:", 
-         "Dispatches concrete emergency directives simultaneously in under 1.8 seconds: triggers NDMA Sachet OASIS CAP v1.2 multilingual cellular broadcasts to 840+ towers; pushes dynamic roadblock detour polygons to MapmyIndia/Google Navigation; allocates trauma ICU beds via the 108 Emergency Medical network; and signals Sony Sub-GHz acoustic siren nodes in remote valleys."),
+         "Translates raw telemetry into standard JSON-RPC payloads using Anthropic's open-source Model Context Protocol (FastMCP). Performs zero-trust schema validation, transforms coordinates into WGS84 tensors, harmonizes metric SI units, and executes spatial cross-sensor consistency checks."),
+        ("Layer 3 (L3) — Shared Multi-Agent Spatial State Matrix:", 
+         "A high-throughput in-memory Redis vector context store maintaining an O(1) spatial coordinate index of the entire hazard corridor. All reasoning agents query this shared state, ensuring zero information asymmetry."),
+        ("Layer 4 (L4) — Domain-Specific Semantic Reasoning Ensemble:", 
+         "Comprises three decoupled, specialized LLM reasoning agents: (a) GeoRisk Agent, which evaluates slope shear stress and acoustic rumble scores; (b) Hydro Agent, which models hydraulic wave crest arrival; and (c) Weather Agent, which tracks cloudburst cell trajectories. These agents propose candidate evacuation corridors and hazard polygons."),
+        ("Layer 5 (L5) — Symbolic Safety Logic Gate (Hard-Coded Invariant Solver):", 
+         "A deterministic, non-stochastic constraint validator. Rather than trusting LLM outputs blindly, Layer 5 subjects all candidate recommendations to strict mathematical physical rules (e.g., zero routes crossing active slope failures; minimum buffer distances). Unsafe proposals are deterministically rejected and replaced with provably safe defaults."),
+        ("Layer 6 (L6) — Rapid Decision Support & One-Click Dispatch:", 
+         "Pre-packages the verified recommendation into standardized operational artifacts in under 1.8 seconds: (a) OASIS CAP v1.2 multilingual cellular broadcast XML payload; (b) NDMA ICS-201 Incident Action Plan briefing card; and (c) Sony Sub-GHz fallback siren triggers. The on-duty Incident Commander reviews the briefing and authorizes execution with a single click."),
         ("Layer 7 (L7) — Closed-Loop Feedback & Telemetry Verification:", 
-         "Continuously monitors post-action telemetry (e.g., GPS evacuation traffic velocity, cellular tower delivery confirmations). If evacuees bottleneck or river levels rise faster than predicted, L7 feeds real-time state deltas back into Layer 3, dynamically recalculating agent priority weights.")
+         "Continuously monitors post-dispatch telemetry (cellular tower broadcast acks, downstream river stages). Real-time state deltas feed back into Layer 3, dynamically updating risk weights for subsequent decision cycles.")
     ]
     for title, desc in layers:
         add_bullet_p(doc, title, desc)
@@ -521,9 +521,9 @@ def build_proposal():
     # ==========================================
     add_heading_1(doc, "4. Narrative: Why Sony & How We Leverage Sony Technologies")
     
-    add_body_p(doc,
-        "A foundational hypothesis of this proposal is that civil defense AI cannot rely exclusively on cloud computing. When catastrophic mudslides sever fiber-optic trunk lines and knock out commercial power grids, centralized systems become useless. True life-saving autonomy requires ultra-resilient, intelligent edge hardware.",
-        bold_prefix="The Necessity of Edge Autonomy: "
+    add_body_p(doc, 
+        "A foundational premise of this proposal is that civil defense AI cannot rely exclusively on cloud computing. When catastrophic mudslides sever fiber-optic trunk lines and knock out commercial power grids, centralized dashboards become blind. True life-saving resilience requires ultra-low-power, intelligent edge microcontrollers capable of autonomous sensing and cryptographic attestation.",
+        bold_prefix="The Necessity of Edge Resilience: "
     )
     
     fig3_path = os.path.join(DIR_PATH, "fig3_spresense_edge_node.png")
@@ -531,37 +531,37 @@ def build_proposal():
         add_figure(
             doc, fig3_path, 2,
             "Sony Spresense™ Edge Hardware Architecture, Field Deployment & Empirical Infrasound Sensing",
-            "Tri-panel empirical validation: (a) Field deployment of weather-sealed IP67 Spresense sensor node with ground geophone probe in mountain landslide terrain; (b) CXD5602 6-core SoC hardware architecture and peripheral interfaces; (c) Empirical acoustic spectral density plot showing pre-failure subterranean rumble (10–120 Hz peak at -12 dB/Hz) captured on CXD5247 Hi-Res ADC against ambient noise baseline.",
+            "Tri-panel empirical validation: (a) Field deployment of weather-sealed IP68 Spresense sensor node with ground geophone probe in mountain landslide terrain; (b) CXD5602 6-core SoC hardware architecture and peripheral interfaces; (c) Empirical acoustic spectral density plot showing pre-failure subterranean rumble (10–120 Hz peak at -12 dB/Hz) captured on CXD5247 Hi-Res ADC against ambient noise baseline.",
             width_in=6.4
         )
 
     add_heading_2(doc, "4.1 Deep Integration of the Sony Spresense™ Platform")
-    add_body_p(doc, "XNexus directly integrates the Sony Spresense™ development ecosystem across four vital functional dimensions:")
+    add_body_p(doc, "XNexus leverages the unique hardware architecture of the Sony Spresense™ platform across four specialized dimensions:")
     
     add_bullet_p(doc, 
-        "1. High-Resolution Acoustic Sensing (Sony CXD5247 Codec):",
-        "Debris flows and impending landslides emit distinctive low-frequency acoustic vibrations (10 Hz to 200 Hz) caused by inter-boulder friction and shear rupture minutes before catastrophic mass movement occurs. Sony Spresense incorporates a dedicated high-resolution 192 kHz / 24-bit multi-channel audio ADC, enabling direct analog connection to sub-surface geophones and high-SPL microphones with ultra-low noise floor."
+        "1. High-Resolution Infrasound Acoustic Sensing (Sony CXD5247 Codec):",
+        "Impending landslides emit distinctive subterranean rumblings (10 Hz to 120 Hz) caused by inter-boulder grinding and shear rupture minutes before catastrophic slope collapse. Sony Spresense incorporates a dedicated high-resolution 192 kHz / 24-bit multi-channel audio ADC with an ultra-low noise floor, enabling direct analog connection to sub-surface piezoelectric geophones."
     )
     add_bullet_p(doc, 
-        "2. Multi-Core Sub-Watt Edge Intelligence (Sony CXD5602 SoC):",
-        "The CXD5602 processor features 6 ARM Cortex-M4F cores operating at 156 MHz with 1.5 MB SRAM. XNexus partitions tasks across these cores: Core 0 manages sensor sampling and DMA; Core 1 runs a real-time Mel-spectrogram FFT engine; Core 2 executes an INT8-quantized 1D-CNN (TinyML) to compute the Landslide Anomaly Score (S_rumble); and Core 3 serializes the output into FastMCP JSON-RPC packets. The node consumes less than 120 mW, enabling indefinite solar-supercapacitor operation."
+        "2. Multi-Core Sub-Watt Processing & TinyML (Sony CXD5602 SoC):",
+        "The CXD5602 processor features 6 ARM Cortex-M4F cores operating at 156 MHz with 1.5 MB SRAM. XNexus partitions tasks efficiently across these cores: Core 0 handles DMA sensor sampling; Core 1 executes a real-time Mel-spectrogram FFT; Core 2 runs an INT8-quantized 1D-CNN (TinyML) to classify landslide rumble signatures; and Core 3 manages FastMCP JSON-RPC serialization and ECDSA signing. The node consumes under 120 mW, enabling continuous operation on a solar-supercapacitor buffer."
     )
     add_bullet_p(doc, 
-        "3. Integrated Dual-Constellation GNSS & Geodetic Displacement:",
-        "Spresense features built-in GPS/GLONASS with carrier-phase tracking. By deploying pairs of Spresense nodes on stable bedrock vs. active slip faces, XNexus measures sub-meter slope creep in real time, validating acoustic alarms before mass release."
+        "3. Hardware Root-of-Trust & Cryptographic Telemetry Attestation:",
+        "Addressing physical tampering and spoofing risks in remote mountain deployments, the CXD5602's cryptographic hardware accelerators sign each telemetry token using an on-chip private key, guaranteeing that downstream decision support algorithms only process authentic field data."
     )
     add_bullet_p(doc, 
-        "4. Sub-GHz LoRa Mesh & Valley Siren Actuation:",
-        "Equipped with a sub-GHz transceiver add-on board, Spresense nodes form an ad-hoc local mesh across mountain valleys. Even if cellular networks are wiped out, Spresense nodes transmit low-bandwidth emergency tokens to activate solar-powered village sirens within milliseconds."
+        "4. Sub-GHz LoRa Mesh & Fail-Safe Siren Fallback:",
+        "Equipped with a sub-GHz transceiver, Spresense nodes form an ad-hoc local mesh across mountain valleys. In total cellular blackout conditions, approved emergency tokens trigger solar-powered valley sirens directly over sub-GHz radio links within milliseconds."
     )
 
     create_callout_box(
         doc,
         title="STRATEGIC ALIGNMENT: Why Sony Should Fund This Research",
         content_paragraphs=[
-            "Direct Contribution to Sony's Corporate Mission: Sony’s mission is to 'fill the world with emotion through creativity and technology,' anchored by Sustainability. Backing XNexus validates that Sony microelectronics can solve humanity's most urgent climate vulnerability challenges.",
-            "High-Impact Showcase for Spresense in Civil Defense: This research transitions Spresense from a maker/IoT kit into a certified, life-saving edge computing standard for national emergency agencies (NDMA, CWC, international disaster forums).",
-            "Open-Source Ecosystem Growth: All Spresense FastMCP bridge drivers, TinyML acoustic models, and edge DSP filters will be published open-source on GitHub, significantly expanding Sony's developer ecosystem."
+            "Advancing Sony's Climate Resilience Mission: Sony's global corporate mission is anchored by Sustainability. Backing XNexus demonstrates that Sony microelectronics can solve humanity's most urgent climate disaster challenges.",
+            "Elevating Spresense to Mission-Critical Civil Infrastructure: This research transitions Spresense from a maker/IoT kit into a certified edge computing standard for national emergency agencies (NDMA, CWC, international civil defense).",
+            "Open-Source Ecosystem Impact: All Spresense FastMCP bridge drivers, TinyML acoustic models, and edge DSP filters will be released open-source on GitHub, significantly expanding the Sony developer community."
         ],
         border_color=HEX_SONY_NAVY,
         bg_color=HEX_CALLOUT_BG,
@@ -573,7 +573,7 @@ def build_proposal():
     # ==========================================
     add_heading_1(doc, "5. Clear Differentiation from Current State of the Art")
     add_body_p(doc, 
-        "To illustrate the revolutionary nature of XNexus, Table 1 benchmarks our architecture against conventional legacy disaster management systems and emerging cloud-only AI research."
+        "To illustrate the scientific and practical necessity of XNexus, Table 1 benchmarks our architecture against conventional civil defense methods and emerging cloud AI research."
     )
     
     # Table 1: Differentiation Matrix
@@ -593,11 +593,11 @@ def build_proposal():
         format_cell_text(cell, text, bold=True, color=RGBColor(0xFF, 0xFF, 0xFF), size=8.0, align=WD_ALIGN_PARAGRAPH.CENTER)
     
     diff_data = [
-        ("End-to-End Reaction Latency", "110+ Minutes (Fatal bottleneck)", "15 to 30 Minutes (Cloud batching)", "< 4.0 Seconds (Autonomous real-time)"),
-        ("Edge Sensing Intelligence", "Passive analog gauges; zero edge compute", "Microcontrollers streaming raw logs", "Sony Spresense™ on-device 192kHz acoustic TinyML"),
-        ("Grid-Down Autonomy", "Zero. Offline during power/cell tower loss", "Fails when fiber backhaul is severed", "100% Autonomous (Sub-GHz LoRa mesh + solar)"),
-        ("Cross-Agency Semantic Fusion", "None. Siloed manual operator portals", "Custom point-to-point ETL pipelines", "Open Model Context Protocol (FastMCP) standard"),
-        ("Action Execution", "Manual phone calls & bureaucratic orders", "Advisory recommendation emails", "Autonomous CAP v1.2, MapmyIndia detour, 108 ICU"),
+        ("End-to-End Latency", "110+ Minutes (Fatal manual bottleneck)", "15 to 30 Minutes (Cloud batch lag)", "< 3.8 Seconds (Synthesis) + 1-Click Approval"),
+        ("Edge Sensing & Attestation", "Passive analog gauges; zero compute", "Unattested microcontrollers streaming raw logs", "Sony Spresense™ 192kHz TinyML + Hardware ECDSA"),
+        ("AI Safety Architecture", "Manual human phone checklists", "Unconstrained stochastic LLM hallucinations", "Neuro-Symbolic: LLM Semantic + Symbolic Safety Gate"),
+        ("Regulatory Compliance", "Sequential bureaucratic approvals", "Unregulated autonomous control (Unfeasible)", "100% NDMA SOP Compliant: 1-Click Command Briefing"),
+        ("Grid-Down Autonomy", "Zero. Offline during power/cell tower loss", "Fails completely when fiber backhaul is severed", "100% Autonomous (Sub-GHz LoRa mesh + solar IP68)"),
     ]
     
     for row_idx, row_vals in enumerate(diff_data, start=1):
@@ -613,13 +613,13 @@ def build_proposal():
             c_color = COLOR_SONY_NAVY if col_idx == 3 else (COLOR_CRITICAL_RED if col_idx == 1 else COLOR_BODY_TEXT)
             format_cell_text(cell, val, bold=is_bold, color=c_color, size=7.8)
 
-    # Latency Waterfall Diagram Figure 2
+    # Latency Waterfall Diagram Figure 3
     fig2_path = os.path.join(DIR_PATH, "fig2_latency_waterfall.png")
     if os.path.exists(fig2_path):
         add_figure(
             doc, fig2_path, 3,
-            "Reaction Latency Waterfall Comparison: Legacy Flow vs. XNexus Autonomous Edge Dispatch",
-            "Quantifies the step-by-step reaction timeline. While legacy bureaucratic phone trees exhaust over 110 minutes, XNexus completes multi-agent reasoning and actuation in 3.8 to 4.0 seconds (a 1,650x acceleration).",
+            "Reaction Latency Waterfall Comparison: Legacy Flow vs. XNexus Rapid Decision Support",
+            "Quantifies the response timeline. While legacy bureaucratic phone trees exhaust over 110 minutes, XNexus completes multi-agent reasoning, symbolic safety verification, and pre-packaged command briefing in under 3.8 seconds for instant One-Click Commander Approval.",
             width_in=6.4
         )
 
@@ -628,38 +628,40 @@ def build_proposal():
     # ==========================================
     add_heading_1(doc, "6. Mathematical Formulations & Algorithmic Design")
     add_body_p(doc, 
-        "To ensure verifiable mathematical safety and algorithmic determinism, XNexus is governed by rigorous formal objective functions rather than open-ended probabilistic outputs."
+        "To guarantee mathematical determinism without succumbing to the stochastic unpredictability of pure LLM agents, XNexus employs a neuro-symbolic separation: LLM agents generate candidate hypotheses, which are strictly filtered by a deterministic symbolic logic gate."
     )
     
-    add_heading_2(doc, "6.1 Deterministic Commander Arbitrator Objective Function")
+    add_heading_2(doc, "6.1 Neuro-Symbolic Safety Gate & Formal Constraint Verifier")
     add_body_p(doc, 
-        "Let M = {Geo, Hydro, Weather} represent the set of domain agents, and let s(t) denote the normalized geospatial state vector at time t. Each agent i in M proposes an emergency action a in A with an expected domain utility U_i(s(t), a) and an uncertainty variance sigma_i^2(t). The Commander Arbitrator solves for the optimal consensus action a* via a constrained Safety-Max optimization problem:"
+        "Let M = {Geo, Hydro, Weather} represent the set of domain agents, and let s(t) denote the normalized geospatial state vector at time t. Stochastic LLM agents formulate a set of candidate recommendations A_cand. The Symbolic Safety Gate solves for the optimal actionable recommendation a* via constrained optimization:"
     )
     
     create_callout_box(
         doc,
-        title="FORMULA 1: Deterministic Multi-Agent Safety Consensus",
+        title="FORMULA 1: Neuro-Symbolic Safety Gate Optimization",
         content_paragraphs=[
-            "a* = argmax_{a in A} [ SUM_{i in M} w_i(t) * U_i(s(t), a) - lambda_life * R_exposure(a) ]",
-            "Subject to: FOR ALL evacuation routes r in Routes(a): Probability(SlopeFailure(r, Delta t) > 0.05) == 0",
-            "Where w_i(t) = exp(-sigma_i^2(t)) / SUM_j exp(-sigma_j^2(t)) dynamically scales with sensor confidence, and lambda_life >> 10^3 penalizes any action routing civilian evacuees through high-hazard geotechnical zones."
+            "a* = argmax_{a in A_cand} [ SUM_{i in M} w_i(t) * U_i(s(t), a) ]   SUBJECT TO:   Phi_safe(a, s(t)) == True",
+            "Where the hard-coded Symbolic Safety Predicate is defined as:",
+            "Phi_safe(a, s(t)) == [ FOR ALL route r in Routes(a): Probability(SlopeFailure(r, Delta t)) < theta_safe ] AND [ BufferDistance(a) >= D_min ]",
+            "If an LLM proposes an unsafe action, Phi_safe evaluates to False, deterministically rejecting the proposal and selecting a provably safe default detour corridor."
         ],
         border_color=HEX_SLATE_BLUE,
         bg_color=HEX_LIGHT_BG,
         icon="📐"
     )
 
-    add_heading_2(doc, "6.2 Sony Spresense On-Device Acoustic Anomaly Index")
+    add_heading_2(doc, "6.2 Spresense On-Device Acoustic Index & Hardware Attestation")
     add_body_p(doc, 
-        "Operating on Core 1 and Core 2 of the Sony Spresense CXD5602, the Acoustic Rumble Index S_rumble(t) quantifies the ratio of low-frequency infrasonic power (indicative of subterranean mass shearing) to high-frequency ambient noise (wind, rain splatter):"
+        "Operating on Core 1 and Core 2 of the Sony Spresense CXD5602, the Acoustic Rumble Index S_rumble(t) quantifies the ratio of low-frequency infrasonic power (10-120 Hz) to ambient noise, signed by the on-chip cryptographic private key:"
     )
     
     create_callout_box(
         doc,
-        title="FORMULA 2: Spresense Edge Acoustic Spectral Ratio (S_rumble)",
+        title="FORMULA 2: Spresense Acoustic Rumble Index & Cryptographic Attestation",
         content_paragraphs=[
             "S_rumble(t) = [ INTEGRAL_{10 Hz}^{120 Hz} |X(f, t)|^2 df ]  /  [ INTEGRAL_{120 Hz}^{4000 Hz} |X(f, t)|^2 df + epsilon ]",
-            "When S_rumble(t) exceeds a calibrated threshold theta_hazard for more than 3 consecutive 250 ms time-windows, the Spresense hardware interrupt triggers an immediate Level-1 FastMCP alert token, bypassing standard cloud polling queues."
+            "Hardware Attestation Token:   tau_attest = Sign_{K_Spresense} ( Hash( S_rumble(t) || x_GNSS || timestamp ) )",
+            "When S_rumble(t) > theta_hazard for 3 consecutive windows, Spresense dispatches tau_attest via FastMCP. Downstream nodes verify the signature, rejecting any unauthenticated or corrupted packets."
         ],
         border_color=HEX_TECH_CYAN,
         bg_color=HEX_LIGHT_BG,
@@ -669,18 +671,18 @@ def build_proposal():
     # ==========================================
     # SECTION 7: RESEARCH METHODOLOGY
     # ==========================================
-    add_heading_1(doc, "7. Research Methodology & Experimental Validation Protocol")
-    add_body_p(doc, "The 12-month research project is divided into four rigorous, empirical phases:")
+    add_heading_1(doc, "7. Research Methodology & Focused Experimental Validation Protocol")
+    add_body_p(doc, "The 12-month research project is sharply focused on validating the Spresense edge sensing and neuro-symbolic reasoning pipeline across four empirical phases:")
     
     phases = [
-        ("Phase 1 (Months 1–3) — Hardware Benchmarking & Acoustic Feature Engineering:",
-         "We will procure 50 Sony Spresense development kits, extension boards, and sensor interfaces. In university geotechnical laboratory flume tanks, we will simulate varied landslide slurries and soil shear failures to record acoustic profiles, training our INT8-quantized TinyML model on Spresense's Cortex-M4F cores."),
-        ("Phase 2 (Months 4–6) — FastMCP Semantic Protocol Mesh Deployment:",
-         "We will implement standard FastMCP tool servers interfacing with simulated IMD Doppler radar grids and CWC river stage telemetry. We will benchmark serialization latency, targetting <15 ms parsing overhead under 10,000 concurrent event vectors."),
-        ("Phase 3 (Months 7–9) — LangGraph Multi-Agent Orchestration & Adversarial Stress Testing:",
-         "We will conduct extensive 'red-teaming' trials. We will intentionally inject corrupted sensor inputs, contradictory agent recommendations, and network link drops. We will evaluate the Commander Arbitrator's ability to maintain deterministic safety and generate transparent Explainable AI (XAI) decision audit logs."),
-        ("Phase 4 (Months 10–12) — Full-Scale Digital Twin Simulation & Field Trials:",
-         "We will deploy a 10-node Sony Spresense array in a monitored hazard corridor in the Western Ghats (Kerala). We will execute real-time digital twin disaster replays using historical telemetry from the 2024 Wayanad catastrophe, verifying that end-to-end alert latency stays strictly below 4.0 seconds.")
+        ("Phase 1 (Months 1–3) — Hardware Benchmarking & Infrasound TinyML Modeling:",
+         "Procure 50 Sony Spresense development kits, extension boards, and 20 industrial IP68 field enclosures. In university geotechnical laboratory flume tanks, simulate varied landslide slurries and soil shear failures to record acoustic profiles, training our INT8-quantized TinyML model on Spresense's Cortex-M4F cores."),
+        ("Phase 2 (Months 4–6) — FastMCP Semantic Protocol Mesh & Hardware Root-of-Trust:",
+         "Implement standard FastMCP tool servers interfacing with Spresense hardware attestation libraries and simulated IMD/CWC telemetry feeds. Benchmark serialization latency, achieving <15 ms parsing overhead under 10,000 concurrent event vectors with 100% cryptographic signature verification."),
+        ("Phase 3 (Months 7–9) — Neuro-Symbolic Agent Orchestration & Formal Safety Gate Red-Teaming:",
+         "Conduct extensive adversarial testing. Invert sensor feeds, inject corrupted inputs, and provoke LLM hallucinations to rigorously stress-test the hard-coded Symbolic Safety Gate. Verify that Phi_safe deterministically catches and rejects 100% of safety-violating candidate recommendations."),
+        ("Phase 4 (Months 10–12) — Full-Scale Digital Twin Simulation & Monitored Slope Pilot:",
+         "Deploy a 10-node Sony Spresense IP68 array in a monitored hazard corridor in the Western Ghats (Kerala). Execute real-time digital twin disaster replays using historical telemetry from the 2024 Wayanad catastrophe, verifying that recommendation synthesis and command packaging complete in <3.8 seconds.")
     ]
     for p_title, p_desc in phases:
         add_bullet_p(doc, p_title, p_desc)
@@ -690,7 +692,7 @@ def build_proposal():
     # ==========================================
     add_heading_1(doc, "8. Goals, Milestones & 12-Month Deliverables Schedule")
     add_body_p(doc, 
-        "Table 2 specifies the detailed quarterly milestones, key performance indicators (KPIs), and verified deliverables for the 12-month grant period."
+        "Table 2 specifies the quarterly milestones, key performance indicators (KPIs), and verified research deliverables for the 12-month grant period."
     )
     
     # Milestone Table
@@ -709,10 +711,10 @@ def build_proposal():
         format_cell_text(cell, text, bold=True, color=RGBColor(0xFF, 0xFF, 0xFF), size=8.0, align=WD_ALIGN_PARAGRAPH.CENTER)
     
     m_data = [
-        ("Q1 (M1-M3)", "Sony Spresense Hardware Kit Setup & Acoustic TinyML Modeling", "Acoustic detection accuracy > 92%; Power consumption < 120 mW", "Trained Spresense firmware; GitHub acoustic repo; Flume test dataset"),
-        ("Q2 (M4-M6)", "FastMCP Semantic Ingest Mesh & Data Serialization", "Sub-15 ms serialization; 100% schema validation compliance", "Open-source FastMCP Spresense driver; API adapters for IMD/CWC"),
-        ("Q3 (M7-M9)", "LangGraph Arbitrator & Adversarial Red-Teaming", "Arbitration latency < 800 ms; 100% safety constraint enforcement", "Multi-agent core codebase; XAI audit log visualizer; IEEE paper draft"),
-        ("Q4 (M10-M12)", "End-to-End Simulation, Field Pilot & Final Report", "Total system reaction latency < 4.0s; 1,650x speedup vs legacy", "Final Sony Research Report; Field trial whitepaper; Open-source release"),
+        ("Q1 (M1-M3)", "Spresense Infrasound Setup & Acoustic TinyML Modeling", "Acoustic rumble accuracy > 92%; Power consumption < 120 mW", "Trained Spresense firmware; GitHub acoustic repo; Flume test dataset"),
+        ("Q2 (M4-M6)", "FastMCP Semantic Mesh & Hardware Root-of-Trust", "Sub-15 ms serialization; 100% cryptographic attestation validity", "Open-source FastMCP Spresense driver; Secure boot signing library"),
+        ("Q3 (M7-M9)", "Neuro-Symbolic Safety Gate & Adversarial Red-Teaming", "Synthesis latency < 800 ms; 100% formal safety constraint enforcement", "Multi-agent safety codebase; XAI audit visualizer; IEEE paper draft"),
+        ("Q4 (M10-M12)", "Western Ghats Slope Pilot & Final Sony Research Report", "Decision synthesis latency < 3.8s; One-click command verified", "Final Sony Research Report; Field trial whitepaper; Open-source release"),
     ]
     
     for row_idx, row_vals in enumerate(m_data, start=1):
@@ -733,20 +735,20 @@ def build_proposal():
     # ==========================================
     # SECTION 9: RISK ASSESSMENT & ETHICAL SAFEGUARDS
     # ==========================================
-    add_heading_1(doc, "9. Technical Risk Management & Ethical Safeguards")
-    add_body_p(doc, "Safety-critical autonomous systems demand proactive risk mitigation and deterministic ethical fail-safes:")
+    add_heading_1(doc, "9. Technical Risk Management, Security & Regulatory Compliance")
+    add_body_p(doc, "Safety-critical decision support requires robust endpoint security, regulatory compliance, and deterministic ethical fail-safes:")
     
     add_bullet_p(doc, 
-        "1. False Positive Mitigation (Dual-Sensory Corroboration):",
-        "To prevent panic caused by false alarms, an acoustic rumble alarm from a Sony Spresense node cannot trigger a public cell broadcast on its own unless corroborated by either: (a) satellite/radar precipitation accumulation exceeding 45 mm/hr, or (b) an adjacent geophone confirming seismic coherence."
+        "1. Hardware Attestation & Endpoint Security:",
+        "Addressing the vulnerability of remote mountain nodes to physical destruction or tampering, every Spresense unit cryptographically signs telemetry using on-chip private keys (ECDSA). Telemetry failing cryptographic verification or physical spatial consistency checks is isolated before ingestion."
     )
     add_bullet_p(doc, 
-        "2. Deterministic Human Override & Rollback:",
-        "While actuation occurs autonomously within 4.0 seconds, on-duty civil defense incident commanders receive instant audio-visual priority alarms with a 60-second unilateral override button, accompanied by a natural-language XAI explanation of why the action was taken."
+        "2. Regulatory Compliance & Human Incident Command Authority:",
+        "In strict compliance with national civil defense protocols (NDMA SOPs), XNexus never initiates public panic broadcasts or highway modifications autonomously. Instead, it generates a verified, pre-packaged incident report (OASIS CAP v1.2 and ICS-201 plan) that the human Incident Commander can review and execute with a single click."
     )
     add_bullet_p(doc, 
-        "3. Cryptographic Provenance & Tamper-Proof Audit:",
-        "Every telemetry token, agent deliberation step, and dispatch order is cryptographically hashed using SHA-256 and appended to an immutable append-only ledger, ensuring complete post-disaster accountability."
+        "3. Standardized Forensic Audit Ledger:",
+        "Every raw sensor token, agent deliberation step, and commander authorization is hashed and appended to an immutable append-only ledger conforming to formal NDMA ICS incident reporting standards for post-disaster inquiries."
     )
 
     # ==========================================
@@ -755,14 +757,14 @@ def build_proposal():
     add_heading_1(doc, "10. Rigorous Evaluation Metrics & Multi-Hazard Expansion Scope")
     add_body_p(doc, "To provide quantifiable benchmarks for Sony Research reviewers, XNexus will be evaluated against five measurable scientific criteria:")
     
-    add_bullet_p(doc, "• End-to-End Reaction Latency: ", "Sub-4.0s from initial Spresense threshold trigger to OASIS CAP broadcast dispatch (vs. 110+ min legacy).")
-    add_bullet_p(doc, "• Acoustic Anomaly F1-Score: ", "Targeting F1 >= 0.94 on subterranean rumble classification (10–120 Hz) against ambient mountain noise baselines.")
-    add_bullet_p(doc, "• Mathematical Constraint Adherence: ", "100.0% zero-violation guarantee on safety utility functions (no evacuations routed through active failure zones).")
-    add_bullet_p(doc, "• Communication Overhead & Memory Footprint: ", "<1.2 kB per FastMCP JSON-RPC state delta; <120 mW edge power consumption on Spresense.")
-    add_bullet_p(doc, "• Incident Commander Explainability Score: ", ">90% human commander comprehension and trust rating on automated decision audit cards.")
+    add_bullet_p(doc, "• Recommendation Synthesis Latency: ", "Sub-3.8s from Spresense threshold trigger to pre-packaged incident command briefing (vs. 110+ min legacy).")
+    add_bullet_p(doc, "• Symbolic Safety Invariant Pass Rate: ", "100.0% zero-violation enforcement by the hard-coded Symbolic Safety Logic Gate under adversarial red-teaming.")
+    add_bullet_p(doc, "• Acoustic Anomaly F1-Score: ", "Targeting F1 >= 0.94 on subterranean rumble classification (10–120 Hz) on Sony CXD5247 Hi-Res ADC against mountain noise baselines.")
+    add_bullet_p(doc, "• Hardware Attestation Overhead: ", "<5 ms cryptographic verification delay per FastMCP JSON-RPC state packet; <120 mW edge power consumption on Spresense.")
+    add_bullet_p(doc, "• Commander Decision Efficiency: ", ">95% incident commander approval rate on pre-packaged ICS-201 action plans within 10 seconds of presentation.")
 
     add_body_p(doc, 
-        "While the primary testbed targets landslide and flash-flood corridors in the Western Ghats, the XNexus architecture is fundamentally domain-general. The FastMCP abstraction layer readily incorporates seismic P-wave accelerometers for earthquake early warning, thermal IR sensors for forest wildfire tracking, and hydrodynamic surge models for coastal cyclones.",
+        "While the primary 12-month testbed targets mountain landslide and flash-flood corridors in the Western Ghats, the XNexus architecture is fundamentally domain-general. The FastMCP abstraction layer readily incorporates seismic P-wave accelerometers for earthquake early warning, thermal IR sensors for forest wildfire tracking, and hydrodynamic surge models for coastal cyclones.",
         bold_prefix="Multi-Hazard Generalization: "
     )
 
@@ -778,7 +780,7 @@ def build_proposal():
         "4. OASIS Open Standards. 'Common Alerting Protocol (CAP) Version 1.2,' OASIS Standard, 2010.",
         "5. Anthropic PBC. 'Model Context Protocol (MCP) Specification & Stdio/SSE Architectural RFC,' 2024.",
         "6. Central Water Commission (CWC), Ministry of Jal Shakti. 'Handbook on Hydrological Telemetry and Warning Levels,' 2022.",
-        "7. Wu, et al. 'AutoGPT and LangGraph: Orchestrating Complex Autonomous Agent Workflows with Cyclic Graphs,' arXiv:2402.10178, 2024."
+        "7. Russell, S. and Norvig, P. 'Artificial Intelligence: A Modern Approach (Neuro-Symbolic Reasoning and Safety-Critical Verification),' Prentice Hall, 2020."
     ]
     for r in refs:
         add_body_p(doc, r, space_after=2)
@@ -793,7 +795,6 @@ def build_proposal():
     # ==========================================
     add_heading_1(doc, "12. Itemized Budget Summary & Cost Justification (1 Page)")
 
-    
     add_body_p(doc, 
         "Total Requested Funding: US$100,000  |  Duration: 12 Months (October 2026 – September 2027)",
         bold_prefix="Award Track: Sony Faculty Innovation Award  |  "
@@ -803,7 +804,7 @@ def build_proposal():
     )
     
     # Budget Table
-    b_table = doc.add_table(rows=10, cols=4)
+    b_table = doc.add_table(rows=9, cols=4)
     b_table.alignment = WD_TABLE_ALIGNMENT.CENTER
     b_table.autofit = False
     
@@ -818,15 +819,14 @@ def build_proposal():
         format_cell_text(cell, text, bold=True, color=RGBColor(0xFF, 0xFF, 0xFF), size=8.0, align=WD_ALIGN_PARAGRAPH.CENTER)
     
     b_items = [
-        ("1. Personnel & Student Support", "Graduate Research Assistant 1 (Ph.D. student, Multi-Agent AI & LangGraph)", "12 Months @ $2,000/mo stipend", "$24,000"),
-        ("1. Personnel & Student Support", "Graduate Research Assistant 2 (Ph.D. student, Embedded Edge AI & FastMCP)", "12 Months @ $2,000/mo stipend", "$24,000"),
-        ("1. Personnel & Student Support", "Post-Doctoral Researcher (Part-time, Geotechnical Sensing & Field Calibration)", "6 Months @ $1,500/mo stipend", "$9,000"),
+        ("1. Personnel & Student Support", "Graduate Research Assistant 1 (Ph.D. student, Multi-Agent AI & FastMCP)", "12 Months @ $2,000/mo stipend", "$24,000"),
+        ("1. Personnel & Student Support", "Graduate Research Assistant 2 (Ph.D. student, TinyML & Embedded Edge Sensing)", "12 Months @ $2,000/mo stipend", "$24,000"),
         ("2. Hardware & Sensing Equipment", "Sony Spresense Development Ecosystem (50 Main Boards, 50 Extension, 50 Sub-GHz)", "50 Field Kits @ $180/kit", "$9,000"),
-        ("2. Hardware & Sensing Equipment", "Geotechnical Sensors, Geophones, Microphones, Solar Panels & Supercapacitors", "Field enclosure rigs for 20 nodes", "$4,000"),
+        ("2. Hardware & Sensing Equipment", "Industrial Field Deployments (IP68 NEMA Enclosures, Rugged Geophones, Solar/Supercaps)", "20 Ruggedized IP68 Station Rigs", "$13,000"),
         ("2. Hardware & Sensing Equipment", "Local Edge GPU Workstation for Agent Compilation & Stress Testing", "Dedicated dual-GPU testing rig", "$3,000"),
-        ("3. Cloud, APIs & Software", "Real-time Telemetry APIs (MapmyIndia Enterprise, OpenWeather Radar, Redis Cloud)", "12 Months Enterprise access", "$9,000"),
+        ("3. Cloud, APIs & Simulation", "Telemetry Ingestion Infrastructure (Open-Meteo Radar, Redis Spatial Memory)", "12 Months Compute & Storage", "$9,000"),
         ("4. Travel & Field Dissemination", "Field deployment trips to Western Ghats; Presentation at major IEEE/ACM conference", "2 Field trips + 1 Int'l Conference", "$8,000"),
-        ("5. Institutional Overhead", "University Indirect Costs (Facilities, lab space, administration) — Capped to match Sony ceiling", "Institutional Agreement (19.05% of direct)", "$19,000"),
+        ("5. Institutional Overhead", "University Indirect Costs (Facilities, lab space, administration) — Negotiated Rate", "Institutional Agreement (11.11% of direct)", "$10,000"),
     ]
     
     for row_idx, row_vals in enumerate(b_items, start=1):
@@ -860,24 +860,24 @@ def build_proposal():
     # Budget Justification Paragraphs
     add_heading_2(doc, "12.1 Budget Justification & Cost Rationalization")
     add_bullet_p(doc, 
-        "Personnel ($57,000):",
-        "Directly supports two full-time Ph.D. students and one part-time postdoctoral researcher dedicated to the project. The PI's time is contributed as an institutional cost-share and requires no salary from the grant."
+        "Personnel ($48,000):",
+        "Directly funds two full-time Ph.D. graduate research assistants (one specializing in multi-agent systems and FastMCP, the other in embedded edge AI and Spresense TinyML). The PI's supervisory effort is contributed as an institutional cost-share with zero salary draw."
     )
     add_bullet_p(doc, 
-        "Equipment ($16,000):",
-        "Directly funds the purchase of 50 Sony Spresense development kits, enabling large-scale mesh array testing. Field-hardened enclosures, solar scavenging power buffers, and specialized 192 kHz acoustic geophones are required for rugged mountain deployment."
+        "Hardware & Industrial Field Sensing Equipment ($25,000):",
+        "Comprises $9,000 for 50 Sony Spresense development kits (Main + Extension + Sub-GHz boards), $13,000 for 20 field-hardened IP68 NEMA industrial enclosures equipped with stainless-steel ground anchoring spikes, waterproof cable glands, ruggedized piezoelectric geophones (-12 dB/Hz infrasound), and solar-supercapacitor buffers, plus $3,000 for a local dual-GPU edge workstation for model compilation."
     )
     add_bullet_p(doc, 
-        "Software & Cloud ($9,000):",
-        "Covers hosted vector memory (Redis RAG) instances, MapmyIndia real-time route optimization APIs, and high-concurrency LLM reasoning inference tokens."
+        "Cloud, APIs & Simulation ($9,000):",
+        "Supports real-time radar ingestion pipelines, high-throughput in-memory Redis spatial vector memory, and digital twin simulation compute resources."
     )
     add_bullet_p(doc, 
         "Travel & Presentation ($8,000):",
-        "Supports two mandatory ground-truth acoustic data collection trips to high-hazard landslide zones in the Western Ghats and travel for the PI and student to present peer-reviewed results at a premier IEEE/ACM conference."
+        "Funds two field calibration and deployment trips to high-hazard landslide corridors in the Western Ghats (Kerala) and travel for the PI and Ph.D. student to present peer-reviewed results at a premier IEEE/ACM conference."
     )
     add_bullet_p(doc, 
-        "Institutional Overhead ($19,000):",
-        "University indirect costs capped strictly to ensure the total award equals exactly the $100,000 USD Faculty Innovation Award limit."
+        "Institutional Overhead ($10,000):",
+        "University indirect costs negotiated at 11.11% of direct costs to ensure total requested funding equals exactly the $100,000 USD Sony Faculty Innovation Award ceiling."
     )
 
     out_file = os.path.join(DIR_PATH, "XNexus_Sony_Proposal.docx")
@@ -886,3 +886,4 @@ def build_proposal():
 
 if __name__ == "__main__":
     build_proposal()
+

@@ -35,8 +35,9 @@ C_TEXT_MUTED = '#475569'
 
 def generate_figure_1():
     """
-    Figure 1: 7-Layer Autonomous Multi-Agent Architecture Topology.
+    Figure 1: 7-Layer Neuro-Symbolic System Architecture Topology.
     Clean 4-column vector diagram with zero badge overlapping and perfect typographic hierarchy.
+    Reflects the Neuro-Symbolic Safety Gate and One-Click Incident Commander Decision Support.
     """
     fig, ax = plt.subplots(figsize=(14.0, 7.6), dpi=300)
     fig.patch.set_facecolor('#FFFFFF')
@@ -46,10 +47,10 @@ def generate_figure_1():
     ax.axis('off')
 
     # Main Headers
-    ax.text(50, 97.2, "XNexus: 7-Layer Autonomous Multi-Agent System Architecture",
+    ax.text(50, 97.2, "XNexus: 7-Layer Neuro-Symbolic Architecture Topology",
             ha='center', va='center', color=C_NAVY, fontsize=15, fontweight='bold')
-    ax.text(50, 93.8, "Deterministic Closed-Loop Pipeline: Edge Ingest -> FastMCP Mesh -> LangGraph Arbitrator -> Autonomous Dispatch",
-            ha='center', va='center', color=C_SLATE, fontsize=9.2, fontstyle='italic')
+    ax.text(50, 93.8, "Edge Ingest -> FastMCP Mesh -> Semantic Multi-Agent Ensemble -> Symbolic Safety Gate -> One-Click Dispatch",
+            ha='center', va='center', color=C_SLATE, fontsize=9.0, fontstyle='italic')
 
     def draw_card(x, y, w, h, bg_color, border_color, border_width=1.2, radius=1.2):
         box = patches.FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0.2,rounding_size={radius}",
@@ -63,25 +64,24 @@ def generate_figure_1():
     y_base = 6.8
 
     # ----------------------------------------------------
-    # TIER 1: Sensing & Edge Telemetry (L1)
+    # TIER 1: Sensing & Hardware Attestation (L1)
     # ----------------------------------------------------
     x1 = 2.0
     draw_card(x1, y_base, col_w, col_h, '#F8FAFC', C_NAVY, 1.8)
-    # Header tab
     header_box = patches.FancyBboxPatch((x1, y_base + col_h - 4.5), col_w, 4.5,
                                         boxstyle="round,pad=0.1,rounding_size=1.0",
                                         linewidth=1.2, edgecolor=C_NAVY, facecolor='#E2E8F0', zorder=3)
     ax.add_patch(header_box)
-    ax.text(x1 + col_w/2, y_base + col_h - 2.2, "TIER 1: SENSING & EDGE (L1)",
-            ha='center', va='center', color=C_NAVY, fontsize=8.2, fontweight='bold', zorder=4)
+    ax.text(x1 + col_w/2, y_base + col_h - 2.2, "TIER 1: SENSING & ATTESTATION (L1)",
+            ha='center', va='center', color=C_NAVY, fontsize=8.0, fontweight='bold', zorder=4)
 
     # 1.1 Sony Spresense Node (Star Highlight)
     draw_card(x1 + 1.2, 67.5, col_w - 2.4, 13.5, '#F0F9FF', C_TEAL, 2.0)
     ax.text(x1 + 2.2, 78.5, "★ Sony Spresense™ Node", color=C_NAVY, fontsize=8.0, fontweight='bold')
-    ax.text(x1 + col_w - 2.2, 78.5, "[EDGE ML]", ha='right', color=C_TEAL, fontsize=6.8, fontweight='bold')
-    ax.text(x1 + 2.2, 75.0, "192kHz/24-bit Acoustic Infrasound", color=C_TEAL, fontsize=6.8, fontweight='bold')
-    ax.text(x1 + 2.2, 72.0, "Sub-surface geophone & mic sampling.", color=C_TEXT_DARK, fontsize=6.2)
-    ax.text(x1 + 2.2, 69.2, "On-device Mel FFT + INT8 TinyML rubble model.", color=C_TEXT_MUTED, fontsize=6.0)
+    ax.text(x1 + col_w - 2.2, 78.5, "[ATTESTED]", ha='right', color=C_TEAL, fontsize=6.8, fontweight='bold')
+    ax.text(x1 + 2.2, 75.0, "192kHz Acoustic Infrasound & TinyML", color=C_TEAL, fontsize=6.8, fontweight='bold')
+    ax.text(x1 + 2.2, 72.0, "IP68 field enclosure & ground geophone.", color=C_TEXT_DARK, fontsize=6.2)
+    ax.text(x1 + 2.2, 69.2, "Hardware Root-of-Trust ECDSA telemetry signature.", color=C_TEXT_MUTED, fontsize=6.0)
 
     # 1.2 IMD Doppler Radar
     draw_card(x1 + 1.2, 51.5, col_w - 2.4, 13.5, '#FFFFFF', C_GRAY_BORDER, 1.2)
@@ -101,11 +101,11 @@ def generate_figure_1():
 
     # 1.4 GSI Geotech IoT
     draw_card(x1 + 1.2, 19.5, col_w - 2.4, 13.5, '#FFFFFF', C_GRAY_BORDER, 1.2)
-    ax.text(x1 + 2.2, 30.5, "GSI Geotechnical IoT", color=C_NAVY, fontsize=8.0, fontweight='bold')
+    ax.text(x1 + 2.2, 30.5, "GSI Geotechnical Piezometers", color=C_NAVY, fontsize=8.0, fontweight='bold')
     ax.text(x1 + col_w - 2.2, 30.5, "[SOIL IOT]", ha='right', color=C_AMBER, fontsize=6.8, fontweight='bold')
     ax.text(x1 + 2.2, 27.0, "Pore Saturation: 88% (Critical)", color=C_AMBER, fontsize=6.8, fontweight='bold')
     ax.text(x1 + 2.2, 24.0, "Sub-surface shear displacement & piezometer drift.", color=C_TEXT_DARK, fontsize=6.2)
-    ax.text(x1 + 2.2, 21.2, "Real-time slope failure vulnerability index.", color=C_TEXT_MUTED, fontsize=6.0)
+    ax.text(x1 + 2.2, 21.2, "Cross-sensor physical consistency validation.", color=C_TEXT_MUTED, fontsize=6.0)
 
     # ----------------------------------------------------
     # TIER 2: FastMCP Semantic Mesh & Memory (L2-L3)
@@ -126,7 +126,7 @@ def generate_figure_1():
     ax.text(x2 + 2.2, 75.0, "Model Context Protocol Stdlib", color=C_NAVY, fontsize=6.8, fontweight='bold')
     ax.text(x2 + 2.2, 71.5, "• Universal JSON-RPC over stdio / SSE streams.", color=C_TEXT_DARK, fontsize=6.1)
     ax.text(x2 + 2.2, 68.0, "• Sub-15ms parsing latency across disparate sensors.", color=C_TEXT_MUTED, fontsize=6.0)
-    ax.text(x2 + 2.2, 64.5, "• Dynamic tool registration & zero-copy unpacking.", color=C_PURPLE, fontsize=6.0, fontweight='bold')
+    ax.text(x2 + 2.2, 64.5, "• Dynamic schema validation & attestation check.", color=C_PURPLE, fontsize=6.0, fontweight='bold')
     ax.text(x2 + 2.2, 61.2, "• High-concurrency async asyncio event queue.", color=C_TEXT_MUTED, fontsize=6.0)
 
     # 2.2 Tensor Normalizer (L2)
@@ -136,7 +136,7 @@ def generate_figure_1():
     ax.text(x2 + 2.2, 51.5, "Geospatial Alignment & Sync", color=C_NAVY, fontsize=6.8, fontweight='bold')
     ax.text(x2 + 2.2, 48.0, "• WGS84 projection & SI metric conversion.", color=C_TEXT_DARK, fontsize=6.1)
     ax.text(x2 + 2.2, 44.5, "• Epoch synchronization with strict latency timestamps.", color=C_TEXT_MUTED, fontsize=6.0)
-    ax.text(x2 + 2.2, 41.0, "• Sensor anomaly rejection & signal quality index.", color=C_GREEN, fontsize=6.0, fontweight='bold')
+    ax.text(x2 + 2.2, 41.0, "• Zero-trust spatial sanity check against spoofing.", color=C_GREEN, fontsize=6.0, fontweight='bold')
 
     # 2.3 Shared State Matrix (L3)
     draw_card(x2 + 1.2, 18.0, col_w - 2.4, 18.5, '#F0F9FF', C_TEAL, 1.3)
@@ -148,7 +148,7 @@ def generate_figure_1():
     ax.text(x2 + 2.2, 20.0, "• Immutable state snapshots for forensic auditability.", color=C_TEAL, fontsize=6.0, fontweight='bold')
 
     # ----------------------------------------------------
-    # TIER 3: Reasoning Core & LangGraph (L4-L5)
+    # TIER 3: Neuro-Symbolic Reasoning Core (L4-L5)
     # ----------------------------------------------------
     x3 = 52.0
     draw_card(x3, y_base, col_w, col_h, '#F8FAFC', C_PURPLE, 1.8)
@@ -156,43 +156,43 @@ def generate_figure_1():
                                          boxstyle="round,pad=0.1,rounding_size=1.0",
                                          linewidth=1.2, edgecolor=C_PURPLE, facecolor='#EDE9FE', zorder=3)
     ax.add_patch(header_box3)
-    ax.text(x3 + col_w/2, y_base + col_h - 2.2, "TIER 3: REASONING CORE (L4-L5)",
-            ha='center', va='center', color=C_PURPLE, fontsize=8.2, fontweight='bold', zorder=4)
+    ax.text(x3 + col_w/2, y_base + col_h - 2.2, "TIER 3: NEURO-SYMBOLIC CORE (L4-L5)",
+            ha='center', va='center', color=C_PURPLE, fontsize=7.8, fontweight='bold', zorder=4)
 
-    # 3.1 Domain Agents (L4)
+    # 3.1 Domain Agents (L4) - LLM Semantic Reasoning
     draw_card(x3 + 1.2, 54.0, col_w - 2.4, 27.0, '#FFFFFF', C_PURPLE, 1.3)
-    ax.text(x3 + 2.2, 78.5, "Domain Agent Ensemble", color=C_PURPLE, fontsize=7.8, fontweight='bold')
-    ax.text(x3 + col_w - 2.2, 78.5, "[L4 PARALLEL]", ha='right', color=C_PURPLE, fontsize=6.8, fontweight='bold')
+    ax.text(x3 + 2.2, 78.5, "Semantic Multi-Agent Ensemble", color=C_PURPLE, fontsize=7.8, fontweight='bold')
+    ax.text(x3 + col_w - 2.2, 78.5, "[L4 LLM]", ha='right', color=C_PURPLE, fontsize=6.8, fontweight='bold')
 
     # Agent subcards
     draw_card(x3 + 2.0, 70.0, col_w - 4.0, 7.0, '#EFF6FF', C_TEAL, 0.8)
     ax.text(x3 + 3.0, 74.8, "[MET] Weather Agent (Radar/IMD)", color=C_TEAL, fontsize=6.5, fontweight='bold')
-    ax.text(x3 + 3.0, 71.8, "Precipitation trajectory & cloudburst velocity.", color=C_TEXT_MUTED, fontsize=5.8)
+    ax.text(x3 + 3.0, 71.8, "Semantic cloudburst cell tracking & wind shear.", color=C_TEXT_MUTED, fontsize=5.8)
 
     draw_card(x3 + 2.0, 62.0, col_w - 4.0, 7.0, '#FAF5FF', C_PURPLE, 0.8)
     ax.text(x3 + 3.0, 66.8, "[HYDRO] River Agent (CWC Gauges)", color=C_PURPLE, fontsize=6.5, fontweight='bold')
-    ax.text(x3 + 3.0, 63.8, "Discharge surge & hydraulic flood wave arrival.", color=C_TEXT_MUTED, fontsize=5.8)
+    ax.text(x3 + 3.0, 63.8, "Hydraulic flood wave arrival & inundation path.", color=C_TEXT_MUTED, fontsize=5.8)
 
     draw_card(x3 + 2.0, 54.0, col_w - 4.0, 7.0, '#F0FDF4', C_GREEN, 0.8)
     ax.text(x3 + 3.0, 58.8, "[GEO] GeoRisk Agent (Sony Spresense)", color=C_GREEN, fontsize=6.5, fontweight='bold')
-    ax.text(x3 + 3.0, 55.8, "Acoustic shear rumble & soil saturation slip.", color=C_TEXT_MUTED, fontsize=5.8)
+    ax.text(x3 + 3.0, 55.8, "Acoustic rumble classification & slope creep.", color=C_TEXT_MUTED, fontsize=5.8)
 
-    # 3.2 Commander Arbitrator (L5)
+    # 3.2 Symbolic Safety Logic Gate (L5) - Hard-coded Determinism
     draw_card(x3 + 1.2, 15.0, col_w - 2.4, 36.5, '#FFFBEB', C_AMBER, 1.8)
-    ax.text(x3 + 2.2, 49.0, "Commander Arbitrator", color=C_AMBER, fontsize=8.0, fontweight='bold')
-    ax.text(x3 + col_w - 2.2, 49.0, "[L5 SAFETY-MAX]", ha='right', color=C_AMBER, fontsize=6.8, fontweight='bold')
-    ax.text(x3 + 2.2, 45.2, "Deterministic Conflict Resolution Rule:", color=C_NAVY, fontsize=6.6, fontweight='bold')
-    ax.text(x3 + 2.2, 42.0, "GeoRisk > Hydro (Road Landslide Override)", color=C_RED, fontsize=6.5, fontweight='bold')
-    ax.text(x3 + 2.2, 38.5, "Mathematical Constraint Solver:", color=C_TEXT_MUTED, fontsize=6.0)
-    ax.text(x3 + 2.2, 35.0, "argmax E[Safety] s.t. P(SlopeFailure) == 0", color=C_AMBER, fontsize=6.2, fontfamily='monospace', fontweight='bold')
-    ax.text(x3 + 2.2, 31.5, "Diverts evacuation fleet away from NH-76 onto Route 3.", color=C_TEXT_DARK, fontsize=6.0)
-    ax.text(x3 + 2.2, 27.5, "Deterministic XAI Audit Logger:", color=C_GREEN, fontsize=6.6, fontweight='bold')
+    ax.text(x3 + 2.2, 49.0, "Symbolic Safety Logic Gate", color=C_AMBER, fontsize=8.0, fontweight='bold')
+    ax.text(x3 + col_w - 2.2, 49.0, "[L5 LOGIC GATE]", ha='right', color=C_AMBER, fontsize=6.8, fontweight='bold')
+    ax.text(x3 + 2.2, 45.2, "Hard-Coded Mathematical Invariant Solver:", color=C_NAVY, fontsize=6.6, fontweight='bold')
+    ax.text(x3 + 2.2, 42.0, "Filters stochastic LLM outputs with formal rules.", color=C_RED, fontsize=6.3, fontweight='bold')
+    ax.text(x3 + 2.2, 38.5, "Formal Safety Verification Predicate:", color=C_TEXT_MUTED, fontsize=6.0)
+    ax.text(x3 + 2.2, 35.0, "Phi_safe(a) == True s.t. HazardZone(r) == 0", color=C_AMBER, fontsize=6.2, fontfamily='monospace', fontweight='bold')
+    ax.text(x3 + 2.2, 31.5, "Rejects unsafe recommendations deterministically.", color=C_TEXT_DARK, fontsize=6.0)
+    ax.text(x3 + 2.2, 27.5, "Standardized Incident Action Plan (ICS-201):", color=C_GREEN, fontsize=6.6, fontweight='bold')
     ax.text(x3 + 2.2, 24.0, "Score: 0.942 | Conf: 96.2% | Latency: 0.38s", color=C_TEAL, fontsize=6.2, fontfamily='monospace')
-    ax.text(x3 + 2.2, 20.5, "Immutable audit trail for statutory compliance.", color=C_TEXT_MUTED, fontsize=6.0)
-    ax.text(x3 + 2.2, 17.0, "Zero human-in-the-loop bureaucratic stall.", color=C_AMBER, fontsize=6.0, fontweight='bold')
+    ax.text(x3 + 2.2, 20.5, "Pre-packages incident report for human review.", color=C_TEXT_MUTED, fontsize=6.0)
+    ax.text(x3 + 2.2, 17.0, "Guaranteed formal logic invariant enforcement.", color=C_AMBER, fontsize=6.0, fontweight='bold')
 
     # ----------------------------------------------------
-    # TIER 4: Autonomous Dispatch & Execution (L6-L7)
+    # TIER 4: Rapid Decision Support & One-Click Dispatch (L6-L7)
     # ----------------------------------------------------
     x4 = 77.0
     draw_card(x4, y_base, col_w, col_h, '#F8FAFC', C_RED, 1.8)
@@ -200,40 +200,40 @@ def generate_figure_1():
                                          boxstyle="round,pad=0.1,rounding_size=1.0",
                                          linewidth=1.2, edgecolor=C_RED, facecolor='#FEE2E2', zorder=3)
     ax.add_patch(header_box4)
-    ax.text(x4 + col_w/2, y_base + col_h - 2.2, "TIER 4: AUTONOMOUS DISPATCH (L6-L7)",
+    ax.text(x4 + col_w/2, y_base + col_h - 2.2, "TIER 4: DECISION SUPPORT (L6-L7)",
             ha='center', va='center', color=C_RED, fontsize=8.0, fontweight='bold', zorder=4)
 
-    # 4.1 NDMA Sachet Engine
+    # 4.1 Pre-Packaged OASIS CAP v1.2
     draw_card(x4 + 1.2, 67.5, col_w - 2.4, 13.5, '#FEF2F2', C_RED, 1.3)
-    ax.text(x4 + 2.2, 78.5, "NDMA Sachet Engine", color=C_RED, fontsize=8.0, fontweight='bold')
-    ax.text(x4 + col_w - 2.2, 78.5, "[CAP v1.2]", ha='right', color=C_RED, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 75.0, "840+ Cellular Towers Broadcast", color=C_NAVY, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 72.0, "OASIS CAP XML payload generated in <1.8s.", color=C_TEXT_DARK, fontsize=6.1)
-    ax.text(x4 + 2.2, 69.2, "Instant multilingual wake-up sirens on phones.", color=C_RED, fontsize=6.0, fontweight='bold')
+    ax.text(x4 + 2.2, 78.5, "Pre-Packaged OASIS CAP v1.2", color=C_RED, fontsize=7.8, fontweight='bold')
+    ax.text(x4 + col_w - 2.2, 78.5, "[CAP XML]", ha='right', color=C_RED, fontsize=6.8, fontweight='bold')
+    ax.text(x4 + 2.2, 75.0, "Cellular Alert Ready for 1-Click Approval", color=C_NAVY, fontsize=6.6, fontweight='bold')
+    ax.text(x4 + 2.2, 72.0, "Synthesized multilingual payload in <1.8s.", color=C_TEXT_DARK, fontsize=6.1)
+    ax.text(x4 + 2.2, 69.2, "One-click authorization by Incident Commander.", color=C_RED, fontsize=6.0, fontweight='bold')
 
-    # 4.2 MapmyIndia Detour API
+    # 4.2 ICS-201 Incident Action Briefing
     draw_card(x4 + 1.2, 51.5, col_w - 2.4, 13.5, '#F0FDF4', C_GREEN, 1.3)
-    ax.text(x4 + 2.2, 62.5, "MapmyIndia Detour API", color=C_GREEN, fontsize=8.0, fontweight='bold')
-    ax.text(x4 + col_w - 2.2, 62.5, "[DETOUR]", ha='right', color=C_GREEN, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 59.0, "NH-76 Blocked -> Route 3 Detour", color=C_NAVY, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 56.0, "Dynamic GPS geofences pushed to civil fleet.", color=C_TEXT_DARK, fontsize=6.1)
-    ax.text(x4 + 2.2, 53.2, "Prevents evacuees bottlenecking on washed road.", color=C_GREEN, fontsize=6.0, fontweight='bold')
+    ax.text(x4 + 2.2, 62.5, "NDMA ICS-201 Incident Plan", color=C_GREEN, fontsize=7.8, fontweight='bold')
+    ax.text(x4 + col_w - 2.2, 62.5, "[ICS-201]", ha='right', color=C_GREEN, fontsize=6.8, fontweight='bold')
+    ax.text(x4 + 2.2, 59.0, "Verified Operational Map & Evacuation", color=C_NAVY, fontsize=6.6, fontweight='bold')
+    ax.text(x4 + 2.2, 56.0, "Clear natural-language XAI justification card.", color=C_TEXT_DARK, fontsize=6.1)
+    ax.text(x4 + 2.2, 53.2, "Statutory compliance with civil defense SOPs.", color=C_GREEN, fontsize=6.0, fontweight='bold')
 
-    # 4.3 108 Emergency Health
+    # 4.3 Attested Forensic Audit Ledger
     draw_card(x4 + 1.2, 35.5, col_w - 2.4, 13.5, '#F0F9FF', C_TEAL, 1.3)
-    ax.text(x4 + 2.2, 46.5, "108 Health Triage", color=C_TEAL, fontsize=8.0, fontweight='bold')
-    ax.text(x4 + col_w - 2.2, 46.5, "[ICU TRIAGE]", ha='right', color=C_TEAL, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 43.0, "14 Trauma ICU Beds Reserved", color=C_NAVY, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 40.0, "Automated hospital reservation & green routing.", color=C_TEXT_DARK, fontsize=6.1)
-    ax.text(x4 + 2.2, 37.2, "Zero manual telephone dispatch overhead.", color=C_TEAL, fontsize=6.0, fontweight='bold')
+    ax.text(x4 + 2.2, 46.5, "Attested Forensic Audit Ledger", color=C_TEAL, fontsize=7.8, fontweight='bold')
+    ax.text(x4 + col_w - 2.2, 46.5, "[AUDIT]", ha='right', color=C_TEAL, fontsize=6.8, fontweight='bold')
+    ax.text(x4 + 2.2, 43.0, "Hardware ECDSA + SHA-256 Chain", color=C_NAVY, fontsize=6.6, fontweight='bold')
+    ax.text(x4 + 2.2, 40.0, "Guarantees endpoint telemetry genuineness.", color=C_TEXT_DARK, fontsize=6.1)
+    ax.text(x4 + 2.2, 37.2, "Legally admissible post-disaster inquiry data.", color=C_TEAL, fontsize=6.0, fontweight='bold')
 
-    # 4.4 Sony Sub-GHz Siren Mesh
+    # 4.4 Sony Sub-GHz Siren Fallback
     draw_card(x4 + 1.2, 19.5, col_w - 2.4, 13.5, '#FAF5FF', C_PURPLE, 1.3)
-    ax.text(x4 + 2.2, 30.5, "Sony Sub-GHz Siren Mesh", color=C_PURPLE, fontsize=8.0, fontweight='bold')
+    ax.text(x4 + 2.2, 30.5, "Sony Sub-GHz Fallback Siren", color=C_PURPLE, fontsize=7.8, fontweight='bold')
     ax.text(x4 + col_w - 2.2, 30.5, "[SUB-GHZ]", ha='right', color=C_PURPLE, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 27.0, "Offline High-SPL Valley Sirens", color=C_NAVY, fontsize=6.8, fontweight='bold')
-    ax.text(x4 + 2.2, 24.0, "Direct hardware actuation when cell towers fall.", color=C_TEXT_DARK, fontsize=6.1)
-    ax.text(x4 + 2.2, 21.2, "100% autonomous grid-down acoustic life safety.", color=C_PURPLE, fontsize=6.0, fontweight='bold')
+    ax.text(x4 + 2.2, 27.0, "Grid-Down Local Mesh Beacon", color=C_NAVY, fontsize=6.6, fontweight='bold')
+    ax.text(x4 + 2.2, 24.0, "Commander-authorized acoustic sirens in valleys.", color=C_TEXT_DARK, fontsize=6.1)
+    ax.text(x4 + 2.2, 21.2, "Operates independently when cell towers fall.", color=C_PURPLE, fontsize=6.0, fontweight='bold')
 
     # Pipeline Flow Arrows between Tiers
     arrow_kw = dict(arrowstyle="-|>", color=C_SLATE, lw=2.5, mutation_scale=18)
@@ -244,9 +244,9 @@ def generate_figure_1():
     # L7 Closed Loop Feedback Bar at bottom
     fb_box = draw_card(2.0, 1.5, 96.0, 3.8, '#F0FDF4', C_GREEN, 1.2, 0.8)
     ax.text(3.5, 3.4, "[L7 FEEDBACK]", color=C_GREEN, fontsize=6.8, fontweight='bold')
-    ax.text(14.0, 3.4, "Real-time field execution telemetry continuously updates agent confidence weights & route detour vectors.",
+    ax.text(14.0, 3.4, "Real-time field execution telemetry continuously updates agent confidence weights & verification state.",
             color=C_TEXT_DARK, fontsize=6.2)
-    ax.text(96.0, 3.4, "● 100% OPERATIONAL | MCP PROTOCOL LATENCY: 0.38s",
+    ax.text(96.0, 3.4, "● RECOMMENDATION LATENCY: <4.0s | HUMAN 1-CLICK DISPATCH",
             ha='right', color=C_TEAL, fontsize=6.5, fontfamily='monospace', fontweight='bold')
 
     plt.tight_layout()
@@ -257,6 +257,7 @@ def generate_figure_1():
 
 
 def generate_figure_2():
+
     """
     Figure 2: Tri-panel Sony Spresense Figure:
       (a) Generated Field Deployment Photo (IP67 unit deployed on mountain terrain)
@@ -441,17 +442,17 @@ def generate_figure_3():
                    bbox=dict(boxstyle="round,pad=0.4", facecolor='#FEF2F2', edgecolor=C_RED, lw=1.2))
 
     # ----------------------------------------------------
-    # Right Chart: XNexus Autonomous Pipeline Latency (Seconds)
+    # Right Chart: XNexus Rapid Decision Support Pipeline (Seconds)
     # ----------------------------------------------------
     ax_xnexus.set_facecolor('#FFFFFF')
     stages_xnexus = [
-        "1. FastMCP Ingest\n(Spresense Edge Audio)",
-        "2. Parallel Agent Reasoning\n(Geo/Hydro/Weather Models)",
-        "3. LangGraph Commander\n(Safety-Max Arbitration)",
-        "4. Autonomous Actuation\n(CAP v1.2 / GPS Detours)"
+        "1. FastMCP Edge Ingest\n& Attestation Check",
+        "2. Parallel Agent Reasoning\n(Multi-Domain LLMs)",
+        "3. Symbolic Safety Gate\n(Formal Invariant Check)",
+        "4. Command Plan Synthesis\n(CAP XML & ICS-201 Report)"
     ]
-    durations_xnexus = [0.40, 1.20, 0.60, 1.80]  # Total = 4.00s
-    cumulative_xnexus = [0.40, 1.60, 2.20, 4.00]
+    durations_xnexus = [0.40, 1.20, 0.50, 1.70]  # Total = 3.80s
+    cumulative_xnexus = [0.40, 1.60, 2.10, 3.80]
 
     y_pos2 = np.arange(len(stages_xnexus))
     bars2 = ax_xnexus.barh(y_pos2, durations_xnexus, height=bar_height, color=C_TEAL,
@@ -467,15 +468,15 @@ def generate_figure_3():
     ax_xnexus.set_yticks(y_pos2)
     ax_xnexus.set_yticklabels(stages_xnexus, fontsize=8.2, fontweight='bold', color=C_NAVY)
     ax_xnexus.set_xlabel("Elapsed Time per Stage (Seconds)", fontsize=8.8, fontweight='bold', color=C_TEXT_DARK)
-    ax_xnexus.set_title("XNexus Autonomous Edge Architecture\nTotal Latency: < 4.00 Seconds (1,650x Speedup)",
+    ax_xnexus.set_title("XNexus Rapid Decision Support Pipeline\nTotal Latency: < 3.80s to One-Click Command Package",
                         fontsize=10.0, fontweight='bold', color=C_NAVY, pad=10)
     ax_xnexus.set_xlim(0, 2.7)
     ax_xnexus.grid(True, axis='x', linestyle='--', color='#E2E8F0', linewidth=0.8, zorder=0)
 
     # XNexus Advantage Banner
     ax_xnexus.text(1.35, -0.85,
-                   "AUTONOMOUS ADVANTAGE: 100% Deterministic Edge Actuation\nNDMA CAP alerts & GPS route detours dispatched before slope collapse",
-                   ha='center', va='center', color=C_NAVY, fontsize=7.8, fontweight='bold',
+                   "DECISION SUPPORT ADVANTAGE: Synthesizes verified CAP alerts & ICS-201 plans\nCompresses 110+ minutes of manual phone trees into One-Click Commander Approval!",
+                   ha='center', va='center', color=C_NAVY, fontsize=7.6, fontweight='bold',
                    bbox=dict(boxstyle="round,pad=0.4", facecolor='#F0F9FF', edgecolor=C_TEAL, lw=1.2))
 
     plt.subplots_adjust(bottom=0.20, top=0.90)
