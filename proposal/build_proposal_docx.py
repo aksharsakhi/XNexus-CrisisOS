@@ -200,15 +200,35 @@ def add_body_p(doc, text, bold_prefix="", italic_suffix="", space_after=3):
     return p
 
 def add_bullet_p(doc, bold_title, text):
-    p = doc.add_paragraph(style='List Bullet')
+    p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(1)
     p.paragraph_format.space_after = Pt(2)
     p.paragraph_format.line_spacing = 1.08
-    brun = p.add_run(bold_title + " ")
+    p.paragraph_format.left_indent = Inches(0.22)
+    p.paragraph_format.first_line_indent = Inches(-0.22)
+    
+    clean_title = bold_title.strip()
+    # Check if title already starts with a number or bullet
+    if clean_title and clean_title[0].isdigit() and (clean_title[1] == '.' or (len(clean_title) > 2 and clean_title[2] == '.')):
+        prefix = ""
+    elif clean_title.startswith("•") or clean_title.startswith("-"):
+        prefix = ""
+    else:
+        prefix = "•  "
+        
+    if prefix:
+        r_bullet = p.add_run(prefix)
+        r_bullet.font.name = 'Arial'
+        r_bullet.font.size = Pt(9.2)
+        r_bullet.font.bold = True
+        r_bullet.font.color.rgb = COLOR_BLACK
+
+    brun = p.add_run(clean_title + " ")
     brun.font.name = 'Arial'
     brun.font.size = Pt(9.2)
     brun.font.bold = True
-    brun.font.color.rgb = COLOR_BODY_TEXT
+    brun.font.color.rgb = COLOR_BLACK
+    
     run = p.add_run(text)
     run.font.name = 'Arial'
     run.font.size = Pt(9.2)
@@ -419,29 +439,34 @@ def build_proposal():
         "The fatal flaw is not a lack of scientific data, but the architectural fragmentation of disaster intelligence and the latency of human bureaucratic execution. In current operational standard operating procedures (SOPs), environmental data is trapped in isolated agency silos: Doppler radar reflectivity sits on meteorological portals (e.g., IMD), river stage telemetry resides in hydrological databases (e.g., CWC), and geological slope risk is locked in static periodic reports (e.g., GSI). When an extreme event strikes, these streams cannot dynamically synthesize without manual operator intervention."
     )
     
-    create_callout_box(
-        doc,
-        title="GROUND REALITY CASE STUDY: The 2024 Wayanad Landslide Tragedy",
-        content_paragraphs=[
-            "Event Timeline: On July 30, 2024, catastrophic debris flows struck the Meppadi panchayat in Wayanad, Kerala, India, between 1:00 AM and 4:00 AM, demolishing entire villages (Chooralmala, Mundakkai) and killing over 400 civilians.",
-            "The Fatal Bottleneck: Over 570 mm of rainfall fell within 48 hours. Official warnings were gated behind sequential administrative hierarchy. Because the debris flows ruptured during the night (3:00 AM), human phone trees were completely dormant. It took more than 110 minutes between the physical slope failure and the mobilization of downstream civil evacuation.",
-            "By the time rescue forces were dispatched, the main bridge at Chooralmala was washed out, cutting off the evacuation route. An edge system detecting pre-rupture acoustic rumblings and instantly delivering a verified, one-click incident command package would have saved hundreds of lives during the critical golden hour."
-        ],
-        border_color=HEX_CRITICAL_BORDER,
-        bg_color=HEX_CRITICAL_BG,
-        icon="⚠️"
+    p_cs1 = doc.add_paragraph()
+    p_cs1.paragraph_format.space_before = Pt(5)
+    p_cs1.paragraph_format.space_after = Pt(2)
+    p_cs1.paragraph_format.keep_with_next = True
+    r_cs1 = p_cs1.add_run("Ground Reality Case Study 1: The July 2024 Wayanad Landslide Catastrophe")
+    r_cs1.font.name = 'Arial'
+    r_cs1.font.size = Pt(9.8)
+    r_cs1.font.bold = True
+    r_cs1.font.color.rgb = COLOR_CRITICAL_RED
+    
+    add_body_p(doc, 
+        "On July 30, 2024, catastrophic debris flows struck the Meppadi panchayat in Wayanad, Kerala, between 1:00 AM and 4:00 AM, demolishing entire villages (Chooralmala, Mundakkai) and killing over 400 civilians. Over 570 mm of rainfall fell within 48 hours. Official warnings were gated behind sequential administrative hierarchy. Because debris flows ruptured during the night (3:00 AM), human phone trees were completely dormant. It took over 110 minutes between physical slope failure and downstream civil mobilization. By the time rescue forces were dispatched, the main bridge at Chooralmala was washed out, cutting off the evacuation route. An edge system detecting pre-rupture acoustic rumblings and delivering a verified one-click decision package would have saved hundreds of lives during the critical golden hour.",
+        bold_prefix="• Disaster Timeline & Administrative Bottleneck: "
     )
 
-    create_callout_box(
-        doc,
-        title="GROUND REALITY CASE STUDY: The September 2024 Nepal Flash Floods",
-        content_paragraphs=[
-            "Disaster Impact: In late September 2024, unprecedented monsoon cloudbursts dumped up to 322 mm of rainfall in 24 hours across Kathmandu Valley and eastern Nepal, triggering flash floods that killed over 240 individuals.",
-            "Grid and Communications Collapse: The primary failure mode was the immediate collapse of commercial power and 4G/LTE base stations as riverbanks eroded. Centralized cloud dashboards went blind. Downstream communities received zero upstream telemetry because sensors lacked autonomous, decentralized edge intelligence capable of operating during power blackouts."
-        ],
-        border_color="D97706",
-        bg_color="FFFBEB",
-        icon="🌊"
+    p_cs2 = doc.add_paragraph()
+    p_cs2.paragraph_format.space_before = Pt(4)
+    p_cs2.paragraph_format.space_after = Pt(2)
+    p_cs2.paragraph_format.keep_with_next = True
+    r_cs2 = p_cs2.add_run("Ground Reality Case Study 2: The September 2024 Nepal Flash Floods")
+    r_cs2.font.name = 'Arial'
+    r_cs2.font.size = Pt(9.8)
+    r_cs2.font.bold = True
+    r_cs2.font.color.rgb = COLOR_BLACK
+    
+    add_body_p(doc, 
+        "In late September 2024, unprecedented monsoon cloudbursts dumped up to 322 mm of rainfall in 24 hours across Kathmandu Valley and eastern Nepal, triggering flash floods that killed over 240 individuals. The primary failure mode was the immediate collapse of commercial power and 4G/LTE base stations as riverbanks eroded. Centralized cloud dashboards went blind. Downstream communities received zero upstream telemetry because sensors lacked autonomous, decentralized edge intelligence capable of operating during power and communication blackouts.",
+        bold_prefix="• Grid Collapse & Telemetry Blackout: "
     )
 
     # ==========================================
@@ -559,17 +584,18 @@ def build_proposal():
         "Equipped with a sub-GHz transceiver, Spresense nodes form an ad-hoc local mesh across mountain valleys. In total cellular blackout conditions, approved emergency tokens trigger solar-powered valley sirens directly over sub-GHz radio links within milliseconds."
     )
 
-    create_callout_box(
-        doc,
-        title="STRATEGIC ALIGNMENT: Why Sony Should Fund This Research",
-        content_paragraphs=[
-            "Advancing Sony's Climate Resilience Mission: Sony's global corporate mission is anchored by Sustainability. Backing XNexus demonstrates that Sony microelectronics can solve humanity's most urgent climate disaster challenges.",
-            "Elevating Spresense to Mission-Critical Civil Infrastructure: This research transitions Spresense from a maker/IoT kit into a certified edge computing standard for national emergency agencies (NDMA, CWC, international civil defense).",
-            "Open-Source Ecosystem Impact: All Spresense FastMCP bridge drivers, TinyML acoustic models, and edge DSP filters will be released open-source on GitHub, significantly expanding the Sony developer community."
-        ],
-        border_color=HEX_SONY_NAVY,
-        bg_color=HEX_CALLOUT_BG,
-        icon="🎯"
+    add_heading_2(doc, "4.2 Strategic Research Alignment: Why Sony Should Fund This Work")
+    add_bullet_p(doc, 
+        "1. Advancing Sony's Climate Resilience Mission:",
+        "Directly embodies Sony's corporate sustainability mission. Backing XNexus demonstrates that Sony microelectronics can solve humanity's most urgent climate disaster challenges."
+    )
+    add_bullet_p(doc, 
+        "2. Elevating Spresense to Mission-Critical Civil Infrastructure:",
+        "Transitions Spresense from a maker board into a certified edge computing standard for national emergency agencies (NDMA, CWC, international civil defense)."
+    )
+    add_bullet_p(doc, 
+        "3. Open-Source Ecosystem Impact:",
+        "All Spresense FastMCP bridge drivers, TinyML acoustic models, and edge DSP filters will be published open-source on GitHub, significantly expanding Sony's developer community."
     )
 
     # ==========================================
@@ -640,19 +666,29 @@ def build_proposal():
         "Let M = {Geo, Hydro, Weather} represent the set of domain agents, and let s(t) denote the normalized geospatial state vector at time t. Stochastic LLM agents formulate a set of candidate recommendations A_cand. The Symbolic Safety Gate solves for the optimal actionable recommendation a* via constrained optimization:"
     )
     
-    create_callout_box(
-        doc,
-        title="FORMULA 1: Neuro-Symbolic Safety Gate Optimization",
-        content_paragraphs=[
-            "a* = argmax_{a in A_cand} [ SUM_{i in M} w_i(t) * U_i(s(t), a) ]   SUBJECT TO:   Phi_safe(a, s(t)) == True",
-            "Where the hard-coded Symbolic Safety Predicate is defined as:",
-            "Phi_safe(a, s(t)) == [ FOR ALL route r in Routes(a): Probability(SlopeFailure(r, Delta t)) < theta_safe ] AND [ BufferDistance(a) >= D_min ]",
-            "Threshold Specification: theta_safe = 0.05 (maximum 5% slope failure probability derived from geotechnical limit-equilibrium Factor of Safety FoS >= 1.30 under transient pore saturation u_w); D_min = 500 meters buffer from active slip faces.",
-            "If an LLM proposes an unsafe action, Phi_safe evaluates to False, deterministically rejecting the proposal and selecting a provably safe default detour corridor."
-        ],
-        border_color=HEX_SLATE_BLUE,
-        bg_color=HEX_LIGHT_BG,
-        icon="📐"
+    p_eq1 = doc.add_paragraph()
+    p_eq1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_eq1.paragraph_format.space_before = Pt(5)
+    p_eq1.paragraph_format.space_after = Pt(2)
+    r1 = p_eq1.add_run("a* = argmax_{a ∈ A_cand} [ ∑_{i ∈ M} w_i(t) · U_i(s(t), a) ]   subject to   Φ_safe(a, s(t)) == True")
+    r1.font.name = 'Arial'
+    r1.font.size = Pt(9.5)
+    r1.font.bold = True
+    r1.font.color.rgb = COLOR_BLACK
+    
+    p_eq1_sub = doc.add_paragraph()
+    p_eq1_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_eq1_sub.paragraph_format.space_before = Pt(1)
+    p_eq1_sub.paragraph_format.space_after = Pt(3)
+    r1_sub = p_eq1_sub.add_run("Φ_safe(a, s(t)) ≡ [ ∀ r ∈ Routes(a): P(SlopeFailure(r, Δt)) < θ_safe ] ∧ [ BufferDistance(a) ≥ D_min ]")
+    r1_sub.font.name = 'Arial'
+    r1_sub.font.size = Pt(9.0)
+    r1_sub.font.italic = True
+    r1_sub.font.color.rgb = COLOR_BLACK
+
+    add_body_p(doc, 
+        "Threshold Specification: θ_safe = 0.05 (maximum 5% slope failure probability derived from geotechnical limit-equilibrium Factor of Safety FoS ≥ 1.30 under transient pore saturation u_w); D_min = 500 meters buffer from active slip faces. If an LLM proposes an unsafe action, Φ_safe evaluates to False, deterministically rejecting the proposal and selecting a provably safe default detour corridor.",
+        bold_prefix="• Invariant Enforcement: "
     )
 
     add_heading_2(doc, "6.2 Spresense On-Device Acoustic Index & Hardware Attestation")
@@ -660,18 +696,29 @@ def build_proposal():
         "Operating on Core 1 and Core 2 of the Sony Spresense CXD5602, the Acoustic Rumble Index S_rumble(t) quantifies the ratio of low-frequency infrasonic power (10-120 Hz) to ambient noise, signed by the on-chip cryptographic private key:"
     )
     
-    create_callout_box(
-        doc,
-        title="FORMULA 2: Spresense Acoustic Rumble Index & Cryptographic Attestation",
-        content_paragraphs=[
-            "S_rumble(t) = [ INTEGRAL_{10 Hz}^{120 Hz} |X(f, t)|^2 df ]  /  [ INTEGRAL_{120 Hz}^{4000 Hz} |X(f, t)|^2 df + epsilon ]",
-            "Hardware Attestation Token:   tau_attest = Sign_{K_Spresense} ( Hash( S_rumble(t) || x_GNSS || timestamp ) )",
-            "Cryptographic Overhead vs Speed: On-chip ECDSA (NIST P-256) signing on CXD5602 requires 3.2 ms; verification takes 1.6 ms. Total security delay (4.8 ms) fits within the 15 ms FastMCP window, proving zero latency penalty.",
-            "When S_rumble(t) > theta_hazard for 3 consecutive windows, Spresense dispatches tau_attest via FastMCP. Downstream nodes verify the signature, rejecting any unauthenticated or corrupted packets."
-        ],
-        border_color=HEX_TECH_CYAN,
-        bg_color=HEX_LIGHT_BG,
-        icon="📊"
+    p_eq2 = doc.add_paragraph()
+    p_eq2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_eq2.paragraph_format.space_before = Pt(5)
+    p_eq2.paragraph_format.space_after = Pt(2)
+    r2 = p_eq2.add_run("S_rumble(t) = [ ∫_{10 Hz}^{120 Hz} |X(f, t)|² df ]  /  [ ∫_{120 Hz}^{4000 Hz} |X(f, t)|² df + ε ]")
+    r2.font.name = 'Arial'
+    r2.font.size = Pt(9.5)
+    r2.font.bold = True
+    r2.font.color.rgb = COLOR_BLACK
+
+    p_eq2_sub = doc.add_paragraph()
+    p_eq2_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_eq2_sub.paragraph_format.space_before = Pt(1)
+    p_eq2_sub.paragraph_format.space_after = Pt(3)
+    r2_sub = p_eq2_sub.add_run("τ_attest = Sign_{K_Spresense} ( Hash( S_rumble(t) ∥ x_GNSS ∥ timestamp ) )")
+    r2_sub.font.name = 'Arial'
+    r2_sub.font.size = Pt(9.0)
+    r2_sub.font.italic = True
+    r2_sub.font.color.rgb = COLOR_BLACK
+
+    add_body_p(doc, 
+        "Cryptographic Overhead vs Speed: On-chip ECDSA (NIST P-256) signing on CXD5602 requires 3.2 ms; verification takes 1.6 ms. Total security delay (4.8 ms) fits within the 15 ms FastMCP window, proving zero latency penalty. When S_rumble(t) > θ_hazard for 3 consecutive windows, Spresense dispatches τ_attest via FastMCP. Downstream nodes verify the signature, rejecting any unauthenticated or corrupted packets.",
+        bold_prefix="• Attestation Benchmark: "
     )
 
     # ==========================================
