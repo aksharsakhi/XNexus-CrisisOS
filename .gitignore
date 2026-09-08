@@ -17,3 +17,6 @@ __pycache__/
 *.pyc
 # Media & Large Files
 *.mp4
+# Debug renders
+page_*.png
+proposal/page_*.png

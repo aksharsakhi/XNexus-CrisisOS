@@ -58,17 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Export PPTX Download Handler
+  // Export PDF Print Handler
   const exportBtn = document.getElementById("export-btn");
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
-      const a = document.createElement("a");
-      a.href = "XNexus_CrisisOS_Presentation.pptx";
-      a.download = "XNexus_CrisisOS_Presentation.pptx";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      showToast("POWERPOINT EXPORTED", "XNexus_CrisisOS_Presentation.pptx downloaded successfully.", "success");
+      window.print();
     });
   }
 
@@ -357,14 +351,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 4500);
   }
 
-  setInterval(() => {
-    const t = toasts[Math.floor(Math.random() * toasts.length)];
-    showToast(t.header, t.body, t.type);
-  }, 9000);
-
-  setTimeout(() => {
-    showToast("SYSTEM INITIALIZED", "XNexus-CrisisOS multi-agent dashboard operational.", "info");
-  }, 2000);
+  // Periodic toast loop disabled to prevent obstructing presentation slides
+  // setInterval(() => {
+  //   const t = toasts[Math.floor(Math.random() * toasts.length)];
+  //   showToast(t.header, t.body, t.type);
+  // }, 9000);
 
   // ---- Scroll-Reveal IntersectionObserver ----
   // Reveals elements with .reveal, .reveal-left, .reveal-right, .reveal-scale

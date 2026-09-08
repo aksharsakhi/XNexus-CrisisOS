@@ -37,616 +37,1110 @@
     </div>
     <div class="nav-right">
       <button class="nav-btn" id="theme-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span id="theme-label">Dark Mode</span></button>
-      <button class="nav-btn btn-export" id="export-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export PPTX</button>
+      <button class="nav-btn btn-export" id="export-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export PDF</button>
     </div>
   </nav>
 
   <!-- Slides Viewport -->
   <main class="viewport" id="viewport">
 
-    <!-- ==================== SLIDE 1: HERO ==================== -->
+    <!-- ==================== SLIDE 1: PROBLEM STATEMENT ==================== -->
     <section class="slide active" data-index="0">
-      <div class="slide-inner hero-slide">
-        <div class="hero-badge">SONY RESEARCH AWARD 2026 CANDIDATE</div>
-        <h1 class="hero-title">
-          <span class="hero-line-1">XNEXUS</span>
-          <span class="hero-dot">.</span>
-          <span class="hero-line-2">OS</span>
-        </h1>
-        <div class="hero-tagline">AUTONOMOUS MULTI-AGENT SENSING MESH</div>
-        <div class="hero-accent-line"></div>
-        <p class="hero-desc">A physics-grounded AI operating system that fuses heterogeneous remote telemetry with Sony Spresense™ edge nodes for real-time climate disaster mitigation.</p>
-        
-        <!-- Live Telemetry Strip -->
-        <div class="telemetry-strip">
-          <div class="tele-header">LIVE TELEMETRY MONITOR (INDIA)</div>
-          <div class="tele-row">
-            <span class="tele-dot dot-yellow"></span>
-            <span class="tele-region">UTTARAKHAND (SLOPE STABILITY)</span>
-            <span class="tele-val" id="tele-1">STANDBY / SOIL SATURATION 62.0%</span>
-          </div>
-          <div class="tele-row active-row">
-            <span class="tele-dot dot-red pulse"></span>
-            <span class="tele-region">KERALA (KABINI RESERVOIR FLOOD)</span>
-            <span class="tele-val" id="tele-2">ACTIVE EVACUATION / +18.2CM/HR</span>
-          </div>
-          <div class="tele-row">
-            <span class="tele-dot dot-green"></span>
-            <span class="tele-region">ASSAM (BRAHMAPUTRA VALLEY)</span>
-            <span class="tele-val">MONITORING NORMAL</span>
-          </div>
+      <div class="slide-inner">
+        <div class="slide-header">
+          <div class="slide-badge">01 / THE PROBLEM &amp; SCIENTIFIC GAPS</div>
+          <h2 class="slide-heading">The Fragmentation of<br><span class="heading-accent">Disaster Intelligence</span></h2>
+          <p class="slide-subtext">
+            India's disaster telemetry is isolated across disparate agency portals and delayed by archaic manual phone chains.
+          </p>
         </div>
+        
+        <div class="slide-body-fill">
+          <div class="bento-grid cols-2 fill-height" style="gap: 16px; align-items: stretch;">
+            <!-- Left: Visual Fragmentation & Research Gap -->
+            <div class="glass-card fill-card tilt-card" style="padding: 18px 22px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <h3 style="color: var(--red); font-size: 1.05rem; font-family: var(--font-display); display: flex; align-items: center; gap: 8px;">
+                    <span>⚠️</span> The Fatal Bottleneck: Fragmented Silos
+                  </h3>
+                  <span class="fail-card-badge badge-red">CRITICAL GAP</span>
+                </div>
+                
+                <!-- Visual Disconnected Silos Diagram -->
+                <div class="silo-visual-container">
+                  <div class="silo-box">
+                    <div class="silo-icon">🛰️</div>
+                    <div class="silo-name">IMD Doppler</div>
+                    <div class="silo-status">Isolated Portal</div>
+                  </div>
+                  <div class="silo-broken-link">
+                    <span class="broken-x">✕</span>
+                    <span class="broken-line"></span>
+                  </div>
+                  <div class="silo-box">
+                    <div class="silo-icon">🌊</div>
+                    <div class="silo-name">CWC Gauges</div>
+                    <div class="silo-status">Legacy DB</div>
+                  </div>
+                  <div class="silo-broken-link">
+                    <span class="broken-x">✕</span>
+                    <span class="broken-line"></span>
+                  </div>
+                  <div class="silo-box">
+                    <div class="silo-icon">⛰️</div>
+                    <div class="silo-name">GSI GeoRisk</div>
+                    <div class="silo-status">Static Reports</div>
+                  </div>
+                </div>
+              </div>
 
-        <div class="hero-metrics">
-          <div class="hm"><span class="hm-label">DATA PIPELINES</span><span class="hm-val">SONY SPRESENSE / IMD / CWC</span></div>
-          <div class="hm-sep"></div>
-          <div class="hm"><span class="hm-label">AI CORE</span><span class="hm-val">PHYSICS-LLM GUARDRAILS</span></div>
-          <div class="hm-sep"></div>
-          <div class="hm"><span class="hm-label">ALERTS MAPPED</span><span class="hm-val">NDMA Sachet</span></div>
+              <!-- Thesis Highlight Box -->
+              <div class="problem-thesis-box">
+                <div style="font-weight: 700; color: #ff8a80; font-size: 0.88rem; margin-bottom: 3px;">Core Scientific Research Gap:</div>
+                <div style="font-size: 0.82rem; color: #ffffff; line-height: 1.4;">
+                  Current disaster systems stop at <strong>passive prediction</strong>. None execute <strong>autonomous real-time action</strong> in the golden hour.
+                </div>
+              </div>
+
+              <!-- Ground Reality Callout -->
+              <div class="ground-reality-tag">
+                <span style="font-weight: 700; color: var(--yellow);">Ground Reality:</span>
+                <span>2024 Wayanad Landslides (400+ deaths) struck at 3:00 AM while manual phone chains were dormant. Automated seconds save lives.</span>
+              </div>
+            </div>
+            
+            <!-- Right: Formal Research Questions (RQ1, RQ2, RQ3) -->
+            <div class="glass-card fill-card tilt-card" style="padding: 18px 22px; display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="color: var(--cyan); font-family: var(--font-display); font-size: 1.05rem;">Formal Research Questions</h4>
+                <span class="pill pill-cyan" style="font-size: 0.6rem;">ACADEMIC SCOPE</span>
+              </div>
+              
+              <div style="display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: center; margin: 6px 0;">
+                <!-- RQ1 -->
+                <div class="rq-mini-card" style="border-left: 3px solid var(--cyan);">
+                  <div class="rq-card-top">
+                    <span class="rq-badge badge-cyan">RQ1</span>
+                    <span class="rq-title">Semantic Telemetry Fusion</span>
+                    <span class="rq-tech">FastMCP Mesh</span>
+                  </div>
+                  <p class="rq-desc">How to unify heterogeneous radar, river, and geotechnical feeds into a shared real-time vector matrix?</p>
+                </div>
+
+                <!-- RQ2 -->
+                <div class="rq-mini-card" style="border-left: 3px solid var(--purple);">
+                  <div class="rq-card-top">
+                    <span class="rq-badge badge-purple">RQ2</span>
+                    <span class="rq-title">Collaborative Agent Deliberation</span>
+                    <span class="rq-tech">LangGraph</span>
+                  </div>
+                  <p class="rq-desc">How can specialized agents resolve cross-domain goal conflicts under catastrophic uncertainty?</p>
+                </div>
+
+                <!-- RQ3 -->
+                <div class="rq-mini-card" style="border-left: 3px solid var(--yellow);">
+                  <div class="rq-card-top">
+                    <span class="rq-badge badge-yellow">RQ3</span>
+                    <span class="rq-title">Mathematical Trust &amp; XAI Audit</span>
+                    <span class="rq-tech">Deterministic Trace</span>
+                  </div>
+                  <p class="rq-desc">How to generate verifiable mathematical audit trails for safety-critical emergency dispatches?</p>
+                </div>
+              </div>
+
+              <div style="font-size: 0.72rem; color: var(--text-dim); display: flex; justify-content: space-between; margin-top: auto; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.06);">
+                <span>Direct alignment with Sony Research 2026 Priorities</span>
+                <span style="color: var(--cyan); font-weight: 600; font-family: var(--font-mono);">O(1) Memory Complexity</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 2: PROBLEM STATEMENT ==================== -->
+    <!-- ==================== SLIDE 2: EXISTING SOLUTIONS ==================== -->
     <section class="slide" data-index="1">
       <div class="slide-inner">
-        <div class="slide-badge">02 / THE PROBLEM</div>
-        <h2 class="slide-heading">People Are Dying Because<br><span class="heading-accent">Agencies Can't Coordinate</span></h2>
-        
-        <!-- Big shocking stats row -->
-        <div class="stats-row">
-          <div class="stat-block">
-            <span class="stat-num" data-target="2000" data-suffix="+">0</span>
-            <span class="stat-label">Deaths per year from floods alone</span>
-            <span class="stat-source">— NDMA Annual Report, 2023</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-block">
-            <span class="stat-num" data-target="86" data-suffix="B">$0</span>
-            <span class="stat-label">Economic loss from disasters (2000–2023)</span>
-            <span class="stat-source">— World Bank, 2024</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-block">
-            <span class="stat-num" data-target="75" data-suffix="%">0</span>
-            <span class="stat-label">Of India's districts are disaster-prone</span>
-            <span class="stat-source">— National Disaster Management Authority</span>
-          </div>
+        <div class="slide-header">
+          <div class="slide-badge">02 / ARCHITECTURAL GAPS &amp; FAILURE MODES</div>
+          <h2 class="slide-heading">The State of Current<br><span class="heading-accent">Disaster Systems</span></h2>
+          <p class="slide-subtext">
+            Why current emergency frameworks fail during rapid-onset catastrophes: fragmented telemetry, passive analytics, and manual human phone chains.
+          </p>
         </div>
+        
+        <div class="slide-body-fill" style="gap: 10px;">
+          <div class="bento-grid cols-3" style="gap: 12px; flex: 1.2; margin-top: 0;">
+            <!-- Card 1: Siloed Dashboards -->
+            <div class="glass-card fill-card problem-fail-card tilt-card" style="padding: 16px 18px;">
+              <div class="fail-card-header" style="margin-bottom: 8px;">
+                <div class="fail-card-icon" style="width: 32px; height: 32px; font-size: 1rem;">🌐</div>
+                <span class="fail-card-badge badge-red">0% INTEROP</span>
+              </div>
+              <h4 style="color: var(--cyan); font-size: 1.05rem; margin-bottom: 4px;">Siloed Dashboards</h4>
+              <p class="fail-mech" style="font-size: 0.78rem; margin-bottom: 8px; line-height: 1.4;">
+                Disconnected agency portals (IMD, CWC, GSI) with incompatible schemas and zero machine-readable APIs.
+              </p>
+              <div class="fail-box" style="padding: 8px 10px; font-size: 0.74rem;">
+                <strong>Bottleneck:</strong> Manual screen toggling loses 45–60 vital minutes.
+              </div>
+            </div>
 
-        <div class="bento-grid cols-2" style="margin-top: 32px;">
-          <!-- Left: The real problem explained simply -->
-          <div class="glass-card narrative-card">
-            <h3>Why People Die: The Coordination Gap</h3>
-            <p>India has world-class weather radars (IMD), river monitoring (CWC), and rescue forces (NDRF). But these agencies <strong>operate in complete isolation</strong>. When a flood hits, the warning chain depends on <strong>manual phone calls</strong> between 5+ agencies — each with their own dashboard, their own protocol, and their own delays.</p>
-            <div class="delay-bar" style="margin-top: 20px;">
-              <div class="delay-segment seg-red" style="width:40%">IMD Alert (45m)</div>
-              <div class="delay-segment seg-orange" style="width:30%">DM Office (35m)</div>
-              <div class="delay-segment seg-yellow" style="width:30%">NDRF Deploy (22m)</div>
+            <!-- Card 2: Static Prediction Models -->
+            <div class="glass-card fill-card problem-fail-card warn-purple tilt-card" style="padding: 16px 18px;">
+              <div class="fail-card-header" style="margin-bottom: 8px;">
+                <div class="fail-card-icon" style="width: 32px; height: 32px; font-size: 1rem;">📉</div>
+                <span class="fail-card-badge badge-purple">0 ACTION LOOP</span>
+              </div>
+              <h4 style="color: var(--purple); font-size: 1.05rem; margin-bottom: 4px;">Static Predictions</h4>
+              <p class="fail-mech" style="font-size: 0.78rem; margin-bottom: 8px; line-height: 1.4;">
+                Forecast models calculate probabilities hours ahead, but stop strictly at passive advisory charts.
+              </p>
+              <div class="fail-box" style="padding: 8px 10px; font-size: 0.74rem; border-left-color: var(--purple);">
+                <strong style="color: var(--purple);">Bottleneck:</strong> Zero automated dispatch, rerouting, or edge triggers.
+              </div>
             </div>
-            <div class="delay-total">TOTAL WARNING DELAY: <strong>100+ MINUTES</strong> — families get less than 10 min notice</div>
+
+            <!-- Card 3: Manual Warning Systems -->
+            <div class="glass-card fill-card problem-fail-card warn-amber tilt-card" style="padding: 16px 18px;">
+              <div class="fail-card-header" style="margin-bottom: 8px;">
+                <div class="fail-card-icon" style="width: 32px; height: 32px; font-size: 1rem;">🚨</div>
+                <span class="fail-card-badge badge-yellow">110+ MIN DELAY</span>
+              </div>
+              <h4 style="color: var(--yellow); font-size: 1.05rem; margin-bottom: 4px;">Manual Phone Trees</h4>
+              <p class="fail-mech" style="font-size: 0.78rem; margin-bottom: 8px; line-height: 1.4;">
+                Alerts depend on bureaucratic human phone trees, completely dormant during night-time strikes (3:00 AM).
+              </p>
+              <div class="fail-box" style="padding: 8px 10px; font-size: 0.74rem; border-left-color: var(--yellow);">
+                <strong style="color: var(--yellow);">Bottleneck:</strong> Evacuees bottleneck onto washed-out highways.
+              </div>
+            </div>
           </div>
-          <!-- Right: Real disaster case studies -->
-          <div class="flex-col gap-16">
-            <div class="glass-card case-card">
-              <div class="case-header"><span class="case-tag tag-red">WAYANAD 2024</span><span class="case-deaths">400+ dead</span></div>
-              <p>Landslides struck at 2 AM. CWC had upstream data, GSI had soil alerts, IMD had rain warnings — <strong>none was shared in time</strong>. Entire villages were buried.</p>
+
+          <!-- Latency Waterfall Comparison -->
+          <div class="glass-card delay-waterfall-card" style="flex: 0.8; padding: 12px 18px; display: flex; flex-direction: column;">
+            <div class="waterfall-header" style="margin-bottom: 8px;">
+              <div class="waterfall-title" style="font-size: 0.85rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Reaction Latency: Human Bottleneck vs. Autonomous Edge Dispatch</span>
+              </div>
+              <span class="pill pill-cyan" style="font-size: 0.6rem;">1,650x FASTER DISPATCH</span>
             </div>
-            <div class="glass-card case-card">
-              <div class="case-header"><span class="case-tag tag-red">KERALA 2018</span><span class="case-deaths">483 dead · 1.4M displaced</span></div>
-              <p>Worst floods in a century. Dam releases were uncoordinated with downstream evacuations. <strong>Rescue teams arrived 6+ hours late</strong> to worst-hit areas.</p>
+
+            <div class="waterfall-lanes" style="gap: 8px;">
+              <!-- Lane 1: Legacy Manual Chain -->
+              <div class="waterfall-row">
+                <span class="lane-tag tag-legacy" style="font-size: 0.68rem;">Legacy Flow</span>
+                <div class="lane-chain">
+                  <div class="chain-step step-legacy" style="padding: 6px 8px;">
+                    <span class="step-time">+15m</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">Sensor Ingest</span>
+                  </div>
+                  <span class="chain-arrow">→</span>
+                  <div class="chain-step step-legacy" style="padding: 6px 8px;">
+                    <span class="step-time">+25m</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">Manual Check</span>
+                  </div>
+                  <span class="chain-arrow">→</span>
+                  <div class="chain-step step-legacy" style="padding: 6px 8px;">
+                    <span class="step-time">+40m</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">Phone Trees</span>
+                  </div>
+                  <span class="chain-arrow">→</span>
+                  <div class="chain-step step-legacy" style="padding: 6px 8px;">
+                    <span class="step-time">+30m</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">Delayed Siren</span>
+                  </div>
+                </div>
+                <div class="lane-total total-legacy" style="font-size: 0.95rem;">110+ Min<br><span style="font-size: 0.58rem; color: var(--text-dim); font-weight: 400;">FATAL DELAY</span></div>
+              </div>
+
+              <!-- Lane 2: XNexus Autonomous Flow -->
+              <div class="waterfall-row">
+                <span class="lane-tag tag-xnexus" style="font-size: 0.68rem;">XNexus Flow</span>
+                <div class="lane-chain">
+                  <div class="chain-step step-xnexus" style="padding: 6px 8px;">
+                    <span class="step-time">0.4s</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">FastMCP Ingest</span>
+                  </div>
+                  <span class="chain-arrow" style="color: var(--green);">→</span>
+                  <div class="chain-step step-xnexus" style="padding: 6px 8px;">
+                    <span class="step-time">1.2s</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">Agent Reasoning</span>
+                  </div>
+                  <span class="chain-arrow" style="color: var(--green);">→</span>
+                  <div class="chain-step step-xnexus" style="padding: 6px 8px;">
+                    <span class="step-time">0.6s</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">Commander Arbiter</span>
+                  </div>
+                  <span class="chain-arrow" style="color: var(--green);">→</span>
+                  <div class="chain-step step-xnexus" style="padding: 6px 8px;">
+                    <span class="step-time">1.8s</span>
+                    <span style="color: var(--text-bright); font-weight: 600; font-size: 0.72rem;">Auto-Dispatch</span>
+                  </div>
+                </div>
+                <div class="lane-total total-xnexus" style="font-size: 0.95rem;">&lt; 4.0 Sec<br><span style="font-size: 0.58rem; color: var(--text-dim); font-weight: 400;">AUTONOMOUS ACTION</span></div>
+              </div>
             </div>
-            <div class="glass-card case-card">
-              <div class="case-header"><span class="case-tag tag-red">UTTARAKHAND 2023</span><span class="case-deaths">100+ dead</span></div>
-              <p>Glacial lake outburst flood. NHAI roads blocked, hospitals full, no alternative routes communicated. <strong>Tourists stranded for 48 hours.</strong></p>
+
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: auto; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.05);">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: var(--text-dim);">
+                <span><strong>Wayanad 2024 Context:</strong> 400+ casualties struck while manual chains were sleeping. Automated dispatch saves the golden hour.</span>
+                <span style="color: var(--cyan); font-family: var(--font-mono); font-weight: 600;">ZERO HUMAN BOTTLENECK</span>
+              </div>
+              <div style="font-size: 0.65rem; color: rgba(255,255,255,0.4); font-style: italic;">
+                * Legacy 110+ min delay source: <a href="https://ndma.gov.in/" target="_blank" style="color: rgba(255,255,255,0.6); text-decoration: underline; transition: color 0.2s ease;" onmouseover="this.style.color='#00f0ff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">NDMA Post-Disaster Response Timelines &amp; Wayanad 2024 Preliminary Incident Reports</a>.
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 3: PROPOSED SOLUTION ==================== -->
+    <!-- ==================== SLIDE 3: OUR SOLUTION ==================== -->
     <section class="slide" data-index="2">
       <div class="slide-inner">
-        <div class="slide-badge">03 / PROPOSED SOLUTION</div>
-        <h2 class="slide-heading">What We're Building:<br><span class="heading-accent">XNexus-CrisisOS</span></h2>
-        <p class="slide-subtext">An AI operating system that <strong>replaces the manual phone-call chain</strong> with autonomous, real-time multi-agency coordination — cutting disaster response from 100+ minutes to under 5.</p>
-        
-        <!-- Before / After Comparison -->
-        <div class="bento-grid cols-2" style="margin-bottom: 28px;">
-          <div class="glass-card compare-card compare-before">
-            <div class="compare-label label-red">TODAY (MANUAL)</div>
-            <div class="compare-steps">
-              <div class="compare-step">IMD detects heavy rain → calls DM office</div>
-              <div class="compare-arrow">↓ 45 min</div>
-              <div class="compare-step">DM office calls CWC for river data</div>
-              <div class="compare-arrow">↓ 35 min</div>
-              <div class="compare-step">NDRF dispatched via voice call</div>
-              <div class="compare-arrow">↓ 22 min</div>
-              <div class="compare-step">Sirens activated (no route guidance)</div>
-            </div>
-            <div class="compare-total total-red">⏱ 100+ minutes total</div>
-          </div>
-          <div class="glass-card compare-card compare-after">
-            <div class="compare-label label-green">WITH XNEXUS (AUTONOMOUS)</div>
-            <div class="compare-steps">
-              <div class="compare-step">All data streams ingested simultaneously</div>
-              <div class="compare-arrow arrow-fast">↓ instant</div>
-              <div class="compare-step">AI agents reason across all agencies at once</div>
-              <div class="compare-arrow arrow-fast">↓ 30 sec</div>
-              <div class="compare-step">NDRF auto-dispatched + routes calculated</div>
-              <div class="compare-arrow arrow-fast">↓ 30 sec</div>
-              <div class="compare-step">Multilingual cell broadcast with safe routes</div>
-            </div>
-            <div class="compare-total total-green">⚡ Under 5 minutes total</div>
-          </div>
+        <div class="slide-header">
+          <div class="slide-badge">03 / OUR SOLUTION &amp; RESEARCH PROPOSAL</div>
+          <h2 class="slide-heading">XNexus: Semantic Multi-Agent Intelligence<br><span class="heading-accent">for Autonomous Disaster Response</span></h2>
+          <p class="slide-subtext">
+            Fusing heterogeneous remote telemetry with Sony Spresense™ edge nodes for real-time disaster coordination. Moving disaster management from passive observation to <strong>active, autonomous coordination</strong>.
+          </p>
         </div>
 
-        <!-- What it actually does -->
-        <div class="feature-list">
-          <div class="feat"><span class="feat-icon">🧠</span><span><strong>9 AI Agents</strong> — each one connected to a real Indian government API (IMD, CWC, GSI, NHAI, NDMA, 108-Health)</span></div>
-          <div class="feat"><span class="feat-icon">🔗</span><span><strong>MCP Integration Protocol</strong> — plug-and-play connection to any government data source, no custom APIs needed</span></div>
-          <div class="feat"><span class="feat-icon">🗺️</span><span><strong>MapmyIndia Routing</strong> — automatically computes evacuation routes around blocked roads and landslide zones</span></div>
-          <div class="feat"><span class="feat-icon">📱</span><span><strong>NDMA Sachet Cell Broadcast</strong> — pushes multilingual warnings directly to cell towers, no app install required</span></div>
-          <div class="feat"><span class="feat-icon">🏥</span><span><strong>108 Hospital Triage</strong> — queries live ICU/trauma bed availability and auto-dispatches ambulances to nearest open hospital</span></div>
+        <div class="slide-body-fill">
+          <div class="bento-grid cols-2 fill-height" style="gap: 16px; align-items: stretch;">
+            <!-- Left: Scientific Contributions -->
+            <div class="glass-card fill-card tilt-card" style="padding: 18px 22px; display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <h3 style="color: var(--cyan); font-size: 1.05rem; font-family: var(--font-display);">Scientific Contributions</h3>
+                <span class="pill pill-purple" style="font-size: 0.6rem;">SONY PROPOSAL ALIGNED</span>
+              </div>
+              
+              <div class="contrib-list" style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px; margin: 8px 0;">
+                <div class="contrib-card" style="padding: 10px 14px; gap: 12px;">
+                  <span class="contrib-num" style="padding: 3px 7px; font-size: 0.72rem;">01</span>
+                  <div class="contrib-content">
+                    <h4 style="font-size: 0.85rem; margin-bottom: 2px;">Semantic Multi-Agent Reasoning</h4>
+                    <p style="font-size: 0.74rem;">Decentralized agent state machines coordinating Weather, Hydro, and Geo analysis.</p>
+                  </div>
+                </div>
+
+                <div class="contrib-card" style="padding: 10px 14px; gap: 12px;">
+                  <span class="contrib-num" style="padding: 3px 7px; font-size: 0.72rem;">02</span>
+                  <div class="contrib-content">
+                    <h4 style="font-size: 0.85rem; margin-bottom: 2px;">FastMCP Dynamic Telemetry Fusion</h4>
+                    <p style="font-size: 0.74rem;">Real-time standardization of radar, river gauges, and pore-pressure sensors into shared vectors.</p>
+                  </div>
+                </div>
+
+                <div class="contrib-card" style="padding: 10px 14px; gap: 12px;">
+                  <span class="contrib-num" style="padding: 3px 7px; font-size: 0.72rem;">03</span>
+                  <div class="contrib-content">
+                    <h4 style="font-size: 0.85rem; margin-bottom: 2px;">Autonomous Incident Planning</h4>
+                    <p style="font-size: 0.74rem;">Live route optimization dynamically rerouting fleets around NHAI landslide debris.</p>
+                  </div>
+                </div>
+
+                <div class="contrib-card" style="padding: 10px 14px; gap: 12px;">
+                  <span class="contrib-num" style="padding: 3px 7px; font-size: 0.72rem;">04</span>
+                  <div class="contrib-content">
+                    <h4 style="font-size: 0.85rem; margin-bottom: 2px;">Explainable Decision-Making (XAI)</h4>
+                    <p style="font-size: 0.74rem;">Deterministic mathematical traces for every dispatch meeting safety-critical trust goals.</p>
+                  </div>
+                </div>
+
+                <div class="contrib-card" style="padding: 10px 14px; gap: 12px;">
+                  <span class="contrib-num" style="padding: 3px 7px; font-size: 0.72rem;">05</span>
+                  <div class="contrib-content">
+                    <h4 style="font-size: 0.85rem; margin-bottom: 2px;">Edge AI on Sony Spresense™</h4>
+                    <p style="font-size: 0.74rem;">Ultra-low-power microcontrollers running on-device acoustic inference with GNSS sync.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="font-size: 0.72rem; color: var(--text-dim); display: flex; justify-content: space-between; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: auto;">
+                <span>Decentralized Multi-Agent State Machine</span>
+                <span style="color: var(--cyan); font-family: var(--font-mono); font-weight: 600;">OASIS CAP v1.2</span>
+              </div>
+            </div>
+            
+            <!-- Right: Interactive Autonomous Orchestrator Hub Visual -->
+            <div class="glass-card orchestrator-box fill-card tilt-card" style="padding: 18px 22px;">
+              <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--cyan); font-weight: 700; letter-spacing: 1px;">AUTONOMOUS ORCHESTRATION</span>
+                <span class="pulse-dot"></span>
+              </div>
+
+              <!-- High-Tech SVG Neural Orchestration Hub -->
+              <div class="orchestrator-svg-wrap" style="max-width: 440px; width: 100%; margin: 0 auto;">
+                <svg class="orchestrator-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.35"/>
+                      <stop offset="60%" stop-color="#7b61ff" stop-opacity="0.15"/>
+                      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.6"/>
+                      <stop offset="100%" stop-color="#7b61ff" stop-opacity="0.2"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Ambient Radial Glow -->
+                  <circle cx="200" cy="150" r="115" fill="url(#coreGlow)"/>
+
+                  <!-- Outer Tech Orbit Ring (Rotating Slowly) -->
+                  <g class="spin-slow">
+                    <circle cx="200" cy="150" r="108" stroke="url(#orbitGrad)" stroke-width="1.4" stroke-dasharray="6 8" opacity="0.45"/>
+                    <circle cx="200" cy="150" r="90" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                  </g>
+
+                  <!-- Inner Counter-Rotating Ring -->
+                  <g class="spin-reverse">
+                    <circle cx="200" cy="150" r="70" stroke="rgba(0, 240, 255, 0.35)" stroke-width="1.2" stroke-dasharray="14 10 4 10"/>
+                  </g>
+
+                  <!-- Vector Connectors to Satellite Agents -->
+                  <line x1="200" y1="150" x2="200" y2="40" stroke="rgba(0,240,255,0.45)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="200" y1="150" x2="330" y2="150" stroke="rgba(123,97,255,0.45)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="200" y1="150" x2="200" y2="260" stroke="rgba(255,184,0,0.45)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="200" y1="150" x2="70" y2="150" stroke="rgba(0,211,105,0.45)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="200" y1="150" x2="315" y2="65" stroke="rgba(230,0,0,0.55)" stroke-width="1.4" stroke-dasharray="2 2"/>
+
+                  <!-- Central Reactor Core -->
+                  <circle cx="200" cy="150" r="45" fill="rgba(8, 12, 22, 0.95)" stroke="var(--cyan)" stroke-width="2.2" class="pulse-element"/>
+                  <circle cx="200" cy="150" r="34" fill="none" stroke="rgba(0,240,255,0.35)" stroke-width="1" stroke-dasharray="4 2"/>
+                  <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-family="'Sora', sans-serif" font-weight="800" font-size="12" letter-spacing="1">XNEXUS</text>
+                  <text x="200" y="161" text-anchor="middle" fill="var(--cyan)" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="8.5" letter-spacing="1">SEMANTIC AI</text>
+
+                  <!-- Satellite Agent 1: WeatherIntel (Top) -->
+                  <g transform="translate(200, 40)">
+                    <circle cx="0" cy="0" r="24" fill="rgba(10, 15, 25, 0.95)" stroke="var(--cyan)" stroke-width="1.5"/>
+                    <text x="0" y="-3" text-anchor="middle" font-size="12">🛰️</text>
+                    <text x="0" y="10" text-anchor="middle" fill="var(--cyan)" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="700">WEATHER</text>
+                  </g>
+
+                  <!-- Satellite Agent 2: HydroMonitor (Right) -->
+                  <g transform="translate(330, 150)">
+                    <circle cx="0" cy="0" r="24" fill="rgba(10, 15, 25, 0.95)" stroke="var(--purple)" stroke-width="1.5"/>
+                    <text x="0" y="-3" text-anchor="middle" font-size="12">🌊</text>
+                    <text x="0" y="10" text-anchor="middle" fill="var(--purple)" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="700">HYDRO</text>
+                  </g>
+
+                  <!-- Satellite Agent 3: Commander Arbitrator (Bottom) -->
+                  <g transform="translate(200, 260)">
+                    <circle cx="0" cy="0" r="26" fill="rgba(10, 15, 25, 0.95)" stroke="var(--yellow)" stroke-width="2"/>
+                    <text x="0" y="-3" text-anchor="middle" font-size="13">🛡️</text>
+                    <text x="0" y="11" text-anchor="middle" fill="var(--yellow)" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700">COMMANDER</text>
+                  </g>
+
+                  <!-- Satellite Agent 4: GeoRisk (Left) -->
+                  <g transform="translate(70, 150)">
+                    <circle cx="0" cy="0" r="24" fill="rgba(10, 15, 25, 0.95)" stroke="var(--green)" stroke-width="1.5"/>
+                    <text x="0" y="-3" text-anchor="middle" font-size="12">⛰️</text>
+                    <text x="0" y="10" text-anchor="middle" fill="var(--green)" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="700">GEORISK</text>
+                  </g>
+
+                  <!-- Edge Node: Sony Spresense Node (Top-Right) -->
+                  <g transform="translate(315, 65)">
+                    <circle cx="0" cy="0" r="20" fill="rgba(10, 15, 25, 0.95)" stroke="#ff5252" stroke-width="1.5"/>
+                    <circle cx="0" cy="0" r="26" fill="none" stroke="#ff5252" stroke-width="0.8" opacity="0.45" stroke-dasharray="2 2"/>
+                    <text x="0" y="-2" text-anchor="middle" font-size="10">📡</text>
+                    <text x="0" y="9" text-anchor="middle" fill="#ff5252" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700">SPRESENSE</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Impact KPI Row -->
+              <div class="hub-kpi-bar" style="margin-top: 4px; gap: 8px;">
+                <div class="hub-kpi-item" style="padding: 8px 6px;">
+                  <span class="hub-kpi-val" style="font-size: 1.15rem;">&lt; 4.0s</span>
+                  <span class="hub-kpi-lbl" style="font-size: 0.62rem;">Dispatch</span>
+                </div>
+                <div class="hub-kpi-item" style="padding: 8px 6px;">
+                  <span class="hub-kpi-val" style="font-size: 1.15rem;">1,650x</span>
+                  <span class="hub-kpi-lbl" style="font-size: 0.62rem;">Speedup</span>
+                </div>
+                <div class="hub-kpi-item" style="padding: 8px 6px;">
+                  <span class="hub-kpi-val" style="font-size: 1.15rem;">100%</span>
+                  <span class="hub-kpi-lbl" style="font-size: 0.62rem;">XAI Audit</span>
+                </div>
+              </div>
+
+              <p style="color: var(--text-dim); font-size: 0.74rem; line-height: 1.4; text-align: center; margin-top: 4px;">
+                Autonomous telemetry fusion ➔ weighted arbitration ➔ multilingual cell alerts in &lt; 4s without human phone chain bottlenecks.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 4: AGENTS ==================== -->
+    <!-- ==================== SLIDE 4: TECHNICAL ARCHITECTURE ==================== -->
     <section class="slide" data-index="3">
       <div class="slide-inner">
-        <div class="slide-badge">04 / MULTI-AGENT ARCHITECTURE</div>
-        <h2 class="slide-heading">India-Focused<br><span class="heading-accent">Agentic Framework</span></h2>
-        <p class="slide-subtext">Nine specialized AI agents collaborating using real Indian telemetry. Click cards to inspect active streams.</p>
-        
-        <div class="agents-grid">
-          <div class="agent-card active-agent" data-agent="weather">
-            <div class="agent-top"><span class="agent-icon">🛰️</span><span class="agent-status online">ONLINE</span></div>
-            <h4>WeatherIntel Agent</h4>
-            <p class="agent-src">IMD Doppler Radar</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,8 L20,12 L30,6 L40,14 L50,9 L60,11 L70,7 L80,13 L90,10 L100,8" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="hydro">
-            <div class="agent-top"><span class="agent-icon">🌊</span><span class="agent-status online">ONLINE</span></div>
-            <h4>HydroMonitor Agent</h4>
-            <p class="agent-src">CWC River Gauges</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,12 L20,8 L30,14 L40,6 L50,11 L60,9 L70,13 L80,7 L90,10 L100,12" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="geo">
-            <div class="agent-top"><span class="agent-icon">⛰️</span><span class="agent-status online">ONLINE</span></div>
-            <h4>GeoRisk Agent</h4>
-            <p class="agent-src">GSI Soil Indices</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,6 L20,14 L30,8 L40,12 L50,7 L60,13 L70,9 L80,11 L90,10 L100,6" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="route">
-            <div class="agent-top"><span class="agent-icon">🗺️</span><span class="agent-status online">ONLINE</span></div>
-            <h4>RouteOptimizer Agent</h4>
-            <p class="agent-src">MapmyIndia API</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,14 L20,6 L30,12 L40,8 L50,10 L60,14 L70,6 L80,12 L90,8 L100,10" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="alert">
-            <div class="agent-top"><span class="agent-icon">📱</span><span class="agent-status online">ONLINE</span></div>
-            <h4>AlertBroadcast Agent</h4>
-            <p class="agent-src">NDMA Sachet</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,8 L20,12 L30,6 L40,14 L50,9 L60,11 L70,7 L80,13 L90,10 L100,8" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="medical">
-            <div class="agent-top"><span class="agent-icon">🏥</span><span class="agent-status online">ONLINE</span></div>
-            <h4>MedResponse Agent</h4>
-            <p class="agent-src">108 Health API</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,12 L20,8 L30,14 L40,6 L50,11 L60,9 L70,13 L80,7 L90,10 L100,12" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="population">
-            <div class="agent-top"><span class="agent-icon">👥</span><span class="agent-status online">ONLINE</span></div>
-            <h4>PopDensity Agent</h4>
-            <p class="agent-src">Census 2011+</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,6 L20,14 L30,8 L40,12 L50,7 L60,13 L70,9 L80,11 L90,10 L100,6" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="acoustic">
-            <div class="agent-top"><span class="agent-icon">🎙️</span><span class="agent-status online">ONLINE</span></div>
-            <h4>SpresenseAgent</h4>
-            <p class="agent-src">Sony Edge Node</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,2 L20,18 L30,5 L40,15 L50,8 L60,12 L70,4 L80,16 L90,9 L100,11" fill="none" stroke="var(--cyan)" stroke-width="1.5"/></svg></div>
-          </div>
-          <div class="agent-card" data-agent="commander">
-            <div class="agent-top"><span class="agent-icon">🎖️</span><span class="agent-status critical">ACTIVE</span></div>
-            <h4>Commander Agent</h4>
-            <p class="agent-src">Orchestrator Core</p>
-            <div class="agent-spark"><svg viewBox="0 0 100 20"><path class="spark-path" d="M0,10 L10,4 L20,16 L30,4 L40,16 L50,10 L60,4 L70,16 L80,4 L90,16 L100,10" fill="none" stroke="var(--red)" stroke-width="1.5"/></svg></div>
-          </div>
+        <div class="slide-header">
+          <div class="slide-badge">04 / TECHNICAL ARCHITECTURE</div>
+          <h2 class="slide-heading">7-Layer Autonomous<br><span class="heading-accent">Multi-Agent Architecture</span></h2>
+          <p class="slide-subtext">
+            Deterministic flow from raw sensor ingest to closed-loop post-action evaluation in seven verified layers.
+          </p>
         </div>
         
-        <!-- Agent Terminal -->
-        <div class="terminal-panel">
-          <div class="terminal-bar"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span><span class="term-title" id="terminal-title">AGENT TELEMETRY // WeatherIntel</span></div>
-          <div class="terminal-body" id="terminal-body">
-            <div class="term-line"><span class="t-ts">00:00:01</span><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Connecting to IMD Doppler Radar array...</span></div>
-            <div class="term-line"><span class="t-ts">00:00:02</span><span class="t-tag tag-ok">[OK]</span><span class="t-msg">Feed established. Tracking azimuth 182.4° — precip density 52.4mm/hr</span></div>
-            <div class="term-line"><span class="t-ts">00:00:03</span><span class="t-tag tag-warn">[WARN]</span><span class="t-msg">Rainfall intensity exceeds warning threshold in Sector B-4 (Wayanad)</span></div>
-            <div class="term-line"><span class="t-ts">00:00:04</span><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Forwarding weather vector to HydroMonitor Agent for correlated analysis...</span></div>
+        <div class="slide-body-fill">
+          <div style="display: flex; gap: 16px; align-items: stretch; height: 100%; flex: 1; min-height: 0;">
+            <!-- Left: 7 Layers Compact Illuminated Stack in Glass Card -->
+            <div class="glass-card fill-card tilt-card" style="flex: 1.1; padding: 16px 20px; display: flex; flex-direction: column; height: 100%;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="color: var(--cyan); margin: 0; font-size: 1.05rem;">Deterministic Pipeline Layers</h3>
+                <span class="pill pill-cyan" style="font-size: 0.6rem;">7-LAYER STACK</span>
+              </div>
+              
+              <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
+                <div class="layer-card-row" style="padding: 7px 12px;">
+                  <span class="layer-num-badge" style="background: rgba(255,255,255,0.08); color: var(--text-dim); font-size: 0.65rem;">L1</span>
+                  <div class="layer-info" style="font-size: 0.78rem;">
+                    <strong>Telemetry Ingest:</strong> Heterogeneous sensor polling (IMD Radar, CWC Gauges, GSI Soil)
+                  </div>
+                </div>
+                <div class="layer-conn-icon" style="font-size: 0.6rem; margin: -2px 0;">↓</div>
+                <div class="layer-card-row" style="padding: 7px 12px; border-left: 3px solid var(--cyan);">
+                  <span class="layer-num-badge" style="background: rgba(0,240,255,0.12); color: var(--cyan); font-size: 0.65rem;">L2</span>
+                  <div class="layer-info" style="font-size: 0.78rem;">
+                    <strong>Semantic Normalization:</strong> FastMCP JSON-RPC serialization &amp; WGS84 tensors
+                  </div>
+                </div>
+                <div class="layer-conn-icon" style="font-size: 0.6rem; margin: -2px 0;">↓</div>
+                <div class="layer-card-row" style="padding: 7px 12px; border-left: 3px solid var(--purple);">
+                  <span class="layer-num-badge" style="background: rgba(140,158,255,0.12); color: var(--purple); font-size: 0.65rem;">L3</span>
+                  <div class="layer-info" style="font-size: 0.78rem;">
+                    <strong>Multi-Agent Memory:</strong> Shared geospatial state matrix &amp; Redis vector context store
+                  </div>
+                </div>
+                <div class="layer-conn-icon" style="font-size: 0.6rem; margin: -2px 0;">↓</div>
+                <div class="layer-card-row" style="padding: 7px 12px; border-left: 3px solid var(--red);">
+                  <span class="layer-num-badge" style="background: rgba(230,0,0,0.12); color: #ff5252; font-size: 0.65rem;">L4</span>
+                  <div class="layer-info" style="font-size: 0.78rem;">
+                    <strong>Agent Reasoning:</strong> Domain LLM inference (Weather, Hydro, and Geotechnical agents)
+                  </div>
+                </div>
+                <div class="layer-conn-icon" style="font-size: 0.6rem; margin: -2px 0;">↓</div>
+                <div class="layer-card-row" style="padding: 7px 12px; border-left: 3px solid var(--green);">
+                  <span class="layer-num-badge" style="background: rgba(0,211,105,0.12); color: var(--green); font-size: 0.65rem;">L5</span>
+                  <div class="layer-info" style="font-size: 0.78rem;">
+                    <strong>Incident Planning:</strong> Dynamic detour pathfinding around NHAI landslide closures
+                  </div>
+                </div>
+                <div class="layer-conn-icon" style="font-size: 0.6rem; margin: -2px 0;">↓</div>
+                <div class="layer-card-row" style="padding: 7px 12px; border-left: 3px solid var(--yellow);">
+                  <span class="layer-num-badge" style="background: rgba(255,184,0,0.12); color: var(--yellow); font-size: 0.65rem;">L6</span>
+                  <div class="layer-info" style="font-size: 0.78rem;">
+                    <strong>Autonomous Execution:</strong> OASIS CAP v1.2 cellular alerts &amp; Sony Siren trigger
+                  </div>
+                </div>
+                <div class="layer-conn-icon" style="font-size: 0.6rem; margin: -2px 0;">↓</div>
+                <div class="layer-card-row" style="padding: 7px 12px; border-left: 3px solid #fff; background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);">
+                  <span class="layer-num-badge" style="background: rgba(255,255,255,0.2); color: #fff; font-size: 0.65rem;">L7</span>
+                  <div class="layer-info" style="font-size: 0.78rem;">
+                    <strong>Feedback Learning:</strong> Closed-loop execution monitoring &amp; adaptive threshold tuning
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right: Explainable AI & Conflict Arbitration Decision Matrix -->
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; height: 100%; min-height: 0;">
+              <!-- Real-Time Arbitration Matrix -->
+              <div class="glass-card fill-card tilt-card" style="flex: 1; padding: 16px 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <h3 style="color: var(--cyan); font-size: 1rem; font-family: var(--font-display);">Real-Time Conflict Arbitration Matrix</h3>
+                  <span class="fail-card-badge badge-purple">LANGGRAPH ENGINE</span>
+                </div>
+                
+                <!-- Weighted Matrix Rows -->
+                <div style="display: flex; flex-direction: column; gap: 8px; flex: 1; justify-content: center; margin: 4px 0;">
+                  <div class="matrix-row">
+                    <div class="matrix-agent" style="color: var(--green);">
+                      <span>⛰️</span>
+                      <span>GeoRisk Agent</span>
+                    </div>
+                    <div class="matrix-bar-wrap">
+                      <div class="matrix-bar" style="width: 88%; background: var(--green);"></div>
+                    </div>
+                    <span class="matrix-status" style="color: var(--green);">Weight: 45% (OVERRIDE)</span>
+                  </div>
+
+                  <div class="matrix-row">
+                    <div class="matrix-agent" style="color: var(--purple);">
+                      <span>🌊</span>
+                      <span>Hydro Agent</span>
+                    </div>
+                    <div class="matrix-bar-wrap">
+                      <div class="matrix-bar" style="width: 74%; background: var(--purple);"></div>
+                    </div>
+                    <span class="matrix-status" style="color: var(--purple);">Weight: 35% (EVACUATE)</span>
+                  </div>
+
+                  <div class="matrix-row">
+                    <div class="matrix-agent" style="color: var(--cyan);">
+                      <span>🛰️</span>
+                      <span>Weather Agent</span>
+                    </div>
+                    <div class="matrix-bar-wrap">
+                      <div class="matrix-bar" style="width: 52%; background: var(--cyan);"></div>
+                    </div>
+                    <span class="matrix-status" style="color: var(--cyan);">Weight: 20% (MONITOR)</span>
+                  </div>
+                </div>
+
+                <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: auto; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);">
+                  <strong style="color: var(--yellow);">Arbitration Logic:</strong> GeoRisk landslide hazard supersedes flood route — diverts evacuation fleet away from NH-76 onto Route 3.
+                </div>
+              </div>
+              
+              <!-- Live Deterministic XAI Terminal -->
+              <div class="glass-card fill-card tilt-card" style="flex: 1; padding: 14px 16px; border-color: rgba(140, 158, 255, 0.3); display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="xai-terminal-box" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div class="terminal-bar">
+                    <div class="terminal-dots">
+                      <span class="t-dot t-red"></span>
+                      <span class="t-dot t-yellow"></span>
+                      <span class="t-dot t-green"></span>
+                    </div>
+                    <span>xai_kernel_audit_trace.log</span>
+                    <span style="color: var(--green);">● DETERMINISTIC TRACE</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 4px; font-family: var(--font-mono); font-size: 0.78rem; padding: 4px 0;">
+                    <div style="color: var(--cyan); font-weight: 700;">&gt; [EXEC ACTION] EVACUATE SECTOR B-4 VIA ROUTE 3</div>
+                    <div style="color: #ff8a80;">[IMD RADAR] Precip Density: 52.4 mm/hr (&gt; Alert Limit 45)</div>
+                    <div style="color: var(--yellow);">[CWC GAUGE] Kabini Water Rise: +18.4 cm/hr (+0.74m breach)</div>
+                    <div style="color: var(--purple);">[MAPMYINDIA] NH-76 Blocked (KM 12 debris) ➔ Route 3 active</div>
+                  </div>
+                  <div style="color: var(--green); margin-top: auto; font-weight: 700; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.74rem; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <span>[AUDIT] SCORE: 0.942 | CONFIDENCE: 96.2%</span>
+                    <span>LATENCY: 0.38s</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- ==================== SLIDE 5: CAPABILITIES ==================== -->
+    
+    <!-- ==================== SLIDE 5: ARCHITECTURE DIAGRAM ==================== -->
     <section class="slide" data-index="4">
       <div class="slide-inner">
-        <div class="slide-badge">05 / CORE CAPABILITIES</div>
-        <h2 class="slide-heading">Real-Data<br><span class="heading-accent">Core Capabilities</span></h2>
+        <div class="slide-header">
+          <div class="slide-badge">05 / SYSTEM TOPOLOGY BLUEPRINT</div>
+          <h2 class="slide-heading">XNexus Architecture<br><span class="heading-accent">Topology</span></h2>
+          <p class="slide-subtext">
+            End-to-end autonomous telemetry pipeline: sensor endpoints through FastMCP protocol mesh to decentralized reasoning agents and real-time actuators.
+          </p>
+        </div>
         
-        <div class="bento-grid cols-3 gap-md">
-          <div class="glass-card cap-card">
-            <div class="cap-visual radar-visual">
-              <div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div>
-              <div class="radar-sweep"></div>
-              <div class="radar-blip blip-1"></div><div class="radar-blip blip-2"></div>
-            </div>
-            <div class="cap-badge">01</div>
-            <h4>IMD Doppler Radar</h4>
-            <p>Real-time precipitation tracking with azimuth sweep and density mapping.</p>
-            <div class="cap-stats"><span class="cap-stat"><strong id="r-azimuth">182.4°</strong> Azimuth</span><span class="cap-stat"><strong id="r-precip">52.4mm/h</strong> Density</span></div>
-          </div>
-          <div class="glass-card cap-card">
-            <div class="cap-visual hydro-visual">
-              <svg class="hydro-wave" viewBox="0 0 200 60"><path d="M0,30 Q25,10 50,30 T100,30 T150,30 T200,30" fill="none" stroke="var(--cyan)" stroke-width="2" opacity="0.6"/><path d="M0,35 Q25,15 50,35 T100,35 T150,35 T200,35" fill="none" stroke="var(--purple)" stroke-width="1.5" opacity="0.4"/></svg>
-            </div>
-            <div class="cap-badge">02</div>
-            <h4>CWC River Gauges</h4>
-            <p>Live hydrography from Central Water Commission gauging stations.</p>
-            <div class="cap-stats"><span class="cap-stat"><strong id="h-height">839.22m</strong> Height</span><span class="cap-stat"><strong class="text-red">CRITICAL</strong> Status</span></div>
-          </div>
-          <div class="glass-card cap-card">
-            <div class="cap-visual soil-visual">
-              <div class="soil-gauge">
-                <svg viewBox="0 0 100 50"><path d="M10,45 A40,40 0 0,1 90,45" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" stroke-linecap="round"/><path class="soil-fill" d="M10,45 A40,40 0 0,1 90,45" fill="none" stroke="url(#soil-grad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="126" stroke-dashoffset="15"/><defs><linearGradient id="soil-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--green)"/><stop offset="50%" stop-color="var(--yellow)"/><stop offset="100%" stop-color="var(--red)"/></linearGradient></defs></svg>
-                <span class="soil-val" id="soil-pct">88%</span>
+        <div class="slide-body-fill">
+          <div class="topo-blueprint fill-height">
+            <!-- 4-Tier Blueprint Grid -->
+            <div class="topo-grid-4" style="gap: 12px;">
+            
+            <!-- Tier 1: Sensing & Edge -->
+            <div class="topo-tier-col" style="padding: 12px 10px;">
+              <div class="topo-tier-badge">
+                <span>01 / SENSING &amp; EDGE</span>
+                <span>📡</span>
               </div>
+              
+              <!-- IMD with Live Radar Sweep -->
+              <div class="topo-node" style="padding: 8px 10px; display: flex; flex-direction: row; align-items: center; gap: 10px;">
+                <div class="mini-radar-box">
+                  <div class="mini-radar-sweep"></div>
+                  <div class="mini-radar-dot"></div>
+                </div>
+                <div style="flex: 1;">
+                  <div class="topo-node-header">
+                    <span class="topo-node-name" style="font-size: 0.78rem;">IMD Radar</span>
+                    <span class="topo-node-proto proto-cyan">Z-FACTOR</span>
+                  </div>
+                  <div class="topo-node-detail" style="font-size: 0.68rem; color: var(--cyan);">52.4 mm/hr precipitation vector</div>
+                </div>
+              </div>
+
+              <!-- CWC with Live River Wave -->
+              <div class="topo-node" style="padding: 8px 10px; display: flex; flex-direction: row; align-items: center; gap: 10px;">
+                <div class="mini-wave-box">
+                  <div class="danger-line"></div>
+                  <div class="mini-water-fill"></div>
+                </div>
+                <div style="flex: 1;">
+                  <div class="topo-node-header">
+                    <span class="topo-node-name" style="font-size: 0.78rem;">CWC Gauges</span>
+                    <span class="topo-node-proto proto-purple">REST</span>
+                  </div>
+                  <div class="topo-node-detail" style="font-size: 0.68rem; color: #ff5252;">+0.74m statutory danger breach</div>
+                </div>
+              </div>
+
+              <!-- GSI with Dial Gauge -->
+              <div class="topo-node" style="padding: 8px 10px; display: flex; flex-direction: row; align-items: center; gap: 10px;">
+                <div class="mini-dial-box">
+                  <span class="dial-val">88%</span>
+                </div>
+                <div style="flex: 1;">
+                  <div class="topo-node-header">
+                    <span class="topo-node-name" style="font-size: 0.78rem;">GSI GeoRisk</span>
+                    <span class="topo-node-proto proto-green">SOIL IOT</span>
+                  </div>
+                  <div class="topo-node-detail" style="font-size: 0.68rem; color: var(--yellow);">Critical shear saturation limit</div>
+                </div>
+              </div>
+
+              <!-- Sony Spresense Chip -->
+              <div class="topo-node" style="padding: 8px 10px; display: flex; flex-direction: row; align-items: center; gap: 10px; border-color: rgba(255,82,82,0.3); background: rgba(255,82,82,0.03);">
+                <div class="mini-chip-box">
+                  <span class="chip-dot"></span>
+                </div>
+                <div style="flex: 1;">
+                  <div class="topo-node-header">
+                    <span class="topo-node-name" style="font-size: 0.78rem; color: #ff8a80;">Sony Spresense™</span>
+                    <span class="topo-node-proto proto-red">EDGE ML</span>
+                  </div>
+                  <div class="topo-node-detail" style="font-size: 0.68rem; color: #ff8a80;">Acoustic landslide rumble detection</div>
+                </div>
+              </div>
+
+              <div class="topo-connect-arrow">→</div>
             </div>
-            <div class="cap-badge">03</div>
-            <h4>GSI Soil Saturation</h4>
-            <p>Geological Survey of India landslide susceptibility and soil shear indices.</p>
-            <div class="cap-stats"><span class="cap-stat"><strong>88%</strong> Shear Index</span><span class="cap-stat"><strong class="text-yellow">HIGH</strong> Risk</span></div>
+
+            <!-- Tier 2: Protocol Mesh -->
+            <div class="topo-tier-col" style="padding: 12px 10px; justify-content: space-between;">
+              <div class="topo-tier-badge">
+                <span>02 / FASTMCP MESH</span>
+                <span>⚡</span>
+              </div>
+
+              <div class="topo-node" style="padding: 10px 12px;">
+                <div class="topo-node-header">
+                  <span class="topo-node-name" style="font-size: 0.78rem;">FastMCP Bus</span>
+                  <span class="topo-node-proto proto-purple">STDIO/SSE</span>
+                </div>
+                <div class="topo-node-detail" style="font-size: 0.68rem; margin-top: 3px;">JSON-RPC tool servers translating legacy data endpoints</div>
+              </div>
+
+              <div class="topo-node" style="padding: 10px 12px;">
+                <div class="topo-node-header">
+                  <span class="topo-node-name" style="font-size: 0.78rem;">Tensor Normalizer</span>
+                  <span class="topo-node-proto proto-cyan">WGS84</span>
+                </div>
+                <div class="topo-node-detail" style="font-size: 0.68rem; margin-top: 3px;">Coordinate alignment &amp; unit conversion engine</div>
+              </div>
+
+              <div class="topo-node" style="padding: 10px 12px;">
+                <div class="topo-node-header">
+                  <span class="topo-node-name" style="font-size: 0.78rem;">Shared State Matrix</span>
+                  <span class="topo-node-proto proto-green">REDIS RAG</span>
+                </div>
+                <div class="topo-node-detail" style="font-size: 0.68rem; margin-top: 3px;">O(1) situational vector memory accessible to all agents</div>
+              </div>
+
+              <div class="topo-connect-arrow">→</div>
+            </div>
+
+            <!-- Tier 3: Multi-Agent Reasoning Core -->
+            <div class="topo-tier-col" style="padding: 12px 10px; justify-content: space-between;">
+              <div class="topo-tier-badge">
+                <span>03 / AGENT CORE &amp; ARBITRATION</span>
+                <span>🧠</span>
+              </div>
+
+              <!-- 3 Specialized Agent Bubbles -->
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div class="agent-bubble">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 0.85rem;">🛰️</span>
+                    <span style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; color: var(--cyan);">Weather Agent</span>
+                  </div>
+                  <span style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--cyan);">52mm/h Vector</span>
+                </div>
+
+                <div class="agent-bubble">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 0.85rem;">🌊</span>
+                    <span style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; color: var(--purple);">Hydro Agent</span>
+                  </div>
+                  <span style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--purple);">Flood Pulse</span>
+                </div>
+
+                <div class="agent-bubble">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 0.85rem;">⛰️</span>
+                    <span style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; color: var(--green);">Geo Agent</span>
+                  </div>
+                  <span style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--green);">Shear Failure</span>
+                </div>
+              </div>
+
+              <!-- Central Commander Arbitrator Shield -->
+              <div class="commander-shield-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--font-display); font-size: 0.78rem; font-weight: 800; color: #ffffff;">🛡️ Commander Arbitrator</span>
+                  <span class="topo-node-proto proto-cyan" style="font-size: 0.55rem;">LANGGRAPH</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--yellow);">
+                  Rule: GeoRisk &gt; WeatherIntel (Override)
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #a5b4fc; margin-top: 2px;">
+                  <span>XAI Audit Trace</span>
+                  <strong style="color: var(--green);">96.2% Confidence</strong>
+                </div>
+              </div>
+
+              <div class="topo-connect-arrow">→</div>
+            </div>
+
+            <!-- Tier 4: Autonomous Actuation -->
+            <div class="topo-tier-col" style="padding: 12px 10px;">
+              <div class="topo-tier-badge">
+                <span>04 / AUTONOMOUS DISPATCH</span>
+                <span>🚨</span>
+              </div>
+
+              <!-- NDMA Sachet -->
+              <div class="topo-node" style="padding: 8px 10px;">
+                <div class="topo-node-header">
+                  <span class="topo-node-name" style="font-size: 0.78rem;">NDMA Sachet</span>
+                  <span class="topo-node-proto proto-red">CAP v1.2</span>
+                </div>
+                <div class="topo-node-detail" style="font-size: 0.68rem; color: #ff5252;">Multilingual cell broadcast to 840 towers</div>
+              </div>
+
+              <!-- MapmyIndia Detour -->
+              <div class="topo-node" style="padding: 8px 10px;">
+                <div class="topo-node-header">
+                  <span class="topo-node-name" style="font-size: 0.78rem;">MapmyIndia Routing</span>
+                  <span class="topo-node-proto proto-green">DETOUR</span>
+                </div>
+                <div class="mini-detour-graphic" style="margin-top: 2px;">
+                  <span class="detour-red">NH-76 Blocked</span>
+                  <span>➔</span>
+                  <span class="detour-green">Route 3 Detour (42m)</span>
+                </div>
+              </div>
+
+              <!-- 108 Emergency Health -->
+              <div class="topo-node" style="padding: 8px 10px;">
+                <div class="topo-node-header">
+                  <span class="topo-node-name" style="font-size: 0.78rem;">108 Emergency Health</span>
+                  <span class="topo-node-proto proto-cyan">TRIAGE</span>
+                </div>
+                <div class="topo-node-detail" style="font-size: 0.68rem; display: flex; justify-content: space-between;">
+                  <span>Trauma / ICU Beds</span>
+                  <strong style="color: var(--green);">14 Beds Ready</strong>
+                </div>
+                <div class="mini-bed-progress">
+                  <div class="mini-bed-bar"></div>
+                </div>
+              </div>
+
+              <!-- Sony Siren Mesh -->
+              <div class="topo-node" style="padding: 8px 10px;">
+                <div class="topo-node-header">
+                  <span class="topo-node-name" style="font-size: 0.78rem;">Sony Siren Mesh</span>
+                  <span class="topo-node-proto proto-purple">SUB-GHZ</span>
+                </div>
+                <div class="topo-node-detail" style="font-size: 0.68rem; color: var(--purple);">Offline LoRa acoustic sirens in deep valleys</div>
+              </div>
+
+            </div>
+
           </div>
-          <div class="glass-card cap-card">
-            <div class="cap-visual map-visual">
-              <div class="map-grid"><div class="map-route route-blocked"></div><div class="map-route route-active"></div><div class="map-node node-1"></div><div class="map-node node-2"></div><div class="map-node node-3"></div></div>
+
+          <!-- Bottom Feedback & Telemetry Bar -->
+          <div class="topo-feedback-bar" style="padding: 8px 16px; margin-top: 8px;">
+            <div class="feedback-text" style="font-size: 0.75rem;">
+              <span class="feedback-badge" style="font-size: 0.6rem;">L7 FEEDBACK</span>
+              <span>Monitors field execution telemetry, adjusts agent confidence weights, and updates decision matrix in real-time.</span>
             </div>
-            <div class="cap-badge">04</div>
-            <h4>MapmyIndia Routing</h4>
-            <p>Autonomous detour planning around blocked roads and landslide zones.</p>
-            <div class="cap-stats"><span class="cap-stat"><strong>NH-76</strong> Blocked</span><span class="cap-stat"><strong class="text-green">Route 3</strong> Active</span></div>
-          </div>
-          <div class="glass-card cap-card">
-            <div class="cap-visual phone-visual">
-              <div class="phone-frame"><div class="phone-header">⚠️ EMERGENCY ALERT</div><div class="phone-msg">NDMA: Flash flood warning for Wayanad district. Evacuate to high ground via Route 3. Helpline: 1078</div><div class="phone-meta">NDMA Sachet • Hindi/Malayalam</div></div>
+            <div class="live-stream-ticker" style="font-size: 0.68rem;">
+              <span class="pulse-dot"></span>
+              <span>TOPOLOGY STATUS: 100% OPERATIONAL | MCP LATENCY: 0.38s</span>
             </div>
-            <div class="cap-badge">05</div>
-            <h4>NDMA Sachet SMS</h4>
-            <p>Multilingual cell-broadcast emergency warnings to local towers.</p>
-            <div class="cap-stats"><span class="cap-stat"><strong>840</strong> Towers</span><span class="cap-stat"><strong>3</strong> Languages</span></div>
-          </div>
-          <div class="glass-card cap-card">
-            <div class="cap-visual hospital-visual">
-              <div class="hosp-row"><span class="hosp-name">Kozhikode District</span><div class="hosp-bar"><div class="hosp-fill fill-green" style="width:70%"></div></div><span class="hosp-beds" id="beds-1">14 ICU</span></div>
-              <div class="hosp-row"><span class="hosp-name">Wayanad General</span><div class="hosp-bar"><div class="hosp-fill fill-red" style="width:90%"></div></div><span class="hosp-beds">3 ICU</span></div>
-              <div class="hosp-row"><span class="hosp-name">Calicut Medical</span><div class="hosp-bar"><div class="hosp-fill fill-yellow" style="width:55%"></div></div><span class="hosp-beds" id="beds-3">8 ICU</span></div>
-            </div>
-            <div class="cap-badge">06</div>
-            <h4>108 Hospital Triage</h4>
-            <p>Live trauma bed availability and ambulance dispatch coordination.</p>
-            <div class="cap-stats"><span class="cap-stat"><strong>25</strong> Beds Ready</span><span class="cap-stat"><strong class="text-green">ONLINE</strong></span></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ==================== SLIDE 6: WOW / USP ==================== -->
+    <!-- ==================== SLIDE 6: DATA SOURCES ==================== -->
     <section class="slide" data-index="5">
       <div class="slide-inner">
-        <div class="slide-badge">06 / THE "WOW" USP</div>
-        <h2 class="slide-heading">Beyond Alerting:<br><span class="heading-accent">Real-Data Decisions</span></h2>
-        <p class="slide-subtext">Other platforms alert. XNexus-CrisisOS <strong>reasons, decides, and acts autonomously</strong> across every agency simultaneously.</p>
+        <div class="slide-header">
+          <div class="slide-badge">06 / DATA SOURCES &amp; PROTOCOL MESH</div>
+          <h2 class="slide-heading">MCP Integration<br><span class="heading-accent">Framework</span></h2>
+          <p class="slide-subtext">Connecting AI agents to government telemetry via open-standard Model Context Protocol (MCP) JSON-RPC tool servers.</p>
+        </div>
         
-        <div class="bento-grid cols-3 gap-md">
-          <div class="glass-card wow-card">
-            <div class="wow-num">01</div>
-            <h4>Autonomous Multi-Agency Fusion</h4>
-            <p>Agents from IMD, CWC, NDRF, MapmyIndia and 108-Health share a common semantic memory and reason jointly. No human orchestration needed.</p>
-          </div>
-          <div class="glass-card wow-card highlight-card">
-            <div class="wow-num">02</div>
-            <h4>CWC-to-Road Graph Intelligence</h4>
-            <p>Inundation polygons from CWC are directly overlaid on NHAI road graphs. Blocked segments auto-trigger detour computation via MapmyIndia.</p>
-          </div>
-          <div class="glass-card wow-card">
-            <div class="wow-num">03</div>
-            <h4>Multilingual Cell Broadcast</h4>
-            <p>NDMA Sachet protocol pushes Hindi, English, and Malayalam warnings directly to cell towers — no app install required. Reaches every phone in the zone.</p>
-          </div>
-          <div class="glass-card wow-card">
-            <div class="wow-num">04</div>
-            <h4>Real Wayanad Scenario</h4>
-            <p>Built and tested against 2024 Wayanad flood data. Uses actual Kabini reservoir levels, IMD rainfall records, and district hospital databases.</p>
-          </div>
-          <div class="glass-card wow-card">
-            <div class="wow-num">05</div>
-            <h4>Sony Spresense™ Edge AI</h4>
-            <p>Integrated acoustic ground-vibration processing at the edge using Sony Spresense microcontrollers to detect impending landslide shear failures instantly.</p>
-          </div>
-          <div class="glass-card wow-card">
-            <div class="wow-num">06</div>
-            <h4>Zero-Latency Hospital Dispatch</h4>
-            <p>108 state health API is queried in real time to identify the nearest hospital with available trauma/ICU beds and dispatches ambulances.</p>
+        <div class="slide-body-fill">
+          <div class="bento-grid cols-3 fill-height" style="gap: 12px; grid-template-rows: 1fr 1fr; flex: 1; min-height: 0; height: 100%;">
+            <!-- 1: IMD -->
+            <div class="telemetry-card fill-card tilt-card" style="border-top: 3px solid var(--cyan);">
+              <div>
+                <div class="telemetry-header">
+                  <span style="font-size: 1.15rem;">🛰️</span>
+                  <span class="topo-node-proto proto-cyan">FASTMCP TOOL</span>
+                </div>
+                <div class="telemetry-title">
+                  <a href="https://mausam.imd.gov.in/" target="_blank">IMD Doppler Radar ↗</a>
+                </div>
+                <div class="telemetry-live-metric">
+                  <span style="color: var(--cyan);">Z-Factor: 48.5 dBZ</span>
+                  <span style="color: #ffffff;">52.4 mm/hr</span>
+                </div>
+                <p style="color: var(--text-dim); font-size: 0.74rem; line-height: 1.35;">
+                  Cloud reflectivity &amp; precipitation density vectors for flash-flood early warning.
+                </p>
+              </div>
+              <div class="telemetry-footer">
+                <span style="display: flex; align-items: center; gap: 5px;"><span class="pulse-dot"></span> LIVE 200 OK</span>
+                <span style="font-family: var(--font-mono); color: var(--cyan);">18ms</span>
+              </div>
+            </div>
+
+            <!-- 2: CWC -->
+            <div class="telemetry-card fill-card tilt-card" style="border-top: 3px solid var(--purple);">
+              <div>
+                <div class="telemetry-header">
+                  <span style="font-size: 1.15rem;">🌊</span>
+                  <span class="topo-node-proto proto-purple">REST GAUGE</span>
+                </div>
+                <div class="telemetry-title">
+                  <a href="https://ffs.india-water.gov.in/" target="_blank">CWC Hydrology ↗</a>
+                </div>
+                <div class="telemetry-live-metric">
+                  <span style="color: var(--purple);">Discharge: 2,284 cusecs</span>
+                  <span style="color: #ff5252;">+0.74m Breach</span>
+                </div>
+                <p style="color: var(--text-dim); font-size: 0.74rem; line-height: 1.35;">
+                  River water levels, discharge rates, and breach margins against danger marks.
+                </p>
+              </div>
+              <div class="telemetry-footer">
+                <span style="display: flex; align-items: center; gap: 5px;"><span class="pulse-dot"></span> LIVE 200 OK</span>
+                <span style="font-family: var(--font-mono); color: var(--purple);">24ms</span>
+              </div>
+            </div>
+
+            <!-- 3: GSI -->
+            <div class="telemetry-card fill-card tilt-card" style="border-top: 3px solid var(--yellow);">
+              <div>
+                <div class="telemetry-header">
+                  <span style="font-size: 1.15rem;">⛰️</span>
+                  <span class="topo-node-proto" style="background: rgba(255,184,0,0.12); color: var(--yellow);">GEOTECH IOT</span>
+                </div>
+                <div class="telemetry-title">
+                  <a href="https://www.gsi.gov.in/" target="_blank">GSI GeoRisk ↗</a>
+                </div>
+                <div class="telemetry-live-metric">
+                  <span style="color: var(--yellow);">Pore Saturation: 88%</span>
+                  <span style="color: #ffffff;">Slope: 34°</span>
+                </div>
+                <p style="color: var(--text-dim); font-size: 0.74rem; line-height: 1.35;">
+                  Landslide susceptibility indices fusing rainfall, soil shear stress, and terrain vectors.
+                </p>
+              </div>
+              <div class="telemetry-footer">
+                <span style="display: flex; align-items: center; gap: 5px;"><span class="pulse-dot"></span> LIVE 200 OK</span>
+                <span style="font-family: var(--font-mono); color: var(--yellow);">31ms</span>
+              </div>
+            </div>
+
+            <!-- 4: MapmyIndia -->
+            <div class="telemetry-card fill-card tilt-card" style="border-top: 3px solid var(--green);">
+              <div>
+                <div class="telemetry-header">
+                  <span style="font-size: 1.15rem;">🗺️</span>
+                  <span class="topo-node-proto proto-green">DETOUR API</span>
+                </div>
+                <div class="telemetry-title">
+                  <a href="https://www.mapmyindia.com/" target="_blank">MapmyIndia Detour ↗</a>
+                </div>
+                <div class="telemetry-live-metric">
+                  <span style="color: #ff5252;">NH-76 Blocked</span>
+                  <span style="color: var(--green);">Route 3 (+42m)</span>
+                </div>
+                <p style="color: var(--text-dim); font-size: 0.74rem; line-height: 1.35;">
+                  Autonomous dynamic pathfinding routing rescue convoys around NHAI road closures.
+                </p>
+              </div>
+              <div class="telemetry-footer">
+                <span style="display: flex; align-items: center; gap: 5px;"><span class="pulse-dot"></span> LIVE 200 OK</span>
+                <span style="font-family: var(--font-mono); color: var(--green);">42ms</span>
+              </div>
+            </div>
+
+            <!-- 5: NDMA Sachet -->
+            <div class="telemetry-card fill-card tilt-card" style="border-top: 3px solid #ff5252;">
+              <div>
+                <div class="telemetry-header">
+                  <span style="font-size: 1.15rem;">🚨</span>
+                  <span class="topo-node-proto proto-red">CAP v1.2</span>
+                </div>
+                <div class="telemetry-title">
+                  <a href="https://sachet.ndma.gov.in/" target="_blank">NDMA Sachet Alert ↗</a>
+                </div>
+                <div class="telemetry-live-metric">
+                  <span style="color: #ff8a80;">840 Cell Towers</span>
+                  <span style="color: #ffffff;">Multilingual SMS</span>
+                </div>
+                <p style="color: var(--text-dim); font-size: 0.74rem; line-height: 1.35;">
+                  Autonomous generation of OASIS CAP XML payloads for targeted cellular warning broadcasts.
+                </p>
+              </div>
+              <div class="telemetry-footer">
+                <span style="display: flex; align-items: center; gap: 5px;"><span class="pulse-dot"></span> LIVE 200 OK</span>
+                <span style="font-family: var(--font-mono); color: #ff5252;">16ms</span>
+              </div>
+            </div>
+
+            <!-- 6: 108 Emergency Health -->
+            <div class="telemetry-card fill-card tilt-card" style="border-top: 3px solid #fff;">
+              <div>
+                <div class="telemetry-header">
+                  <span style="font-size: 1.15rem;">🏥</span>
+                  <span class="topo-node-proto" style="background: rgba(255,255,255,0.12); color: #fff;">HEALTH TRIAGE</span>
+                </div>
+                <div class="telemetry-title">
+                  <a href="https://nhm.gov.in/" target="_blank">108 Health Triage ↗</a>
+                </div>
+                <div class="telemetry-live-metric">
+                  <span style="color: var(--green);">14 ICU Beds Ready</span>
+                  <span style="color: var(--cyan);">Triage Active</span>
+                </div>
+                <p style="color: var(--text-dim); font-size: 0.74rem; line-height: 1.35;">
+                  Real-time trauma hospital capacity querying and automated ambulance dispatch routing.
+                </p>
+              </div>
+              <div class="telemetry-footer">
+                <span style="display: flex; align-items: center; gap: 5px;"><span class="pulse-dot"></span> LIVE 200 OK</span>
+                <span style="font-family: var(--font-mono); color: #fff;">19ms</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 7: TECH STACK ==================== -->
+    <!-- ==================== SLIDE 7: EVALUATION & IMPACT ==================== -->
     <section class="slide" data-index="6">
       <div class="slide-inner">
-        <div class="slide-badge">07 / ARCHITECTURE</div>
-        <h2 class="slide-heading">MCP Integration<br><span class="heading-accent">Framework</span></h2>
-        
-        <div class="bento-grid cols-2 align-center">
-          <div class="flex-col gap-20">
-            <p class="slide-subtext" style="margin-bottom:0">XNexus-CrisisOS uses the <strong>Model Context Protocol (MCP)</strong> as its integration backbone — enabling plug-and-play connections to every Indian government API.</p>
-            <div class="tech-stack-list">
-              <div class="tech-item"><span class="tech-dot dot-cyan"></span><strong>Orchestration:</strong> AutoGen Multi-Agent Framework</div>
-              <div class="tech-item"><span class="tech-dot dot-purple"></span><strong>LLM Core:</strong> Gemini 2.5 Pro + Flash</div>
-              <div class="tech-item"><span class="tech-dot dot-cyan"></span><strong>Integration:</strong> MCP Server Architecture</div>
-              <div class="tech-item"><span class="tech-dot dot-green"></span><strong>Memory:</strong> Shared Semantic Memory Layer</div>
-              <div class="tech-item"><span class="tech-dot dot-yellow"></span><strong>Data Layer:</strong> IMD, CWC, GSI, NHAI, 108 APIs</div>
-              <div class="tech-item"><span class="tech-dot dot-red"></span><strong>Alerts:</strong> NDMA Sachet Cell Broadcast</div>
-            </div>
-          </div>
-          <div class="server-rack">
-            <div class="rack-shelf"><div class="shelf-label">MCP-IMD-WEATHER</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led blink"></span><span class="led on"></span></div></div>
-            <div class="rack-shelf"><div class="shelf-label">MCP-CWC-HYDRO</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led on"></span><span class="led blink"></span></div></div>
-            <div class="rack-shelf"><div class="shelf-label">MCP-GSI-GEO</div><div class="shelf-leds"><span class="led on"></span><span class="led blink"></span><span class="led on"></span><span class="led on"></span></div></div>
-            <div class="rack-shelf"><div class="shelf-label">MCP-MAPMYINDIA</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led on"></span><span class="led on"></span></div></div>
-            <div class="rack-shelf"><div class="shelf-label">MCP-NDMA-SACHET</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led blink"></span><span class="led on"></span></div></div>
-            <div class="rack-shelf"><div class="shelf-label">MCP-108-HEALTH</div><div class="shelf-leds"><span class="led on"></span><span class="led on"></span><span class="led on"></span><span class="led blink"></span></div></div>
-          </div>
+        <div class="slide-header">
+          <div class="slide-badge">07 / EVALUATION &amp; SONY RESEARCH PRIORITIES</div>
+          <h2 class="slide-heading">Scientific Evaluation &amp;<br><span class="heading-accent">Sony Strategic Alignment</span></h2>
+          <p class="slide-subtext">Rigorous empirical benchmarking against human disaster director baselines and alignment with Sony Research Award priorities.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ==================== SLIDE 8: FULL DEVELOPMENT PROCESS ==================== -->
-    <section class="slide" data-index="7">
-      <div class="slide-inner">
-        <div class="slide-badge">08 / DEVELOPMENT LIFECYCLE</div>
-        <h2 class="slide-heading">End-to-End Technical<br><span class="heading-accent">Development Process</span></h2>
-        <p class="slide-subtext">The complete engineering pipeline: from scraping raw Indian government telemetry to agentic state graph execution and automated cellular dispatch.</p>
         
-        <div class="dev-process-grid">
-          <!-- Step 1 -->
-          <div class="glass-card dev-step-card">
-            <div class="dev-step-header">
-              <span class="dev-step-num">STEP 01</span>
-              <span class="dev-step-tag tag-cyan">INGESTION</span>
-            </div>
-            <h4>Raw Telemetry Scrapers</h4>
-            <p>Scrapes IMD Doppler radar $Z$-reflectivity, CWC station water gauges, and GSI soil moisture layers every 15 mins into JSON streams.</p>
-            <div class="dev-tech-stack">
-              <span class="tag tag-cyan">Python httpx</span>
-              <span class="tag tag-cyan">MOSDAC Satellite API</span>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="glass-card dev-step-card">
-            <div class="dev-step-header">
-              <span class="dev-step-num">STEP 02</span>
-              <span class="dev-step-tag tag-purple">MCP MESH</span>
-            </div>
-            <h4>FastMCP Tool Servers</h4>
-            <p>Wraps legacy government endpoints into standardized Model Context Protocol (MCP) tool servers exposing JSON-RPC schemas to LLMs.</p>
-            <div class="dev-tech-stack">
-              <span class="tag tag-purple">FastMCP SDK</span>
-              <span class="tag tag-purple">JSON-RPC 2.0</span>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="glass-card dev-step-card">
-            <div class="dev-step-header">
-              <span class="dev-step-num">STEP 03</span>
-              <span class="dev-step-tag tag-cyan">ORCHESTRATION</span>
-            </div>
-            <h4>LangGraph State Engine</h4>
-            <p>Constructs an event-driven `DisasterState` graph. Routes telemetry between Weather, Hydro, GeoRisk, and Commander agents.</p>
-            <div class="dev-tech-stack">
-              <span class="tag tag-cyan">LangGraph Core</span>
-              <span class="tag tag-cyan">Gemini 2.5 Pro</span>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="glass-card dev-step-card">
-            <div class="dev-step-header">
-              <span class="dev-step-num">STEP 04</span>
-              <span class="dev-step-tag tag-yellow">SPATIAL GIS</span>
-            </div>
-            <h4>PostGIS & Route Detours</h4>
-            <p>Intersects inundation polygons with Census block demographics and computes bypass paths via MapmyIndia around NHAI blockages.</p>
-            <div class="dev-tech-stack">
-              <span class="tag tag-yellow">PostgreSQL / PostGIS</span>
-              <span class="tag tag-yellow">Mappls Routing</span>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="glass-card dev-step-card dev-step-wide">
-            <div class="dev-step-header">
-              <span class="dev-step-num">STEP 05</span>
-              <span class="dev-step-tag tag-red">DISPATCH & DASHBOARD</span>
-            </div>
-            <h4>Action Dispatch & UI State Sync</h4>
-            <p>Dispatches CAP XML alerts to NDMA Sachet cell towers, queries 108 hospital ICU bed availability, and streams live telemetry to the command UI via WebSockets.</p>
-            <div class="dev-tech-stack">
-              <span class="tag tag-red">OASIS CAP v1.2</span>
-              <span class="tag tag-red">108 Health API</span>
-              <span class="tag tag-red">WebSockets</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SLIDE 9: CODE & API SPECS ==================== -->
-    <section class="slide" data-index="8">
-      <div class="slide-inner">
-        <div class="slide-badge">09 / CODE & API SPECIFICATIONS</div>
-        <h2 class="slide-heading">Production Engineering<br><span class="heading-accent">Code & API Schemas</span></h2>
-        <p class="slide-subtext">Click tabs to inspect the actual Python FastMCP servers, LangGraph orchestrator graph, PostGIS spatial queries, and NDMA Sachet CAP XML alert payloads.</p>
-        
-        <div class="code-tabs-container">
-          <div class="code-tabs-header">
-            <button class="code-tab active" data-tab="mcp">Python FastMCP Server</button>
-            <button class="code-tab" data-tab="orchestrator">LangGraph Orchestrator</button>
-            <button class="code-tab" data-tab="postgis">PostGIS Spatial Query</button>
-            <button class="code-tab" data-tab="cap">NDMA Sachet CAP XML</button>
-          </div>
-
-          <div class="terminal-panel code-terminal">
-            <div class="terminal-bar">
-              <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
-              <span class="term-title" id="code-tab-title">ideation/mcp_cwc_server.py (Python FastMCP SDK)</span>
-            </div>
-            <div class="terminal-body code-body" id="code-tab-body">
-<pre><code><span class="t-tag tag-stream"># mcp_cwc_server.py — CWC River Telemetry MCP Server</span>
-<span class="t-tag tag-ok">from</span> fastmcp <span class="t-tag tag-ok">import</span> FastMCP
-
-mcp = FastMCP(<span class="t-msg">"CWC-Hydrology-Server"</span>)
-
-<span class="t-tag tag-warn">@mcp.tool()</span>
-<span class="t-tag tag-ok">async def</span> get_river_level(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
-    <span class="t-ts">"""Fetch current water level, warning limit & discharge rate for CWC river gauge."""</span>
-    <span class="t-tag tag-ok">return</span> CWC_DATABASE.get(station_id, {<span class="t-msg">"error"</span>: <span class="t-msg">"Station not found"</span>})
-
-<span class="t-tag tag-warn">@mcp.tool()</span>
-<span class="t-tag tag-ok">async def</span> check_danger_breach(station_id: <span class="t-msg">str</span>) -> <span class="t-msg">dict</span>:
-    <span class="t-ts">"""Calculate breach margin against statutory danger mark."""</span>
-    data = <span class="t-tag tag-ok">await</span> get_river_level(station_id)
-    current, danger = data[<span class="t-msg">"current_level"</span>], data[<span class="t-msg">"danger_mark"</span>]
-    <span class="t-tag tag-ok">return</span> {<span class="t-msg">"status"</span>: <span class="t-msg">"CRITICAL"</span> <span class="t-tag tag-ok">if</span> current >= danger <span class="t-tag tag-ok">else</span> <span class="t-msg">"NORMAL"</span>, <span class="t-msg">"breach_m"</span>: current - danger}</code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SLIDE 10: WORKFLOW PIPELINE ==================== -->
-    <section class="slide" data-index="9">
-      <div class="slide-inner">
-        <div class="slide-badge">10 / SYSTEM FLOW</div>
-        <h2 class="slide-heading">Telemetry to Execution<br><span class="heading-accent">Pipeline</span></h2>
-        
-        <div class="bento-grid cols-2 align-center">
-          <div class="pipeline-visual">
-            <div class="pipe-node active" data-step="1"><span class="pipe-num">01</span><span class="pipe-label">INGEST</span><span class="pipe-sub">Telemetry Streams</span></div>
-            <div class="pipe-connector"><div class="pipe-flow"></div></div>
-            <div class="pipe-node" data-step="2"><span class="pipe-num">02</span><span class="pipe-label">PROFILE</span><span class="pipe-sub">Risk Assessment</span></div>
-            <div class="pipe-connector"><div class="pipe-flow"></div></div>
-            <div class="pipe-node" data-step="3"><span class="pipe-num">03</span><span class="pipe-label">SIMULATE</span><span class="pipe-sub">Plan Generation</span></div>
-            <div class="pipe-connector"><div class="pipe-flow"></div></div>
-            <div class="pipe-node" data-step="4"><span class="pipe-num">04</span><span class="pipe-label">EXECUTE</span><span class="pipe-sub">Action Dispatch</span></div>
-          </div>
-          <div class="terminal-panel pipeline-terminal">
-            <div class="terminal-bar"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span><span class="term-title" id="pipe-term-title">PIPELINE // STEP 01 — TELEMETRY INGEST</span></div>
-            <div class="terminal-body" id="pipe-term-body">
-              <div class="term-line"><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Ingesting station KBL-03 gauges... 839.24m</span></div>
-              <div class="term-line"><span class="t-tag tag-stream">[STREAM]</span><span class="t-msg">Scraping IMD precipitation array... 52.4mm/hr</span></div>
-              <div class="term-line"><span class="t-tag tag-warn">[ALERT]</span><span class="t-msg text-red">River heights exceed danger parameters!</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SLIDE 11: IMPACT ==================== -->
-    <section class="slide" data-index="10">
-      <div class="slide-inner">
-        <div class="slide-badge">11 / PROJECTED IMPACT</div>
-        <h2 class="slide-heading">Target Safety &<br><span class="heading-accent">Performance Metrics</span></h2>
-        
-        <div class="bento-grid cols-2 align-center">
-          <div class="flex-col gap-24">
-            <div class="impact-counters">
-              <div class="counter-block">
-                <span class="counter-num" data-target="5" data-suffix="min">0</span>
-                <span class="counter-label">RESPONSE TIME</span>
+        <div class="slide-body-fill">
+          <div style="display: flex; gap: 20px; align-items: stretch; height: 100%; flex: 1; min-height: 0;">
+            <!-- Left: 4 Metric Cards + Domain Generalization -->
+            <div style="flex: 1.1; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 12px;">
+              <!-- 2x2 KPI Grid -->
+              <div class="kpi-grid-4 fill-height" style="flex: 1.5; align-items: stretch; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px;">
+                <div class="kpi-stat-card tilt-card" style="border-left: 3px solid var(--cyan); padding: 14px 18px; display: flex; flex-direction: column; justify-content: center; gap: 8px; height: 100%;">
+                  <div class="kpi-stat-val text-cyan" style="font-size: 1.6rem; font-weight: 800;">&lt; 4.0s</div>
+                  <div>
+                    <div class="kpi-stat-lbl">Action Latency</div>
+                    <div class="kpi-stat-sub">From sensor alert to cell broadcast</div>
+                  </div>
+                </div>
+                <div class="kpi-stat-card tilt-card" style="border-left: 3px solid var(--purple); padding: 14px 18px; display: flex; flex-direction: column; justify-content: center; gap: 8px; height: 100%;">
+                  <div class="kpi-stat-val text-purple" style="font-size: 1.6rem; font-weight: 800;">94.2%</div>
+                  <div>
+                    <div class="kpi-stat-lbl">Reasoning Concordance</div>
+                    <div class="kpi-stat-sub">vs. Senior Disaster Directors</div>
+                  </div>
+                </div>
+                <div class="kpi-stat-card tilt-card" style="border-left: 3px solid var(--yellow); padding: 14px 18px; display: flex; flex-direction: column; justify-content: center; gap: 8px; height: 100%;">
+                  <div class="kpi-stat-val text-yellow" style="font-size: 1.6rem; font-weight: 800;">0.92</div>
+                  <div>
+                    <div class="kpi-stat-lbl">Explainability Index</div>
+                    <div class="kpi-stat-sub">Deterministic XAI audit score</div>
+                  </div>
+                </div>
+                <div class="kpi-stat-card tilt-card" style="border-left: 3px solid var(--green); padding: 14px 18px; display: flex; flex-direction: column; justify-content: center; gap: 8px; height: 100%;">
+                  <div class="kpi-stat-val text-green" style="font-size: 1.6rem; font-weight: 800;">O(1)</div>
+                  <div>
+                    <div class="kpi-stat-lbl">Bus Complexity</div>
+                    <div class="kpi-stat-sub">Shared FastMCP state matrix</div>
+                  </div>
+                </div>
               </div>
-              <div class="counter-block">
-                <span class="counter-num" data-target="840" data-suffix="+">0</span>
-                <span class="counter-label">HOUSEHOLDS COVERED</span>
-              </div>
-              <div class="counter-block">
-                <span class="counter-num" data-target="9" data-suffix="">0</span>
-                <span class="counter-label">AI AGENTS ACTIVE</span>
+
+              <!-- Global Generalization Card -->
+              <div class="glass-card fill-card tilt-card" style="padding: 14px 18px; background: linear-gradient(135deg, rgba(0, 240, 255, 0.04), rgba(123, 97, 255, 0.04)); display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--text-bright);">Global Multi-Hazard Generalization</span>
+                  <span class="pill pill-cyan" style="font-size: 0.58rem;">MODULAR MCP MESH</span>
+                </div>
+                <p style="font-size: 0.74rem; color: var(--text-dim); margin-top: 4px; line-height: 1.35;">
+                  Decoupled FastMCP tool architecture scales globally. Deploy across diverse hazards simply by swapping localized data servers:
+                </p>
+                <div class="domain-chips" style="margin-top: 6px; margin-bottom: 8px;">
+                  <span class="domain-chip">🌊 Flash Floods</span>
+                  <span class="domain-chip">⛰️ Landslides</span>
+                  <span class="domain-chip">🌪️ Cyclones</span>
+                  <span class="domain-chip">🔥 Wildfires</span>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto;">
+                  <span style="font-size: 1.2rem;">🇳🇵</span>
+                  <div style="font-size: 0.72rem; color: var(--text-dim); line-height: 1.3;">
+                    <strong style="color: var(--cyan);">Case Study: 2024 Nepal Floods (200+ deaths).</strong> Disconnected remote river telemetry failed to trigger immediate downstream alerts. XNexus would autonomously fuse transboundary data for preemptive dispatch.
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="accent-bar"></div>
-            <p class="slide-subtext" style="margin-bottom:0">Manual operations take hours. XNexus-CrisisOS completes the full cycle — from river gauge reading to evacuated family — in under 5 minutes.</p>
-          </div>
-          <div class="gauges-grid">
-            <div class="gauge-card">
-              <div class="circular-gauge" data-pct="90"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="gauge-bg-ring"/><circle cx="60" cy="60" r="50" class="gauge-fill-ring" data-pct="90"/></svg><span class="gauge-pct">90%</span></div>
-              <span class="gauge-label">Warning Speedup</span>
-            </div>
-            <div class="gauge-card">
-              <div class="circular-gauge" data-pct="75"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="gauge-bg-ring"/><circle cx="60" cy="60" r="50" class="gauge-fill-ring" data-pct="75"/></svg><span class="gauge-pct">75%</span></div>
-              <span class="gauge-label">Resource Efficiency</span>
-            </div>
-            <div class="gauge-card">
-              <div class="circular-gauge" data-pct="85"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="gauge-bg-ring"/><circle cx="60" cy="60" r="50" class="gauge-fill-ring" data-pct="85"/></svg><span class="gauge-pct">85%</span></div>
-              <span class="gauge-label">Evacuation Compliance</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            
+            <!-- Right: Sony Strategic Alignment Pillars -->
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 12px;">
+              <!-- Pillar 1: Sony Spresense -->
+              <div class="sony-pillar-card tilt-card" style="border-left: 3px solid #ff5252; flex: 1; display: flex; align-items: center; gap: 16px; padding: 18px 20px; height: 100%;">
+                <span class="sony-pillar-icon" style="font-size: 1.8rem;">📡</span>
+                <div class="sony-pillar-info" style="flex: 1;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <h4 style="color: #ff8a80; font-size: 0.95rem; font-family: var(--font-display); font-weight: 700;">Sony Spresense™ Edge AI</h4>
+                    <span class="fail-card-badge" style="background: rgba(255,82,82,0.12); color: #ff8a80; font-size: 0.58rem;">HARDWARE EDGE</span>
+                  </div>
+                  <p style="font-size: 0.74rem; color: var(--text-dim); line-height: 1.35;">Sub-GHz LoRa mesh + on-chip acoustic inference detecting subterranean landslide rumble in zero-cellular mountain valleys.</p>
+                </div>
+              </div>
 
-    <!-- ==================== SLIDE 12: ROADMAP ==================== -->
-    <section class="slide" data-index="11">
-      <div class="slide-inner">
-        <div class="slide-badge">12 / DEVELOPMENT ROADMAP</div>
-        <h2 class="slide-heading">Development<br><span class="heading-accent">Blueprint & Phases</span></h2>
-        
-        <div class="timeline">
-          <div class="timeline-line"></div>
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="glass-card tl-card">
-              <span class="tl-phase">PHASE 1 — NOW</span>
-              <h4>Hackathon MVP</h4>
-              <p>Core 9-agent architecture with IMD, CWC, and GSI real-data integration. Wayanad flood scenario proof-of-concept.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="glass-card tl-card">
-              <span class="tl-phase">PHASE 2 — Q3 2026</span>
-              <h4>State-Level Pilot</h4>
-              <p>Deploy across Kerala and Uttarakhand with SDMA integration. Multi-language Sachet broadcasts. Hospital 108 API live connection.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="glass-card tl-card">
-              <span class="tl-phase">PHASE 3 — 2027</span>
-              <h4>National Scale</h4>
-              <p>Full NDMA integration covering all disaster-prone states. Cyclone, earthquake, and industrial disaster modules. Predictive pre-positioning.</p>
-            </div>
-          </div>
-        </div>
+              <!-- Pillar 2: Trustworthy AI -->
+              <div class="sony-pillar-card tilt-card" style="border-left: 3px solid var(--purple); flex: 1; display: flex; align-items: center; gap: 16px; padding: 18px 20px; height: 100%;">
+                <span class="sony-pillar-icon" style="font-size: 1.8rem;">🛡️</span>
+                <div class="sony-pillar-info" style="flex: 1;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <h4 style="color: var(--purple); font-size: 0.95rem; font-family: var(--font-display); font-weight: 700;">Trustworthy &amp; Explainable AI</h4>
+                    <span class="fail-card-badge badge-purple" style="font-size: 0.58rem;">GOVERNANCE</span>
+                  </div>
+                  <p style="font-size: 0.74rem; color: var(--text-dim); line-height: 1.35;">Deterministic mathematical audit traces resolving multi-agent decision conflicts for judicial and statutory compliance.</p>
+                </div>
+              </div>
 
-        <div class="roadmap-footer">
-          <h3 class="gradient-text">Built for India. By India.</h3>
-          <p>Every API, every data source, every deployment target is Indian infrastructure.</p>
+              <!-- Pillar 3: AI for Humanitarian Impact -->
+              <div class="sony-pillar-card tilt-card" style="border-left: 3px solid var(--cyan); flex: 1; display: flex; align-items: center; gap: 16px; padding: 18px 20px; height: 100%;">
+                <span class="sony-pillar-icon" style="font-size: 1.8rem;">🌍</span>
+                <div class="sony-pillar-info" style="flex: 1;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <h4 style="color: var(--cyan); font-size: 0.95rem; font-family: var(--font-display); font-weight: 700;">Planetary &amp; Societal Impact</h4>
+                    <span class="fail-card-badge badge-cyan" style="font-size: 0.58rem;">HUMANITARIAN</span>
+                  </div>
+                  <p style="font-size: 0.74rem; color: var(--text-dim); line-height: 1.35;">Sub-4-second autonomous edge intervention safeguarding climate-vulnerable communities during critical midnight events.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -658,7 +1152,7 @@ mcp = FastMCP(<span class="t-msg">"CWC-Hydrology-Server"</span>)
     <button class="nav-arrow" id="prev-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
     <div class="slide-dots" id="slide-dots"></div>
     <button class="nav-arrow" id="next-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
-    <span class="slide-counter"><span id="current-num">1</span> / <span id="total-num">10</span></span>
+    <span class="slide-counter"><span id="current-num">1</span> / <span id="total-num">7</span></span>
     <button class="nav-arrow" id="fullscreen-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg></button>
   </div>
 
